@@ -1,0 +1,90 @@
+# 数学错题本模板
+
+这个模板用于把数学错题整理成 LaTeX，并最终输出为适合平板二刷的 PDF。
+
+## 结构
+
+```text
+template/
+  main.tex
+  preamble.tex
+  README.md
+  problems/
+    YYYY-MM-DD-XX.tex
+```
+
+- `main.tex`：总入口文件，从这里编译 PDF。
+- `preamble.tex`：统一样式、颜色、页眉页脚和题目宏定义。
+- `problems/*.tex`：每道题一个文件，按日期编号命名。
+
+## 题目组织规则
+
+每道题固定两页：
+
+1. 第 1 页：题目 + 二刷留白
+2. 第 2 页：正确解法 + 知识点相关信息
+
+备注会显示在两页页脚右下角。
+
+总文件默认不额外插入封面页，这样每道题都严格保持两页结构。
+
+## 文件命名
+
+推荐按自然排序命名：
+
+```text
+2026-04-09-01.tex
+2026-04-09-02.tex
+2026-04-10-01.tex
+```
+
+## 新增一道错题
+
+在 `problems/` 下新建一个文件，例如 `2026-04-10-01.tex`，内容如下：
+
+```latex
+\mistakeproblem
+  {2026-04-10}
+  {01}
+  {这里写题目}
+  {这里写正确解法}
+  {这里写知识点相关信息}
+  {这里写备注}
+```
+
+然后在 `main.tex` 中按顺序加入：
+
+```latex
+\input{problems/2026-04-09-01.tex}
+\input{problems/2026-04-10-01.tex}
+```
+
+## 编译方式
+
+推荐使用 `XeLaTeX`：
+
+```bash
+xelatex main.tex
+```
+
+如果你希望交叉引用或页码更稳定，可以连续编译两次：
+
+```bash
+xelatex main.tex
+xelatex main.tex
+```
+
+## 字体说明
+
+模板默认使用以下字体：
+
+- 西文：`TeX Gyre Pagella`
+- 中文：由 `ctex` 自动处理，通常使用 TeX Live 自带的 Fandol 字体
+
+如果你想换成系统里的其它中文字体，也可以在 `preamble.tex` 中自行指定。
+
+## 调整建议
+
+- 想增加手写空间：修改 `preamble.tex` 中 `\reviewspace` 里的高度比例。
+- 想调整颜色：修改 `MistakeAccent`、`MistakeLine`、`MistakeMuted` 三个颜色值。
+- 想改变页边距：修改 `geometry` 的 `margin=20mm`。

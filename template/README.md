@@ -7,14 +7,14 @@
 ```text
 template/
   main.tex
-  preamble.tex
+  preamble.sty
   README.md
   problems/
     YYYY-MM-DD-XX.tex
 ```
 
 - `main.tex`：总入口文件，从这里编译 PDF。
-- `preamble.tex`：统一样式、颜色、页眉页脚和题目宏定义。
+- `preamble.sty`：统一样式、颜色、页眉页脚和题目环境定义。
 - `problems/*.tex`：每道题一个文件，按日期编号命名。
 
 ## 题目组织规则
@@ -43,14 +43,24 @@ template/
 在 `problems/` 下新建一个文件，例如 `2026-04-10-01.tex`，内容如下：
 
 ```latex
-\mistakeproblem
-  {2026-04-10}
-  {01}
-  {这里写题目}
-  {这里写正确解法}
-  {这里写知识点相关信息}
-  {这里写备注}
+\begin{mistake}{2026-04-10}{01}
+\mistakeremarktext{这里写备注}
+
+\begin{problemcontent}
+这里写题目
+\end{problemcontent}
+
+\begin{solutioncontent}
+这里写正确解法
+
+\mistakeknowledge{这里写知识点相关信息}
+\end{solutioncontent}
+\end{mistake}
 ```
+
+这种环境式写法比六参数宏更适合复杂内容；题目、解法里可以直接放多段文字、列表和多行公式。
+
+多行公式请统一写成 `\[ ... \begin{aligned} ... \end{aligned} ... \]`，不要使用 `align`、`align*`、`equation`、`equation*` 这类环境，以免嵌套时报错。
 
 然后在 `main.tex` 中按顺序加入：
 
@@ -81,10 +91,10 @@ xelatex main.tex
 - 西文：`TeX Gyre Pagella`
 - 中文：由 `ctex` 自动处理，通常使用 TeX Live 自带的 Fandol 字体
 
-如果你想换成系统里的其它中文字体，也可以在 `preamble.tex` 中自行指定。
+如果你想换成系统里的其它中文字体，也可以在 `preamble.sty` 中自行指定。
 
 ## 调整建议
 
-- 想增加手写空间：修改 `preamble.tex` 中 `\reviewspace` 里的高度比例。
+- 想增加手写空间：修改 `preamble.sty` 中 `\reviewspace` 里的高度比例。
 - 想调整颜色：修改 `MistakeAccent`、`MistakeLine`、`MistakeMuted` 三个颜色值。
 - 想改变页边距：修改 `geometry` 的 `margin=20mm`。

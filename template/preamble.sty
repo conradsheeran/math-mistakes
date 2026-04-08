@@ -1,3 +1,6 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{preamble}[2026/04/09 Math mistake notebook template]
+
 \usepackage[a4paper,margin=20mm]{geometry}
 \usepackage[UTF8]{ctex}
 \usepackage{fontspec}
@@ -13,6 +16,7 @@
 \usepackage{tabularx}
 \usepackage{needspace}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xparse}
 
 \setmainfont{TeX Gyre Pagella}
 \setsansfont{TeX Gyre Heros}
@@ -39,6 +43,8 @@
 
 \newcommand{\mistakeremark}{}
 \newcommand{\setmistakeremark}[1]{\gdef\mistakeremark{#1}}
+\newcommand{\mistaketitle}{}
+\newcommand{\mistakenumber}{}
 
 \fancyhead[L]{}
 \fancyhead[R]{\textcolor{MistakeMuted}{\small 第 \thepage\ / \pageref*{LastPage} 页}}
@@ -71,7 +77,7 @@
   \vspace{0.6em}
 }
 
-\newcommand{\mistakeknowledge}[1]{%
+\newcommand{\mistakeknowledgeblock}[1]{%
   \vspace{0.3em}
   {\large\bfseries\color{MistakeAccent} 知识点相关信息}\par
   \vspace{0.35em}
@@ -89,18 +95,33 @@
   {\color{MistakePanel}\rule{\textwidth}{0.58\textheight}}\par
 }
 
-\newcommand{\mistakeproblem}[6]{%
-  \setmistakeremark{#6}%
+\newenvironment{mistake}[2]{%
+  \gdef\mistaketitle{#1}%
+  \gdef\mistakenumber{#2}%
+  \setmistakeremark{}%
+}{}
+
+\newcommand{\mistakeremarktext}[1]{%
+  \setmistakeremark{#1}%
+}
+
+\NewDocumentEnvironment{problemcontent}{+b}{%
   \clearpage
   \thispagestyle{fancy}
-  \mistakeheader{#1}{#2}
-  \mistakeblock{题目}{#3}
+  \mistakeheader{\mistaketitle}{\mistakenumber}
+  \mistakeblock{题目}{#1}%
   \reviewspace
   \clearpage
+}{}
+
+\NewDocumentEnvironment{solutioncontent}{+b}{%
   \thispagestyle{fancy}
-  \mistakeheader{#1}{#2}
-  \mistakeblock{正确解法}{#4}
-  \mistakeknowledge{#5}
+  \mistakeheader{\mistaketitle}{\mistakenumber}
+  \mistakeblock{正确解法}{#1}%
+}{}
+
+\newcommand{\mistakeknowledge}[1]{%
+  \mistakeknowledgeblock{#1}%
 }
 
 \setlist[itemize]{leftmargin=1.5em,itemsep=0.2em,topsep=0.2em}

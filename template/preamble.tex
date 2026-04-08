@@ -23,10 +23,11 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
 
-\definecolor{MistakeAccent}{HTML}{2F4E73}
-\definecolor{MistakeLine}{HTML}{C9D5E2}
+\definecolor{MistakeAccent}{RGB}{20,50,104}
+\definecolor{MistakeLine}{RGB}{214,223,235}
 \definecolor{MistakeText}{HTML}{2B3136}
-\definecolor{MistakeMuted}{HTML}{51657A}
+\definecolor{MistakeMuted}{RGB}{108,124,150}
+\definecolor{MistakeRemark}{RGB}{170,176,186}
 \definecolor{MistakePanel}{HTML}{F3F7FB}
 
 \color{MistakeText}
@@ -41,7 +42,7 @@
 
 \fancyhead[L]{}
 \fancyhead[R]{\textcolor{MistakeMuted}{\small 第 \thepage\ / \pageref*{LastPage} 页}}
-\fancyfoot[R]{\textcolor{MistakeMuted}{\small 备注：\mistakeremark}}
+\fancyfoot[R]{\textcolor{MistakeRemark}{\scriptsize 备注：\mistakeremark}}
 
 \titleformat{\section}
   {\Large\bfseries\color{MistakeAccent}}

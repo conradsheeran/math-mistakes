@@ -2,6 +2,8 @@
 
 这个模板用于把数学错题整理成 LaTeX，并最终输出为适合平板二刷的 PDF。
 
+模板默认采用 A4 横版，题目页预留了更大的手写区域，方便在平板上直接书写。
+
 ## 结构
 
 ```text
@@ -14,7 +16,7 @@ template/
 ```
 
 - `main.tex`：总入口文件，从这里编译 PDF。
-- `preamble.sty`：统一样式、颜色、页眉页脚和题目环境定义。
+- `preamble.sty`：统一样式、颜色、页眉页脚和横版页面设置。
 - `problems/*.tex`：每道题一个文件，按日期编号命名。
 
 ## 题目组织规则
@@ -97,4 +99,4 @@ xelatex main.tex
 
 - 想增加手写空间：修改 `preamble.sty` 中 `\reviewspace` 里的高度比例。
 - 想调整颜色：修改 `MistakeAccent`、`MistakeLine`、`MistakeMuted` 三个颜色值。
-- 想改变页边距：修改 `geometry` 的 `margin=20mm`。
+- 想改变页面方向或页边距：修改 `geometry` 的 `landscape` 和 `margin=20mm`。

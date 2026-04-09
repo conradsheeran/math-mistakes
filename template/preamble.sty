@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{template/preamble}[2026/04/09 Math mistake notebook template]
 
-\usepackage[a4paper,margin=20mm]{geometry}
+\usepackage[a4paper,landscape,margin=20mm]{geometry}
 \usepackage[UTF8,fontset=none]{ctex}
 \usepackage{fontspec}
 \usepackage{amsmath,amssymb,amsthm}
@@ -29,13 +29,14 @@
 \setlength{\headheight}{15pt}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
+\newlength{\reviewheight}
 
 \definecolor{MistakeAccent}{RGB}{20,50,104}
 \definecolor{MistakeLine}{RGB}{214,223,235}
 \definecolor{MistakeText}{HTML}{2B3136}
 \definecolor{MistakeMuted}{RGB}{108,124,150}
 \definecolor{MistakeRemark}{RGB}{170,176,186}
-\definecolor{MistakePanel}{HTML}{F3F7FB}
+\definecolor{MistakePanel}{HTML}{F8FAFD}
 
 \color{MistakeText}
 
@@ -66,36 +67,37 @@
   {}
 
 \newcommand{\mistakeheader}[2]{%
-  {\Large\bfseries\color{MistakeAccent} #1}\hfill{\large\bfseries\color{MistakeAccent} 编号 #2}\par
-  \vspace{0.35em}
+  {\large\bfseries\color{MistakeAccent} #1}\hfill{\normalsize\bfseries\color{MistakeAccent} 编号 #2}\par
+  \vspace{0.2em}
   {\color{MistakeLine}\rule{\textwidth}{0.8pt}}\par
-  \vspace{0.8em}
+  \vspace{0.45em}
 }
 
 \newcommand{\mistakeblock}[2]{%
   \Needspace{10\baselineskip}
-  {\large\bfseries\color{MistakeAccent} #1}\par
-  \vspace{0.35em}
+  {\normalsize\bfseries\color{MistakeAccent} #1}\par
+  \vspace{0.2em}
   #2\par
-  \vspace{0.6em}
+  \vspace{0.25em}
 }
 
 \newcommand{\mistakeknowledgeblock}[1]{%
-  \vspace{0.3em}
-  {\large\bfseries\color{MistakeAccent} 知识点相关信息}\par
-  \vspace{0.35em}
+  \vspace{0.2em}
+  {\normalsize\bfseries\color{MistakeAccent} 知识点相关信息}\par
+  \vspace{0.2em}
   {\color{MistakeLine}\rule{\textwidth}{0.6pt}}\par
-  \vspace{0.5em}
+  \vspace{0.3em}
   #1\par
 }
 
 \newcommand{\reviewspace}{%
-  \vfill
-  {\large\bfseries\color{MistakeAccent} 答题区}\par
-  \vspace{0.4em}
+  \setlength{\reviewheight}{\dimexpr\pagegoal-\pagetotal-2.2\baselineskip\relax}%
+  \ifdim\reviewheight<5\baselineskip
+    \setlength{\reviewheight}{5\baselineskip}%
+  \fi
   {\color{MistakeLine}\rule{\textwidth}{0.8pt}}\par
-  \vspace{0.5em}
-  {\color{MistakePanel}\rule{\textwidth}{0.58\textheight}}\par
+  \vspace{0.25em}
+  {\color{MistakePanel}\noindent\colorbox{MistakePanel}{\parbox[t][\reviewheight][t]{\dimexpr\textwidth-2\fboxsep\relax}{\strut}}}\par
 }
 
 \newenvironment{mistake}[2]{%

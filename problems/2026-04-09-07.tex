@@ -1,0 +1,36 @@
+egin{mistake}{2026-04-09}{07}
+
+\begin{problemcontent}
+\( \lim_{x \to 0} \frac{\ln(1+x+x^2) + \ln(1-x+x^2)}{\sec x - \cos x} = \) ____。
+\end{problemcontent}
+
+\begin{solutioncontent}
+化简分子，利用对数乘法性质将其转化为一个对数项：
+\[
+\begin{aligned}
+\ln(1+x+x^2) + \ln(1-x+x^2) &= \ln[(1+x^2+x)(1+x^2-x)] \\
+&= \ln[(1+x^2)^2 - x^2] = \ln(1+x^2+x^4)
+\end{aligned}
+\]
+当 \(x \to 0\) 时，\(\ln(1+x^2+x^4) \sim x^2+x^4 \sim x^2\)。
+
+化简分母，将其转化为正弦与余弦的形式：
+\[
+\sec x - \cos x = \frac{1 - \cos^2 x}{\cos x} = \frac{\sin^2 x}{\cos x}
+\]
+当 \(x \to 0\) 时，\(\sin^2 x \sim x^2\)，\(\cos x \to 1\)，故分母整体 \(\sim x^2\)。
+
+代入原极限：
+\[
+\lim_{x \to 0} \frac{x^2}{x^2} = 1
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：对数运算法则 \(\ln a + \ln b = \ln(ab)\) 及等价无穷小 \(\ln(1+u) \sim u\)。
+ \item \textbf{易错点}：在加法式子 \(\ln(1+x+x^2) + \ln(1-x+x^2)\) 中各自强行使用等价无穷小代换，这违背了加减法一般不可等价代换的原则。
+ \item \textbf{关联知识}：遇见 \(\sec x\) 时，优先将其改写为 \(\cos x\) 的分式结构，更容易暴露出等效于多项式的 \(\sin^2 x\) 等无穷小因子。
+\end{itemize}}
+
+\end{mistake}

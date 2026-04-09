@@ -1,0 +1,25 @@
+egin{mistake}{2026-04-09}{02}
+
+\begin{problemcontent}
+设常数 \( a > 0 \)，则 \( \lim_{x \to +\infty} \frac{a^x}{1+a^x} = \) __。
+\end{problemcontent}
+
+\begin{solutioncontent}
+指数函数 \(a^x\) 当 \(x \to +\infty\) 时的极限行为取决于底数 \(a\) 与 \(1\) 的大小关系，需分类讨论：
+
+\begin{enumerate}
+ \item 当 \(0 < a < 1\) 时，\(\lim_{x \to +\infty} a^x = 0\)，原极限为 \(\frac{0}{1+0} = 0\)。
+ \item 当 \(a = 1\) 时，\(a^x \equiv 1\)，原极限为 \(\frac{1}{1+1} = \frac{1}{2}\)。
+ \item 当 \(a > 1\) 时，\(\lim_{x \to +\infty} a^x = +\infty\)，分子分母同除以 \(a^x\)：
+ \[\lim_{x \to +\infty} \frac{1}{a^{-x} + 1} = \frac{1}{0 + 1} = 1\]
+\end{enumerate}
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：指数函数 \(y=a^x\) 的极限性质及渐近线。
+ \item \textbf{易错点}：忽略底数 \(a\) 的范围，未分类讨论而直接得出 \(1\) 的错误结论。
+ \item \textbf{关联知识}：当自变量趋于无穷时，必须区分 \(x \to +\infty\) 与 \(x \to -\infty\) 对 \(a^x\) 极限截然不同的影响。
+\end{itemize}}
+
+\end{mistake}

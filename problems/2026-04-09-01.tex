@@ -1,0 +1,27 @@
+egin{mistake}{2026-04-09}{01}
+
+\begin{problemcontent}
+设 \(\lim_{x \to 0} \left(1 + x + \frac{f(x)}{x}\right)^{\frac{1}{x}} = e^3\)，则 \(\lim_{x \to 0} \left(1 + \frac{f(x)}{x}\right)^{\frac{1}{x}} = \) ____。
+\end{problemcontent}
+
+\begin{solutioncontent}
+此为 \(1^\infty\) 型极限。利用重要极限公式 \(\lim (1+\alpha)^{\frac{1}{\alpha}} = e\)，可化简如下：
+\[
+\lim_{x \to 0} \left(1 + x + \frac{f(x)}{x}\right)^{\frac{1}{x}} = \exp\left[\lim_{x \to 0} \left(x + \frac{f(x)}{x}\right) \frac{1}{x}\right] = \exp\left[\lim_{x \to 0} \left(1 + \frac{f(x)}{x^2}\right)\right] = e^3
+\]
+由此解得：\(\lim_{x \to 0} \frac{f(x)}{x^2} = 2\)。
+
+对所求极限使用相同的处理方法：
+\[
+\lim_{x \to 0} \left(1 + \frac{f(x)}{x}\right)^{\frac{1}{x}} = \exp\left[\lim_{x \to 0} \left(\frac{f(x)}{x} \cdot \frac{1}{x}\right)\right] = \exp\left[\lim_{x \to 0} \frac{f(x)}{x^2}\right] = e^2
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：\(1^\infty\) 型极限常用求法：\(\lim (1+\alpha)^\beta = e^{\lim (\alpha\beta)}\)（条件：\(\alpha \to 0, \beta \to \infty\)）。
+ \item \textbf{易错点}：未完全分离并提取出核心极限式 \(\frac{f(x)}{x^2}\) 的值，便对未知函数进行错误代换。
+ \item \textbf{关联知识}：指数退化法处理 \(1^\infty\) 极限问题时，本质是等价无穷小 \(\ln(1+\alpha) \sim \alpha\) 的应用。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,31 @@
+egin{mistake}{2026-04-09}{04}
+
+\begin{problemcontent}
+\( I = \lim_{x \to 0} \frac{\sqrt{1+\tan x} - \sqrt{1+\sin x}}{e^{\tan x} - e^{\sin x}} = \) ____。
+\end{problemcontent}
+
+\begin{solutioncontent}
+分母提取公因式以构造等价无穷小：
+\[
+e^{\tan x} - e^{\sin x} = e^{\sin x}(e^{\tan x - \sin x} - 1)
+\]
+当 \(x \to 0\) 时，\(e^{\sin x} \to 1\)，且 \(e^{\tan x - \sin x} - 1 \sim \tan x - \sin x\)，故分母 \(\sim \tan x - \sin x\)。
+
+分子使用分子有理化技巧：
+\[
+\sqrt{1+\tan x} - \sqrt{1+\sin x} = \frac{\tan x - \sin x}{\sqrt{1+\tan x} + \sqrt{1+\sin x}} \sim \frac{\tan x - \sin x}{2}
+\]
+代入原极限：
+\[
+I = \lim_{x \to 0} \frac{\frac{1}{2}(\tan x - \sin x)}{\tan x - \sin x} = \frac{1}{2}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：指数等价无穷小 \(e^u - 1 \sim u\) 及其前提 \(u \to 0\)。
+ \item \textbf{易错点}：在加减法中误用等价代换，未提取公因式化为乘积形式就强行替换导致出错。
+ \item \textbf{关联知识}：处理 \(e^A - e^B\) 结构时，标准做法为提取指数较小的项化为 \(e^B(e^{A-B}-1)\) 结构。
+\end{itemize}}
+
+\end{mistake}

@@ -9,3 +9,4 @@
 *.synctex.gz
 *.xdv
 *.pdf
+!archive/**/*.pdf

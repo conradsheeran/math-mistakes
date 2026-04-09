@@ -1,0 +1,29 @@
+egin{mistake}{2026-04-09}{06}
+
+\begin{problemcontent}
+\( [x] \) 表示不超过 \( x \) 的最大整数部分，则 \( \lim_{x \to 0} x \left[ \frac{2}{x} \right] = \) ____。
+\end{problemcontent}
+
+\begin{solutioncontent}
+利用取整函数的双侧不等式性质：\(\frac{2}{x} - 1 < \left[ \frac{2}{x} \right] \leq \frac{2}{x}\)。
+
+因 \(x \to 0\) 需考虑 \(x\) 的正负，分左右极限讨论：
+当 \(x \to 0^+\) 时（\(x > 0\)）：
+\[ x\left(\frac{2}{x} - 1\right) < x\left[ \frac{2}{x} \right] \leq x \cdot \frac{2}{x} \implies 2 - x < x\left[ \frac{2}{x} \right] \leq 2 \]
+由夹逼定理，\(\lim_{x \to 0^+} x \left[ \frac{2}{x} \right] = 2\)。
+
+当 \(x \to 0^-\) 时（\(x < 0\)），不等号方向改变：
+\[ x\left(\frac{2}{x} - 1\right) > x\left[ \frac{2}{x} \right] \geq x \cdot \frac{2}{x} \implies 2 - x > x\left[ \frac{2}{x} \right] \geq 2 \]
+由夹逼定理，\(\lim_{x \to 0^-} x \left[ \frac{2}{x} \right] = 2\)。
+
+左、右极限均存在且相等，故原极限为 \(2\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：夹逼定理及取整函数不等式 \(u-1 < [u] \leq u\)。
+ \item \textbf{易错点}：直接使用近似 \([2/x] \approx 2/x\) 缺乏严谨性；在使用夹逼定理同乘 \(x\) 时，忘记分 \(x\) 的正负来判定不等号方向。
+ \item \textbf{关联知识}：凡遇取整函数 \([x]\) 或符号函数 \(\mathrm{sgn}(x)\) 出现在极限中，通常需要使用夹逼定理或求左右极限法则进行处理。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,34 @@
+egin{mistake}{2026-04-09}{05}\begin{problemcontent}
+\( \lim_{x \to +\infty} \left( x^3 \ln \frac{x+1}{x-1} - 2x^2 \right) = \) ____。
+\end{problemcontent}
+
+\begin{solutioncontent}
+作倒代换，令 \(t = \frac{1}{x}\)，当 \(x \to +\infty\) 时，\(t \to 0^+\)。原式化为：
+\[
+\lim_{t \to 0^+} \left( \frac{1}{t^3} \ln \frac{1+t}{1-t} - \frac{2}{t^2} \right) = \lim_{t \to 0^+} \frac{\ln(1+t) - \ln(1-t) - 2t}{t^3}
+\]
+利用麦克劳林展开式：
+\[
+\begin{aligned}
+\ln(1+t) &= t - \frac{1}{2}t^2 + \frac{1}{3}t^3 + o(t^3) \\
+\ln(1-t) &= -t - \frac{1}{2}t^2 - \frac{1}{3}t^3 + o(t^3)
+\end{aligned}
+\]
+两式相减得：
+\[
+\ln(1+t) - \ln(1-t) = 2t + \frac{2}{3}t^3 + o(t^3)
+\]
+代入原式：
+\[
+\lim_{t \to 0^+} \frac{\left(2t + \frac{2}{3}t^3 + o(t^3)\right) - 2t}{t^3} = \frac{2}{3}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：对数函数 \(\ln(1\pm x)\) 的高阶泰勒展开式。
+ \item \textbf{易错点}：面对 \(x \to \infty\) 的复杂混合函数时强行用洛必达法则求导，导致运算量激增且极易算错。
+ \item \textbf{关联知识}：处理自变量趋于无穷的 \(\infty \cdot 0\) 或 \(\infty - \infty\) 极限问题，“倒代换 + 泰勒展开”通常是最优解。
+\end{itemize}}
+
+\end{mistake}

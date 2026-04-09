@@ -1,0 +1,28 @@
+\begin{mistake}{2026-04-09}{25}
+
+\begin{problemcontent}
+设 \( \lim_{x \to x_0} f(x) = \infty \) 表示极限为无穷大，\( f(x) \) 在 \( x_0 \) 的去心邻域内无界表示无界。以下正确的是：
+(A) 若 \( f(x) \) 在 \( x_0 \) 的去心邻域内无界，则 \( \lim_{x \to x_0} f(x) = \infty \)
+(B) 若 \( \lim_{x \to x_0} f(x) = \infty \)，则 \( f(x) \) 在 \( x_0 \) 的去心邻域内无界
+(C) 若 \( \lim_{x \to x_0} f(x) \) 不存在，则 \( f(x) \) 在 \( x_0 \) 的去心邻域内无界
+(D) 若 \( f(x) \) 在 \( x_0 \) 的去心邻域内无界，则 \( \lim_{x \to x_0} \dfrac{1}{f(x)} = 0 \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+答案为 (B)。
+
+无穷大与无界在数学上有严格的逻辑区分：
+无穷大是 \( \forall \)（任意）性质，意味着当 \( x \) 充分靠近 \( x_0 \) 时，邻域内\textbf{所有}点的 \( |f(x)| \) 都大于给定的大数 \( M \)。
+无界是 \( \exists \)（存在）性质，意味着在邻域内\textbf{存在}某些点的 \( |f(x)| \) 大于 \( M \)。
+
+因此，无穷大必定无界，但无界未必是无穷大（可能在变大和归零之间剧烈震荡）。经典反例：\( f(x) = \frac{1}{x}\sin\frac{1}{x} \) 在 \( x \to 0 \) 时无界，但极限不是无穷大。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：局部无界性与极限为无穷大的严谨定义差异（存在量词 \( \exists \) 与全称量词 \( \forall \) 的区别）。
+ \item \textbf{易错点}：将“无界”与“趋于无穷大”画等号，忽略了震荡型无界函数存在的可能性。
+ \item \textbf{关联知识}：构造震荡发散函数的标准手法（用 \( \sin\frac{1}{x} \) 来控制震荡幅度归零或穿越，配合无界函数相乘）。
+\end{itemize}}
+
+\end{mistake}

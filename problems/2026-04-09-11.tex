@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-09}{11}
+
+\begin{problemcontent}
+设常数 \( a > 0 \)，求不定积分 \(\displaystyle \int \arcsin \sqrt{\frac{x}{x+a}} \, \mathrm{d}x \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+使用分部积分法。为了消去后续求导产生的复杂分母，巧妙选择 \( \mathrm{d}v = \mathrm{d}(x+a) \)（因为 \(\mathrm{d}x = \mathrm{d}(x+a)\)）。
+设 \( u = \arcsin \sqrt{\frac{x}{x+a}} \)，\( \mathrm{d}v = \mathrm{d}(x+a) \)，则 \( v = x+a \)。
+先计算 \(\mathrm{d}u\)：
+\[
+\begin{aligned}
+\mathrm{d}u 
+&= \frac{1}{\sqrt{1-\frac{x}{x+a}}} \cdot \frac{1}{2\sqrt{\frac{x}{x+a}}} \cdot \left(\frac{x}{x+a}\right)' \, \mathrm{d}x \\
+&= \frac{\sqrt{x+a}}{\sqrt{a}} \cdot \frac{\sqrt{x+a}}{2\sqrt{x}} \cdot \frac{a}{(x+a)^2} \, \mathrm{d}x \\
+&= \frac{\sqrt{a}}{2\sqrt{x}(x+a)} \, \mathrm{d}x
+\end{aligned}
+\]
+
+代入分部积分公式 \(\int u\,\mathrm{d}v = uv - \int v\,\mathrm{d}u\)：
+\[
+\begin{aligned}
+\int \arcsin \sqrt{\frac{x}{x+a}} \, \mathrm{d}x 
+&= (x+a) \arcsin \sqrt{\frac{x}{x+a}} - \int (x+a) \cdot \frac{\sqrt{a}}{2\sqrt{x}(x+a)} \, \mathrm{d}x \\
+&= (x+a) \arcsin \sqrt{\frac{x}{x+a}} - \int \frac{\sqrt{a}}{2} x^{-\frac{1}{2}} \, \mathrm{d}x \\
+&= (x+a) \arcsin \sqrt{\frac{x}{x+a}} - \sqrt{a} \cdot x^{\frac{1}{2}} + C \\
+&= (x+a) \arcsin \sqrt{\frac{x}{x+a}} - \sqrt{ax} + C
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：分部积分法 \(\int u\,\mathrm{d}v=uv-\int v\,\mathrm{d}u\)；复合函数求导链式法则。
+ \item \textbf{易错点}：盲目令 \(v=x\)，导致第二部分积分为 \(\int \frac{x\sqrt{a}}{2\sqrt{x}(x+a)} \mathrm{d}x\)，需做繁琐的三角代换或变量代换。
+ \item \textbf{关联知识}：反三角函数作被积函数时首选分部积分；在凑微分时，\(x\) 可根据需要加上任意常数变为 \((x+a)\) 来简化后续计算。
+\end{itemize}}
+
+\end{mistake}

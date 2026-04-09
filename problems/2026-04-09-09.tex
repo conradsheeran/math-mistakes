@@ -1,0 +1,37 @@
+\begin{mistake}{2026-04-09}{09}
+
+\begin{problemcontent}
+求数列极限：\(\displaystyle I = \lim_{n \to \infty} n \tan(\pi \sqrt{n^2+1}) \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+利用正切函数的周期性 \(\tan(x) = \tan(x - n\pi)\) 将变量转换为无穷小量：
+\[
+\begin{aligned}
+\tan(\pi \sqrt{n^2+1}) 
+&= \tan(\pi \sqrt{n^2+1} - n\pi) \\
+&= \tan\left( \pi (\sqrt{n^2+1} - n) \right)
+\end{aligned}
+\]
+对括号内进行分子有理化：
+\[ \sqrt{n^2+1} - n = \frac{(\sqrt{n^2+1} - n)(\sqrt{n^2+1} + n)}{\sqrt{n^2+1} + n} = \frac{1}{\sqrt{n^2+1} + n} \]
+当 \(n \to \infty\) 时，\(\frac{\pi}{\sqrt{n^2+1} + n} \to 0\)。
+利用等价无穷小 \(\tan x \sim x\) \((x \to 0)\)：
+\[
+\begin{aligned}
+I &= \lim_{n \to \infty} n \cdot \tan\left( \frac{\pi}{\sqrt{n^2+1} + n} \right) \\
+&= \lim_{n \to \infty} n \cdot \frac{\pi}{\sqrt{n^2+1} + n} \\
+&= \lim_{n \to \infty} \frac{\pi}{\sqrt{1+\frac{1}{n^2}} + 1} \\
+&= \frac{\pi}{2}
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：等价无穷小替换 \(\tan x \sim x\)；分子有理化技巧。
+ \item \textbf{易错点}：直接使用等价无穷小导致逻辑错误（\(\infty\) 时不能用）；忽略三角函数周期性去凑无穷小。
+ \item \textbf{关联知识}：凡遇 \(\lim f(n)\) 且含有三角函数时，若自变量趋于无穷，首选利用周期性将其平移至趋于 \(0\) 处。
+\end{itemize}}
+
+\end{mistake}

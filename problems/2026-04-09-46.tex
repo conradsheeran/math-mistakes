@@ -1,0 +1,28 @@
+\begin{mistake}{2026-04-09}{46}
+
+\begin{problemcontent}
+设 \( f_1(x), f_2(x) \) 是 \( y'' + py' + qy = 0 \) 的两个特解，则 \( C_1 f_1(x) + C_2 f_2(x) \) 是该方程通解的一个充分条件是（ ）
+
+(A) \( f_1(x) f_2'(x) - f_2(x) f_1'(x) = 0 \)
+(B) \( f_1(x) f_2'(x) + f_2(x) f_1'(x) = 0 \)
+(C) \( f_1(x) f_2'(x) + f_2(x) f_1'(x) \neq 0 \)
+(D) \( f_1(x) f_2'(x) - f_2(x) f_1'(x) \neq 0 \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+根据线性常微分方程解的结构定理：如果 \( f_1(x) \) 和 \( f_2(x) \) 是二阶齐次线性方程的两个解，那么它们构成基础解系（即能够张成通解）的充分必要条件是这两个解线性无关。
+两个解线性无关的等价代数条件是它们的朗斯基(Wronski)行列式在定义区间内不恒为零：
+\[
+W(f_1, f_2) = \begin{vmatrix} f_1(x) & f_2(x) \\ f_1'(x) & f_2'(x) \end{vmatrix} = f_1(x) f_2'(x) - f_2(x) f_1'(x) \neq 0
+\]
+故选 (D)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：线性微分方程解的结构定理与朗斯基(Wronski)行列式判据。
+ \item \textbf{易错点}：混淆二阶行列式的展开符号（主对角线相乘减去副对角线相乘，应为减号）；若 \(W=0\) 则两者线性相关，无法构成通解。
+ \item \textbf{关联知识}：对于非齐次方程，通解的构造须为"对应齐次方程的通解 + 非齐次方程的一个特解"。
+\end{itemize}}
+
+\end{mistake}

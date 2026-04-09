@@ -1,0 +1,31 @@
+\begin{mistake}{2026-04-09}{31}
+
+\begin{problemcontent}
+设 \( f'(x_0) > 0 \)，以下哪个结论正确？
+(A) \( f(x) \) 在 \( x_0 \) 的某邻域内单调递增
+(B) 存在 \( \delta > 0 \)，当 \( x \in (x_0-\delta, x_0+\delta) \) 时 \( f(x) > f(x_0) \)
+(C) 存在 \( \delta > 0 \)，当 \( x \in (x_0, x_0+\delta) \) 时 \( f(x) > f(x_0) \)
+(D) 存在 \( \delta > 0 \)，当 \( x \in (x_0, x_0+\delta) \) 时 \( f(x) < f(x_0) \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+答案：(C)
+
+由导数定义 \( f'(x_0) = \lim_{x \to x_0} \frac{f(x)-f(x_0)}{x-x_0} > 0 \)。
+根据极限的保号性，存在 \( \delta > 0 \)，当 \( 0 < |x-x_0| < \delta \) 时，差商恒大于 0：
+\[
+\frac{f(x)-f(x_0)}{x-x_0} > 0
+\]
+讨论去心邻域的两侧：
+当 \( x \in (x_0, x_0+\delta) \)（右侧）时，分母 \( x-x_0 > 0 \)，故分子 \( f(x)-f(x_0) > 0 \)，即 \( f(x) > f(x_0) \)，故 (C) 正确。
+当 \( x \in (x_0-\delta, x_0) \)（左侧）时，分母 \( x-x_0 < 0 \)，故分子 \( f(x)-f(x_0) < 0 \)，即 \( f(x) < f(x_0) \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：导数极限定义 \( f'(x_0) = \lim_{x \to x_0} \frac{f(x)-f(x_0)}{x-x_0} \) 及其局部保号性。
+ \item \textbf{易错点}：误选(A)。单点导数 \( >0 \) 只能保证"单点两侧函数值大小比较"，不能保证邻域内的"单调性"。反例：\( f(x)=x+2x^2\sin(1/x) \)。
+ \item \textbf{关联知识}：若要推导区间内单调递增，必须要求该区间内处处满足 \( f'(x) > 0 \)。
+\end{itemize}}
+
+\end{mistake}

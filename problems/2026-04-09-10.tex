@@ -1,0 +1,40 @@
+\begin{mistake}{2026-04-09}{10}
+
+\begin{problemcontent}
+求不定积分：\(\displaystyle \int |x - |x + 1|| \, \mathrm{d}x \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+首先去掉绝对值符号，以 \(x = -1\) 为分界点讨论被积函数。
+当 \(x < -1\) 时，\(x+1 < 0\)，则 \(|x+1| = -x-1\)：
+\[ |x - |x+1|| = |x - (-x-1)| = |2x+1| \]
+又因 \(x < -1\)，故 \(2x+1 < -1 < 0\)，从而 \(|2x+1| = -2x-1\)。
+当 \(x \geqslant -1\) 时，\(x+1 \geqslant 0\)，则 \(|x+1| = x+1\)：
+\[ |x - |x+1|| = |x - (x+1)| = |-1| = 1 \]
+
+分别在两段上积分：
+\[ 
+\int |x - |x + 1|| \, \mathrm{d}x = 
+\begin{cases} 
+\int (-2x-1) \, \mathrm{d}x = -x^2 - x + C_1, & x < -1 \\ 
+\int 1 \, \mathrm{d}x = x + C_2, & x \geqslant -1 
+\end{cases}
+\]
+
+由于原函数必在 \(x = -1\) 处连续，保证左右极限相等：
+\[ \lim_{x \to -1^-} (-x^2 - x + C_1) = -(-1)^2 - (-1) + C_1 = C_1 \]
+\[ \lim_{x \to -1^+} (x + C_2) = -1 + C_2 \]
+令 \(C_1 = -1 + C_2\)，统一令 \(C_2 = C\)，则 \(C_1 = C - 1\)。
+
+最终结果为：
+\[ \int |x - |x + 1|| \, \mathrm{d}x = \begin{cases} -x^2 - x - 1 + C, & x < -1 \\ x + C, & x \geqslant -1 \end{cases} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：分段函数积分；连续函数的原函数必连续。
+ \item \textbf{易错点}：分段积分时两段直接使用同一个 \(C\)，未根据分界点的连续性统一积分常数。
+ \item \textbf{关联知识}：含有绝对值的积分或导数问题，第一步永远是寻找零点并按区间讨论去绝对值。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,37 @@
+\begin{mistake}{2026-04-09}{42}
+
+\begin{problemcontent}
+设 \( D \) 为 \( x^2 + y^2 \leqslant 1 \)，计算 \( \iint_D (x^2 + 2y)\,\mathrm{d}\sigma \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+利用二重积分的线性性质展开：
+\[
+\begin{aligned}
+\iint_D (x^2 + 2y)\,\mathrm{d}\sigma = \iint_D x^2\,\mathrm{d}\sigma + \iint_D 2y\,\mathrm{d}\sigma
+\end{aligned}
+\]
+对于 \( \iint_D 2y\,\mathrm{d}\sigma \)：积分区域 \( D \) 为单位圆，关于 \( x \) 轴对称，而被积函数 \( 2y \) 是关于 \( y \) 的奇函数。由奇偶对称性定理，该项积分为 0。
+
+对于 \( \iint_D x^2\,\mathrm{d}\sigma \)：因为积分区域 \( D \) 关于直线 \( y=x \) 完全对称（轮换对称性），所以 \( \iint_D x^2\,\mathrm{d}\sigma = \iint_D y^2\,\mathrm{d}\sigma \)。因此可以利用均值降次：
+\[
+\begin{aligned}
+\iint_D x^2\,\mathrm{d}\sigma &= \frac{1}{2} \iint_D (x^2 + y^2)\,\mathrm{d}\sigma 
+\end{aligned}
+\]
+转极坐标计算极为简单：
+\[
+\begin{aligned}
+\frac{1}{2} \int_0^{2\pi} \mathrm{d}\theta \int_0^1 r^2 \cdot r\,\mathrm{d}r &= \frac{1}{2} \cdot 2\pi \cdot \left[ \frac{1}{4}r^4 \right]_0^1 = \frac{\pi}{4}
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：二重积分中的普通奇偶对称性（关于坐标轴）与轮换对称性（ \( x,y \) 对调后区域不变）。
+ \item \textbf{易错点}：忽略对称性直接用极坐标强算 \( \iint x^2\,\mathrm{d}\sigma \)。虽然可以分离变量后使用降幂公式算得 \(\pi\)，但耗时且增加计算失误风险。
+ \item \textbf{关联知识}：圆心在原点的圆域上，形如 \( \iint_D x^{2m+1}y^n\,\mathrm{d}\sigma \) 的积分必为 0。
+\end{itemize}}
+
+\end{mistake}

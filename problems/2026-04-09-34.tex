@@ -1,0 +1,34 @@
+\begin{mistake}{2026-04-09}{34}
+
+\begin{problemcontent}
+求 \( f(x) = e^x \sin x \) 的 \( n \) 阶导数 \( f^{(n)}(x) \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+答案：\( f^{(n)}(x) = (\sqrt{2})^n e^x \sin\left(x + \frac{n\pi}{4}\right) \)
+
+推导过程：
+先求一阶导数，运用乘法求导法则和辅助角公式化简：
+\[
+\begin{aligned}
+f'(x) &= (e^x)'\sin x + e^x(\sin x)' \\
+&= e^x\sin x + e^x\cos x \\
+&= e^x(\sin x + \cos x) \\
+&= \sqrt{2}e^x\sin\left(x + \frac{\pi}{4}\right)
+\end{aligned}
+\]
+可以发现，每次对函数求导，都会在原函数前面提取出系数 \( \sqrt{2} \)，并使正弦项的相位增加 \( \frac{\pi}{4} \)，而函数的整体形式"\( \text{常数} \cdot e^x \cdot \sin(\dots) \)"保持不变。
+由此运用数学归纳法可直接得出 \( n \) 阶导数的通项：
+\[
+f^{(n)}(x) = (\sqrt{2})^n e^x \sin\left(x + \frac{n\pi}{4}\right)
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：三角函数辅助角公式 \( \sin x + \cos x = \sqrt{2}\sin(x+\frac{\pi}{4}) \)。
+ \item \textbf{易错点}：若生搬硬套莱布尼茨公式展开，结果会得到求和级数形式，且在考试有限时间内极难化简为闭合的通项公式。
+ \item \textbf{关联知识}：复数法本质。\( e^x\sin x \) 是 \( e^{(1+i)x} \) 的虚部，每次求导乘 \( (1+i) = \sqrt{2}e^{i\pi/4} \)，即模长乘 \( \sqrt{2} \)，辐角加 \( \pi/4 \)。
+\end{itemize}}
+
+\end{mistake}

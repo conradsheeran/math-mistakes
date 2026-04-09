@@ -1,0 +1,29 @@
+\begin{mistake}{2026-04-09}{22}
+
+\begin{problemcontent}
+设 \( f(x) = \lim_{n \to \infty} \arctan\left(1 + \dfrac{x^{2n}}{1+x^n}\right) \)，求 \( f(x) \) 的定义域 \( I \) 和连续区间 \( J \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+按等比数列 \( x^n \) 在不同区间的收敛性进行分类讨论：
+\begin{itemize}
+ \item 当 \( |x| < 1 \) 时，\( \lim_{n \to \infty} x^n = 0 \)，\( f(x) = \arctan(1 + 0) = \frac{\pi}{4} \)。
+ \item 当 \( x > 1 \) 时，\( \lim_{n \to \infty} x^n = +\infty \)，\( \frac{x^{2n}}{1+x^n} \sim x^n \to +\infty \)，\( f(x) = \arctan(+\infty) = \frac{\pi}{2} \)。
+ \item 当 \( x < -1 \) 时，\( x^n \) 的符号随 \( n \) 的奇偶交替致使内部极限不存在，函数无定义。
+ \item 当 \( x = 1 \) 时，\( x^n = 1 \)，\( f(1) = \arctan\left(1 + \frac{1}{2}\right) = \arctan\frac{3}{2} \)。
+ \item 当 \( x = -1 \) 时，若 \( n \) 为奇数则分母为 \( 0 \)，无定义。
+\end{itemize}
+因此，定义域 \( I = (-1, +\infty) \)。
+
+计算 \( x=1 \) 处的左右极限：左极限 \( \lim_{x \to 1^-} f(x) = \frac{\pi}{4} \)，右极限 \( \lim_{x \to 1^+} f(x) = \frac{\pi}{2} \)。由于左右极限存在但不相等（\( \frac{\pi}{4} \neq \frac{\pi}{2} \)），\( x=1 \) 为第一类跳跃间断点。
+故连续区间 \( J = (-1, 1) \cup (1, +\infty) \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：等比数列极限的分类讨论思想，依 \( |x|<1 \)，\( x>1 \)，\( x=\pm 1 \)，\( x<-1 \) 五种情形进行划断。
+ \item \textbf{易错点}：忽视 \( x=1 \) 处由于左右侧渐近行为不同导致的跳跃间断，误以为连续；漏判 \( x=-1 \) 时分母可为零的无定义情况。
+ \item \textbf{关联知识}：反三角函数性质 \( \lim_{x \to +\infty} \arctan x = \frac{\pi}{2} \)；第一类间断点（跳跃间断点）的判定条件。
+\end{itemize}}
+
+\end{mistake}

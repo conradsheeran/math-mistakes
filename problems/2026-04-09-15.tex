@@ -1,0 +1,35 @@
+\begin{mistake}{2026-04-09}{15}
+
+\begin{problemcontent}
+求极限 \(\displaystyle \lim_{x \to 1} (1 - x^2)\tan \frac{\pi}{2}x\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+原极限属于 \(0 \cdot \infty\) 型。
+
+令 \(t = x - 1\)，则 \(x = t + 1\)，当 \(x \to 1\) 时，\(t \to 0\)。
+代入原式进行化简：
+\[
+\begin{aligned}
+\lim_{x \to 1} (1 - x^2)\tan \frac{\pi}{2}x 
+&= \lim_{t \to 0} [1 - (t + 1)^2] \tan \left[ \frac{\pi}{2}(t + 1) \right] \\
+&= \lim_{t \to 0} (-t^2 - 2t) \tan \left( \frac{\pi}{2}t + \frac{\pi}{2} \right) \\
+&= \lim_{t \to 0} -t(t + 2) \left( -\cot \frac{\pi}{2}t \right) \\
+&= \lim_{t \to 0} t(t + 2) \frac{\cos \frac{\pi}{2}t}{\sin \frac{\pi}{2}t}
+\end{aligned}
+\]
+
+当 \(t \to 0\) 时，\(\cos \frac{\pi}{2}t \to 1\)，且由等价无穷小 \(\sin \frac{\pi}{2}t \sim \frac{\pi}{2}t\) 可得：
+\[
+\text{原式} = \lim_{t \to 0} t(2) \frac{1}{\frac{\pi}{2}t} = \frac{4}{\pi}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：诱导公式 \(\tan(\theta + \frac{\pi}{2}) = -\cot\theta\)；等价无穷小 \(\sin x \sim x\)。
+ \item \textbf{易错点}：直接将 \(0 \cdot \infty\) 下放构造 \(\frac{0}{0}\) 时，若带着 \(x \to 1\) 用洛必达极易算错且繁琐。
+ \item \textbf{关联知识}：对于非零趋向的极限，首选“平移代换”（令 \(x - x_0 = t\)）将极限转化为 \(t \to 0\)，从而直接利用常用等价无穷小和泰勒公式。
+\end{itemize}}
+
+\end{mistake}

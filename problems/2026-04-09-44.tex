@@ -1,0 +1,30 @@
+\begin{mistake}{2026-04-09}{44}
+
+\begin{problemcontent}
+半径为 \( R \) 的圆，坐标原点取在圆心（与水面齐平的直径上），\( x \) 轴正向朝下。设 \( \rho g = 1 \)，则水对下半圆形闸门的压力 \( p \) 等于（ ）
+
+(A) \(\displaystyle\int_0^R x\sqrt{R^2 - x^2}\,\mathrm{d}x\) 
+(C) \(\displaystyle\int_0^R 2x\sqrt{R^2 - x^2}\,\mathrm{d}x\)
+
+(D) \(\displaystyle\int_0^R 2(R-x)\sqrt{R^2 - x^2}\,\mathrm{d}x\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+建立坐标系：原点在圆心，\( x \) 轴正向朝下。在深度 \( x \) (\( 0 \leqslant x \leqslant R \)) 处取微元 \( \mathrm{d}x \)。
+该深度的压强为 \( P = \rho g x = x \)（因 \(\rho g = 1\)）。
+在该深度 \( x \) 处，圆的半弦长为 \( \sqrt{R^2 - x^2} \)，故该处微水平条带的面积为全弦长乘宽度：
+\[ \mathrm{d}A = 2\sqrt{R^2 - x^2}\,\mathrm{d}x \]
+压力微元 \( \mathrm{d}p = P\,\mathrm{d}A = 2x\sqrt{R^2 - x^2}\,\mathrm{d}x \)。
+对下半圆区间 \([0, R]\) 积分，得总压力：
+\[ p = \int_0^R 2x\sqrt{R^2 - x^2}\,\mathrm{d}x \]
+故选 (C)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：微元法求液体压力 \(\mathrm{d}F = P\,\mathrm{d}A = \rho g h\,\mathrm{d}A\)。
+ \item \textbf{易错点}：计算微元面积时漏乘 2（混淆半弦长与全弦长）；若原点误设在圆最低点，深度 \(h\) 会被错写为 \(R-x\)。
+ \item \textbf{关联知识}：也可使用形心法求压力 \(F = P_C \cdot A = \rho g h_C A\)，半圆的形心距离圆心为 \(\frac{4R}{3\pi}\)。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,36 @@
+\begin{mistake}{2026-04-09}{40}
+
+\begin{problemcontent}
+将极坐标累次积分 \( \displaystyle\int_{-\pi/4}^{\pi/2} \mathrm{d}\theta \int_0^{2\cos\theta} f(r\cos\theta,\, r\sin\theta)\,r\,\mathrm{d}r \) 交换积分次序（先 \( r \) 后 \( \theta \)）。
+\end{problemcontent}
+
+\begin{solutioncontent}
+首先确定积分区域 \( D \)：角度范围是 \( -\pi/4 \leqslant \theta \leqslant \pi/2 \)，外边界曲线是 \( r = 2\cos\theta \)，即圆心在 \( (1,0) \)、半径为 1 的圆 \( (x-1)^2+y^2=1 \)。
+
+下边界射线 \( \theta = -\pi/4 \) 与圆弧 \( r = 2\cos\theta \) 的交点极径为 \( r = 2\cos(-\pi/4) = \sqrt{2} \)。
+此交点将区域沿 \( r \) 的方向分为两部分，需要分段积分：
+
+1. 当 \( 0 \leqslant r \leqslant \sqrt{2} \) 时：
+穿线法（给定 \( r \) 画圆弧），极角从固定的下边界射线开始，到圆的边界结束。
+下界：\( \theta = -\pi/4 \)，上界：由 \( r = 2\cos\theta \) 解得 \( \theta = \arccos\frac{r}{2} \)。
+
+2. 当 \( \sqrt{2} \leqslant r \leqslant 2 \) 时：
+此时极角范围完全由圆的边界 \( r = 2\cos\theta \) 控制。
+在第四象限，\(\cos\theta = \frac{r}{2} \Rightarrow \theta = -\arccos\frac{r}{2}\)（必须取负主值）；在第一象限，上界为 \( \theta = \arccos\frac{r}{2} \)。
+
+合并结果即为：
+\[
+\begin{aligned}
+I = \int_0^{\sqrt{2}} \mathrm{d}r \int_{-\pi/4}^{\arccos\frac{r}{2}} f \cdot r\,\mathrm{d}\theta + \int_{\sqrt{2}}^{2} \mathrm{d}r \int_{-\arccos\frac{r}{2}}^{\arccos\frac{r}{2}} f \cdot r\,\mathrm{d}\theta
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心思路}：极坐标下交换积分次序，先画出区域，找准交点的极径 \( r \) 值作为分界点进行分段。
+ \item \textbf{易错点}：解反三角函数时，第四象限的极角必须用负角 \( -\arccos\frac{r}{2} \) 表示，若写成 \( 2\pi - \arccos\frac{r}{2} \) 会导致积分上限小于下限（逻辑错误）。
+ \item \textbf{关联知识}：反余弦函数 \( \arccos x \) 的值域是 \( [0, \pi] \)，表达第四象限角时须加负号。
+\end{itemize}}
+
+\end{mistake}

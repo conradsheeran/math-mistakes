@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-09}{20}
+
+\begin{problemcontent}
+设 \( 0 < a < \beta \)，则当 \( n \to \infty \) 时，\( \frac{(n+1)^a - n^a}{n^\beta} \) 是 \( \frac{1}{n} \) 的 \( m \) 阶无穷小，求 \( m \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+当 \(n \to \infty\) 时，对分子提取公因子 \(n^a\)：
+\[
+\begin{aligned}
+(n+1)^a - n^a &= n^a \left[ \left(1 + \frac{1}{n}\right)^a - 1 \right]
+\end{aligned}
+\]
+
+由等价无穷小替换：当 \(x \to 0\) 时，\((1+x)^a - 1 \sim ax\)。
+这里 \(\frac{1}{n} \to 0\)，所以 \(\left(1 + \frac{1}{n}\right)^a - 1 \sim a \frac{1}{n}\)。
+
+因此，原式分子等价于：
+\[
+(n+1)^a - n^a \sim n^a \cdot a \frac{1}{n} = a n^{a-1}
+\]
+
+代回原分式：
+\[
+\frac{(n+1)^a - n^a}{n^\beta} \sim \frac{a n^{a-1}}{n^\beta} = \frac{a}{n^{\beta - a + 1}} = a \left( \frac{1}{n} \right)^{\beta - a + 1}
+\]
+
+根据高阶无穷小的定义（若 \(\alpha \sim C \beta^m\)，则 \(\alpha\) 是 \(\beta\) 的 \(m\) 阶无穷小），可知该式是 \(\frac{1}{n}\) 的 \((\beta - a + 1)\) 阶无穷小。
+故 \(m = \beta - a + 1\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：广义二项式展开等价无穷小 \((1+x)^\alpha - 1 \sim \alpha x\) \((x \to 0)\)。
+ \item \textbf{易错点}：面对 \(\infty - \infty\) 型的幂函数差值，没有第一时间想到提取最高次幂构造 \((1+x)^\alpha\) 的形式，导致无法继续进行放缩或泰勒展开。
+ \item \textbf{关联知识}：无穷小阶数的定义：若 \(\lim \frac{f(x)}{[g(x)]^m} = C \neq 0\)，则 \(f(x)\) 是 \(g(x)\) 的同阶无穷小，阶数为 \(m\)。
+\end{itemize}}
+
+\end{mistake}

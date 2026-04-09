@@ -1,0 +1,36 @@
+\begin{mistake}{2026-04-09}{21}
+
+\begin{problemcontent}
+设 \( f(x) \) 在 \( [a, +\infty) \) 连续，则 \( \lim_{x \to +\infty} f(x) = A \)（存在）是 \( f(x) \) 在 \( [a, +\infty) \) 有界的（ \quad ）。
+
+(A) 充分非必要条件
+(B) 必要非充分条件
+(C) 充要条件
+(D) 既非充分又非必要条件
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案是 \textbf{A}。
+
+\textbf{充分性证明：}
+已知 \(\lim_{x \to +\infty} f(x) = A\)，由极限的局部有界性定义：
+对给定的 \(\epsilon = 1\)，存在 \(X > a\)，当 \(x > X\) 时，恒有 \(|f(x) - A| < 1\)，即 \(A-1 < f(x) < A+1\)。
+这说明 \(f(x)\) 在区间 \((X, +\infty)\) 上是有界的。
+又因为 \(f(x)\) 在 \([a, +\infty)\) 上连续，所以它在闭区间 \([a, X]\) 上必定连续。
+由闭区间上连续函数的性质可知，\(f(x)\) 在 \([a, X]\) 上有最大值和最小值，即有界。
+综合两段区间，\(f(x)\) 在整个 \([a, +\infty)\) 上有界。充分性成立。
+
+\textbf{非必要性证明（反例）：}
+考虑函数 \(f(x) = \sin x\)，它在 \([0, +\infty)\) 上连续，且始终满足 \(-1 \le \sin x \le 1\)，显然有界。
+但是 \(\lim_{x \to +\infty} \sin x\) 并不存在（它在 \(-1\) 和 \(1\) 之间震荡）。
+因此，有界推不出极限存在，必要性不成立。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：闭区间连续函数必有界定理；极限的局部有界性。
+ \item \textbf{易错点}：忽视了题干中“\(f(x)\) 在 \([a, +\infty)\) 连续”这一强力条件，若缺少前段闭区间连续的条件，仅凭无穷远处的极限是无法保证整体有界的（如在 \(a\) 处有垂直渐近线）。
+ \item \textbf{关联知识}：“有界”可以允许函数值不断震荡（如正弦波），而“极限存在”要求函数曲线最终平缓地收敛于一条水平渐近线。
+\end{itemize}}
+
+\end{mistake}

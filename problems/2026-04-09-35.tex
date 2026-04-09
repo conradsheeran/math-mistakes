@@ -1,0 +1,45 @@
+\begin{mistake}{2026-04-09}{35}
+
+\begin{problemcontent}
+椭圆截面柱体容器，截面方程 \( \frac{x^2}{4} + y^2 = 1 \)，柱体长 \( L = 4\,\text{m} \)，装满密度 \( \rho = 1000\,\text{kg/m}^3 \) 的液体。
+(1) 求液面高度为 \( y \) 时液体体积 \( V(y) \)；
+(2) 以 \( 0.16\,\text{m}^3/\text{min} \) 抽液，求 \( y=0 \) 时液面下降速度；
+(3) 求将全部液体从顶端抽出所做的功。
+\end{problemcontent}
+
+\begin{solutioncontent}
+(1) 截面方程解得 \( x = 2\sqrt{1-y^2} \)。
+液面的表面积 \( S(y) = 2x \cdot L = 4\sqrt{1-y^2} \cdot 4 = 16\sqrt{1-y^2} \)。
+体积积分为从底部 \( -1 \) 到当前高度 \( y \)：
+\[
+V(y) = \int_{-1}^{y} 16\sqrt{1-t^2}\,\mathrm{d}t = 8\arcsin y + 8y\sqrt{1-y^2} + 4\pi
+\]
+
+(2) 抽液率即体积变化率 \( \frac{\mathrm{d}V}{\mathrm{d}t} = -0.16 \)。
+由链式法则 \( \frac{\mathrm{d}V}{\mathrm{d}t} = \frac{\mathrm{d}V}{\mathrm{d}y} \cdot \frac{\mathrm{d}y}{\mathrm{d}t} = S(y)\frac{\mathrm{d}y}{\mathrm{d}t} \)。
+当 \( y=0 \) 时，\( S(0) = 16 \)。
+故下降速度 \( \frac{\mathrm{d}y}{\mathrm{d}t} = \frac{-0.16}{16} = -0.01\,\text{m/min} \)。
+
+(3) 构建做功微元，提取高度为 \( y \) 的切片，需提升的高度为 \( 1-y \)（顶端为 \( y=1 \)）：
+\[
+\mathrm{d}W = \rho g (1-y) \mathrm{d}V = 1000g(1-y) \cdot 16\sqrt{1-y^2}\,\mathrm{d}y
+\]
+总功积分：
+\[
+\begin{aligned}
+W &= \int_{-1}^{1} 16000g(1-y)\sqrt{1-y^2}\,\mathrm{d}y \\
+&= 16000g \int_{-1}^{1} \sqrt{1-y^2}\,\mathrm{d}y - 16000g \int_{-1}^{1} y\sqrt{1-y^2}\,\mathrm{d}y
+\end{aligned}
+\]
+第二项为奇函数在对称区间上的积分，结果为 0。
+第一项表示半圆面积的 \( 16000g \) 倍，即 \( 16000g \cdot \frac{\pi}{2} = 8000\pi g \text{ J} \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：变化率链式法则 \( \frac{\mathrm{d}V}{\mathrm{d}t} = S(y)\frac{\mathrm{d}y}{\mathrm{d}t} \)，以及做功微元 \( \mathrm{d}W = \rho g h_{\text{升}}(y) \mathrm{d}V(y) \)。
+ \item \textbf{易错点}：计算做功时，微元的提升高度极易错写为 \( y \)，正确应为"目标位置 \( - \) 当前位置"（即 \( 1-y \)）。
+ \item \textbf{关联知识}：利用奇函数在对称区间 \( [-a, a] \) 上积分为 0 的性质，可大幅减少计算量。
+\end{itemize}}
+
+\end{mistake}

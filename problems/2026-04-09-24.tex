@@ -1,0 +1,26 @@
+\begin{mistake}{2026-04-09}{24}
+
+\begin{problemcontent}
+以下命题正确的个数为多少？
+1. \( \lim_{x \to x_0} f(x) = \infty \Rightarrow \lim_{x \to x_0} \dfrac{1}{f(x)} = 0 \)
+2. \( \lim_{x \to x_0} f(x) = 0 \Rightarrow \lim_{x \to x_0} \dfrac{1}{f(x)} = \infty \)
+3. \( \lim f(x) = \lim g(x) = +\infty \Rightarrow \lim(f(x) - g(x)) = 0 \)
+4. \( \lim f(x) = \lim g(x) = +\infty \Rightarrow \lim(f(x) + g(x)) = +\infty \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确命题为 1 和 4，共 2 个。答案为 (B)。
+1. 正确：无穷大的倒数必为无穷小，这是极限标准定理。
+2. 错误：缺失了 \( f(x) \neq 0 \) （去心邻域内）的前提条件。若 \( f(x) \equiv 0 \)，则 \( \frac{1}{f(x)} \) 无意义。
+3. 错误：\( \infty - \infty \) 是未定式，不一定为 \( 0 \)。反例：设 \( f(x)=x^2, g(x)=x \)，差趋于 \( +\infty \)。
+4. 正确：两个正无穷大相加，必定还是正无穷大：\( (+\infty) + (+\infty) = +\infty \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：无穷大与无穷小的倒数关系定理及其应用前提。
+ \item \textbf{易错点}：判断第 2 条时，极易忽略分母在去心邻域内不能恒等于 \( 0 \) 的隐含前提；对第 3 条的 \( \infty-\infty \) 未定式缺乏警惕性。
+ \item \textbf{关联知识}：未定式的七种基本类型（\( \frac{0}{0}, \frac{\infty}{\infty}, 0\cdot\infty, \infty-\infty, 1^\infty, 0^0, \infty^0 \)）。
+\end{itemize}}
+
+\end{mistake}

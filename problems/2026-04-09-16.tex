@@ -1,0 +1,34 @@
+\begin{mistake}{2026-04-09}{16}
+
+\begin{problemcontent}
+下列各题计算过程中正确无误的是？
+
+(A) 数列极限 \(\displaystyle \lim_{n\to\infty} \frac{\ln n}{n} = \lim_{n\to\infty} \frac{(\ln n)'}{n'} = \lim_{n\to\infty} \frac{1}{n} = 0 \)
+
+(B) \(\displaystyle \lim_{x\to 1} \frac{\sin \pi x}{3x^2 - 2x - 1} = \lim_{x\to 1} \frac{\pi \cos \pi x}{6x - 2} = \lim_{x\to 1} \frac{-\pi^2 \sin \pi x}{6} = 0 \)
+
+(C) \(\displaystyle \lim_{x\to 0} \frac{x^2 \sin \frac{1}{x}}{\sin x} = \lim_{x\to 0} \frac{2x \sin \frac{1}{x} - \cos \frac{1}{x}}{\cos x} \) 不存在
+
+(D) \(\displaystyle \lim_{x\to 0} \frac{x + \sin x}{x - \sin x} = \lim_{x\to 0} \frac{1 + \cos x}{1 - \cos x} = \infty \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案是 \textbf{D}。
+
+\textbf{各选项分析：}
+\begin{itemize}
+ \item (A) 错误。洛必达法则使用的前提是\textbf{连续函数}，数列作为离散点集不可导。应先利用海涅定理（归结原则）转化为函数极限 \(\lim_{x \to +\infty} \frac{\ln x}{x}\) 再用洛必达。
+ \item (B) 错误。第一次洛必达后，分子 \(\pi \cos \pi x \to -\pi\)，分母 \(6x - 2 \to 4\)，此时极限已不是 \(\frac{0}{0}\) 型，不可继续使用洛必达法则。正确结果应为 \(-\frac{\pi}{4}\)。
+ \item (C) 错误。原极限是存在的。因为 \(\lim_{x \to 0} \frac{x}{\sin x} \cdot x \sin \frac{1}{x} = 1 \cdot 0 = 0\) （无穷小乘有界函数等于无穷小）。选项中使用洛必达法则得出“不存在”的结论，正是因为该题不满足洛必达法则中“导数极限存在或为无穷”的前提条件。
+ \item (D) 正确。属于 \(\frac{0}{0}\) 型，使用一次洛必达法则后变为 \(\frac{1+\cos x}{1-\cos x}\)。当 \(x \to 0\) 时，分子趋于 \(2\)，分母趋于 \(0^+\)，结果为 \(+\infty\)。
+\end{itemize}
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：洛必达法则的三大前提（\(\frac{0}{0}\)或\(\frac{\infty}{\infty}\)、均可导、导数比值的极限存在或为\(\infty\)）。
+ \item \textbf{易错点}：盲目连用洛必达法则而不检查每一步是否满足 \(\frac{0}{0}\) 或 \(\frac{\infty}{\infty}\)（如选项B）；误以为导数极限不存在则原极限也不存在（如选项C）。
+ \item \textbf{关联知识}：归结原则（海涅定理）——数列极限转化为函数极限的桥梁；“无穷小量 \(\times\) 有界变量 = 无穷小量”这一性质优先于洛必达使用。
+\end{itemize}}
+
+\end{mistake}

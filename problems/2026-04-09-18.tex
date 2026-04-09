@@ -1,0 +1,49 @@
+\begin{mistake}{2026-04-09}{18}
+
+\begin{problemcontent}
+函数 \(\displaystyle f(x) = \lim_{n \to \infty} \frac{x^{2n}-1}{x^{2n}+1} \) 的间断点及类型是：
+
+(A) \( x=1 \) 为第一类间断点，\( x=-1 \) 为第二类间断点。
+
+(B) \( x=\pm 1 \) 均为第一类间断点。
+
+(C) \( x=1 \) 为第二类间断点，\( x=-1 \) 为第一类间断点。
+
+(D) \( x=\pm 1 \) 均为第二类间断点。
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案是 \textbf{B}。
+
+首先求出 \(f(x)\) 的分段表达式。因为极限涉及 \(x^{2n} = (x^2)^n\)，需根据 \(|x|\) 与 1 的关系分类讨论：
+
+\begin{enumerate}
+ \item 当 \(|x| < 1\) 时，\(\lim_{n \to \infty} x^{2n} = 0\)，此时 \(f(x) = \frac{0 - 1}{0 + 1} = -1\)。
+ \item 当 \(|x| > 1\) 时，\(\lim_{n \to \infty} x^{2n} = +\infty\)，此时 \(f(x) = \lim_{n \to \infty} \frac{1 - 1/x^{2n}}{1 + 1/x^{2n}} = 1\)。
+ \item 当 \(x = 1\) 或 \(x = -1\)（即 \(|x|=1\)）时，\(x^{2n} = 1\)，此时 \(f(x) = \frac{1 - 1}{1 + 1} = 0\)。
+\end{enumerate}
+
+即函数可写为：
+\[
+f(x) = \begin{cases} 
+1, & |x| > 1 \\ 
+0, & |x| = 1 \\ 
+-1, & |x| < 1 
+\end{cases}
+\]
+
+考察 \(x = 1\) 处：
+左极限 \(\lim_{x \to 1^-} f(x) = -1\)，右极限 \(\lim_{x \to 1^+} f(x) = 1\)。左右极限存在但不相等，故 \(x = 1\) 为第一类间断点（跳跃间断点）。
+
+考察 \(x = -1\) 处：
+左极限 \(\lim_{x \to -1^-} f(x) = 1\)（此时 \(|x| > 1\)），右极限 \(\lim_{x \to -1^+} f(x) = -1\)（此时 \(|x| < 1\)）。左右极限均存在但不相等，故 \(x = -1\) 亦为第一类间断点。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：第一类间断点定义（左右极限均存在）；指数序列极限 \(\lim_{n \to \infty} q^n\) 按 \(|q|<1, |q|>1, q=1\) 讨论。
+ \item \textbf{易错点}：忽略了 \(x=-1\) 时 \((-1)^{2n} = 1\) 这一隐含条件，误将偶次幂的特性混淆，或不清楚跳跃间断点属于第一类间断点。
+ \item \textbf{关联知识}：含有参数 \(n \to \infty\) 的极限定义函数（极限函数），必须先完整地解出该函数的显式分段表达，再对分段点两侧进行常规极限分析。
+\end{itemize}}
+
+\end{mistake}

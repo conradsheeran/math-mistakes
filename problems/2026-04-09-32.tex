@@ -1,0 +1,27 @@
+\begin{mistake}{2026-04-09}{32}
+
+\begin{problemcontent}
+函数 \( f(x) = |x-1| \cdot (x-2)^2 \cdot |x-3|^3 \) 有几个不可导点？
+\end{problemcontent}
+
+\begin{solutioncontent}
+答案：1个（仅 \( x=1 \)）
+
+将函数中绝对值因式分离讨论，潜在的不可导点为绝对值零点：\( x=1 \) 和 \( x=3 \)。
+根据因式法判定规则：对于 \( \phi(x) = |x-a|^k g(x) \)（其中 \( g(a) \neq 0 \)）：
+\begin{itemize}
+ \item 在 \( x=1 \) 处：因式为 \( |x-1|^1 \)，次数 \( k=1 \)，且其余部分 \( g(1) = (-1)^2 \cdot |-2|^3 \neq 0 \)。故 \( x=1 \) 处不可导（尖点）。
+ \item 在 \( x=3 \) 处：因式为 \( |x-3|^3 \)，次数 \( k=3 \ge 2 \)。高次绝对值使得该点平滑，故 \( x=3 \) 处可导，且导数为 0。
+ \item 在 \( x=2 \) 处：没有绝对值包围，是普通的多项式二重根，自然可导。
+\end{itemize}
+综上，仅有 \( x=1 \) 一个不可导点。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：奇点可导性判定公式。若 \( f(x)=|x-a|^k \cdot g(x) \) (\( g(a)\neq 0 \))，当 \( k=1 \) 不可导，\( k>1 \) 可导。
+ \item \textbf{易错点}：误认为只要有绝对值符号就不可导。忽视了 \( |x-3|^3 = (x-3)^2|x-3| \)，其导数在 \( x=3 \) 处极限为 0。
+ \item \textbf{关联知识}：用导数定义检验，\( x=1 \) 处左导数不等于右导数（左右极限异号）。
+\end{itemize}}
+
+\end{mistake}

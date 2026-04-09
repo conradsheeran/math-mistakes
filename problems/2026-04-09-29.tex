@@ -1,0 +1,27 @@
+\begin{mistake}{2026-04-09}{29}
+
+\begin{problemcontent}
+设 \( f(x) \) 在 \( [a, +\infty) \) 上连续且 \( f(x) \ge 0 \)，若 \( \displaystyle\int_a^{+\infty} f(x)\,\mathrm{d}x \) 收敛，则 \( l = \lim_{x \to +\infty} x f(x) = \) \underline{\hspace{2cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+答案：\( 0 \)
+
+证明：使用反证法。假设 \( l \neq 0 \)，因为 \( f(x) \ge 0 \)，故必有 \( l > 0 \)。
+根据极限的保号性，存在 \( X > a \)，当 \( x > X \) 时，有 \( xf(x) > \frac{l}{2} \)，即：
+\[
+f(x) > \frac{l}{2x}
+\]
+我们知道反常积分 \( \displaystyle\int_X^{+\infty}\frac{l}{2x}\,\mathrm{d}x \) 发散（即 \( p \)-积分中 \( p=1 \) 的情形）。
+根据比较判别法，\( \displaystyle\int_X^{+\infty} f(x)\,\mathrm{d}x \) 也必定发散，这就与原题设中 \( \displaystyle\int_a^{+\infty} f(x)\,\mathrm{d}x \) 收敛相矛盾。
+因此，假设不成立，必须有 \( l = 0 \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：极限的局部保号性与反常积分的比较判别法。
+ \item \textbf{易错点}：误认为"反常积分收敛必定能推出极限为0"，注意这是不对的（与级数不同），但若已知 \( \lim xf(x) \) 存在，则它必定为 0。
+ \item \textbf{关联知识}：若 \( f(x) \) 与 \( \frac{1}{x^p} \) 同阶，仅当 \( p>1 \) 时其无穷区间上的反常积分才收敛。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,35 @@
+\begin{mistake}{2026-04-09}{43}
+
+\begin{problemcontent}
+设 \( D: x^2 - 2x + y^2 - 2y \leqslant 0 \)，计算 \(\iint_D xy\,\mathrm{d}x\mathrm{d}y\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+对积分区域的边界方程配方：
+\( x^2 - 2x + y^2 - 2y \leqslant 0 \implies (x-1)^2 + (y-1)^2 \leqslant 2 \)。
+区域 \( D \) 是以 \( (1,1) \) 为圆心，\( \sqrt{2} \) 为半径的圆。
+
+作坐标平移，令 \( u = x-1 \), \( v = y-1 \)，则积分区域变为 \( D': u^2 + v^2 \leqslant 2 \)。
+雅可比行列式 \( J = 1 \)，代入原积分：
+\[
+\begin{aligned}
+\iint_D xy\,\mathrm{d}x\mathrm{d}y 
+&= \iint_{D'} (u+1)(v+1)\,\mathrm{d}u\mathrm{d}v \\
+&= \iint_{D'} (uv + u + v + 1)\,\mathrm{d}u\mathrm{d}v
+\end{aligned}
+\]
+由于区域 \( D' \) 关于 \( u \) 轴和 \( v \) 轴均对称，且 \( uv, u, v \) 在对称域上均为奇函数，故这三项的积分为 0。
+只剩下常数项的积分：
+\[
+\iint_{D'} 1\,\mathrm{d}u\mathrm{d}v = \text{Area}(D') = \pi(\sqrt{2})^2 = 2\pi
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：平移积分变量公式与对称性定理（奇函数在对称中心区间积分为0）。
+ \item \textbf{易错点}：原区域 \(D\) 关于坐标轴不对称，严禁直接利用对称性消去 \(x\) 或 \(y\) 的一次项，必须先平移化为中心在原点的标准圆。
+ \item \textbf{关联知识}：若被积函数形如 \((x^2+y^2)\)，平移后利用极坐标计算最为简便。
+\end{itemize}}
+
+\end{mistake}

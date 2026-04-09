@@ -1,0 +1,38 @@
+\begin{mistake}{2026-04-09}{13}
+
+\begin{problemcontent}
+求不定积分：\(\displaystyle I = \int \frac{x^4 + 1}{1 + x^6} \, \mathrm{d}x \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+将分母 \(1+x^6\) 视为立方和，利用公式 \(a^3+b^3=(a+b)(a^2-ab+b^2)\) 展开：
+\[ 1+x^6 = 1^3 + (x^2)^3 = (1+x^2)(1-x^2+x^4) \]
+
+为与分母的一项凑配，对分子巧妙加上再减去 \(x^2\)：
+\[
+\begin{aligned}
+\frac{x^4 + 1}{1 + x^6} 
+&= \frac{x^4 - x^2 + 1 + x^2}{(1+x^2)(x^4-x^2+1)} \\
+&= \frac{x^4-x^2+1}{(1+x^2)(x^4-x^2+1)} + \frac{x^2}{1+x^6} \\
+&= \frac{1}{1+x^2} + \frac{x^2}{1+(x^3)^2}
+\end{aligned}
+\]
+
+将原积分拆分为两部分计算：
+\[
+\begin{aligned}
+I &= \int \frac{1}{1+x^2} \, \mathrm{d}x + \int \frac{x^2}{1+(x^3)^2} \, \mathrm{d}x \\
+&= \arctan x + \frac{1}{3} \int \frac{1}{1+(x^3)^2} \, \mathrm{d}(x^3) \\
+&= \arctan x + \frac{1}{3} \arctan(x^3) + C
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：立方和公式 \(a^3+b^3=(a+b)(a^2-ab+b^2)\)；基本积分表 \(\int \frac{1}{1+u^2}\mathrm{d}u=\arctan u\)。
+ \item \textbf{易错点}：直接使用部分分式展开导致计算量极大；未观察到分子与分母立方和因式的关系。
+ \item \textbf{关联知识}：积分中遇到高次幂有理分式，优先尝试"凑项约分"或"凑微分"。遇到 \(x^6\) 常联想 \(x^2\) 的立方。
+\end{itemize}}
+
+\end{mistake}

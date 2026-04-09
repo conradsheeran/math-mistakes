@@ -1,0 +1,35 @@
+\begin{mistake}{2026-04-09}{14}
+
+\begin{problemcontent}
+设 \( f(x) \) 的原函数 \( F(x) \) 恒正，且 \( F(0)=1 \)，当 \( x \geqslant 0 \) 时有 \( f(x)F(x) = \sin^2 2x \)，求 \( f(x) \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+已知 \(F(x)\) 是 \(f(x)\) 的原函数，即 \( F'(x) = f(x) \)。
+代入已知方程：
+\[ F'(x)F(x) = \sin^2 2x \]
+利用复合函数求导逆运算可化为微分方程：
+\[ \frac{1}{2} [F^2(x)]' = \sin^2 2x \]
+利用半角公式 \(\sin^2 2x = \frac{1 - \cos 4x}{2}\)：
+\[ [F^2(x)]' = 1 - \cos 4x \]
+
+两边同时积分：
+\[ F^2(x) = x - \frac{1}{4}\sin 4x + C \]
+代入初值条件 \(F(0)=1\)：
+\[ 1^2 = 0 - 0 + C \implies C = 1 \]
+所以 \(F^2(x) = x - \frac{1}{4}\sin 4x + 1\)。
+
+因为 \(F(x)\) 恒正，开平方得：
+\[ F(x) = \sqrt{x - \frac{1}{4}\sin 4x + 1} \]
+最后解出 \(f(x)\)：
+\[ f(x) = \frac{\sin^2 2x}{F(x)} = \frac{\sin^2 2x}{\sqrt{x - \frac{1}{4}\sin 4x + 1}} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：原函数定义 \(F'(x)=f(x)\)；降幂公式 \(\sin^2 \theta = \frac{1-\cos 2\theta}{2}\)。
+ \item \textbf{易错点}：对 \(\sin^2 2x\) 积分时忘乘外层求导逆运算的系数 \(\frac{1}{4}\)；开根号时未结合题干 \(F(x)>0\) 的条件排除负号。
+ \item \textbf{关联知识}：形如 \(f(x)F(x)\) 的结构应条件反射等价于 \(\frac{1}{2}[F^2(x)]'\)，这是常微分方程化简的经典套路。
+\end{itemize}}
+
+\end{mistake}

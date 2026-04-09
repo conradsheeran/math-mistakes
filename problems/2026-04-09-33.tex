@@ -1,0 +1,33 @@
+\begin{mistake}{2026-04-09}{33}
+
+\begin{problemcontent}
+函数 \( f(x) = (x^2+x-2)|x^3-4x|\sin|x| \) 的不可导点有哪些？
+\end{problemcontent}
+
+\begin{solutioncontent}
+答案：仅 \( x=2 \)
+
+首先进行因式分解，将各点剥离：
+\[
+f(x) = (x-1)(x+2) \cdot |x(x-2)(x+2)| \cdot \sin|x|
+\]
+\[
+f(x) = (x-1)(x+2)|x+2| \cdot |x-2| \cdot |x|\sin|x|
+\]
+可能不可导的点（绝对值零点）为 \( x=-2, x=0, x=2 \)：
+\begin{itemize}
+ \item 对于 \( x=-2 \)：包含因式 \( (x+2)|x+2| \)，其等效次数为 \( 1+1 = 2 \ge 2 \)，因此可导。
+ \item 对于 \( x=0 \)：包含因式 \( |x|\sin|x| \)。因为 \( x \to 0 \) 时 \( \sin|x| \sim |x| \)，故局部等价于 \( x^2 \)，等效次数 \( 2 \ge 2 \)，因此可导。
+ \item 对于 \( x=2 \)：仅包含因式 \( |x-2|^1 \)，次数为 1，且其余部分在 \( x=2 \) 处不为 0。左右导数异号，因此不可导。
+\end{itemize}
+综上所述，不可导点仅有 \( x=2 \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心方法}：因式分解与绝对值等效阶数法。提取出所有零点，判定局部无穷小阶数。
+ \item \textbf{易错点}：未能识别出 \( \sin|x| \) 与 \( |x| \) 在 \( x=0 \) 处同阶，导致判定 \( x=0 \) 不可导。
+ \item \textbf{关联知识}：万能验证法，计算 \( \lim_{\Delta x \to 0} \frac{|\Delta x|^k}{\Delta x} \)，\( k=1 \) 时极限不存在，\( k \ge 2 \) 时极限为0。
+\end{itemize}}
+
+\end{mistake}

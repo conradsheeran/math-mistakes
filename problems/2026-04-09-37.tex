@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-09}{37}
+
+\begin{problemcontent}
+设 \( y_1, y_2 \) 是 \( y'' + py' + qy = f(x) \) 的解，\( y_3, y_4 \) 是 \( y'' + py' + qy = g(x) \) 的解。以下哪个是 \( y'' + py' + qy = f(x) - g(x) \) 的解？\\
+(A) \( y_1 - 2y_2 + y_3 - 2y_4 \)\\
+(B) \( 2y_1 - y_2 + y_3 - 2y_4 \)\\
+(C) \( 2y_1 - y_2 + 2y_3 - y_4 \)\\
+(D) \( y_1 - 2y_2 + 2y_3 - y_4 \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+设微分算子 \( L[y] = y'' + py' + qy \)。由题意知 \( L[y_1]=L[y_2]=f(x) \)，\( L[y_3]=L[y_4]=g(x) \)。
+
+令特解形式为 \( y = C_1y_1 + C_2y_2 + C_3y_3 + C_4y_4 \)。将其代入方程左侧，利用线性叠加原理有：
+\[
+\begin{aligned}
+L[y] &= C_1L[y_1] + C_2L[y_2] + C_3L[y_3] + C_4L[y_4] \\
+&= (C_1+C_2)f(x) + (C_3+C_4)g(x)
+\end{aligned}
+\]
+若要使其为 \( f(x) - g(x) \) 的解，必须满足系数约束条件：
+\( C_1 + C_2 = 1 \) 且 \( C_3 + C_4 = -1 \)。
+
+逐一检验选项：\\
+(A) \( C_1+C_2 = -1 \)，不符。\\
+(B) \( C_1+C_2 = 2-1=1 \)，\( C_3+C_4 = 1-2=-1 \)，符合。\\
+(C) \( C_3+C_4 = 2-1=1 \)，不符。\\
+(D) \( C_1+C_2 = 1-2=-1 \)，不符。\\
+故选 (B)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：非齐次线性微分方程的叠加原理 \( L[C_1y_1 + C_2y_2] = C_1L[y_1] + C_2L[y_2] \)。
+ \item \textbf{易错点}：目标方程右侧 \( g(x) \) 前为负号，极易遗漏导致错选 \( C_3+C_4=1 \) 的选项。
+ \item \textbf{关联知识}：若 \( y_1, y_2 \) 同为某非齐次方程的解，则 \( y_1 - y_2 \) 为对应齐次方程的解。
+\end{itemize}}
+
+\end{mistake}

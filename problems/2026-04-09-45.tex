@@ -1,0 +1,27 @@
+\begin{mistake}{2026-04-09}{45}
+
+\begin{problemcontent}
+设 \( b, c \) 为正常数，\( y(x) \) 满足 \( y'' + by' + cy = 0 \)，\( y(0), y'(0) \) 为任意常数，则 \(\displaystyle \lim_{x \to +\infty} y(x)\) 的值（ ）
+
+(A) 依赖于 \( b, c \) 的值 (B) 等于 0
+(C) 依赖于 \( y(0), y'(0) \) 的值 (D) 为 \( \infty \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+特征方程为 \( \lambda^2 + b\lambda + c = 0 \)。
+特征根为 \( \lambda_{1,2} = \frac{-b \pm \sqrt{b^2 - 4c}}{2} \)。
+分类讨论：
+1. 若 \( b^2 - 4c \geqslant 0 \)：因 \( c > 0 \)，必有 \( \sqrt{b^2 - 4c} < b \)。故两实根 \( \lambda_1, \lambda_2 \) 均严格小于 0。通解中的指数衰减项在 \( x \to +\infty \) 时趋于 0。
+2. 若 \( b^2 - 4c < 0 \)：特征根为一对共轭复根，其实部为 \( -\frac{b}{2} < 0 \)（因 \( b > 0 \)）。通解形如 \( y = e^{-bx/2}(C_1\cos\beta x + C_2\sin\beta x) \)，在 \( x \to +\infty \) 时同样趋于 0。
+
+综上所述，无论何种情况及初值如何，通解中的指数因子总能确保 \( \lim_{x \to +\infty} y(x) = 0 \)。选 (B)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心知识}：二阶常系数齐次线性微分方程特征根性质与通解结构。
+ \item \textbf{易错点}：忽视 \(b, c > 0\) 这一关键前提，未能严谨判定特征根的实部必然小于 0，误以为极限依赖初值。
+ \item \textbf{关联知识}：此结论在控制理论中对应"劳斯-赫尔维茨稳定性"（系统特征根实部全为负，系统渐近稳定）。
+\end{itemize}}
+
+\end{mistake}

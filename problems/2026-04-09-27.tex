@@ -1,0 +1,35 @@
+\begin{mistake}{2026-04-09}{27}
+
+\begin{problemcontent}
+设 \( f'(a) \neq 0 \)，\( f''(a) \) 存在，求 \( \lim_{x \to a} \left[ \dfrac{1}{f(x) - f(a)} - \dfrac{1}{f'(a)(x-a)} \right] \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+此为 \( \infty - \infty \) 型极限，首先通分化为 \( \frac{0}{0} \) 型：
+\[
+\lim_{x \to a} \dfrac{f'(a)(x-a) - [f(x) - f(a)]}{[f(x) - f(a)] \cdot f'(a)(x-a)}
+\]
+
+对于分母，由 \( f(x) - f(a) \sim f'(a)(x-a) \)，可将分母等价替换为：
+\( f'(a)(x-a) \cdot f'(a)(x-a) = [f'(a)]^2(x-a)^2 \)。
+
+对于分子，因为分母是 \( (x-a)^2 \) 的同阶项，需要将 \( f(x) \) 在 \( x=a \) 处利用带皮亚诺余项的泰勒公式展开至二阶：
+\( f(x) = f(a) + f'(a)(x-a) + \frac{1}{2}f''(a)(x-a)^2 + o((x-a)^2) \)。
+
+将展开式代入分子：
+分子 \( = f'(a)(x-a) - \left[ f'(a)(x-a) + \frac{1}{2}f''(a)(x-a)^2 + o((x-a)^2) \right] = -\frac{1}{2}f''(a)(x-a)^2 + o((x-a)^2) \)。
+
+代入原式求极限：
+\[
+\lim_{x \to a} \dfrac{-\frac{1}{2}f''(a)(x-a)^2}{[f'(a)]^2(x-a)^2} = -\dfrac{f''(a)}{2[f'(a)]^2}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：带皮亚诺余项的泰勒公式 \( \Delta y = f'(a)\Delta x + \frac{1}{2}f''(a)(\Delta x)^2 + o((\Delta x)^2) \)。
+ \item \textbf{易错点}：遇到 \( \infty-\infty \) 未先通分而盲目用洛必达法则；或在通分后未对分母做低阶等价替换导致后续计算极为繁琐。
+ \item \textbf{关联知识}：洛必达法则结合导数定义法（在通分等价替换后，对 \( \frac{0}{0} \) 型用一次洛必达，再凑 \( -f''(a) \) 的极限定理结构）也是一种可行解法。
+\end{itemize}}
+
+\end{mistake}

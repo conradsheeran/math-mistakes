@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-09}{47}
+
+\begin{problemcontent}
+微分方程 \( y^{(4)} + y'' = 0 \) 满足 \(\displaystyle \lim_{x \to 0} y(x) = 0 \) 的一切不恒等于零的解 \( y = y(x) \)，当 \( x \to 0 \) 时是关于 \( x \) 的几阶无穷小？求最高阶数。
+\end{problemcontent}
+
+\begin{solutioncontent}
+特征方程为 \( \lambda^4 + \lambda^2 = 0 \implies \lambda^2(\lambda^2 + 1) = 0 \)。
+特征根为 \( \lambda_{1,2} = 0 \) (二重根)，\( \lambda_{3,4} = \pm i \)。
+通解为：
+\[ y(x) = C_1 + C_2 x + C_3 \cos x + C_4 \sin x \]
+由极限条件 \(\lim_{x \to 0} y(x) = 0\)，得 \( C_1 + C_3 = 0 \implies C_1 = -C_3 \)。
+将三角函数用麦克劳林公式展开：
+\[
+\begin{aligned}
+y(x) &= -C_3 + C_2 x + C_3\left(1 - \frac{x^2}{2} + o(x^3)\right) + C_4\left(x - \frac{x^3}{6} + o(x^3)\right) \\
+&= (C_2 + C_4)x - \frac{C_3}{2}x^2 - \frac{C_4}{6}x^3 + o(x^3)
+\end{aligned}
+\]
+要使 \( y(x) \) 是尽可能高阶的无穷小量，需让低次项系数全为 0：
+\[
+\begin{cases}
+C_2 + C_4 = 0 \\
+-\frac{C_3}{2} = 0 \implies C_3 = 0, C_1 = 0
+\end{cases}
+\]
+此时 \( y(x) = -\frac{C_4}{6}x^3 + o(x^3) \)。
+若进一步令三次项系数 \(-\frac{C_4}{6} = 0\)，则 \( C_4 = 0 \)，此时四个常数全为 0，解退化为恒零解 \( y(x) \equiv 0 \)，与题设矛盾。
+因此，最高能消去二次项，保留三次项。最高阶数为 3。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心原理}：高阶线性常系数微分方程求通解，及利用泰勒(Taylor)展开匹配极限定阶。
+ \item \textbf{易错点}：忽略了 \(\lambda=0\) 是二重根，漏写通解中的 \(C_2x\) 项；在处理多项加减法高阶无穷小定阶时，必须使用泰勒展开严格保留高阶无穷小量，严禁使用等价无穷小替换。
+ \item \textbf{关联知识}：皮亚诺余项泰勒公式 \(\sin x = x - \frac{x^3}{3!} + o(x^3)\)，\(\cos x = 1 - \frac{x^2}{2!} + o(x^3)\)。
+\end{itemize}}
+
+\end{mistake}

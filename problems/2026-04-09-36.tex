@@ -1,0 +1,31 @@
+\begin{mistake}{2026-04-09}{36}
+
+\begin{problemcontent}
+星形线 \( x = a\cos^3 t,\; y = a\sin^3 t \)（\( a > 0 \)），求：\\
+(1) 围成区域面积 \( A \)；(2) 全弧长 \( L \)；(3) 绕 \( x \) 轴旋转体体积 \( V \)；(4) 绕 \( x \) 轴旋转体侧面积 \( S \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+星形线在第一象限（\( t \in [0, \pi/2] \)）的弧长微元为 \( \mathrm{d}s = \sqrt{(x'(t))^2 + (y'(t))^2}\,\mathrm{d}t = 3a\sin t\cos t\,\mathrm{d}t \)。根据对称性，整体取第一象限的倍数：
+
+(1) 面积 \( A = 4 \int_{0}^{a} y\,\mathrm{d}x = 4 \int_{\pi/2}^{0} (a\sin^3 t)(-3a\cos^2 t\sin t)\,\mathrm{d}t = 12a^2 \int_{0}^{\pi/2} \sin^4 t \cos^2 t\,\mathrm{d}t \)，由华里士公式可得 \( A = 12a^2 \cdot \frac{3!! \cdot 1!!}{6!!} \cdot \frac{\pi}{2} = \frac{3}{8}\pi a^2 \)。
+
+(2) 弧长 \( L = 4 \int_{0}^{\pi/2} \mathrm{d}s = 4 \int_{0}^{\pi/2} 3a\sin t\cos t\,\mathrm{d}t = 12a \left[ \frac{1}{2}\sin^2 t \right]_0^{\pi/2} = 6a \)。
+
+(3) 体积 \( V = 2 \int_{0}^{a} \pi y^2\,\mathrm{d}x = 2\pi \int_{\pi/2}^{0} (a^2\sin^6 t)(-3a\cos^2 t\sin t)\,\mathrm{d}t = 6\pi a^3 \int_{0}^{\pi/2} \sin^7 t \cos^2 t\,\mathrm{d}t \)。由于指数不全为偶数，通过换元凑微分计算可得 \( V = \frac{32}{105}\pi a^3 \)。
+
+(4) 侧面积 \( S = 2 \int_{0}^{\pi/2} 2\pi y\,\mathrm{d}s = 4\pi \int_{0}^{\pi/2} (a\sin^3 t)(3a\sin t\cos t)\,\mathrm{d}t = 12\pi a^2 \int_{0}^{\pi/2} \sin^4 t \cos t\,\mathrm{d}t = 12\pi a^2 \left[ \frac{1}{5}\sin^5 t \right]_0^{\pi/2} = \frac{12}{5}\pi a^2 \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：广义华里士公式 
+\[
+\int_0^{\pi/2}\sin^m t\cos^n t\,\mathrm{d}t = \frac{(m-1)!!(n-1)!!}{(m+n)!!}\cdot K
+\]
+（当 \( m,n \) 均为正偶数时 \( K=\frac{\pi}{2} \)，否则 \( K=1 \)）。
+ \item \textbf{易错点}：定积分换元时，\( x:0 \to a \) 对应 \( t:\frac{\pi}{2}\to 0 \)，积分上下限反向须交换并消除 \(\mathrm{d}x\) 带来的负号。
+ \item \textbf{关联知识}：星形线的对称性（面积、全弧长为第一象限的4倍；绕极轴旋转的体积、侧面积为第一象限的2倍）。
+\end{itemize}}
+
+\end{mistake}

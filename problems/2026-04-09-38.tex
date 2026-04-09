@@ -1,0 +1,33 @@
+\begin{mistake}{2026-04-09}{38}
+
+\begin{problemcontent}
+求微分方程 \( \dfrac{\mathrm{d}y}{\mathrm{d}x} + \lambda y = 1 \)（\( \lambda \in (-\infty, +\infty) \)）满足 \( y(0) = 0 \) 的解。
+\end{problemcontent}
+
+\begin{solutioncontent}
+此为一阶线性常微分方程，因参数 \( \lambda \) 存在于全实数域，必须分类讨论：
+
+情况一：当 \( \lambda \neq 0 \) 时，套用通解公式：
+\[
+\begin{aligned}
+y &= e^{-\int \lambda\,\mathrm{d}x} \left( \int 1 \cdot e^{\int \lambda\,\mathrm{d}x}\,\mathrm{d}x + C \right) \\
+ &= e^{-\lambda x} \left( \int e^{\lambda x}\,\mathrm{d}x + C \right) \\
+ &= e^{-\lambda x} \left( \frac{1}{\lambda} e^{\lambda x} + C \right) = \frac{1}{\lambda} + C e^{-\lambda x}
+\end{aligned}
+\]
+代入初值条件 \( y(0) = 0 \)，得 \( \frac{1}{\lambda} + C = 0 \Rightarrow C = -\frac{1}{\lambda} \)。\\
+此时特解为 \( y = \frac{1 - e^{-\lambda x}}{\lambda} \)。
+
+情况二：当 \( \lambda = 0 \) 时，原方程退化为 \( \dfrac{\mathrm{d}y}{\mathrm{d}x} = 1 \)。\\
+直接积分得通解 \( y = x + C \)。\\
+代入初值 \( y(0) = 0 \)，得 \( C = 0 \)。此时特解为 \( y = x \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：一阶线性ODE通解 \( y = e^{-\int P\,\mathrm{d}x}\!\left(\int Q\,e^{\int P\,\mathrm{d}x}\,\mathrm{d}x + C\right) \)。
+ \item \textbf{易错点}：当参数作为分母或积分底数出现时，直接套公式而不单独讨论退化情况（即 \(\lambda=0\) 导致分母为0），会导致逻辑漏洞与扣分。
+ \item \textbf{关联知识}：实际上利用洛必达法则求 \( \lim_{\lambda \to 0}\frac{1-e^{-\lambda x}}{\lambda} \) 的结果正是 \( x \)，体现了解对参数的连续依赖性。
+\end{itemize}}
+
+\end{mistake}

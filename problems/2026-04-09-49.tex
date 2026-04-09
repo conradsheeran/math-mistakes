@@ -1,0 +1,46 @@
+\begin{mistake}{2026-04-09}{49}
+
+\begin{problemcontent}
+设 \( y = \varphi(x) \) 是微分方程 \( y'' - y = x^2 \) 的解，且当 \( x \to 0 \) 时 \( \varphi(x) \) 是较 \( x^2 \) 高阶的无穷小量，则 \( \varphi(x) = \)（ ）
+
+(A) \( e^x + e^{-x} - x^2 - 2 \) (B) \( e^x - e^{-x} - x^2 - 2 \)
+(C) \( e^x + e^{-x} - x^2 + 2 \) (D) \( e^x - e^{-x} - x^2 + 2 \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+特征方程为 \( \lambda^2 - 1 = 0 \implies \lambda = \pm 1 \)。
+对应齐次方程通解为 \( C_1 e^x + C_2 e^{-x} \)。
+因非齐次项为 \( x^2 \)，且 \( \lambda=0 \) 不是特征根，设特解为 \( y^* = Ax^2 + Bx + C \)。
+代入原方程：\( 2A - (Ax^2 + Bx + C) = x^2 \)。
+比较系数：\( -A = 1 \implies A = -1 \)，\( -B = 0 \implies B = 0 \)，\( 2A - C = 0 \implies C = -2 \)。
+特解为 \( y^* = -x^2 - 2 \)。
+故通解为 \( \varphi(x) = C_1 e^x + C_2 e^{-x} - x^2 - 2 \)。
+
+题设条件：\( x \to 0 \) 时 \( \varphi(x) \) 是较 \( x^2 \) 高阶的无穷小量，即 \( \varphi(x) = o(x^2) \)。
+对 \( \varphi(x) \) 作麦克劳林展开：
+\[
+\begin{aligned}
+\varphi(x) &= C_1\left(1 + x + \frac{x^2}{2} + o(x^2)\right) + C_2\left(1 - x + \frac{x^2}{2} + o(x^2)\right) - x^2 - 2 \\
+&= (C_1 + C_2 - 2) + (C_1 - C_2)x + \left(\frac{C_1+C_2}{2} - 1\right)x^2 + o(x^2)
+\end{aligned}
+\]
+因 \( \varphi(x) = o(x^2) \)，由唯一性知多项式的低次项系数全为 0：
+\[
+\begin{cases}
+C_1 + C_2 - 2 = 0 \\
+C_1 - C_2 = 0 \\
+\frac{C_1+C_2}{2} - 1 = 0
+\end{cases}
+\]
+解得 \( C_1 = C_2 = 1 \)。
+故 \( \varphi(x) = e^x + e^{-x} - x^2 - 2 \)。选 (A)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：二阶常系数非齐次线性微分方程的待定系数法；高阶无穷小的代数等价条件。
+ \item \textbf{易错点}：待定特解形式错误。非齐次项多项式次数为2时，特解必须设完整的二次多项式 \(Ax^2+Bx+C\)，严禁只设 \(Ax^2\)。
+ \item \textbf{关联知识}：若原方程变为 \(y''=x^2\)，由于 \(\lambda=0\) 是二重特征根，此时特解必须多乘一个 \(x^2\)，形式应设为 \(x^2(Ax^2+Bx+C)\)。
+\end{itemize}}
+
+\end{mistake}

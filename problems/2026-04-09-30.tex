@@ -1,0 +1,27 @@
+\begin{mistake}{2026-04-09}{30}
+
+\begin{problemcontent}
+设 \( f(x) \) 在 \( (c, +\infty) \) 上可导且 \( f(x) \) 有界，若 \( \lim_{x \to +\infty} f'(x) = b \) 存在，证明 \( b = 0 \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+证明：使用反证法。假设 \( b > 0 \)。
+由极限保号性，存在 \( X > c \)，当 \( x > X \) 时，有 \( f'(x) > \frac{b}{2} \)。
+在区间 \( [X, x] \) 上对 \( f(x) \) 应用拉格朗日中值定理：
+\[
+f(x) - f(X) = f'(\xi)(x-X) > \frac{b}{2}(x-X) \quad (\xi \in (X, x))
+\]
+即 \( f(x) > f(X) + \frac{b}{2}(x-X) \)。
+当 \( x \to +\infty \) 时，右侧趋于 \( +\infty \)，这导致 \( f(x) \to +\infty \)，与已知条件"\( f(x) \) 有界"相矛盾。
+同理可证假设 \( b < 0 \) 也会导致矛盾（趋于 \( -\infty \)）。
+综上所述，必有 \( b = 0 \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：拉格朗日中值定理与极限保号性。
+ \item \textbf{易错点}：不能直接假定 \( \lim f(x) \) 存在并去逆用洛必达法则，因为"有界"不代表"极限存在"（例如振荡函数）。
+ \item \textbf{关联知识}：洛必达法则逆用的条件是 \( \frac{f(x)}{x} \) 属于 \( \frac{\infty}{\infty} \) 型或 \( f(x) \) 收敛于某常数。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,34 @@
+\begin{mistake}{2026-04-09}{19}
+
+\begin{problemcontent}
+下列命题正确的是 ( )
+
+(A) 设在 \( x=x_0 \) 某空心邻域 \( \alpha(x) \) 为有界函数，且 \( \lim_{x\to x_0} \alpha(x)\beta(x) = 0 \)，则 \( \lim_{x\to x_0} \beta(x) = 0 \)。
+
+(B) 设 \( x\to x_0 \) 时 \( \alpha(x) \) 为无穷小，且 \( \lim_{x\to x_0} \frac{\alpha(x)}{\beta(x)} = a \neq 0 \)，则 \( \lim_{x\to x_0} \beta(x) = \infty \)。
+
+(C) 设 \( x\to x_0 \) 时 \( \alpha(x) \) 为无穷大，且 \( \lim_{x\to x_0} \alpha(x)\beta(x) = a \)，则 \( \lim_{x\to x_0} \beta(x) = 0 \)。
+
+(D) 设在 \( x=x_0 \) 某空心邻域 \( \alpha(x) \) 为无界函数，且 \( \lim_{x\to x_0} \alpha(x)\beta(x) = 0 \)，则 \( \lim_{x\to x_0} \beta(x) = 0 \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案是 \textbf{C}。
+
+\textbf{选项分析：}
+\begin{itemize}
+ \item (A) 反例：令 \(\alpha(x) = x\)，\(\beta(x) = \frac{1}{\sqrt{x}}\)（\(x \to 0^+\)）。\(\alpha(x)\) 在 \(0\) 附近有界，\(\alpha\beta = \sqrt{x} \to 0\)，但 \(\beta(x) \to +\infty \neq 0\)。
+ \item (B) 由极限四则运算可直接推导：\(\beta(x) = \frac{\alpha(x)}{\alpha(x)/\beta(x)}\)。因为分子趋于 \(0\)，分母趋于常数 \(a \neq 0\)，故 \(\lim_{x \to x_0} \beta(x) = \frac{0}{a} = 0\)，而不是 \(\infty\)。
+ \item (C) 正确。因为 \(\alpha(x) \to \infty\)，所以 \(\frac{1}{\alpha(x)} \to 0\)。\(\beta(x) = [\alpha(x)\beta(x)] \cdot \frac{1}{\alpha(x)}\)。由四则运算法则，\(\lim \beta(x) = a \cdot 0 = 0\)。
+ \item (D) 反例：令 \(\alpha(x)\) 为在 \(1/n\) 处取 \(n\)，其余为 0 的震荡无界函数；\(\beta(x) = x\)。\(\alpha(x)\beta(x)\) 极限可能为 0，但 \(\beta(x)\) 不一定必须处处逼近 0（尽管此例中 \(\beta \to 0\)，但逻辑上“无界”不具有像“无穷大”那样强烈的倒数无穷小性质，无法用四则运算推导）。
+\end{itemize}
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：若 \(\lim u(x) = A\)，\(\lim v(x) = B \neq 0\)，则 \(\lim \frac{u(x)}{v(x)} = \frac{A}{B}\)；无穷大 \(\Rightarrow\) 倒数为无穷小。
+ \item \textbf{易错点}：混淆“无界函数”与“无穷大”的概念。无穷大是去心邻域内所有点均趋于无穷；无界只需存在趋于无穷的点列（可能伴随震荡回落到0）。
+ \item \textbf{关联知识}：“有界 \(\times\) 无穷小 = 无穷小”是正确的，但反向推导“有界 \(\times\) 未知 = 无穷小”无法得出“未知=无穷小”，构造极限的“拼图”时必须依赖严格代数恒等变形。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,41 @@
+\begin{mistake}{2026-04-09}{39}
+
+\begin{problemcontent}
+设 \( f(x) = \begin{cases} a, & 0 \leqslant x \leqslant 1 \\ 0, & \text{其他} \end{cases} \)，\( g(t) = \begin{cases} a, & 0 \leqslant t \leqslant 1 \\ 0, & \text{其他} \end{cases} \)，其中 \( D \) 为全平面，求 \( \iint_D f(x)g(y-x)\,\mathrm{d}x\mathrm{d}y \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+利用富比尼（Fubini）定理化二重积分为累次积分：
+\[
+\begin{aligned}
+I &= \int_{-\infty}^{+\infty} f(x) \,\mathrm{d}x \int_{-\infty}^{+\infty} g(y-x) \,\mathrm{d}y
+\end{aligned}
+\]
+对于内层积分，作平移换元，令 \( t = y - x \)，则 \( \mathrm{d}t = \mathrm{d}y \)（此时视 \( x \) 为常数，积分限不变）：
+\[
+\begin{aligned}
+\int_{-\infty}^{+\infty} g(y-x) \,\mathrm{d}y = \int_{-\infty}^{+\infty} g(t) \,\mathrm{d}t
+\end{aligned}
+\]
+因为 \( g(t) \) 仅在 \( [0,1] \) 上非零，故：
+\[
+\begin{aligned}
+\int_{-\infty}^{+\infty} g(t) \,\mathrm{d}t = \int_0^1 a \,\mathrm{d}t = a
+\end{aligned}
+\]
+代回外层积分，同理截断 \( f(x) \) 的零值区间：
+\[
+\begin{aligned}
+I &= \int_{-\infty}^{+\infty} f(x) \cdot a \,\mathrm{d}x = a \int_0^1 a \,\mathrm{d}x = a^2
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：富比尼定理化累次积分，平移换元法处理复合函数积分。
+ \item \textbf{易错点}：强行画二重积分积分区域解题。遇到包含 \( x \) 和 \( y-x \) 的可分离核时，先对 \( y \) 积分能直接通过换元绕开复杂的区域划分。
+ \item \textbf{关联知识}：此题本质为概率论中连续型随机变量和 \( Z=X+Y \) 的卷积公式计算。
+\end{itemize}}
+
+\end{mistake}

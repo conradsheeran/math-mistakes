@@ -1,0 +1,71 @@
+\begin{mistake}{2026-04-12}{14}
+
+\begin{problemcontent}
+设
+\[
+\int \frac{x^2+ax+2}{(x+1)(x^2+1)}\,dx
+\]
+的结果中不含 \(\arctan x\) 项，求常数 \(a\) 的值。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+作部分分式分解：
+\[
+\frac{x^2+ax+2}{(x+1)(x^2+1)}=\frac{A}{x+1}+\frac{Bx+C}{x^2+1}.
+\]
+
+两边同乘 \((x+1)(x^2+1)\)，得
+\[
+x^2+ax+2=A(x^2+1)+(Bx+C)(x+1).
+\]
+
+展开右端：
+\[
+\begin{aligned}
+A(x^2+1)+(Bx+C)(x+1)
+&=Ax^2+A+Bx^2+Bx+Cx+C\\
+&=(A+B)x^2+(B+C)x+(A+C).
+\end{aligned}
+\]
+
+比较系数，得
+\[
+\begin{cases}
+A+B=1,\\
+B+C=a,\\
+A+C=2.
+\end{cases}
+\]
+
+由前后两式消去 \(A,B\)，可得
+\[
+C=\frac{a+1}{2}.
+\]
+
+积分时，只有
+\[
+\int \frac{C}{x^2+1}\,dx=C\arctan x
+\]
+会产生 \(\arctan x\) 项，因此要使结果中不含 \(\arctan x\) 项，必须有
+\[
+C=0.
+\]
+
+故
+\[
+\frac{a+1}{2}=0,
+\qquad
+a=-1.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：二次不可约因式 \(x^2+1\) 对应的部分分式分子必须设为一次式 \(Bx+C\)。其中 \(\dfrac{C}{x^2+1}\) 的积分才产生 \(\arctan x\) 项。
+  \item \textbf{易错点}：把 \(\dfrac{Bx+C}{x^2+1}\) 错设成 \(\dfrac{C}{x^2+1}\) 会少未知量，导致比较系数错误；另一个高频错误是误认为 \(\dfrac{Bx}{x^2+1}\) 也会积分出 \(\arctan x\)。
+  \item \textbf{关联知识}：\(\int \dfrac{x}{x^2+1}\,dx=\dfrac12\ln(x^2+1)+C\)，而 \(\int \dfrac{1}{x^2+1}\,dx=\arctan x+C\)。要能区分“导数型分子”和“常数型分子”。
+\end{itemize}}
+
+\end{mistake}

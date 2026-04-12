@@ -1,0 +1,24 @@
+\begin{mistake}{2026-04-12}{36}
+
+\begin{problemcontent}
+设 \( f(x,y)=\begin{cases} xy\frac{x^2-y^2}{x^2+y^2}, & (x,y)\neq(0,0) \\ 0, & (x,y)=(0,0) \end{cases} \)。求 \( f''_{xy}(0,0) \) 与 \( f''_{yx}(0,0) \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+1. **计算一阶偏导数定义式**：
+\[ f_x(0,y) = \lim_{\Delta x \to 0} \frac{f(\Delta x, y) - f(0,y)}{\Delta x} = \lim_{\Delta x \to 0} \frac{\Delta x \cdot y \frac{\Delta x^2 - y^2}{\Delta x^2 + y^2} - 0}{\Delta x} = y \frac{-y^2}{y^2} = -y \]
+\[ f_y(x,0) = \lim_{\Delta y \to 0} \frac{f(x, \Delta y) - f(x,0)}{\Delta y} = \lim_{\Delta y \to 0} \frac{x \cdot \Delta y \frac{x^2 - \Delta y^2}{x^2 + \Delta y^2} - 0}{\Delta y} = x \frac{x^2}{x^2} = x \]
+
+2. **计算混合偏导数**：
+\[ f''_{xy}(0,0) = \frac{\partial}{\partial y}[f_x(x,y)]\bigg|_{(0,0)} = \lim_{y \to 0} \frac{f_x(0,y) - f_x(0,0)}{y} = \lim_{y \to 0} \frac{-y - 0}{y} = -1 \]
+\[ f''_{yx}(0,0) = \frac{\partial}{\partial x}[f_y(x,y)]\bigg|_{(0,0)} = \lim_{x \to 0} \frac{f_y(x,0) - f_y(0,0)}{x} = \lim_{x \to 0} \frac{x - 0}{x} = 1 \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心定理}：克莱姆- clairaut 定理（混合偏导相等定理）。只有当混合偏导数在某点连续时，该点处的 \( f''_{xy} = f''_{yx} \)。
+  \item \textbf{易错点}：直接使用求导公式。在分段函数定义点（特别是原点），必须使用偏导数的极限定义。
+  \item \textbf{关联知识}：此函数是混合偏导不相等的经典反例。
+\end{itemize}}
+
+\end{mistake}

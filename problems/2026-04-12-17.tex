@@ -1,0 +1,112 @@
+\begin{mistake}{2026-04-12}{17}
+
+\begin{problemcontent}
+计算累次积分
+\[
+I=\int_{-\pi/2}^{\pi/2} dx\int_0^{\sin x} (x^2+y\cos x)\sqrt{1-y^2}\,dy,
+\]
+选项：
+\[
+\text{(A) } \frac{2}{3}+\frac{\pi}{8}
+\qquad
+\text{(B) } \frac{2}{3}
+\qquad
+\text{(C) } -\frac{2}{3}+\frac{\pi}{8}
+\qquad
+\text{(D) } \frac{2}{3}-\frac{\pi}{8}.
+\]
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+将积分拆为
+\[
+I=I_1+I_2,
+\]
+其中
+\[
+I_1=\int_{-\pi/2}^{\pi/2} x^2\,dx\int_0^{\sin x} \sqrt{1-y^2}\,dy,
+\qquad
+I_2=\int_{-\pi/2}^{\pi/2} \cos x\,dx\int_0^{\sin x} y\sqrt{1-y^2}\,dy.
+\]
+
+先看 \(I_1\)。设
+\[
+G(x)=\int_0^{\sin x} \sqrt{1-y^2}\,dy.
+\]
+由于 \(\sqrt{1-y^2}\) 是偶函数，故对任意 \(u\) 有
+\[
+\int_0^{-u} \sqrt{1-y^2}\,dy=-\int_0^u \sqrt{1-y^2}\,dy,
+\]
+所以 \(G(-x)=-G(x)\)，即 \(G(x)\) 为奇函数。
+
+而 \(x^2\) 为偶函数，因此 \(x^2G(x)\) 为奇函数，从而
+\[
+I_1=0.
+\]
+
+再算 \(I_2\)。先求内层积分：
+\[
+\int y\sqrt{1-y^2}\,dy.
+\]
+令 \(u=1-y^2\)，则 \(du=-2y\,dy\)，故
+\[
+\int y\sqrt{1-y^2}\,dy=-\frac12\int u^{1/2}\,du=-\frac13(1-y^2)^{3/2}.
+\]
+
+于是
+\[
+\begin{aligned}
+\int_0^{\sin x} y\sqrt{1-y^2}\,dy
+&=\left[-\frac13(1-y^2)^{3/2}\right]_0^{\sin x}\\
+&=\frac13-\frac13(1-\sin^2 x)^{3/2}\\
+&=\frac13-\frac13|\cos x|^3.
+\end{aligned}
+\]
+
+在区间 \(\left[-\dfrac{\pi}{2},\dfrac{\pi}{2}\right]\) 上，\(\cos x\ge 0\)，故 \(|\cos x|=\cos x\)。因此
+\[
+\int_0^{\sin x} y\sqrt{1-y^2}\,dy=\frac13(1-\cos^3 x).
+\]
+
+从而
+\[
+I_2=\frac13\int_{-\pi/2}^{\pi/2}(\cos x-\cos^4 x)\,dx.
+\]
+
+由于被积函数是偶函数，得
+\[
+I_2=\frac23\int_0^{\pi/2}(\cos x-\cos^4 x)\,dx.
+\]
+
+又
+\[
+\int_0^{\pi/2}\cos x\,dx=1,
+\qquad
+\int_0^{\pi/2}\cos^4 x\,dx=\frac{3\pi}{16},
+\]
+所以
+\[
+I_2=\frac23\left(1-\frac{3\pi}{16}\right)=\frac23-\frac{\pi}{8}.
+\]
+
+故
+\[
+I=I_1+I_2=0+\left(\frac23-\frac{\pi}{8}\right)=\frac23-\frac{\pi}{8}.
+\]
+
+所以应选
+\[
+\text{(D) } \frac23-\frac{\pi}{8}.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：对变上限积分先视为一元函数判断奇偶性，再决定是否利用对称区间积分性质。内层积分中还要用到换元积分和 Wallis 公式 \(\int_0^{\pi/2}\cos^4 x\,dx=\dfrac{3\pi}{16}\)。
+  \item \textbf{易错点}：当 \(x<0\) 时，\(\sin x<0\)，内层积分的上限小于下限，不能把它直接当成普通“面积”处理；若忽视这一点，奇偶性判断会全部出错。
+  \item \textbf{关联知识}：若 \(H(u)=\int_0^u \varphi(y)\,dy\)，则当 \(\varphi\) 为偶函数时 \(H\) 为奇函数；当 \(\varphi\) 为奇函数时 \(H\) 为偶函数。这是处理变上限积分对称性的常用结论。
+\end{itemize}}
+
+\end{mistake}

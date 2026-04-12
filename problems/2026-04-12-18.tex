@@ -1,0 +1,41 @@
+\begin{mistake}{2026-04-12}{18}
+
+\begin{problemcontent}
+计算定积分：\(\displaystyle \int_{0}^{1} \sqrt{2x - x^2} \,\mathrm{d}x - \int_{0}^{1} \sqrt{(1 - x^2)^3} \,\mathrm{d}x\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+原式可拆分为两个积分：\(I_1 = \int_{0}^{1} \sqrt{2x - x^2} \,\mathrm{d}x\) 与 \(I_2 = \int_{0}^{1} (1 - x^2)^{\frac{3}{2}} \,\mathrm{d}x\)。
+
+对于 \(I_1\)，由于 \(\sqrt{2x - x^2} = \sqrt{1 - (x-1)^2}\)，此即圆 \((x-1)^2 + y^2 = 1\) 的上半部分。
+积分在 \([0, 1]\) 区间表示该圆在第一象限的四分之一圆面积，故（利用几何意义计算）：
+\[
+I_1 = \frac{1}{4} \pi \cdot 1^2 = \frac{\pi}{4}
+\]
+
+对于 \(I_2\)，令 \(x = \sin t\)，则 \(\mathrm{d}x = \cos t \,\mathrm{d}t\)，积分限由 \(x \in [0, 1]\) 变为 \(t \in [0, \frac{\pi}{2}]\)。
+\[
+\begin{aligned}
+I_2 &= \int_{0}^{\frac{\pi}{2}} (1 - \sin^2 t)^{\frac{3}{2}} \cos t \,\mathrm{d}t \\
+&= \int_{0}^{\frac{\pi}{2}} \cos^3 t \cdot \cos t \,\mathrm{d}t = \int_{0}^{\frac{\pi}{2}} \cos^4 t \,\mathrm{d}t
+\end{aligned}
+\]
+由华里士公式（Wallis 公式）：
+\[
+I_2 = \frac{3}{4} \cdot \frac{1}{2} \cdot \frac{\pi}{2} = \frac{3\pi}{16}
+\]
+
+因此，原积分：
+\[
+I = I_1 - I_2 = \frac{\pi}{4} - \frac{3\pi}{16} = \frac{\pi}{16}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：华里士公式 \(\int_0^{\frac{\pi}{2}} \cos^{2k} x \,\mathrm{d}x = \frac{(2k-1)!!}{(2k)!!} \frac{\pi}{2}\)；圆的方程配方。
+  \item \textbf{易错点}：三角换元时漏乘微分项 \(\mathrm{d}x = \cos t \,\mathrm{d}t\)；未同步更新积分上下限。
+  \item \textbf{关联知识}：定积分的几何意义（遇到 \(\sqrt{a^2 - x^2}\) 形式优先考虑圆的面积，可大幅减少计算量）。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,55 @@
+\begin{mistake}{2026-04-12}{05}
+
+\begin{problemcontent}
+设 \(J\) 为 \(n\) 阶方阵，主对角线上方第一条副对角线元素全为 1，其余元素全为 0。令
+\[
+A=E+J+J^2+\cdots+J^{n-1},
+\]
+求 \(A^{-1}\)。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+矩阵 \(J\) 是严格上三角矩阵，因此它是幂零矩阵，满足
+\[
+J^n=O.
+\]
+
+考虑乘积
+\[
+(E-J)(E+J+J^2+\cdots+J^{n-1}).
+\]
+
+按分配律展开，得
+\[
+\begin{aligned}
+&(E+J+J^2+\cdots+J^{n-1})-(J+J^2+\cdots+J^{n-1}+J^n)\\
+&=E-J^n=E.
+\end{aligned}
+\]
+
+故
+\[
+(E-J)A=E.
+\]
+
+又因为 \(E\) 与 \(J\) 可交换，上式同样可写出
+\[
+A(E-J)=E.
+\]
+
+因此
+\[
+A^{-1}=E-J.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：严格上三角矩阵必幂零，故本题中 \(J^n=O\)；再利用矩阵版等比求和公式 \((E-J)(E+J+\cdots+J^{n-1})=E-J^n\)。
+  \item \textbf{易错点}：不要把结论机械记成“和式的逆是首尾相减”。关键前提是 \(J^n=O\) 且各项都是同一个矩阵 \(J\) 的幂，因此可以交换。
+  \item \textbf{关联知识}：若 \(N\) 为幂零矩阵，常见结论有 \((E-N)^{-1}=E+N+N^2+\cdots+N^{m-1}\)（其中 \(N^m=O\)）。这是考研线代高频模型。
+\end{itemize}}
+
+\end{mistake}

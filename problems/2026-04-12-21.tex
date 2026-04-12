@@ -1,0 +1,38 @@
+\begin{mistake}{2026-04-12}{21}
+
+\begin{problemcontent}
+计算极限：\(\displaystyle \lim_{n \to \infty} \frac{\sum_{k=1}^{n} \sqrt{k}}{\sum_{k=1}^{n} \sqrt{n+k}}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+对原极限的分子和分母同除以 \(n\sqrt{n}\)（提取 \(\frac{1}{n}\) 凑出黎曼和的形式）：
+
+分子：
+\[
+\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^{n} \sqrt{\frac{k}{n}} = \int_{0}^{1} \sqrt{x} \,\mathrm{d}x = \left[ \frac{2}{3}x^{\frac{3}{2}} \right]_0^1 = \frac{2}{3}
+\]
+
+分母：
+\[
+\begin{aligned}
+\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^{n} \sqrt{\frac{n+k}{n}} &= \lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^{n} \sqrt{1 + \frac{k}{n}} \\
+&= \int_{0}^{1} \sqrt{1+x} \,\mathrm{d}x \\
+&= \left[ \frac{2}{3}(1+x)^{\frac{3}{2}} \right]_0^1 \\
+&= \frac{2}{3}(2\sqrt{2} - 1)
+\end{aligned}
+\]
+
+将分子分母极限结果相除，即得原极限：
+\[
+\lim_{n \to \infty} \frac{\sum_{k=1}^{n} \sqrt{k}}{\sum_{k=1}^{n} \sqrt{n+k}} = \frac{\frac{2}{3}}{\frac{2}{3}(2\sqrt{2} - 1)} = \frac{1}{2\sqrt{2} - 1}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：定积分定义（黎曼和）：\(\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^{n} f\left(\frac{k}{n}\right) = \int_{0}^{1} f(x) \,\mathrm{d}x\)。
+  \item \textbf{易错点}：无法判断除以 \(n\) 的几次幂，易在根式内外的 \(n\) 的转换上出错（除以 \(n\sqrt{n}\) 相当于外面留 \(\frac{1}{n}\)，里面除以 \(n\)）。
+  \item \textbf{关联知识}：求积分值时勿忘代入下限 \(0\)（本题分母在 \(x=0\) 时值为 \(\frac{2}{3}\)，极易漏减）。
+\end{itemize}}
+
+\end{mistake}

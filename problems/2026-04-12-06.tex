@@ -1,0 +1,60 @@
+\begin{mistake}{2026-04-12}{06}
+
+\begin{problemcontent}
+设四阶行列式
+\[
+f(x)=\begin{vmatrix}
+1&2&3&4\\
+2&x&4&1\\
+3&4&x&2\\
+4&1&2&3
+\end{vmatrix},
+\]
+求展开式中 \(x^2\) 项的系数。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+矩阵中含 \(x\) 的元素只有 \(a_{22}=x\) 与 \(a_{33}=x\)。要得到 \(x^2\) 项，必须在行列式展开中同时选取这两个元素。
+
+按广义 Laplace 展开，取第 2、3 行与第 2、3 列对应的子式：
+\[
+M=\begin{vmatrix}
+x&4\\
+4&x
+\end{vmatrix}=x^2-16.
+\]
+
+删去第 2、3 行与第 2、3 列后，余下的余子式为
+\[
+N=\begin{vmatrix}
+1&4\\
+4&3
+\end{vmatrix}=3-16=-13.
+\]
+
+符号因子为
+\[
+(-1)^{(2+3)+(2+3)}=(-1)^{10}=1.
+\]
+
+因此对应部分为
+\[
+f(x)\text{ 中由这两行两列产生的项}=1\cdot M\cdot N=(x^2-16)(-13).
+\]
+
+故 \(x^2\) 项的系数为
+\[
+-13.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：求某一特定高次项系数时，应只保留能产生该次数的含参元素组合。广义 Laplace 展开公式为“所取子式乘对应代数余子式”。
+  \item \textbf{易错点}：余子式前必须乘符号因子 \((-1)^{\sum i_k+\sum j_k}\)。另一个高频错误是删行删列后把剩余元素的相对位置写错。
+  \item \textbf{关联知识}：若参数只出现在少数几个位置，优先用“按参数元素定位取项”的方法求系数，而不要把整个四阶行列式完整展开。
+\end{itemize}}
+
+\end{mistake}

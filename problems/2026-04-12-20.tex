@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-12}{20}
+
+\begin{problemcontent}
+计算瑕积分：\(\displaystyle \int_{-1}^{1} \frac{1}{1 + e^{\frac{1}{x}}} \,\mathrm{d}x\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+被积函数在 \(x=0\) 处无定义（为瑕点），故利用定积分的区间可加性将其拆分：
+\[
+I = \int_{-1}^{0} \frac{1}{1 + e^{\frac{1}{x}}} \,\mathrm{d}x + \int_{0}^{1} \frac{1}{1 + e^{\frac{1}{x}}} \,\mathrm{d}x = I_1 + I_2
+\]
+
+对于 \(I_1\)，作变量代换 \(x = -t\)，则 \(\mathrm{d}x = -\mathrm{d}t\)：
+\[
+\begin{aligned}
+I_1 &= \int_{1}^{0} \frac{1}{1 + e^{-\frac{1}{t}}} (-\mathrm{d}t) = \int_{0}^{1} \frac{1}{1 + e^{-\frac{1}{t}}} \,\mathrm{d}t \\
+&= \int_{0}^{1} \frac{e^{\frac{1}{t}}}{e^{\frac{1}{t}} + 1} \,\mathrm{d}t = \int_{0}^{1} \frac{e^{\frac{1}{x}}}{e^{\frac{1}{x}} + 1} \,\mathrm{d}x
+\end{aligned}
+\]
+
+将 \(I_1\) 代入原式，合并 \(I_1\) 和 \(I_2\) 的被积函数：
+\[
+\begin{aligned}
+I &= I_1 + I_2 \\
+&= \int_{0}^{1} \left( \frac{e^{\frac{1}{x}}}{e^{\frac{1}{x}} + 1} + \frac{1}{1 + e^{\frac{1}{x}}} \right) \,\mathrm{d}x \\
+&= \int_{0}^{1} 1 \,\mathrm{d}x \\
+&= 1
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：瑕积分拆分 \(\int_{-a}^{a} f(x) \,\mathrm{d}x = \int_{-a}^{0} f(x) \,\mathrm{d}x + \int_{0}^{a} f(x) \,\mathrm{d}x\)；对称区间换元。
+  \item \textbf{易错点}：忽略 \(x=0\) 的奇点，直接对整个 \([-1, 1]\) 区间作 \(x = -t\) 代换导致逻辑错误。
+  \item \textbf{关联知识}：处理 \(\frac{1}{1+f(x)}\) 且 \(f(x)f(-x)=1\) 形式的对称区间积分时，必有化简凑 \(1\) 的技巧。
+\end{itemize}}
+
+\end{mistake}

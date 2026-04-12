@@ -1,0 +1,60 @@
+\begin{mistake}{2026-04-12}{13}
+
+\begin{problemcontent}
+设 \(a<x<b\)，求
+\[
+\int \frac{dx}{\sqrt{(x-a)(b-x)}}.
+\]
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+先将根号内配方：
+\[
+\begin{aligned}
+(x-a)(b-x)
+&=-x^2+(a+b)x-ab\\
+&=-\left[x^2-(a+b)x+ab\right]\\
+&=-\left[\left(x-\frac{a+b}{2}\right)^2-\frac{(a+b)^2}{4}+ab\right]\\
+&=\frac{(b-a)^2}{4}-\left(x-\frac{a+b}{2}\right)^2.
+\end{aligned}
+\]
+
+故原积分化为
+\[
+\int \frac{dx}{\sqrt{\left(\frac{b-a}{2}\right)^2-\left(x-\frac{a+b}{2}\right)^2}}.
+\]
+
+令
+\[
+u=x-\frac{a+b}{2},
+\qquad
+A=\frac{b-a}{2}>0,
+\]
+则 \(du=dx\)，于是
+\[
+\int \frac{dx}{\sqrt{(x-a)(b-x)}}
+=\int \frac{du}{\sqrt{A^2-u^2}}.
+\]
+
+利用标准积分公式
+\[
+\int \frac{du}{\sqrt{A^2-u^2}}=\arcsin\frac{u}{A}+C,
+\]
+得
+\[
+\int \frac{dx}{\sqrt{(x-a)(b-x)}}
+=\arcsin\frac{x-\frac{a+b}{2}}{\frac{b-a}{2}}+C
+=\arcsin\frac{2x-a-b}{b-a}+C.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：先配方成 \(A^2-u^2\) 的标准形式，再套用 \(\int \dfrac{du}{\sqrt{A^2-u^2}}=\arcsin\dfrac{u}{A}+C\)。
+  \item \textbf{易错点}：\((x-a)(b-x)\) 展开后首项是 \(-x^2\)，配方时必须先提出负号，否则常数项和平方项符号容易全错。
+  \item \textbf{关联知识}：出现 \(\sqrt{\text{二次式}}\) 时，优先判断能否化为 \(A^2-u^2\)、\(u^2+A^2\)、\(u^2-A^2\) 三类标准积分之一。
+\end{itemize}}
+
+\end{mistake}

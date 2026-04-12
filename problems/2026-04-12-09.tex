@@ -1,0 +1,58 @@
+\begin{mistake}{2026-04-12}{09}
+
+\begin{problemcontent}
+设
+\[
+A=[\alpha_1,\alpha_2,\cdots,\alpha_n]
+\]
+为 \(n\) 阶方阵，\(|A|=1\)，
+\[
+B=[\alpha_n,\alpha_1,\cdots,\alpha_{n-1}],
+\]
+求 \(|A-B|\)。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+矩阵 \(B\) 可看作将 \(A\) 的列向量循环右移一位，因此存在循环置换矩阵 \(P\)，使得
+\[
+B=AP.
+\]
+
+于是
+\[
+A-B=A-AP=A(E-P).
+\]
+
+由行列式乘法公式得
+\[
+|A-B|=|A|\,|E-P|.
+\]
+
+又已知 \(|A|=1\)，所以
+\[
+|A-B|=|E-P|.
+\]
+
+下面考察 \(E-P\)。由于 \(P\) 是循环置换矩阵，其每一列恰有一个元素为 1，故 \(E-P\) 的各列之和为零向量，即列向量线性相关。
+
+因此
+\[
+|E-P|=0.
+\]
+
+从而
+\[
+|A-B|=1\cdot 0=0.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若矩阵的列向量线性相关，则其行列式为 0。本题先写成 \(A-B=A(E-P)\)，再用 \(|XY|=|X||Y|\)。
+  \item \textbf{易错点}：\(|A-B|\neq |A|-|B|\)。行列式只对乘法有乘法公式，对加减法没有对应的分配公式。
+  \item \textbf{关联知识}：列循环置换通常可写成右乘置换矩阵；行循环置换则应写成左乘置换矩阵，左右位置要分清。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,77 @@
+\begin{mistake}{2026-04-12}{01}
+
+\begin{problemcontent}
+设三阶矩阵 \(A\)，\(|A|=3\)。将 \(A\) 的第 1、2 行互换，再将第 1 行的 2 倍加到第 2 行，得到矩阵 \(B\)。求 \(|A+B|\)。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+将题述行变换写成左乘初等矩阵。
+
+设交换第 1、2 行对应的初等矩阵为
+\[
+E_1=\begin{pmatrix}
+0&1&0\\
+1&0&0\\
+0&0&1
+\end{pmatrix},
+\]
+将第 1 行的 2 倍加到第 2 行对应的初等矩阵为
+\[
+E_2=\begin{pmatrix}
+1&0&0\\
+2&1&0\\
+0&0&1
+\end{pmatrix}.
+\]
+故
+\[
+B=E_2E_1A=PA,
+\qquad
+P=E_2E_1=
+\begin{pmatrix}
+0&1&0\\
+1&2&0\\
+0&0&1
+\end{pmatrix}.
+\]
+
+于是
+\[
+A+B=A+PA=(E+P)A.
+\]
+
+从而
+\[
+|A+B|=|E+P|\,|A|.
+\]
+
+计算
+\[
+E+P=
+\begin{pmatrix}
+1&1&0\\
+1&3&0\\
+0&0&2
+\end{pmatrix},
+\]
+故
+\[
+|E+P|=2\begin{vmatrix}1&1\\1&3\end{vmatrix}=2(3-1)=4.
+\]
+
+所以
+\[
+|A+B|=4\cdot 3=12.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：行变换对应左乘初等矩阵；行列式满足 \(|XY|=|X||Y|\)。本题先化为 \(A+B=(E+P)A\) 再求行列式。
+  \item \textbf{易错点}：\(|A+B|\neq |A|+|B|\)。行列式对矩阵加法不满足分配律，必须先转化为乘积形式。
+  \item \textbf{关联知识}：对矩阵 \(A\) 做行变换时，新矩阵恒可写成 \(PA\)；若做列变换，则应写成 \(AQ\)。左右乘位置不能混淆。
+\end{itemize}}
+
+\end{mistake}

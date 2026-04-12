@@ -1,0 +1,28 @@
+\begin{mistake}{2026-04-12}{37}
+
+\begin{problemcontent}
+设 \( f(x,y)=\begin{cases} xy, & xy\neq0 \\ 1, & xy=0 \end{cases} \)。判断下列命题中有几个成立：
+① \( f_x(0,0) \)、\( f_y(0,0) \) 存在；
+② \( \lim_{x\to0}f_x(x,0)=f_x(0,0) \)，且 \( \lim_{y\to0}f_y(0,y)=f_y(0,0) \)；
+③ \( f_x \)、\( f_y \) 在 \( (0,0) \) 连续；
+④ \( f \) 在 \( (0,0) \) 可微。
+\end{problemcontent}
+
+\begin{solutioncontent}
+结论：2个（①和②成立）。
+
+**分析**：
+- **① 成立**：\( f_x(0,0) = \lim_{\Delta x \to 0} \frac{f(\Delta x, 0) - f(0,0)}{\Delta x} = \lim_{\Delta x \to 0} \frac{1 - 1}{\Delta x} = 0 \)。同理 \( f_y(0,0)=0 \)。
+- **② 成立**：当 \( x \neq 0 \) 时，\( f_x(x,0) = \lim_{\Delta x \to 0} \frac{f(x+\Delta x, 0) - f(x,0)}{\Delta x} = \frac{1-1}{\Delta x} = 0 \)。故 \( \lim_{x\to0} f_x(x,0) = 0 = f_x(0,0) \)。
+- **③ 不成立**：偏导数在一点连续要求二元极限存在且等于该点偏导值。但函数 \( f \) 在 \( (0,0) \) 处甚至不连续（沿 \( y=x \)，\( \lim_{x\to 0} f(x,x) = \lim x^2 = 0 \neq f(0,0)=1 \)），故偏导数不可能连续。
+- **④ 不成立**：可微必连续。由于函数在 \( (0,0) \) 不连续，故不可微。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心定义}：偏导数存在仅描述函数沿坐标轴方向的变化，不代表函数连续。
+  \item \textbf{易错点}：混淆“沿轴极限”与“二元极限”。② 描述的是一元极限，而 ③ 要求的连续性涉及二元极限。
+  \item \textbf{关联知识}：可微 \(\implies\) 连续 \(\implies\) 极限存在。反之均不成立。
+\end{itemize}}
+
+\end{mistake}

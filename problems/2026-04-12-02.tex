@@ -1,0 +1,58 @@
+\begin{mistake}{2026-04-12}{02}
+
+\begin{problemcontent}
+设 \(n\) 阶方阵 \(A,B\) 满足 \(A^2-AB=E\)，求 \(r(AB-BA+2A)\)。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+由已知式提取左公因子，得
+\[
+A(A-B)=E.
+\]
+
+由于方阵存在右逆必可逆，故 \(A\) 可逆，且
+\[
+A-B=A^{-1}.
+\]
+
+右乘 \(A\)，得
+\[
+(A-B)A=EA=E.
+\]
+
+展开可得
+\[
+A^2-BA=E.
+\]
+
+而已知又给出
+\[
+A^2-AB=E.
+\]
+
+两式相减，得
+\[
+AB=BA.
+\]
+
+于是
+\[
+AB-BA+2A=2A.
+\]
+
+又因 \(A\) 可逆，所以 \(r(A)=n\)，从而
+\[
+r(AB-BA+2A)=r(2A)=r(A)=n.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若 \(n\) 阶方阵 \(A\) 满足 \(AX=E\) 或 \(XA=E\)，则 \(A\) 可逆。可逆矩阵满秩，即 \(r(A)=n\)。
+  \item \textbf{易错点}：不能一开始就默认 \(AB=BA\)。本题中交换性是由 \(A(A-B)=E\) 推出 \(A\) 可逆后，再严格推得的。
+  \item \textbf{关联知识}：矩阵秩在左乘或右乘可逆矩阵时保持不变；数乘非零常数也不改变秩，即 \(r(kA)=r(A)\, (k\neq 0)\)。
+\end{itemize}}
+
+\end{mistake}

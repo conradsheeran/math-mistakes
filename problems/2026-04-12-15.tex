@@ -1,0 +1,76 @@
+\begin{mistake}{2026-04-12}{15}
+
+\begin{problemcontent}
+设 \(F(x)\) 为 \(f(x)\) 的原函数，满足
+\[
+f(x)F(x)=\frac{xe^x}{2(1+x)^2},
+\qquad F(0)=1,
+\qquad F(x)>0,
+\]
+求 \(F(x)\)。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+由“\(F(x)\) 是 \(f(x)\) 的原函数”知
+\[
+F'(x)=f(x).
+\]
+
+于是已知条件化为
+\[
+F'(x)F(x)=\frac{xe^x}{2(1+x)^2}.
+\]
+
+两边同乘 2，得
+\[
+2F(x)F'(x)=\frac{xe^x}{(1+x)^2}.
+\]
+
+左端正是平方函数的导数，因此
+\[
+[F^2(x)]'=\frac{xe^x}{(1+x)^2}.
+\]
+
+再注意到
+\[
+\left(\frac{e^x}{1+x}\right)'
+=\frac{e^x(1+x)-e^x}{(1+x)^2}
+=\frac{xe^x}{(1+x)^2},
+\]
+故有
+\[
+[F^2(x)]'=\left(\frac{e^x}{1+x}\right)'.
+\]
+
+积分得
+\[
+F^2(x)=\frac{e^x}{1+x}+C.
+\]
+
+代入初始条件 \(F(0)=1\)，得
+\[
+1=\frac{1}{1}+C,
+\qquad C=0.
+\]
+
+所以
+\[
+F^2(x)=\frac{e^x}{1+x}.
+\]
+
+又因 \(F(x)>0\)，故取正根：
+\[
+F(x)=\sqrt{\frac{e^x}{1+x}}.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若 \(F'=f\)，则 \(2FF'=(F^2)'\)。本题的突破口是把 \(f(x)F(x)\) 改写成平方函数导数。
+  \item \textbf{易错点}：积分后先得到的是 \(F^2(x)\)，不是直接得到 \(F(x)\)；开方时还要结合 \(F(x)>0\) 选取正根。
+  \item \textbf{关联知识}：遇到形如 \(u\,u'\) 的结构，应优先联想到 \((u^2)'\)；这类“凑导数”方法在微分方程与积分计算中都很常见。
+\end{itemize}}
+
+\end{mistake}

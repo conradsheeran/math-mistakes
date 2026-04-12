@@ -10,3 +10,4 @@
 *.xdv
 *.pdf
 !archive/**/*.pdf
+/tmp

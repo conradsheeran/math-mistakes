@@ -1,0 +1,78 @@
+\begin{mistake}{2026-04-12}{12}
+
+\begin{problemcontent}
+求 \( \displaystyle \int \frac{1}{1+\sin^2 x}\,dx \) 在 \( [0,\pi] \) 上的全体连续原函数 \(F(x)\)。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+先求不定积分。由于 \(x=\dfrac{\pi}{2}\) 处 \(\tan x\) 无定义，应分别在区间 \(\left[0,\dfrac{\pi}{2}\right)\) 与 \(\left(\dfrac{\pi}{2},\pi\right]\) 上积分。
+
+将分子分母同除以 \(\cos^2 x\)，得
+\[
+\int \frac{1}{1+\sin^2 x}\,dx
+=\int \frac{\sec^2 x}{1+\tan^2 x+\tan^2 x}\,dx
+=\int \frac{\sec^2 x}{1+2\tan^2 x}\,dx.
+\]
+
+令 \(t=\tan x\)，则 \(dt=\sec^2 x\,dx\)，于是
+\[
+\int \frac{1}{1+\sin^2 x}\,dx
+=\int \frac{1}{1+2t^2}\,dt
+=\frac{\sqrt{2}}{2}\arctan(\sqrt{2}t)+C.
+\]
+
+故在每个不跨越 \(\dfrac{\pi}{2}\) 的区间上都有
+\[
+F(x)=\frac{\sqrt{2}}{2}\arctan(\sqrt{2}\tan x)+C.
+\]
+
+于是设
+\[
+F(x)=
+\begin{cases}
+\dfrac{\sqrt{2}}{2}\arctan(\sqrt{2}\tan x)+C_1, & x\in\left[0,\dfrac{\pi}{2}\right),\\[6pt]
+\dfrac{\sqrt{2}}{2}\arctan(\sqrt{2}\tan x)+C_2, & x\in\left(\dfrac{\pi}{2},\pi\right].
+\end{cases}
+\]
+
+再由连续性确定常数关系。因为
+\[
+\lim_{x\to \frac{\pi}{2}^-}\arctan(\sqrt{2}\tan x)=\frac{\pi}{2},
+\qquad
+\lim_{x\to \frac{\pi}{2}^+}\arctan(\sqrt{2}\tan x)=-\frac{\pi}{2},
+\]
+所以
+\[
+\lim_{x\to \frac{\pi}{2}^-}F(x)=\frac{\sqrt{2}\pi}{4}+C_1,
+\qquad
+\lim_{x\to \frac{\pi}{2}^+}F(x)=-\frac{\sqrt{2}\pi}{4}+C_2.
+\]
+
+由 \(F(x)\) 在 \(x=\dfrac{\pi}{2}\) 处连续，得
+\[
+\frac{\sqrt{2}\pi}{4}+C_1=-\frac{\sqrt{2}\pi}{4}+C_2,
+\qquad
+C_2=C_1+\frac{\sqrt{2}\pi}{2}.
+\]
+
+记 \(C_1=C\)，则全体连续原函数为
+\[
+F(x)=
+\begin{cases}
+\dfrac{\sqrt{2}}{2}\arctan(\sqrt{2}\tan x)+C, & x\in\left[0,\dfrac{\pi}{2}\right),\\[6pt]
+\dfrac{\sqrt{2}\pi}{4}+C, & x=\dfrac{\pi}{2},\\[6pt]
+\dfrac{\sqrt{2}}{2}\arctan(\sqrt{2}\tan x)+\dfrac{\sqrt{2}\pi}{2}+C, & x\in\left(\dfrac{\pi}{2},\pi\right].
+\end{cases}
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：三角代换的关键是将被积式化为 \(\tan x\) 的有理式，再令 \(t=\tan x\)。连续原函数若跨越代换奇点，必须分区间积分后再用连续性拼接常数。
+  \item \textbf{易错点}：把整个 \([0,\pi]\) 上的原函数直接写成一个常数 \(C\) 的形式是错误的，因为 \(\tan x\) 在 \(x=\dfrac{\pi}{2}\) 处无定义，主值反正切左右极限不同。
+  \item \textbf{关联知识}：若导函数在闭区间上连续，则原函数必连续；本题正是利用这一点在分段积分后确定 \(C_1,C_2\) 的关系。
+\end{itemize}}
+
+\end{mistake}

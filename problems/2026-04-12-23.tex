@@ -1,0 +1,54 @@
+\begin{mistake}{2026-04-12}{23}
+
+\begin{problemcontent}
+已知参数方程：\( x=t+\sin t,\ y=t+\cos t \)，求 \( \displaystyle I=\int_{0}^{1+\frac{\pi}{2}}\left(\frac{\mathrm{d}y}{\mathrm{d}x}\right)^{\frac{3}{2}}\mathrm{d}x \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+当 \(x=0\) 时，\(t=0\)；当 \(x=1+\frac{\pi}{2}\) 时，\(t=\frac{\pi}{2}\)。
+由参数方程求导公式：
+\[
+\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{y'(t)}{x'(t)} = \frac{1-\sin t}{1+\cos t}
+\]
+换元换限，\(\mathrm{d}x = (1+\cos t)\mathrm{d}t\)：
+\[
+\begin{aligned}
+I &= \int_{0}^{\frac{\pi}{2}} \left( \frac{1-\sin t}{1+\cos t} \right)^{\frac{3}{2}} (1+\cos t) \,\mathrm{d}t = \int_{0}^{\frac{\pi}{2}} \frac{(1-\sin t)^{\frac{3}{2}}}{(1+\cos t)^{\frac{1}{2}}} \,\mathrm{d}t
+\end{aligned}
+\]
+利用三角恒等式化简根式。在 \(t \in [0, \frac{\pi}{2}]\) 上，\(\cos\frac{t}{2} \ge \sin\frac{t}{2} \ge 0\)：
+\[
+\begin{aligned}
+1-\sin t &= \left(\cos\frac{t}{2} - \sin\frac{t}{2}\right)^2 \\
+1+\cos t &= 2\cos^2\frac{t}{2}
+\end{aligned}
+\]
+代入后得：
+\[
+I = \int_{0}^{\frac{\pi}{2}} \frac{\left(\cos\frac{t}{2} - \sin\frac{t}{2}\right)^3}{\sqrt{2}\cos\frac{t}{2}} \,\mathrm{d}t
+\]
+令 \(u = \frac{t}{2}\)，\(\mathrm{d}t = 2\mathrm{d}u\)，展开分子：
+\[
+\begin{aligned}
+I &= \sqrt{2} \int_{0}^{\frac{\pi}{4}} \frac{\cos^3 u - 3\cos^2 u\sin u + 3\cos u\sin^2 u - \sin^3 u}{\cos u} \,\mathrm{d}u \\
+  &= \sqrt{2} \int_{0}^{\frac{\pi}{4}} \left( \cos^2 u - 3\sin u\cos u + 3\sin^2 u - \frac{\sin^3 u}{\cos u} \right) \mathrm{d}u
+\end{aligned}
+\]
+对各项分别积分：
+1. \(\int (\cos^2 u + 3\sin^2 u)\,\mathrm{d}u = \int (2-\cos 2u)\,\mathrm{d}u = 2u - \frac{1}{2}\sin 2u\)
+2. \(\int (-3\sin u\cos u)\,\mathrm{d}u = -\frac{3}{2}\sin^2 u\)
+3. \(\int \left(-\frac{\sin^3 u}{\cos u}\right)\mathrm{d}u = \int \frac{\cos^2 u - 1}{\cos u}\,\mathrm{d}(\cos u) = \frac{1}{2}\cos^2 u - \ln(\cos u)\)
+代入上下限 \(0\) 与 \(\frac{\pi}{4}\) 求和，最终得到：
+\[
+I = \sqrt{2}\left(\frac{\pi}{2} - 1 - \frac{1}{2}\ln 2\right)
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：参数换元 \(\int f(x)\mathrm{d}x=\int f(x(t))x'(t)\mathrm{d}t\)；三角半角代换公式。
+  \item \textbf{易错点}：将被积函数的 \(\mathrm{d}x\) 遗漏；开平方时未结合 \(t\) 的取值范围（\(t \in [0, \frac{\pi}{2}]\)）判断符号（\(\cos\frac{t}{2} \ge \sin\frac{t}{2}\)）。
+  \item \textbf{关联知识}：拆分三角函数高次幂积分时，利用凑微分法计算 \(\int \frac{\sin^3 u}{\cos u}\mathrm{d}u\)。
+\end{itemize}}
+
+\end{mistake}

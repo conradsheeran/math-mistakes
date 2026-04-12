@@ -1,0 +1,28 @@
+\begin{mistake}{2026-04-12}{33}
+
+\begin{problemcontent}
+设 \( f(x,y) \) 在连通区域 \( D \) 内可微，下列说法中不正确的是：
+(A) 若 \( f_x=f_y\equiv0 \)，则 \( f \) 为常数；
+(B) 若 \( af_x+bf_y=0,\ cf_x+df_y=0 \)，且 \( \begin{vmatrix} a & b \\ c & d \end{vmatrix}\neq0 \)，则 \( f \) 为常数；
+(C) 若 \( df\equiv0 \)，则 \( f \) 为常数；
+(D) 若 \( xf_x+yf_y\equiv0 \)，则 \( f \) 为常数。
+\end{problemcontent}
+
+\begin{solutioncontent}
+选项 (D) 不正确。
+
+分析如下：
+- (A) 连通区域内梯度为零向量是函数为常数的充分必要条件。
+- (B) 系数行列式非零意味着齐次线性方程组只有零解，即 \( f_x=0, f_y=0 \)，同 (A)。
+- (C) 全微分 \( df = f_x dx + f_y dy \)，\( df\equiv 0 \) 等价于 \( f_x \equiv 0, f_y \equiv 0 \)，同 (A)。
+- (D) \( xf_x+yf_y\equiv0 \) 是一类齐次函数的特征（欧拉定理）。例如 \( f(x,y) = \frac{y}{x} \)，其偏导数为 \( f_x = -\frac{y}{x^2}, f_y = \frac{1}{x} \)，满足 \( x(-\frac{y}{x^2}) + y(\frac{1}{x}) = 0 \)，但 \( f(x,y) \) 并非常数。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心定理}：多元函数在连通开区域上梯度恒为零，则函数恒为常数。
+  \item \textbf{易错点}：混淆“齐次函数欧拉恒等式”与“梯度为零”。\( xf_x+yf_y=k f \) 中 \( k=0 \) 仅表示函数是 0 次齐次函数。
+  \item \textbf{关联知识}：连通性（Connectedness）是微分均值定理应用于高维空间的必要前提。
+\end{itemize}}
+
+\end{mistake}

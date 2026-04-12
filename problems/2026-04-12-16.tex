@@ -1,0 +1,73 @@
+\begin{mistake}{2026-04-12}{16}
+
+\begin{problemcontent}
+求
+\[
+\int_{-1}^{0} \frac{\ln(1+x)}{\sqrt[3]{1+x}}\,dx.
+\]
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(t=1+x\)，则 \(dx=dt\)。当 \(x=-1\) 时 \(t=0\)；当 \(x=0\) 时 \(t=1\)。原积分化为
+\[
+\int_0^1 t^{-1/3}\ln t\,dt.
+\]
+
+这是瑕积分，应写成
+\[
+\int_0^1 t^{-1/3}\ln t\,dt
+=\lim_{\varepsilon\to 0^+}\int_{\varepsilon}^1 t^{-1/3}\ln t\,dt.
+\]
+
+对积分作分部积分。取
+\[
+u=\ln t,
+\qquad dv=t^{-1/3}\,dt,
+\]
+则
+\[
+du=\frac{1}{t}\,dt,
+\qquad v=\frac{3}{2}t^{2/3}.
+\]
+
+于是
+\[
+\begin{aligned}
+\int t^{-1/3}\ln t\,dt
+&=\frac{3}{2}t^{2/3}\ln t-\frac{3}{2}\int t^{-1/3}\,dt\\
+&=\frac{3}{2}t^{2/3}\ln t-\frac{3}{2}\cdot\frac{3}{2}t^{2/3}+C\\
+&=\frac{3}{2}t^{2/3}\ln t-\frac{9}{4}t^{2/3}+C.
+\end{aligned}
+\]
+
+故原积分为
+\[
+\lim_{\varepsilon\to 0^+}\left[\frac{3}{2}t^{2/3}\ln t-\frac{9}{4}t^{2/3}\right]_{\varepsilon}^{1}.
+\]
+
+其中
+\[
+\lim_{t\to 0^+} t^{2/3}\ln t
+=\lim_{t\to 0^+}\frac{\ln t}{t^{-2/3}}
+=\lim_{t\to 0^+}\frac{1/t}{-(2/3)t^{-5/3}}
+=\lim_{t\to 0^+}\left(-\frac{3}{2}t^{2/3}\right)=0.
+\]
+
+又有 \(\lim_{t\to 0^+} t^{2/3}=0\)，故
+\[
+\int_{-1}^{0} \frac{\ln(1+x)}{\sqrt[3]{1+x}}\,dx
+=\left(0-\frac{9}{4}\right)-0
+=-\frac{9}{4}.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：换元后先识别瑕积分，再用分部积分处理 \(\int_0^1 t^{-1/3}\ln t\,dt\)。其中 \(\ln t\) 优先取为 \(u\)。
+  \item \textbf{易错点}：不能把下限 \(0\) 直接代入原函数，必须先写成极限；否则对 \(t^{2/3}\ln t\) 的处理容易失去严格性。
+  \item \textbf{关联知识}：\(\lim_{t\to 0^+} t^\alpha\ln t=0\,(\alpha>0)\) 是常见极限结论，可由洛必达法则或指数替换证明。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,124 @@
+\begin{mistake}{2026-04-12}{08}
+
+\begin{problemcontent}
+设
+\[
+A=\begin{bmatrix}
+1&2&1\\
+2&3&a+2\\
+1&a&-2
+\end{bmatrix},
+\qquad
+B=\begin{bmatrix}
+1&1&a\\
+-1&a&1\\
+1&-1&2
+\end{bmatrix},
+\]
+求使 \(A\) 与 \(B\) 不等价的 \(a\) 的值。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+同型矩阵等价当且仅当秩相等，因此本题要求
+\[
+r(A)\ne r(B).
+\]
+
+先计算两个行列式。
+
+对 \(A\) 按第一行展开：
+\[
+\begin{aligned}
+|A|
+&=\begin{vmatrix}3&a+2\\ a&-2\end{vmatrix}
+-2\begin{vmatrix}2&a+2\\ 1&-2\end{vmatrix}
++\begin{vmatrix}2&3\\ 1&a\end{vmatrix}\\
+&=( -6-a^2-2a)-2(-6-a-2)+(2a-3)\\
+&=-a^2+2a+3\\
+&=-(a-3)(a+1).
+\end{aligned}
+\]
+
+对 \(B\) 按第一行展开：
+\[
+\begin{aligned}
+|B|
+&=\begin{vmatrix}a&1\\ -1&2\end{vmatrix}
+-\begin{vmatrix}-1&1\\ 1&2\end{vmatrix}
++a\begin{vmatrix}-1&a\\ 1&-1\end{vmatrix}\\
+&=(2a+1)-(-3)+a(1-a)\\
+&=-a^2+3a+4\\
+&=-(a-4)(a+1).
+\end{aligned}
+\]
+
+若 \(|A|\ne 0\)，则 \(r(A)=3\)；若 \(|B|\ne 0\)，则 \(r(B)=3\)。
+故只需检查使行列式为零的临界值
+\[
+a=3,\ 4,\ -1.
+\]
+
+当 \(a=3\) 时，\(|A|=0,\ |B|\ne 0\)，故
+\[
+r(A)<3,
+\qquad
+r(B)=3,
+\]
+于是 \(r(A)\ne r(B)\)。
+
+当 \(a=4\) 时，\(|A|\ne 0,\ |B|=0\)，同理有 \(r(A)\ne r(B)\)。
+
+当 \(a=-1\) 时，两者行列式都为 0，需继续验秩。
+
+代入 \(a=-1\) 得
+\[
+A=\begin{bmatrix}
+1&2&1\\
+2&3&1\\
+1&-1&-2
+\end{bmatrix}.
+\]
+其二阶子式
+\[
+\begin{vmatrix}
+1&2\\
+2&3
+\end{vmatrix}=-1\ne 0,
+\]
+故 \(r(A)=2\)。
+
+又
+\[
+B=\begin{bmatrix}
+1&1&-1\\
+-1&-1&1\\
+1&-1&2
+\end{bmatrix}.
+\]
+其中前两行互为相反数，而
+\[
+\begin{vmatrix}
+1&-1\\
+1&2
+\end{vmatrix}=3\ne 0,
+\]
+故 \(r(B)=2\)。
+
+于是 \(a=-1\) 时仍有 \(r(A)=r(B)\)，两矩阵等价。
+
+综上，所求为
+\[
+a=3\quad \text{或}\quad a=4.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：同型矩阵等价 \(\iff\) 秩相等。对三阶矩阵，先用行列式判断是否满秩，再对退化参数继续查二阶子式。
+  \item \textbf{易错点}：公共零点 \(a=-1\) 不能直接判“不等价”。当两个行列式同时为 0 时，必须继续比较具体秩值。
+  \item \textbf{关联知识}：判秩常用顺序是“先看最高阶子式，再降一阶检查”。这比盲目做大量行变换更稳、更快。
+\end{itemize}}
+
+\end{mistake}

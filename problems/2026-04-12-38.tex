@@ -1,0 +1,25 @@
+\begin{mistake}{2026-04-12}{38}
+
+\begin{problemcontent}
+设 \( f \) 可微，且 \( f(0,0)=0 \)。求可由链式法则与牛顿-莱布尼茨公式推出的积分恒等式。
+\end{problemcontent}
+
+\begin{solutioncontent}
+1. **构造辅助函数**：令 \( \Phi(t) = f(tx, ty) \)，其中 \( t \in [0, 1] \)。
+2. **应用链式法则**：
+\[ \frac{d\Phi}{dt} = f_1'(tx, ty) \cdot x + f_2'(tx, ty) \cdot y \]
+3. **应用牛顿-莱布尼茨公式**：
+\[ \int_0^1 \frac{d\Phi}{dt} dt = \Phi(1) - \Phi(0) = f(x, y) - f(0, 0) \]
+4. **代入化简**：
+由于 \( f(0,0)=0 \)，得：
+\[ f(x, y) = x \int_0^1 f_1'(tx, ty) dt + y \int_0^1 f_2'(tx, ty) dt \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心技巧}：引入参数 \( t \) 构造射线路径。这是证明多元微分学中许多中值定理和积分性质的常用手段。
+  \item \textbf{易错点}：积分变量为 \( t \)，而 \( x, y \) 视为常数提至积分号外。
+  \item \textbf{关联知识}：此恒等式是阿达马引理（Hadamard's Lemma）的特殊形式，常用于泰勒展开的余项分析。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,26 @@
+\begin{mistake}{2026-04-12}{34}
+
+\begin{problemcontent}
+设方程 \( F(x,y)=0 \) 在点 \( (x_0,y_0) \) 附近确定隐函数 \( y=y(x) \)，且 \( F_x(x_0,y_0)=0,\ F_y(x_0,y_0)>0 \)。要使 \( x_0 \) 成为 \( y(x) \) 的极小值点，\( F_{xx}(x_0,y_0) \) 的充分条件是什么？
+\end{problemcontent}
+
+\begin{solutioncontent}
+1. **一阶导数**：对 \( F(x,y(x))=0 \) 求导得 \( F_x + F_y y' = 0 \)。在 \( (x_0,y_0) \) 处，由于 \( F_x=0, F_y>0 \)，得 \( y'(x_0) = 0 \)，即 \( x_0 \) 是驻点。
+
+2. **二阶导数**：对 \( F_x + F_y y' = 0 \) 继续关于 \( x \) 求全导数：
+\[ (F_{xx} + F_{xy}y') + (F_{yx} + F_{yy}y')y' + F_y y'' = 0 \]
+将 \( y'(x_0)=0 \) 代入：
+\[ F_{xx}(x_0,y_0) + F_y(x_0,y_0)y''(x_0) = 0 \implies y''(x_0) = -\frac{F_{xx}(x_0,y_0)}{F_y(x_0,y_0)} \]
+
+3. **极小值条件**：一元函数极小值的充分条件是 \( y'(x_0)=0 \) 且 \( y''(x_0)>0 \)。
+由于 \( F_y > 0 \)，要使 \( y''(x_0) > 0 \)，必须满足 \( -F_{xx} > 0 \)，即 \( F_{xx}(x_0,y_0) < 0 \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：一元隐函数二阶导公式 \( y'' = -\frac{F_{xx}F_y^2 - 2F_{xy}F_xF_y + F_{yy}F_x^2}{F_y^3} \)，在驻点处简化为 \( y'' = -F_{xx}/F_y \)。
+  \item \textbf{易错点}：忽略 \( F_y \) 的正负号。极小值要求 \( y''>0 \)，由于公式中有负号，条件往往与直觉相反。
+  \item \textbf{关联知识}：多元函数极值（\( AC-B^2>0 \)）与隐函数极值的区别。
+\end{itemize}}
+
+\end{mistake}

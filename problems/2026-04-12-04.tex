@@ -1,0 +1,47 @@
+\begin{mistake}{2026-04-12}{04}
+
+\begin{problemcontent}
+设方阵 \(A\) 满足 \(A^2+3A+3E=O\)，求 \((A+E)^{-1}\)。
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+由已知
+\[
+A^2+3A+3E=O,
+\]
+移项得
+\[
+A^2+3A+2E=-E.
+\]
+
+左端可因式分解为
+\[
+(A+E)(A+2E)=-E.
+\]
+
+于是
+\[
+(A+E)\bigl[-(A+2E)\bigr]=E.
+\]
+
+因为 \(A+E\) 与 \(A+2E\) 都是 \(A\) 的多项式，彼此可交换，所以同时有
+\[
+\bigl[-(A+2E)\bigr](A+E)=E.
+\]
+
+故 \(-(A+2E)\) 就是 \(A+E\) 的逆矩阵，即
+\[
+(A+E)^{-1}=-A-2E.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：同一矩阵的多项式之间可交换，因此对 \(A^2+3A+2E\) 可按标量多项式方式分解为 \((A+E)(A+2E)\)。
+  \item \textbf{易错点}：原式是 \(A^2+3A+3E=O\)，需先移项化成 \(A^2+3A+2E=-E\)，不能直接错分解成 \((A+E)(A+2E)=O\)。
+  \item \textbf{关联知识}：若能构造出 \((A+E)X=E\) 且 \(X(A+E)=E\)，则 \(X=(A+E)^{-1}\)。对方阵而言，一侧逆通常即可推出可逆，但书写时最好说明理由。
+\end{itemize}}
+
+\end{mistake}

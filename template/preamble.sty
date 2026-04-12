@@ -49,10 +49,16 @@
 \newcommand{\setmistakeremark}[1]{\gdef\mistakeremark{#1}}
 \newcommand{\mistaketitle}{}
 \newcommand{\mistakenumber}{}
+\newcommand{\mistakeremarkfooter}{%
+  \if\relax\detokenize\expandafter{\mistakeremark}\relax
+  \else
+    \textcolor{MistakeRemark}{\scriptsize 备注：\mistakeremark}%
+  \fi
+}
 
 \fancyhead[L]{}
 \fancyhead[R]{\textcolor{MistakeMuted}{\small 第 \thepage\ / \pageref*{LastPage} 页}}
-\fancyfoot[R]{\textcolor{MistakeRemark}{\scriptsize 备注：\mistakeremark}}
+\fancyfoot[R]{\mistakeremarkfooter}
 
 \titleformat{\section}
   {\Large\bfseries\color{MistakeAccent}}

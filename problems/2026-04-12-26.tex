@@ -1,0 +1,47 @@
+\begin{mistake}{2026-04-12}{26}
+
+\begin{problemcontent}
+已知 \( x > -2 \)，函数 \(f(x)\) 满足 \( \displaystyle 2f(x)\left(\int_0^x f(t)\,\mathrm{d}t+\frac{1}{\sqrt{2}}\right)=\frac{(x+1)e^x}{(x+2)^2} \)，求 \(f(x)\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \( \displaystyle F(x) = \int_0^x f(t)\,\mathrm{d}t + \frac{1}{\sqrt{2}} \)，则 \(F'(x) = f(x)\)，且初值 \(F(0) = \frac{1}{\sqrt{2}}\)。
+将原方程代入改写，有：
+\[
+2F'(x)F(x) = \frac{(x+1)e^x}{(x+2)^2} \implies \left(F^2(x)\right)' = \frac{(x+1)e^x}{(x+2)^2}
+\]
+对两边同时积分：
+\[
+\begin{aligned}
+F^2(x) &= \int \frac{(x+1)e^x}{(x+2)^2} \,\mathrm{d}x = \int \frac{(x+2-1)e^x}{(x+2)^2} \,\mathrm{d}x \\
+       &= \int \left( \frac{e^x}{x+2} - \frac{e^x}{(x+2)^2} \right) \mathrm{d}x \\
+       &= \frac{e^x}{x+2} + C \quad \text{（观察得 } \left(\frac{e^x}{x+2}\right)' = \frac{e^x(x+1)}{(x+2)^2} \text{）}
+\end{aligned}
+\]
+代入初值 \(F(0) = \frac{1}{\sqrt{2}}\)，即 \(F^2(0) = \frac{1}{2}\)：
+\[
+\frac{1}{2} = \frac{1}{0+2} + C \implies C = 0
+\]
+所以 \(F^2(x) = \frac{e^x}{x+2}\)。
+由 \(F(0) > 0\) 且在 \(x > -2\) 时 \(\frac{e^x}{x+2} > 0\)，开平方取正号：
+\[
+F(x) = \frac{e^{x/2}}{\sqrt{x+2}}
+\]
+两边求导即可得到 \(f(x)\)：
+\[
+\begin{aligned}
+f(x) = F'(x) &= \frac{ \frac{1}{2}e^{x/2}\sqrt{x+2} - e^{x/2}\frac{1}{2\sqrt{x+2}} }{ x+2 } \\
+             &= \frac{ e^{x/2}(x+2) - e^{x/2} }{ 2(x+2)^{\frac{3}{2}} } \\
+             &= \frac{(x+1)e^{\frac{x}{2}}}{2(x+2)^{\frac{3}{2}}}
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：变上限积分的求导公式；凑微分式 \((u v)' = u' v + u v'\) 应用于 \( \left(\frac{e^x}{x+2}\right)' \)。
+  \item \textbf{易错点}：求解 \(F^2(x)\) 积分后忘记利用 \(x=0\) 求积分常数 \(C\)；开平方时未结合初值条件判断正负号；对有理分式乘指数函数的积分不敏感，没想出拼凑方法。
+  \item \textbf{关联知识}：遇到包含 \(f(x)\) 与其变上限积分乘积的方程，通常换元 \(F(x)=\int_0^x f(t)\mathrm{d}t\) 转化为微分方程，特别是 \((F^2(x))' = 2F(x)F'(x)\) 的形式。
+\end{itemize}}
+
+\end{mistake}

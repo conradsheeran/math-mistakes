@@ -1,0 +1,54 @@
+\begin{mistake}{2026-04-12}{27}
+
+\begin{problemcontent}
+设微分方程 \( y''+by'+cy=0 \) 中 \( b>0,\ c>0 \)。证明其任意解 \( y(x) \) 都满足 \( \lim_{x\to +\infty} y(x) \) 存在，并求该极限。
+\end{problemcontent}
+
+\begin{solutioncontent}
+对应特征方程为
+\[
+r^2+br+c=0
+\]
+设其根为 \(r_1,r_2\)，则
+\[
+r_1+r_2=-b<0,\qquad r_1r_2=c>0
+\]
+分三种情形讨论。
+
+1. 当 \(\Delta=b^2-4c>0\) 时，方程有两个不同实根。由 \(r_1r_2>0\) 知两根同号，再由 \(r_1+r_2<0\) 知两根都小于 0。通解为
+\[
+y=C_1e^{r_1x}+C_2e^{r_2x}
+\]
+由于 \(r_1<0,r_2<0\)，故当 \(x\to +\infty\) 时，\(e^{r_1x}\to 0,\ e^{r_2x}\to 0\)，于是 \(y(x)\to 0\)。
+
+2. 当 \(\Delta=0\) 时，方程有二重实根 \(r=-\dfrac b2<0\)。通解为
+\[
+y=(C_1+C_2x)e^{rx}
+\]
+因为 \(r<0\)，指数因子 \(e^{rx}\to 0\)，且它的衰减快于多项式 \(x\) 的增长，所以 \((C_1+C_2x)e^{rx}\to 0\)。故 \(y(x)\to 0\)。
+
+3. 当 \(\Delta<0\) 时，方程有共轭复根
+\[
+r_{1,2}=-\frac b2\pm i\frac{\sqrt{4c-b^2}}2
+\]
+通解可写为
+\[
+y=e^{-\frac b2x}\left(C_1\cos \frac{\sqrt{4c-b^2}}2x+C_2\sin \frac{\sqrt{4c-b^2}}2x\right)
+\]
+其中三角函数有界，而 \(-\dfrac b2<0\)，故 \(e^{-\frac b2x}\to 0\)，从而 \(y(x)\to 0\)。
+
+综上，无论特征根属于哪一类，任意解都满足
+\[
+\lim_{x\to +\infty}y(x)=0
+\]
+因此该极限存在，且极限值为 \(0\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：二阶常系数齐次方程先写特征方程 \(r^2+br+c=0\)；通解形式由特征根类型决定。
+  \item \textbf{易错点}：由 \(r_1+r_2=-b<0\)、\(r_1r_2=c>0\) 应判断两实根都为负，不能只看到 \(b>0\) 就仓促下结论；重根情形中 \(xe^{rx}\to 0\) 也要说明。
+  \item \textbf{关联知识}：判断线性常系数方程解的无穷远性态，本质上看指数项 \(e^{\lambda x}\) 中特征根实部 \(\operatorname{Re}\lambda\) 的符号。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-12}{19}
+
+\begin{problemcontent}
+计算广义积分：\(\displaystyle \int_0^{+\infty} \frac{1}{(x^2+1)^n} \,\mathrm{d}x\)，其中 \(n\) 为正整数。
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(x = \tan t\)，则 \(\mathrm{d}x = \sec^2 t \,\mathrm{d}t\)。
+当 \(x\) 由 \(0\) 趋于 \(+\infty\) 时，\(t\) 由 \(0\) 趋于 \(\frac{\pi}{2}\)。
+
+代入积分可得：
+\[
+\begin{aligned}
+\int_0^{+\infty} \frac{1}{(x^2+1)^n} \,\mathrm{d}x
+&= \int_{0}^{\frac{\pi}{2}} \frac{1}{(\sec^2 t)^n} \cdot \sec^2 t \,\mathrm{d}t \\
+&= \int_{0}^{\frac{\pi}{2}} \frac{1}{\sec^{2n} t} \cdot \sec^2 t \,\mathrm{d}t \\
+&= \int_{0}^{\frac{\pi}{2}} \cos^{2n-2} t \,\mathrm{d}t
+\end{aligned}
+\]
+
+由华里士公式（Wallis 公式，对偶数次方积分），结果为：
+\[
+\int_{0}^{\frac{\pi}{2}} \cos^{2k} t \,\mathrm{d}t = \frac{(2k-1)!!}{(2k)!!} \frac{\pi}{2}
+\]
+令 \(2k = 2n-2\)，即得：
+\[
+\int_{0}^{+\infty} \frac{1}{(x^2+1)^n} \,\mathrm{d}x = \frac{(2n-3)!!}{(2n-2)!!} \frac{\pi}{2}
+\]
+（此结论对于 \(n=1\) 亦成立，此时积分为 \(\frac{\pi}{2}\)）
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：积分代换 \(\mathrm{d}x = \sec^2 t \,\mathrm{d}t\) 与华里士偶数次方公式。
+  \item \textbf{易错点}：广义积分上限 \(+\infty\) 换元时极易漏换或换错（应对应 \(\frac{\pi}{2}\)）；换元漏微分项。
+  \item \textbf{关联知识}：碰到 \((x^2+a^2)\) 形式首选 \(x = a\tan t\) 换元，将无界区间化为有界区间。
+\end{itemize}}
+
+\end{mistake}

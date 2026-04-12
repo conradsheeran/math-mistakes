@@ -1,0 +1,43 @@
+\begin{mistake}{2026-04-12}{25}
+
+\begin{problemcontent}
+设 \( \displaystyle F(x)=\int_0^{x-\sin x}\ln(1+t)\,\mathrm{d}t \)。当 \( x\to 0 \) 时，\( F(x) \) 与 \( x^n \) 为同阶无穷小，求 \(n\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+当 \(x\to 0\) 时，利用等价无穷小替换及洛必达法则计算极限 \(\lim_{x\to 0} \frac{F(x)}{x^n}\)。
+对 \(F(x)\) 求导（变上限积分求导公式结合复合函数求导）：
+\[
+F'(x) = \ln(1 + x - \sin x) \cdot (1 - \cos x)
+\]
+当 \(x\to 0\) 时，有以下等价无穷小关系：
+\[
+\begin{aligned}
+x - \sin x &\sim \frac{1}{6}x^3 \\
+\ln(1 + x - \sin x) &\sim x - \sin x \sim \frac{1}{6}x^3 \\
+1 - \cos x &\sim \frac{1}{2}x^2
+\end{aligned}
+\]
+因此，\(F'(x)\) 的等价无穷小为：
+\[
+F'(x) \sim \frac{1}{6}x^3 \cdot \frac{1}{2}x^2 = \frac{1}{12}x^5
+\]
+根据洛必达法则：
+\[
+\lim_{x\to 0} \frac{F(x)}{x^n} = \lim_{x\to 0} \frac{F'(x)}{nx^{n-1}} = \lim_{x\to 0} \frac{\frac{1}{12}x^5}{nx^{n-1}}
+\]
+要使 \(F(x)\) 与 \(x^n\) 为同阶无穷小，极限必须为非零常数。
+因此，幂次必须相等，即 \(5 = n-1\)，解得：
+\[
+n = 6
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：变上限积分求导 \(\frac{\mathrm{d}}{\mathrm{d}x}\int_0^{\varphi(x)}f(t)\mathrm{d}t = f(\varphi(x))\varphi'(x)\)；等价无穷小 \(\ln(1+u)\sim u\)，\(x-\sin x\sim \frac{x^3}{6}\)。
+  \item \textbf{易错点}：求导时漏乘上限函数的导数 \((x-\sin x)' = 1-\cos x\)；错误估计 \(x-\sin x\) 的阶数（首个非零项是三次项，不是一次项）。
+  \item \textbf{关联知识}：涉及积分上限为函数的极限问题，优先考虑使用洛必达法则降阶，再配合等价无穷小/泰勒展开分析。
+\end{itemize}}
+
+\end{mistake}

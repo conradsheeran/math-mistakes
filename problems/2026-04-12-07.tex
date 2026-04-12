@@ -1,0 +1,73 @@
+\begin{mistake}{2026-04-12}{07}
+
+\begin{problemcontent}
+计算行列式
+\[
+D=\begin{vmatrix}
+0&2&2&2\\
+2&0&2&2\\
+2&2&0&2\\
+2&2&2&0
+\end{vmatrix}.
+\]
+
+\end{problemcontent}
+
+\begin{solutioncontent}
+该行列式各行元素之和都等于 \(6\)，适合先做行变换化简。
+
+对行列式作变换
+\[
+R_1\leftarrow R_1+R_2+R_3+R_4,
+\]
+则
+\[
+D=\begin{vmatrix}
+6&6&6&6\\
+2&0&2&2\\
+2&2&0&2\\
+2&2&2&0
+\end{vmatrix}.
+\]
+
+提出第一行公因子 \(6\)，得
+\[
+D=6\begin{vmatrix}
+1&1&1&1\\
+2&0&2&2\\
+2&2&0&2\\
+2&2&2&0
+\end{vmatrix}.
+\]
+
+再作行变换
+\[
+R_2\leftarrow R_2-2R_1,\qquad
+R_3\leftarrow R_3-2R_1,\qquad
+R_4\leftarrow R_4-2R_1,
+\]
+得
+\[
+D=6\begin{vmatrix}
+1&1&1&1\\
+0&-2&0&0\\
+0&0&-2&0\\
+0&0&0&-2
+\end{vmatrix}.
+\]
+
+此时为上三角行列式，故
+\[
+D=6\cdot 1\cdot(-2)\cdot(-2)\cdot(-2)=-48.
+\]
+
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：行列式经“某行加上其他行的线性组合”数值不变；上三角行列式等于主对角线元素的乘积。
+  \item \textbf{易错点}：提取第一行公因子后，后续行变换要在新矩阵上继续做。不要把“矩阵初等变换”和“行列式值变化规则”混淆。
+  \item \textbf{关联知识}：对角元相同、非对角元相同的数值矩阵，常可先利用“各行和相等”构造一行常数，再迅速化为三角形。
+\end{itemize}}
+
+\end{mistake}

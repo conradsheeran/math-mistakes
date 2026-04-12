@@ -1,0 +1,36 @@
+\begin{mistake}{2026-04-12}{24}
+
+\begin{problemcontent}
+设半圆形闸门满足 \( x^2+y^2=R^2 \)，坐标原点取在圆心所在直径上并与水面齐平，\(x\) 轴正向朝下，且 \( \rho g=1 \)。求闸门所受总压力 \(p\) 的积分表达式。
+\end{problemcontent}
+
+\begin{solutioncontent}
+利用微元法计算液体静压力。
+由于坐标原点在水面且 \(x\) 轴正向朝下，任意深度 \(x\) 处的压强为：
+\[
+P = \rho g x = x \quad (\text{已知 } \rho g=1)
+\]
+在深度为 \(x\) 处，取一水平微小薄条（宽度为 \(\mathrm{d}x\)）。
+由圆的方程 \( x^2+y^2=R^2 \) 可得该处闸门的半宽为 \(y = \sqrt{R^2-x^2}\)。
+因此，该水平薄条的面积微元为：
+\[
+\mathrm{d}A = 2y \,\mathrm{d}x = 2\sqrt{R^2-x^2} \,\mathrm{d}x
+\]
+该薄条受到的压力微元为：
+\[
+\mathrm{d}p = P \,\mathrm{d}A = x \cdot 2\sqrt{R^2-x^2} \,\mathrm{d}x
+\]
+对半圆形闸门积分，深度 \(x\) 的范围是 \([0, R]\)，故总压力积分表达式为：
+\[
+p = \int_0^R 2x\sqrt{R^2-x^2} \,\mathrm{d}x
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：液体压强 \(P=\rho gh\)；微元法求总压力 \(F=\int P\,\mathrm{d}A\)。
+  \item \textbf{易错点}：错将水深写为 \(R-x\)（原点已在水面且 \(x\) 轴朝下，水深即为 \(x\)）；遗漏乘 \(2\)（弦长应为 \(2y=2\sqrt{R^2-x^2}\)）。
+  \item \textbf{关联知识}：若原点在圆心但水面在圆心上方距离 \(H\) 处，则深度应表示为 \(H+x\)（若 \(x\) 轴朝下）。建立正确的坐标系是微元法的关键。
+\end{itemize}}
+
+\end{mistake}

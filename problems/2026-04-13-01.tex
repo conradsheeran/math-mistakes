@@ -1,0 +1,46 @@
+\begin{mistake}{2026-04-13}{01}
+
+\begin{problemcontent}
+设 \(\mathbf{A}, \mathbf{B}\) 均为三阶矩阵，且 \(\mathbf{A}\mathbf{B} = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}\)，则必有（\quad）
+\begin{itemize}
+ \item[(A)] 矩阵 \(\mathbf{A}\) 第 \(1\) 行的 \(2\) 倍加到第 \(2\) 行得到矩阵 \(\mathbf{B}\)
+ \item[(B)] 矩阵 \(\mathbf{A}\) 第 \(1\) 行的 \(-2\) 倍加到第 \(2\) 行得到矩阵 \(\mathbf{B}^{-1}\)
+ \item[(C)] 矩阵 \(\mathbf{A}\) 第 \(2\) 列的 \(2\) 倍加到第 \(1\) 列得到矩阵 \(\mathbf{B}\)
+ \item[(D)] 矩阵 \(\mathbf{A}\) 第 \(2\) 列的 \(-2\) 倍加到第 \(1\) 列得到矩阵 \(\mathbf{B}^{-1}\)
+\end{itemize}
+\end{problemcontent}
+
+\begin{solutioncontent}
+设已知等式右侧的矩阵为 \(\mathbf{P}\)，易看出其为将单位矩阵第 \(1\) 行的 \(2\) 倍加到第 \(2\) 行所得的初等矩阵，即：
+\[
+\mathbf{P} = \begin{bmatrix} 1 & 0 & 0 \\ 2 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} = \mathbf{E}_{21}(2)
+\]
+对其求逆矩阵，只需将非主对角线元素反号：\(\mathbf{P}^{-1} = \mathbf{E}_{21}(-2)\)。
+
+由已知 \(\mathbf{A}\mathbf{B} = \mathbf{P}\)，等式两边同时取逆矩阵：
+\[
+\begin{aligned}
+(\mathbf{A}\mathbf{B})^{-1} &= \mathbf{P}^{-1} \\
+\mathbf{B}^{-1}\mathbf{A}^{-1} &= \mathbf{P}^{-1}
+\end{aligned}
+\]
+
+等式两边同时右乘矩阵 \(\mathbf{A}\)：
+\[
+\begin{aligned}
+\mathbf{B}^{-1}\mathbf{A}^{-1}\mathbf{A} &= \mathbf{P}^{-1}\mathbf{A} \\
+\mathbf{B}^{-1} &= \mathbf{E}_{21}(-2)\mathbf{A}
+\end{aligned}
+\]
+
+等式右侧为左乘初等矩阵，等价于对 \(\mathbf{A}\) 进行初等行变换：将矩阵 \(\mathbf{A}\) 的第 \(1\) 行的 \(-2\) 倍加到第 \(2\) 行，所得结果即为 \(\mathbf{B}^{-1}\)。故选 (B)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：矩阵乘积的逆 \((\mathbf{A}\mathbf{B})^{-1}=\mathbf{B}^{-1}\mathbf{A}^{-1}\)；左乘初等矩阵等价于行变换，右乘等价于列变换。
+ \item \textbf{易错点}：对乘积求逆时忘记交换矩阵顺序；或者混淆左乘和右乘所代表的行/列变换意义。
+ \item \textbf{关联知识}：倍加初等矩阵 \(\mathbf{E}_{ij}(k)\) 的逆矩阵为其自身变号 \(\mathbf{E}_{ij}(-k)\)，无需使用伴随矩阵法复杂计算。
+\end{itemize}}
+
+\end{mistake}

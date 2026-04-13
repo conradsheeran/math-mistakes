@@ -1,0 +1,40 @@
+\begin{mistake}{2026-04-13}{05}
+
+\begin{problemcontent}
+已知 \(\boldsymbol{A}, \boldsymbol{B}\) 均是 \(n\) 阶可逆矩阵，则错误的是（\quad）
+
+(A) \(\begin{bmatrix} \boldsymbol{A} & \boldsymbol{O} \\ \boldsymbol{O} & \boldsymbol{B} \end{bmatrix}^{-1} = \begin{bmatrix} \boldsymbol{A}^{-1} & \boldsymbol{O} \\ \boldsymbol{O} & \boldsymbol{B}^{-1} \end{bmatrix}\)
+
+(B) \(\begin{bmatrix} \boldsymbol{O} & \boldsymbol{A} \\ \boldsymbol{B} & \boldsymbol{O} \end{bmatrix}^{-1} = \begin{bmatrix} \boldsymbol{O} & \boldsymbol{B}^{-1} \\ \boldsymbol{A}^{-1} & \boldsymbol{O} \end{bmatrix}\)
+
+(C) \(\begin{bmatrix} \boldsymbol{A} & \boldsymbol{O} \\ \boldsymbol{O} & \boldsymbol{B} \end{bmatrix}^{n} = \begin{bmatrix} \boldsymbol{A}^{n} & \boldsymbol{O} \\ \boldsymbol{O} & \boldsymbol{B}^{n} \end{bmatrix}\)
+
+(D) \(\begin{bmatrix} \boldsymbol{O} & \boldsymbol{A} \\ \boldsymbol{B} & \boldsymbol{O} \end{bmatrix}^{n} = \begin{bmatrix} \boldsymbol{O} & \boldsymbol{A}^{n} \\ \boldsymbol{B}^{n} & \boldsymbol{O} \end{bmatrix}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+本题选 (D)。
+
+可利用分块矩阵乘法定义直接验证。
+
+验证选项 (B) 求逆（矩阵相乘等于单位阵 \(\boldsymbol{I}\)）：
+\[
+\begin{bmatrix} \boldsymbol{O} & \boldsymbol{A} \\ \boldsymbol{B} & \boldsymbol{O} \end{bmatrix} \begin{bmatrix} \boldsymbol{O} & \boldsymbol{B}^{-1} \\ \boldsymbol{A}^{-1} & \boldsymbol{O} \end{bmatrix} = \begin{bmatrix} \boldsymbol{A}\boldsymbol{A}^{-1} & \boldsymbol{O} \\ \boldsymbol{O} & \boldsymbol{B}\boldsymbol{B}^{-1} \end{bmatrix} = \begin{bmatrix} \boldsymbol{I} & \boldsymbol{O} \\ \boldsymbol{O} & \boldsymbol{I} \end{bmatrix} = \boldsymbol{I}
+\]
+等式成立，结论正确。
+
+验证选项 (D) 求幂（取特例 \(n=2\) 计算平方）：
+\[
+\begin{bmatrix} \boldsymbol{O} & \boldsymbol{A} \\ \boldsymbol{B} & \boldsymbol{O} \end{bmatrix}^2 = \begin{bmatrix} \boldsymbol{O} & \boldsymbol{A} \\ \boldsymbol{B} & \boldsymbol{O} \end{bmatrix} \begin{bmatrix} \boldsymbol{O} & \boldsymbol{A} \\ \boldsymbol{B} & \boldsymbol{O} \end{bmatrix} = \begin{bmatrix} \boldsymbol{A}\boldsymbol{B} & \boldsymbol{O} \\ \boldsymbol{O} & \boldsymbol{B}\boldsymbol{A} \end{bmatrix}
+\]
+结果变成了主对角分块矩阵。而选项 (D) 给出的形式代入 \(n=2\) 为 \(\begin{bmatrix} \boldsymbol{O} & \boldsymbol{A}^2 \\ \boldsymbol{B}^2 & \boldsymbol{O} \end{bmatrix}\)，二者形式完全不符，故 (D) 错误。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：副对角分块矩阵的逆矩阵公式 \(\begin{bmatrix} \boldsymbol{O} & \boldsymbol{A} \\ \boldsymbol{B} & \boldsymbol{O} \end{bmatrix}^{-1} = \begin{bmatrix} \boldsymbol{O} & \boldsymbol{B}^{-1} \\ \boldsymbol{A}^{-1} & \boldsymbol{O} \end{bmatrix}\)。
+ \item \textbf{易错点}：记忆副对角阵求逆时易漏掉矩阵块的位置互换；误以为副对角阵的幂运算可以直接将指数分配至内部矩阵块。
+ \item \textbf{关联知识}：副对角分块矩阵的幂运算具有奇偶震荡性，偶数次幂退化为主对角阵形式，奇数次幂恢复为副对角阵形式。遇到抽象等式判定应优先代入特例验证。
+\end{itemize}}
+
+\end{mistake}

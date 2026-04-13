@@ -1,0 +1,34 @@
+\begin{mistake}{2026-04-13}{04}
+
+\begin{problemcontent}
+已知矩阵 \(A = \begin{bmatrix} 1 & 1 & 1 & 1 \\ 0 & 1 & -1 & a \\ 2 & 3 & a & 4 \\ 3 & 5 & 1 & 9 \end{bmatrix}\)，\(A^*\) 是 \(A\) 的伴随矩阵，若 \(r(A^*) = 1\)，则 \(a =\) （\quad）
+
+(A) 8 \qquad (B) 2 \qquad (C) 1 \qquad (D) 1或3
+\end{problemcontent}
+
+\begin{solutioncontent}
+由 \(r(A^*) = 1\) 及伴随矩阵的性质可知，对于 4 阶方阵 \(A\)，必然满足 \(r(A) = 4 - 1 = 3\)。
+因为 \(r(A) = 3 < 4\)，即 \(A\) 降秩，故 \(|A| = 0\)。对 \(|A|\) 进行初等行变换降阶计算：
+
+\[
+\begin{aligned}
+|A| &= \begin{vmatrix} 1 & 1 & 1 & 1 \\ 0 & 1 & -1 & a \\ 2 & 3 & a & 4 \\ 3 & 5 & 1 & 9 \end{vmatrix} \\
+&\xrightarrow{r_3-2r_1,\, r_4-3r_1} \begin{vmatrix} 1 & 1 & 1 & 1 \\ 0 & 1 & -1 & a \\ 0 & 1 & a-2 & 2 \\ 0 & 2 & -2 & 6 \end{vmatrix} \\
+&= \begin{vmatrix} 1 & -1 & a \\ 1 & a-2 & 2 \\ 2 & -2 & 6 \end{vmatrix} \\
+&\xrightarrow{r_3-2r_1} \begin{vmatrix} 1 & -1 & a \\ 1 & a-2 & 2 \\ 0 & 0 & 6-2a \end{vmatrix} \\
+&= (6-2a)[(a-2)-(-1)] = 2(3-a)(a-1)
+\end{aligned}
+\]
+
+令 \(|A| = 0\)，解得 \(a = 1\) 或 \(a = 3\)。
+代回原矩阵检验：当 \(a=1\) 和 \(a=3\) 时，分别化简矩阵 \(A\) 至行阶梯形，均存在 3 个非零行，即满足 \(r(A)=3\)。故选 (D)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：对于 \(n\) 阶方阵，若 \(r(A)=n\)，则 \(r(A^*)=n\)；若 \(r(A)=n-1\)，则 \(r(A^*)=1\)；若 \(r(A)<n-1\)，则 \(r(A^*)=0\)。
+ \item \textbf{易错点}：利用初等行变换求含参矩阵的秩时，如果主元包含参数却不讨论其为 0 的情况，极易导致漏解（本题易漏 \(a=1\)）。
+ \item \textbf{关联知识}：方阵定参问题中，首选行列式等于 0 降维求解候选参数，再代回检验，可完美避开行变换消元分类讨论的繁琐陷阱。
+\end{itemize}}
+
+\end{mistake}

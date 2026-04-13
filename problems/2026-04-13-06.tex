@@ -1,0 +1,36 @@
+\begin{mistake}{2026-04-13}{06}
+
+\begin{problemcontent}
+下列命题中，正确的是（\quad）
+
+（1）如果矩阵 \(AB=E\)，则 \(A\) 可逆且 \(A^{-1}=B\).
+
+（2）如果 \(n\) 阶矩阵 \(A,B\) 满足 \((AB)^2=E\)，则 \((BA)^2=E\).
+
+（3）如果矩阵 \(A,B\) 均 \(n\) 阶不可逆，则 \(A+B\) 必不可逆.
+
+（4）如果矩阵 \(A,B\) 均 \(n\) 阶不可逆，则 \(AB\) 必不可逆.
+
+(A) (1)(2) \quad (B) (1)(4) \quad (C) (2)(3) \quad (D) (2)(4)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案选 (D)。
+
+对于（1）：错误。条件中未指明 \(A,B\) 是 \(n\) 阶方阵。例如取 \(A=\begin{pmatrix} 1 & 0 \end{pmatrix}\)，\(B=\begin{pmatrix} 1 \\ 0 \end{pmatrix}\)，则 \(AB=E_1\)，但 \(A,B\) 不是方阵，不可逆。
+
+对于（2）：正确。已知 \((AB)^2=E\)，展开为 \(ABAB=E\)。利用矩阵乘法结合律，将其视为 \(A(BAB)=E\)。由同阶方阵的单侧可逆定理（若 \(MN=E\)，则必然 \(NM=E\)），可将最左侧的 \(A\) 移至最右侧，得到 \((BAB)A=E\)，即 \((BA)^2=E\)。
+
+对于（3）：错误。构造反例，令 \(A=\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}\)，\(B=\begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\)。此时 \(|A|=0\)，\(|B|=0\)，两者均不可逆，但 \(A+B=\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}=E\)，行列式为 \(1 \neq 0\)，是可逆的。
+
+对于（4）：正确。若 \(A,B\) 均 \(n\) 阶不可逆，则 \(|A|=0\) 且 \(|B|=0\)。由方阵行列式的乘法性质，\(|AB|=|A||B|=0\times0=0\)，故 \(AB\) 必不可逆。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：方阵单侧可逆定理（同阶方阵 \(MN=E \Rightarrow NM=E\)）；行列式乘法性质 \(|AB|=|A||B|\)。
+ \item \textbf{易错点}：审题时忽略“\(n\) 阶方阵”这一关键定语导致对（1）误判；误将 \((AB)^2\) 展开为 \(A^2B^2\)（矩阵乘法无交换律）。
+ \item \textbf{关联知识}：判断选择题中涉及“矩阵”与“方阵”的文字陷阱时，常通过构造维度不匹配的非方阵，或含零分块对角阵来寻找反例。
+\end{itemize}}
+
+\end{mistake}

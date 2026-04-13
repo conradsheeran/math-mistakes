@@ -1,0 +1,36 @@
+\begin{mistake}{2026-04-13}{03}
+
+\begin{problemcontent}
+设 \(A, B\) 均为 \(n\) 阶矩阵，且 \(AB = A + B\)，则
+(1) 若 \(A\) 可逆，则 \(B\) 可逆.
+(2) 若 \(B\) 可逆，则 \(A+B\) 可逆.
+(3) 若 \(B\) 可逆，则 \(A\) 可逆.
+(4) \(A-E\) 恒可逆.
+上述命题中，正确的命题共有（\quad）
+(A) 1个. \quad (B) 2个. \quad (C) 3个. \quad (D) 4个.
+\end{problemcontent}
+
+\begin{solutioncontent}
+由 \(AB = A + B\) 移项得 \(AB - A - B = 0\)。
+两边同加 \(E\)，提取公因式配凑得 \((A-E)(B-E) = E\)。
+根据方阵可逆定义，可知 \(A-E\) 与 \(B-E\) 均可逆，故命题 (4) 正确，且 \(|A-E| \neq 0, |B-E| \neq 0\)。
+
+由 \(AB = A + B\)，分别提取公因式 \(A\) 和 \(B\)：
+\(B = A(B-E) \implies |B| = |A| \cdot |B-E|\)
+\(A = (A-E)B \implies |A| = |A-E| \cdot |B|\)
+因为 \(|B-E| \neq 0\) 且 \(|A-E| \neq 0\)，可知 \(|A| \neq 0 \iff |B| \neq 0\)。即 \(A\) 可逆等价于 \(B\) 可逆，故命题 (1)、(3) 均正确。
+
+若 \(B\) 可逆，由上述结论知 \(A\) 亦可逆，此时 \(|A| \neq 0\) 且 \(|B| \neq 0\)。
+对原式两边取行列式得 \(|A+B| = |AB| = |A| \cdot |B| \neq 0\)，因此 \(A+B\) 可逆，故命题 (2) 正确。
+
+综上所述，4 个命题均正确，选 (D)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：方阵乘积的行列式 \(|AB|=|A| \cdot |B|\)；矩阵配凑法 \((A-E)(B-E)=E\)。
+ \item \textbf{易错点}：判断 \(A+B\) 可逆时，易陷入直接凑逆矩阵的误区。应利用已知条件 \(A+B=AB\) 将和转化为积，再取行列式判断是否为零。
+ \item \textbf{关联知识}：方阵可逆的充要条件为 \(|A| \neq 0\)；若 \(n\) 阶方阵满足 \(MN=E\)，则 \(M, N\) 均可逆。
+\end{itemize}}
+
+\end{mistake}

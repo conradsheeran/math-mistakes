@@ -1,0 +1,27 @@
+\begin{mistake}{2026-04-13}{02}
+
+\begin{problemcontent}
+设 \(A\) 为 \(4 \times 5\) 矩阵，\(B,C\) 为 \(5 \times 4\) 矩阵，若 \(AB = E\)，\(AC = O\)，\(C \neq O\)，则 \(r(C) =\) \\
+(A) 1 \qquad (B) 2 \qquad (C) 3 \qquad (D) 4
+\end{problemcontent}
+
+\begin{solutioncontent}
+已知 \(AB=E\)（其中 \(E\) 为 \(4 \times 4\) 满秩单位阵），故 \(r(AB)=4\)。
+
+根据矩阵乘积的秩不等式 \(r(AB) \le r(A)\)，得 \(4 \le r(A)\)。又因 \(A\) 是 \(4 \times 5\) 矩阵，其秩受限于行列较小值，即 \(r(A) \le \min(4,5)=4\)。两者结合得 \(r(A)=4\)。
+
+已知 \(AC=O\)，应用矩阵相乘为零矩阵的秩定理 \(r(A) + r(C) \le 5\)（5为内部衔接维度）。将 \(r(A)=4\) 代入，得 \(4 + r(C) \le 5\)，即 \(r(C) \le 1\)。
+
+又已知 \(C \neq O\)，非零矩阵的秩至少为 1，即 \(r(C) \ge 1\)。
+
+综上可得 \(r(C) = 1\)。故选 (A)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：若 \(A_{m \times n}C_{n \times s} = O\)，则 \(r(A) + r(C) \le n\)；乘积矩阵秩不等式 \(r(AB) \le r(A)\)。
+ \item \textbf{易错点}：看到 \(AB=E\) 时未能条件反射两边取秩并利用不等式求出 \(r(A)\) 的确切值；对 \(AC=O\) 的代数结论不熟练。
+ \item \textbf{关联知识}：\(AC=O\) 本质上意味着 \(C\) 的所有列向量都是齐次方程组 \(Ax=0\) 的解，故 \(C\) 的秩不能超过解空间的维数 \(n-r(A)\)。
+\end{itemize}}
+
+\end{mistake}

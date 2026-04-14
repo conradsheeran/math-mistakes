@@ -1,0 +1,29 @@
+\begin{mistake}{2026-04-14}{02}
+
+\begin{problemcontent}
+设 \(A\) 是 \(5 \times 4\) 矩阵，且 \(A\) 的列向量线性无关，\(B\) 是 \(4\) 阶矩阵，满足 \(2AB = A\)。\(B^*\) 是 \(B\) 的伴随矩阵，则 \(r(B^*) =\) ?
+\end{problemcontent}
+
+\begin{solutioncontent}
+由 \(2AB = A\) 移项得 \(2AB - A = O\)，提取公因子得 \(A(2B - E) = O\)。
+
+因为 \(A\) 是 \(5 \times 4\) 矩阵，且列向量线性无关，所以 \(A\) 是列满秩矩阵，即 \(r(A) = 4\)。
+
+根据若 \(A_{m \times n}C_{n \times s} = O\) 则 \(r(A) + r(C) \le n\) 的定理，可得：
+\[ r(A) + r(2B - E) \le 4 \]
+
+将 \(r(A) = 4\) 代入，得 \(4 + r(2B - E) \le 4\)，即 \(r(2B - E) \le 0\)。
+因为矩阵的秩非负，故 \(r(2B - E) = 0\)，由此得出零矩阵 \(2B - E = O\)，解得 \(B = \frac{1}{2}E\)。
+
+由于 \(E\) 为 \(4\) 阶单位矩阵，故 \(B\) 为满秩矩阵，即 \(r(B) = 4\)。
+根据伴随矩阵秩的定理，当 \(r(B) = 4\)（即满秩）时，其伴随矩阵也满秩，故 \(r(B^*) = 4\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：方程组解空间降维定理（若 \(AB = O\)，则 \(r(A) + r(B) \le n\)）；伴随矩阵的秩定理。
+ \item \textbf{易错点}：无视矩阵乘法没有消去律，直接约去 \(A\) 得到 \(2B=E\)（必须通过秩或齐次方程组原理推导）；只要看到伴随矩阵就盲目猜秩为 1。
+ \item \textbf{关联知识}：\(n\) 阶矩阵伴随阵秩的完整分类：\(r(B)=n \Rightarrow r(B^*)=n\)；\(r(B)=n-1 \Rightarrow r(B^*)=1\)；\(r(B)<n-1 \Rightarrow r(B^*)=0\)。
+\end{itemize}}
+
+\end{mistake}

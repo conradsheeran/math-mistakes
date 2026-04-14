@@ -1,0 +1,40 @@
+\begin{mistake}{2026-04-14}{04}
+
+\begin{problemcontent}
+已知 \(A,B\) 均为 \(n\) 阶非零矩阵，且秩 \(r(A) = r(B)\)，则必有（\quad）。
+
+(A) \(r(A, B) = r(A)\) 
+
+(B) \(r(A, B) = 2r(A)\)
+
+(C) \(r(A, B) \leqslant 2r(A)\) 
+
+(D) \(r(A - B) = 0\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确选项为 (C)。
+
+根据分块矩阵的秩的性质，拼接矩阵 \((A, B)\) 的列向量组由 \(A\) 和 \(B\) 的列向量组组合而成，其极大无关组的大小不会超过两者极大无关组大小之和，即：
+\[ r(A, B) \leqslant r(A) + r(B) \]
+将已知条件 \(r(A) = r(B)\) 代入上式，即可得到：
+\[ r(A, B) \leqslant r(A) + r(A) = 2r(A) \]
+因此 (C) 选项必然成立。
+
+反例排除法：
+设 \(A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, B = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}\)，满足 \(r(A)=r(B)=1\)。
+此时 \((A, B) = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{pmatrix}\)，则 \(r(A, B) = 2 \neq r(A)\)，排除 (A)。
+此时 \(A - B = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}\)，\(r(A-B) = 2 \neq 0\)，排除 (D)。
+
+另设 \(A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, B = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}\)，满足 \(r(A)=r(B)=1\)。
+此时 \((A, B) = \begin{pmatrix} 1 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}\)，则 \(r(A, B) = 1 \neq 2r(A)\)，排除 (B)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：分块矩阵列拼接的秩不等式 \(r(A, B) \leqslant r(A) + r(B)\)。
+ \item \textbf{易错点}：混淆“秩相等”与“列空间相同”。\(r(A)=r(B)\) 推不出 \(B\) 的列向量能由 \(A\) 线性表出，故不能轻率选 (A)。
+ \item \textbf{关联知识}：\(r(A, B) = r(A)\) 成立的充要条件是矩阵方程 \(AX=B\) 有解。
+\end{itemize}}
+
+\end{mistake}

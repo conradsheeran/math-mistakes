@@ -1,0 +1,28 @@
+\begin{mistake}{2026-04-14}{03}
+
+\begin{problemcontent}
+设 \(\mathbf{A}\) 为 \(m \times n\) 矩阵，\(\mathbf{C}\) 是 \(n\) 阶可逆矩阵，\(r(\mathbf{A}) = r\)，矩阵 \(\mathbf{B} = \mathbf{AC}\) 的秩为 \(r_1\)，则（\quad）
+
+(A) \(r > r_1\). \qquad (B) \(r < r_1\). \qquad (C) \(r = r_1\). \qquad (D) \(r\) 与 \(r_1\) 和 \(\mathbf{C}\) 有关.
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案为 (C)。
+
+根据矩阵秩的性质，矩阵乘上一个可逆矩阵，其秩不变。
+因为 \(\mathbf{C}\) 为 \(n\) 阶可逆矩阵，所以 \(\mathbf{A}\) 右乘 \(\mathbf{C}\) 相当于对 \(\mathbf{A}\) 做了一系列初等列变换，而初等变换不改变矩阵的秩。
+因此有：
+\[ r(\mathbf{AC}) = r(\mathbf{A}) \]
+又因为 \(\mathbf{B} = \mathbf{AC}\)，且已知 \(r(\mathbf{A}) = r\)，\(r(\mathbf{B}) = r_1\)，代入等式可得：
+\[ r_1 = r(\mathbf{B}) = r(\mathbf{AC}) = r(\mathbf{A}) = r \]
+即 \(r = r_1\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：矩阵乘可逆矩阵秩不变。若 \(\mathbf{P}, \mathbf{Q}\) 分别为适阶可逆矩阵，则对于任意矩阵 \(\mathbf{M}\)，有 \(r(\mathbf{PM}) = r(\mathbf{M})\) 且 \(r(\mathbf{MQ}) = r(\mathbf{M})\)。
+ \item \textbf{易错点}：死记含有特定字母的公式（如教辅上的 \(r(\mathbf{AB})=r(\mathbf{B})\)）而忽略字母代表的实际条件，导致考试时符号一变就出错。
+ \item \textbf{关联知识}：任意矩阵乘积的秩不等式 \(r(\mathbf{AB}) \le \min\{r(\mathbf{A}), r(\mathbf{B})\}\)；可逆矩阵可分解为初等矩阵的乘积。
+\end{itemize}}
+
+\end{mistake}

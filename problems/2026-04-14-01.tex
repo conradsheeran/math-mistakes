@@ -1,0 +1,25 @@
+\begin{mistake}{2026-04-14}{01}
+
+\begin{problemcontent}
+设 3 阶矩阵 \(\mathbf{A} = [\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3]\)，若 \(\boldsymbol{\alpha}_1 = \boldsymbol{\alpha}_2 + \boldsymbol{\alpha}_3\) 且 \(\mathbf{A}^* \neq \mathbf{O}\)，则 \(r(\mathbf{A}) =\) ( \quad )\\
+(A) 0 \qquad (B) 1 \qquad (C) 2 \qquad (D) 3
+\end{problemcontent}
+
+\begin{solutioncontent}
+由 \(\boldsymbol{\alpha}_1 = \boldsymbol{\alpha}_2 + \boldsymbol{\alpha}_3\) 可知向量组 \(\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3\) 线性相关。由于 3 阶方阵 \(\mathbf{A}\) 的列向量线性相关，因此 \(\mathbf{A}\) 不满秩，即 \(r(\mathbf{A}) < 3\)。
+
+又由已知伴随矩阵 \(\mathbf{A}^* \neq \mathbf{O}\)，即 \(\mathbf{A}^*\) 至少有一个元素不为 0，可知其秩 \(r(\mathbf{A}^*) \ge 1\)。
+
+根据伴随矩阵秩的性质，对于 3 阶方阵 \(\mathbf{A}\)，若 \(r(\mathbf{A}) \le 3-2=1\)，则 \(r(\mathbf{A}^*) = 0\)，这与 \(r(\mathbf{A}^*) \ge 1\) 矛盾。因此，必须有 \(r(\mathbf{A}) \ge 2\)。
+
+结合 \(r(\mathbf{A}) < 3\) 与 \(r(\mathbf{A}) \ge 2\)，且秩为整数，可得 \(r(\mathbf{A}) = 2\)。故选 (C)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：对于 \(n\) 阶矩阵 \(\mathbf{A}\)，其伴随矩阵的秩满足：当 \(r(\mathbf{A}) = n\) 时 \(r(\mathbf{A}^*) = n\)；当 \(r(\mathbf{A}) = n-1\) 时 \(r(\mathbf{A}^*) = 1\)；当 \(r(\mathbf{A}) \le n-2\) 时 \(r(\mathbf{A}^*) = 0\)。
+ \item \textbf{易错点}：未能将 \(\mathbf{A}^* \neq \mathbf{O}\) 准确翻译为 \(r(\mathbf{A}^*) \ge 1\) 并结合上述定理反推出 \(r(\mathbf{A}) \ge n-1\)。
+ \item \textbf{关联知识}：\(n\) 阶方阵的列向量组线性相关 \(\iff\) 矩阵的行列式 \(|\mathbf{A}| = 0\) \(\iff\) 矩阵不满秩 (\(r(\mathbf{A}) < n\))。
+\end{itemize}}
+
+\end{mistake}

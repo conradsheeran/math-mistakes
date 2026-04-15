@@ -1,0 +1,55 @@
+\begin{mistake}{2026-04-15}{03}
+
+\begin{problemcontent}
+设线性方程组 \(\boldsymbol{A}_{3\times3}\boldsymbol{x} = \boldsymbol{b}\)，即
+\[
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + a_{13}x_3 = b_1 \\
+a_{21}x_1 + a_{22}x_2 + a_{23}x_3 = b_2 \\
+a_{31}x_1 + a_{32}x_2 + a_{33}x_3 = b_3
+\end{cases}
+\]
+有唯一解 \(\boldsymbol{\xi} = (1,2,3)^{\mathrm{T}}\)。
+
+方程组 \(\boldsymbol{B}_{3\times4}\boldsymbol{y} = \boldsymbol{b}\)，即
+\[
+\begin{cases}
+a_{11}y_1 + a_{12}y_2 + a_{13}y_3 + a_{14}y_4 = b_1 \\
+a_{21}y_1 + a_{22}y_2 + a_{23}y_3 + a_{24}y_4 = b_2 \\
+a_{31}y_1 + a_{32}y_2 + a_{33}y_3 + a_{34}y_4 = b_3
+\end{cases}
+\]
+有特解 \(\boldsymbol{\eta} = (-2,1,4,2)^{\mathrm{T}}\)，则方程组 \(\boldsymbol{B}_{3\times4}\boldsymbol{y} = \boldsymbol{b}\) 的通解是 \underline{\qquad\qquad}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+设矩阵 \(\boldsymbol{A} = (\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3)\)。
+因 \(\boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}\) 有唯一解 \(\boldsymbol{\xi} = (1,2,3)^{\mathrm{T}}\)，将其代入并按列展开得：
+\[ \boldsymbol{\alpha}_1 + 2\boldsymbol{\alpha}_2 + 3\boldsymbol{\alpha}_3 = \boldsymbol{b} \quad (1) \]
+同时可知矩阵 \(\boldsymbol{A}\) 满秩，即 \(r(\boldsymbol{A}) = 3\)。
+
+观察两方程组系数可知，矩阵 \(\boldsymbol{B}\) 的前三列与 \(\boldsymbol{A}\) 完全相同。
+设 \(\boldsymbol{B} = (\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3, \boldsymbol{\alpha}_4)\)。将特解 \(\boldsymbol{\eta} = (-2,1,4,2)^{\mathrm{T}}\) 代入 \(\boldsymbol{B}\boldsymbol{y}=\boldsymbol{b}\) 并按列展开得：
+\[ -2\boldsymbol{\alpha}_1 + \boldsymbol{\alpha}_2 + 4\boldsymbol{\alpha}_3 + 2\boldsymbol{\alpha}_4 = \boldsymbol{b} \quad (2) \]
+
+将 (1) 式减去 (2) 式以消去 \(\boldsymbol{b}\)，合并同类项得：
+\[ 3\boldsymbol{\alpha}_1 + \boldsymbol{\alpha}_2 - \boldsymbol{\alpha}_3 - 2\boldsymbol{\alpha}_4 = \boldsymbol{0} \]
+逆向转化为矩阵乘法形式：
+\[ \boldsymbol{B} \begin{pmatrix} 3 \\ 1 \\ -1 \\ -2 \end{pmatrix} = \boldsymbol{0} \]
+即 \(\boldsymbol{\zeta} = (3, 1, -1, -2)^{\mathrm{T}}\) 是齐次线性方程组 \(\boldsymbol{B}\boldsymbol{y}=\boldsymbol{0}\) 的解。
+
+因为 \(\boldsymbol{B}\) 包含满秩子块 \(\boldsymbol{A}\) 且行数为 3，所以 \(r(\boldsymbol{B}) = 3\)。
+齐次方程组基础解系的向量个数为 \(n - r(\boldsymbol{B}) = 4 - 3 = 1\)。因此，\(\boldsymbol{\zeta}\) 即为基础解系。
+
+由非齐次线性方程组解的结构定理，通解为：
+\[ \boldsymbol{y} = \boldsymbol{\eta} + k\boldsymbol{\zeta} = \begin{pmatrix} -2 \\ 1 \\ 4 \\ 2 \end{pmatrix} + k \begin{pmatrix} 3 \\ 1 \\ -1 \\ -2 \end{pmatrix} \quad (k \text{ 为任意常数}) \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：非齐次通解 = 非齐次特解 + 齐次通解；齐次基础解系向量个数 \(n-r(\boldsymbol{A})\)；矩阵乘法的列向量展开。
+ \item \textbf{易错点}：忽略 \(\boldsymbol{A}\) 与 \(\boldsymbol{B}\) 矩阵前三列相同的隐藏条件，没有将方程转换为列向量的线性组合。
+ \item \textbf{关联知识}：若已知 \(\boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}\) 的两个特解 \(\boldsymbol{\eta}_1, \boldsymbol{\eta}_2\)，则 \(\boldsymbol{\eta}_1 - \boldsymbol{\eta}_2\) 必为对应齐次方程 \(\boldsymbol{A}\boldsymbol{x}=\boldsymbol{0}\) 的解。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,51 @@
+\begin{mistake}{2026-04-15}{02}
+
+\begin{problemcontent}
+设二次型 \(f(x_1, x_2) = x_1^2 - 4x_1x_2 + ax_2^2\) 经过正交变换 \(\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \boldsymbol{Q} \begin{bmatrix} y_1 \\ y_2 \end{bmatrix}\) 化为二次型 \(g(y_1, y_2) = 4y_1^2 + 4y_1y_2 + by_2^2\)。
+(1) 求 \(a, b\) 的值；
+(2) 求正交矩阵 \(\boldsymbol{Q}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+(1) 写出二次型 \(f\) 与 \(g\) 对应的实对称矩阵：
+\[ \boldsymbol{A} = \begin{bmatrix} 1 & -2 \\ -2 & a \end{bmatrix}, \quad \boldsymbol{B} = \begin{bmatrix} 4 & 2 \\ 2 & b \end{bmatrix} \]
+由题意知变换为正交变换，正交矩阵 \(\boldsymbol{Q}\) 满足 \(\boldsymbol{Q}^T=\boldsymbol{Q}^{-1}\)，故 \(\boldsymbol{A}\) 与 \(\boldsymbol{B}\) 既合同又相似。
+根据相似矩阵的迹（主对角线元素之和）相等与行列式相等：
+\[
+\begin{aligned}
+\text{tr}(\boldsymbol{A}) &= \text{tr}(\boldsymbol{B}) \implies 1 + a = 4 + b \\
+|\boldsymbol{A}| &= |\boldsymbol{B}| \implies a - 4 = 4b - 4
+\end{aligned}
+\]
+联立解得 \(a = 4, b = 1\)。
+
+(2) 将 \(a, b\) 代入得 \(\boldsymbol{A} = \begin{bmatrix} 1 & -2 \\ -2 & 4 \end{bmatrix}, \boldsymbol{B} = \begin{bmatrix} 4 & 2 \\ 2 & 1 \end{bmatrix}\)。
+求特征值：\(|\lambda\boldsymbol{I} - \boldsymbol{A}| = \lambda^2 - 5\lambda = 0\)，得 \(\lambda_1 = 0, \lambda_2 = 5\)。
+
+对 \(\boldsymbol{A}\) 求正交矩阵 \(\boldsymbol{Q}_1\)：
+当 \(\lambda_1 = 0\) 时，解 \(\boldsymbol{Ax}=\boldsymbol{0}\) 得单位特征向量 \(\boldsymbol{u}_1 = \frac{1}{\sqrt{5}}\begin{bmatrix} 2 \\ 1 \end{bmatrix}\)；
+当 \(\lambda_2 = 5\) 时，解 \((5\boldsymbol{I}-\boldsymbol{A})\boldsymbol{x}=\boldsymbol{0}\) 得单位特征向量 \(\boldsymbol{u}_2 = \frac{1}{\sqrt{5}}\begin{bmatrix} 1 \\ -2 \end{bmatrix}\)。
+令 \(\boldsymbol{Q}_1 = \frac{1}{\sqrt{5}}\begin{bmatrix} 2 & 1 \\ 1 & -2 \end{bmatrix}\)，则 \(\boldsymbol{Q}_1^T\boldsymbol{A}\boldsymbol{Q}_1 = \begin{bmatrix} 0 & 0 \\ 0 & 5 \end{bmatrix} = \boldsymbol{\Lambda}\)。
+
+对 \(\boldsymbol{B}\) 求正交矩阵 \(\boldsymbol{Q}_2\)（注意特征列向量顺序需与上面严格对应）：
+当 \(\lambda_1 = 0\) 时，解 \(\boldsymbol{Bx}=\boldsymbol{0}\) 得单位特征向量 \(\boldsymbol{w}_1 = \frac{1}{\sqrt{5}}\begin{bmatrix} 1 \\ -2 \end{bmatrix}\)；
+当 \(\lambda_2 = 5\) 时，解 \((5\boldsymbol{I}-\boldsymbol{B})\boldsymbol{x}=\boldsymbol{0}\) 得单位特征向量 \(\boldsymbol{w}_2 = \frac{1}{\sqrt{5}}\begin{bmatrix} 2 \\ 1 \end{bmatrix}\)。
+令 \(\boldsymbol{Q}_2 = \frac{1}{\sqrt{5}}\begin{bmatrix} 1 & 2 \\ -2 & 1 \end{bmatrix}\)，则 \(\boldsymbol{Q}_2^T\boldsymbol{B}\boldsymbol{Q}_2 = \begin{bmatrix} 0 & 0 \\ 0 & 5 \end{bmatrix} = \boldsymbol{\Lambda}\)。
+
+由于等号右侧均为相同的 \(\boldsymbol{\Lambda}\)，故 \(\boldsymbol{Q}_1^T\boldsymbol{A}\boldsymbol{Q}_1 = \boldsymbol{Q}_2^T\boldsymbol{B}\boldsymbol{Q}_2\)。
+等式两端同侧左乘 \(\boldsymbol{Q}_2\) 且右乘 \(\boldsymbol{Q}_2^T\)，得：
+\[ \boldsymbol{B} = \boldsymbol{Q}_2\boldsymbol{Q}_1^T\boldsymbol{A}\boldsymbol{Q}_1\boldsymbol{Q}_2^T = (\boldsymbol{Q}_1\boldsymbol{Q}_2^T)^T\boldsymbol{A}(\boldsymbol{Q}_1\boldsymbol{Q}_2^T) \]
+对照标准形式 \(\boldsymbol{B} = \boldsymbol{Q}^T\boldsymbol{A}\boldsymbol{Q}\)，可取过渡矩阵 \(\boldsymbol{Q} = \boldsymbol{Q}_1\boldsymbol{Q}_2^T\)：
+\[
+\boldsymbol{Q} = \frac{1}{5}\begin{bmatrix} 2 & 1 \\ 1 & -2 \end{bmatrix}\begin{bmatrix} 1 & -2 \\ 2 & 1 \end{bmatrix} = \frac{1}{5}\begin{bmatrix} 4 & -3 \\ -3 & -4 \end{bmatrix}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：正交变换（\(\boldsymbol{Q}^T=\boldsymbol{Q}^{-1}\)）不仅使新旧实对称矩阵合同（\(\boldsymbol{Q}^T\boldsymbol{A}\boldsymbol{Q}=\boldsymbol{B}\)），也使其必然相似；相似矩阵拥有相同的迹和行列式。
+ \item \textbf{易错点}：构造正交矩阵 \(\boldsymbol{Q}_1\) 和 \(\boldsymbol{Q}_2\) 时，特征列向量的排列顺序必须严格匹配对应的特征值，否则对角阵 \(\boldsymbol{\Lambda}\) 不相等，无法桥接。还原矩阵时勿忘转置分配律 \((\boldsymbol{XY})^T = \boldsymbol{Y}^T\boldsymbol{X}^T\)。
+ \item \textbf{关联知识}：二次型展开为矩阵时，交叉项 \(x_ix_j\) 的系数需平分填入矩阵的第 \(i\) 行 \(j\) 列与第 \(j\) 行 \(i\) 列，确保构造出实对称矩阵。
+\end{itemize}}
+
+\end{mistake}

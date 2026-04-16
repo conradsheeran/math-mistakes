@@ -1,0 +1,35 @@
+\begin{mistake}{2026-04-16}{03}
+
+\begin{problemcontent}
+设 \(A\) 为三阶非零矩阵，\(\alpha,\beta\) 为 3 维非零列向量，满足 \(r(A) = r(A^2)\)，\(A^2\alpha = \mathbf{0}\)，\(\begin{pmatrix} A \\ \alpha^{\mathrm{T}} \end{pmatrix}\beta = \mathbf{0}\)，则 \(r(A) =\) \underline{\qquad\qquad}.
+\end{problemcontent}
+
+\begin{solutioncontent}
+由 \(r(A) = r(A^2)\) 可知齐次线性方程组 \(Ax = \mathbf{0}\) 与 \(A^2x = \mathbf{0}\) 同解。
+已知 \(A^2\alpha = \mathbf{0}\)，故有 \(A\alpha = \mathbf{0}\)。
+
+将分块矩阵等式按行展开：
+\[
+\begin{pmatrix} A \\ \alpha^{\mathrm{T}} \end{pmatrix}\beta = \begin{pmatrix} A\beta \\ \alpha^{\mathrm{T}}\beta \end{pmatrix} = \begin{pmatrix} \mathbf{0} \\ 0 \end{pmatrix}
+\]
+由此可得 \(A\beta = \mathbf{0}\) 且 \(\alpha^{\mathrm{T}}\beta = 0\)。
+
+因 \(A\alpha = \mathbf{0}\) 且 \(A\beta = \mathbf{0}\)，故 \(\alpha, \beta\) 均为 \(Ax = \mathbf{0}\) 的解。
+又因 \(\alpha, \beta\) 均为非零向量且正交（\(\alpha^{\mathrm{T}}\beta = 0\)），故它们线性无关。
+因此，方程组 \(Ax = \mathbf{0}\) 的基础解系至少包含两个向量，其解空间维数 \(\dim N(A) \ge 2\)。
+
+由秩-零化度定理：
+\[
+r(A) = 3 - \dim N(A) \le 3 - 2 = 1
+\]
+又因 \(A\) 为三阶非零矩阵，必有 \(r(A) \ge 1\)，故 \(r(A) = 1\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：若 \(r(A)=r(A^2)\)，则 \(Ax=\mathbf{0}\) 与 \(A^2x=\mathbf{0}\) 同解；基础解系维数公式 \(r(A) + \dim N(A) = n\)。
+ \item \textbf{易错点}：未利用 \(\alpha^{\mathrm{T}}\beta = 0\) 证明两向量线性无关，进而无法确定基础解系维数下界；忽略“非零矩阵”隐含 \(r(A)\ge 1\) 的条件。
+ \item \textbf{关联知识}：正交的非零向量组必定线性无关；分块矩阵与列向量相乘的展开规则。
+\end{itemize}}
+
+\end{mistake}

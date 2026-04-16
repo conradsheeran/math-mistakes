@@ -1,0 +1,41 @@
+\begin{mistake}{2026-04-16}{04}
+
+\begin{problemcontent}
+若 \(\begin{bmatrix} 1 & 1 \\ 2 & 2 \end{bmatrix} X = \begin{bmatrix} 2 & 3 \\ 4 & 6 \end{bmatrix}\)，则 \(X =\) \underline{\hspace{3cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+设该矩阵方程为 \(AX=B\)。
+计算系数矩阵行列式：\(|A| = \begin{vmatrix} 1 & 1 \\ 2 & 2 \end{vmatrix} = 0\)，故 \(A\) 不可逆，不能使用 \(X = A^{-1}B\) 求解。
+
+将求矩阵 \(X\) 转化为求解若干个非齐次线性方程组，构造增广矩阵并进行初等行变换：
+\[
+(A \mid B) = \left[\begin{array}{cc|cc}
+1 & 1 & 2 & 3 \\
+2 & 2 & 4 & 6
+\end{array}\right]
+\xrightarrow{r_2 - 2r_1}
+\left[\begin{array}{cc|cc}
+1 & 1 & 2 & 3 \\
+0 & 0 & 0 & 0
+\end{array}\right]
+\]
+
+化简后对应方程为 \(x_{1j} + x_{2j} = b_{1j}\)。
+对于第一列：\(x_{11} + x_{21} = 2\)，令 \(x_{11} = k_1\)，则 \(x_{21} = 2 - k_1\)。
+对于第二列：\(x_{12} + x_{22} = 3\)，令 \(x_{12} = k_2\)，则 \(x_{22} = 3 - k_2\)。
+
+因此，矩阵方程的通解为：
+\[
+X = \begin{bmatrix} k_1 & k_2 \\ 2-k_1 & 3-k_2 \end{bmatrix} \quad (k_1, k_2 \in \mathbb{R})
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：矩阵方程 \(AX=B\) 的解法。若 \(|A|=0\)，需构造增广矩阵 \((A \mid B)\) 通过初等行变换求解。
+ \item \textbf{易错点}：盲目对不可逆矩阵求逆；解题时凭直觉只写出一个特解（如错题图中的解），忽略了含自由变量的通解。
+ \item \textbf{关联知识}：非齐次线性方程组当系数矩阵秩小于未知数个数时，存在无穷多解，需引入自由变量表达通解。
+\end{itemize}}
+
+\end{mistake}

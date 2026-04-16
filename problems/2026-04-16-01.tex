@@ -1,0 +1,45 @@
+\begin{mistake}{2026-04-16}{01}
+
+\begin{problemcontent}
+已知非齐次线性方程组 \((\mathrm{I})\) 与 \((\mathrm{II})\) 同解，其中
+\[
+(\mathrm{I}) \begin{cases} x_1 + x_2 - 2x_3 = 5, \\ x_2 + x_3 = 2, \end{cases} \quad
+(\mathrm{II}) \begin{cases} ax_1 + 4x_2 + x_3 = 11, \\ 2x_1 + 5x_2 - ax_3 = 16, \end{cases}
+\]
+则 \(a =\) \underline{\hspace{2cm}}.
+\end{problemcontent}
+
+\begin{solutioncontent}
+解方程组 \((\mathrm{I})\)，令自由变量 \(x_3 = t\)，由第二式得 \(x_2 = 2 - t\)。
+将 \(x_2, x_3\) 代入第一式得 \(x_1 = 5 - (2 - t) + 2t = 3 + 3t\)。
+故方程组 \((\mathrm{I})\) 的通解为：
+\[
+\begin{cases}
+x_1 = 3 + 3t \\
+x_2 = 2 - t \\
+x_3 = t
+\end{cases} \quad (t \in \mathbb{R})
+\]
+因 \((\mathrm{I})\) 与 \((\mathrm{II})\) 同解，故 \((\mathrm{I})\) 的通解必满足 \((\mathrm{II})\)。将通解代入 \((\mathrm{II})\) 的第一个方程：
+\[
+a(3 + 3t) + 4(2 - t) + t = 11
+\]
+展开并按参数 \(t\) 合并同类项，化简得：
+\[
+(3a - 3)t + 3a - 3 = 0
+\]
+由于两方程组同解，该等式必须对任意实数 \(t\) 恒成立。由恒等式原理，其各项系数必须为零：
+\[
+3a - 3 = 0 \implies a = 1
+\]
+将 \(a=1\) 及通解代入 \((\mathrm{II})\) 第二个方程检验：\(2(3+3t)+5(2-t)-t=16 \implies 16=16\)，等式恒成立。故填 \(1\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：线性方程组同解的本质是解集完全相同，将一个方程组的通解代入另一个方程组必然恒成立。
+ \item \textbf{易错点}：取特解代入求参数极易漏解或产生增根，必须代入完整的含参通解，并利用恒等关系求解。
+ \item \textbf{关联知识}：多项式恒等定理（若关于 \(t\) 的多项式恒为 \(0\)，则其所有对应项系数必全为 \(0\)）。
+\end{itemize}}
+
+\end{mistake}

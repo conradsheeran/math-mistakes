@@ -1,0 +1,27 @@
+\begin{mistake}{2026-04-16}{05}
+
+\begin{problemcontent}
+设 \(A_{n \times n}x = 0\)，其中 \(|A|=0\)，\(A\) 的伴随矩阵 \(A^*\) 是已知的，余子式 \(M_{1n} \neq 0\)，则 \(Ax=0\) 的通解是 \underline{\hspace{3cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+由 \(M_{1n} \neq 0\) 可知，矩阵 \(A\) 中存在 \((n-1)\) 阶非零子式，故 \(\text{rank}(A) \ge n-1\)。
+又已知 \(|A|=0\)，说明 \(A\) 不满秩，即 \(\text{rank}(A) \le n-1\)。两者结合可得 \(\text{rank}(A) = n-1\)。
+因此，齐次线性方程组 \(Ax=0\) 的基础解系仅含 \(n - (n-1) = 1\) 个解向量。
+
+根据伴随矩阵性质 \(AA^* = |A|E\)，代入 \(|A|=0\) 得 \(AA^* = O\)。
+这表明 \(A^*\) 的每一列向量均是方程组 \(Ax=0\) 的解。
+由伴随矩阵的定义，\(A\) 的第 1 行元素的代数余子式构成了 \(A^*\) 的第 1 列向量 \(\alpha_1^* = (A_{11}, A_{12}, \cdots, A_{1n})^T\)。
+因为代数余子式 \(A_{1n} = (-1)^{1+n} M_{1n} \neq 0\)，所以 \(\alpha_1^*\) 必为非零解向量，可作为基础解系。
+
+故通解为 \(x = k(A_{11}, A_{12}, \cdots, A_{1n})^T\)（其中 \(k\) 为任意常数），亦可记作 \(k\alpha_1^*\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式}：伴随矩阵基本关系 \(AA^* = |A|E\)。当 \(|A|=0\) 时，\(AA^*=O\)，即 \(A^*\) 的所有列向量都是 \(Ax=0\) 的解。
+ \item \textbf{易错点}：伴随矩阵构造时的转置关系易错，\(A\) 第 1 行的代数余子式构成的是 \(A^*\) 的第 1 列，切勿提取错误。
+ \item \textbf{关联知识}：矩阵的秩等于其最高阶非零子式的阶数；齐次方程组基础解系包含 \(n-\text{rank}(A)\) 个线性无关的向量。
+\end{itemize}}
+
+\end{mistake}

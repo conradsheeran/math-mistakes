@@ -1,0 +1,37 @@
+\begin{mistake}{2026-04-19}{04}
+
+\begin{problemcontent}
+设 \(A=[a_{ij}]\) 是三阶正交矩阵，其中 \(a_{33}=-1, \boldsymbol{b}=(0,0,5)^T\)，则线性方程组 \(A\boldsymbol{x}=\boldsymbol{b}\) 的解是 \underline{\quad\quad\quad}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+因为 \(A\) 是正交矩阵，其行向量均为规范正交基（即模长为 \(1\)），故第 \(3\) 行元素满足：
+\[a_{31}^2 + a_{32}^2 + a_{33}^2 = 1\]
+已知 \(a_{33} = -1\)，代入得 \(a_{31}^2 + a_{32}^2 = 0\)，从而解得 \(a_{31} = 0, a_{32} = 0\)。
+
+又因为正交矩阵满足 \(A^{-1} = A^T\)，对方程 \(A\boldsymbol{x}=\boldsymbol{b}\) 两边同乘 \(A^{-1}\) 得 \(\boldsymbol{x} = A^{-1}\boldsymbol{b} = A^T\boldsymbol{b}\)。
+
+展开计算：
+\[
+\begin{aligned}
+\boldsymbol{x} &= A^T \boldsymbol{b} \\
+&= \begin{bmatrix}
+a_{11} & a_{21} & a_{31} \\
+a_{12} & a_{22} & a_{32} \\
+a_{13} & a_{23} & a_{33}
+\end{bmatrix}
+\begin{bmatrix} 0 \\ 0 \\ 5 \end{bmatrix} \\
+&= \begin{bmatrix} 5a_{31} \\ 5a_{32} \\ 5a_{33} \end{bmatrix}
+\end{aligned}
+\]
+将推导出的 \(a_{31}=0, a_{32}=0, a_{33}=-1\) 代入，得 \(\boldsymbol{x} = (0, 0, -5)^T\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式与定理}：正交矩阵等价条件 \(A^{-1} = A^T\)；其行/列向量模长均为 \(1\)（即 \(\sum a_{ij}^2 = 1\)）。
+ \item \textbf{易错点}：看到 \(A\boldsymbol{x}=\boldsymbol{b}\) 试图强求矩阵 \(A\) 的全部元素，未意识到利用 \(A^{-1}=A^T\) 直接整体代换。
+ \item \textbf{关联知识}：由于行（列）向量为单位向量，当正交矩阵中某元素绝对值为 \(1\) 时，其所在行与列的其余元素必定全为 \(0\)。
+\end{itemize}}
+
+\end{mistake}

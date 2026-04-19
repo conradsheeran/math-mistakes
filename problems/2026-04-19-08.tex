@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-19}{08}
+
+\begin{problemcontent}
+设 \(2\) 阶正交矩阵 \(A\) 的主对角线元素满足 \(a_{11} + 2 = a_{22}\)，则 \(A = \) \underline{\hspace{2cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+设 \(2\) 阶正交矩阵 \(A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}\)。
+
+由正交矩阵的列向量为单位向量（模长为 \(1\)），可知矩阵中任意元素满足 \(|a_{ij}| \le 1\)，故有：
+\[ -1 \le a_{11} \le 1, \quad -1 \le a_{22} \le 1 \]
+
+将题设条件 \(a_{22} = a_{11} + 2\) 代入关于 \(a_{22}\) 的不等式：
+\[ -1 \le a_{11} + 2 \le 1 \implies -3 \le a_{11} \le -1 \]
+
+结合 \(-1 \le a_{11} \le 1\)，取交集可得唯一解：
+\[ a_{11} = -1 \]
+进而得到 \(a_{22} = a_{11} + 2 = 1\)。
+
+再由列向量的单位性：
+\[
+\begin{aligned}
+a_{11}^2 + a_{21}^2 &= 1 &\implies (-1)^2 + a_{21}^2 = 1 \implies a_{21} = 0 \\
+a_{12}^2 + a_{22}^2 &= 1 &\implies a_{12}^2 + 1^2 = 1 \implies a_{12} = 0
+\end{aligned}
+\]
+
+故该正交矩阵为：
+\[ A = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：正交矩阵满足 \(A^TA=E\)，其列（行）向量均为标准正交基，任意元素必满足 \(a_{ij} \in [-1, 1]\)。
+ \item \textbf{易错点}：设出四个未知数建立四次非线性方程组硬解，未第一时间利用元素的有界性去“夹逼”求解。
+ \item \textbf{关联知识}：\(2\) 阶正交矩阵的标准参数形式仅有两种：旋转矩阵（主对角线元素相等）与反射矩阵（主对角线元素互为相反数）。
+\end{itemize}}
+
+\end{mistake}

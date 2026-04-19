@@ -1,0 +1,36 @@
+\begin{mistake}{2026-04-19}{01}
+
+\begin{problemcontent}
+若向量组 \(\alpha_1, \alpha_2, \cdots, \alpha_s\) 可由向量组 \(\beta_1, \beta_2, \cdots, \beta_s\) 线性表出，则 \(\alpha_1, \alpha_2, \cdots, \alpha_s\) 线性无关是 \(\beta_1, \beta_2, \cdots, \beta_s\) 线性无关的（\quad ）
+
+(A) 充分必要条件. \\
+(B) 充分不必要条件. \\
+(C) 必要不充分条件. \\
+(D) 既不充分也不必要条件.
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：(B)
+
+已知向量组 \(\alpha\) 可由向量组 \(\beta\) 线性表出，根据定理有：
+\[ r(\alpha_1, \alpha_2, \cdots, \alpha_s) \le r(\beta_1, \beta_2, \cdots, \beta_s) \]
+
+\textbf{充分性}：若 \(\alpha_1, \alpha_2, \cdots, \alpha_s\) 线性无关，则其秩为 \(s\)。代入上式得：
+\[ s \le r(\beta_1, \beta_2, \cdots, \beta_s) \]
+又因向量组 \(\beta\) 仅有 \(s\) 个向量，必有 \(r(\beta_1, \beta_2, \cdots, \beta_s) \le s\)。结合两式得出 \(r(\beta_1, \beta_2, \cdots, \beta_s) = s\)，故 \(\beta_1, \beta_2, \cdots, \beta_s\) 线性无关，充分性成立。
+
+\textbf{必要性}：若 \(\beta_1, \beta_2, \cdots, \beta_s\) 线性无关，则其秩为 \(s\)。代入前提仅得：
+\[ r(\alpha_1, \alpha_2, \cdots, \alpha_s) \le s \]
+无法保证 \(r(\alpha) = s\)。例如当所有 \(\alpha_i\) 均为零向量时，其可由任一线性无关的 \(\beta\) 组表出，但此时 \(\alpha\) 组线性相关，必要性不成立。
+
+综上所述，是充分不必要条件。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：向量组 \(A\) 可由 \(B\) 线性表出 \(\Rightarrow r(A) \le r(B)\)；含 \(s\) 个向量的向量组线性无关 \(\Leftrightarrow\) 其秩等于 \(s\)。
+ \item \textbf{易错点}：未建立起“向量组表出关系 \(\Leftrightarrow\) 秩的不等式”的直觉，企图通过线性组合的定义法硬算，导致无法推进。
+ \item \textbf{关联知识}：若两向量组“等价”（相互表出），则其秩相等。此时其中一组线性无关，另一组必然也线性无关（互为充分必要条件）。
+\end{itemize}}
+
+\end{mistake}

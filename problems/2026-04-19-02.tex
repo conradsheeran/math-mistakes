@@ -1,0 +1,49 @@
+\begin{mistake}{2026-04-19}{02}
+
+\begin{problemcontent}
+设 \(\alpha_1 = \begin{pmatrix} 0 \\ 0 \\ c_1 \end{pmatrix}, \alpha_2 = \begin{pmatrix} 0 \\ 1 \\ c_2 \end{pmatrix}, \alpha_3 = \begin{pmatrix} 1 \\ -1 \\ c_3 \end{pmatrix}, \alpha_4 = \begin{pmatrix} -1 \\ 1 \\ c_4 \end{pmatrix}\)，其中 \(c_1, c_2, c_3, c_4\) 为任意常数，则下列向量组线性相关的是（ \quad ）
+
+(A) \(\alpha_1, \alpha_2, \alpha_3\) \quad
+(B) \(\alpha_1, \alpha_2, \alpha_4\) \quad
+(C) \(\alpha_1, \alpha_3, \alpha_4\) \quad
+(D) \(\alpha_2, \alpha_3, \alpha_4\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：(C)
+
+将四个向量按列构成矩阵，并进行初等行变换（第 \(2\) 行加上第 \(1\) 行）：
+\[
+\begin{pmatrix}
+0 & 0 & 1 & -1 \\
+0 & 1 & -1 & 1 \\
+c_1 & c_2 & c_3 & c_4
+\end{pmatrix}
+\xrightarrow{r_2+r_1}
+\begin{pmatrix}
+0 & 0 & 1 & -1 \\
+0 & 1 & 0 & 0 \\
+c_1 & c_2 & c_3 & c_4
+\end{pmatrix}
+\]
+
+提取选项 (C) 对应的第 \(1, 3, 4\) 列构成子矩阵 \(C'\)：
+\[
+C' = \begin{pmatrix}
+0 & 1 & -1 \\
+0 & 0 & 0 \\
+c_1 & c_3 & c_4
+\end{pmatrix}
+\]
+
+由于矩阵 \(C'\) 包含全零行，其行列式必然为 \(0\)（即秩必然小于 \(3\)）。因此，无论常数 \(c_1, c_3, c_4\) 取何值，\(\alpha_1, \alpha_3, \alpha_4\) 都恒定线性相关。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：\(n\) 个 \(n\) 维列向量线性相关 \(\iff\) 它们构成的方阵行列式为 \(0\) \(\iff\) 矩阵列秩 \(< n\)。
+ \item \textbf{易错点}：将寻找“恒线性相关”的题目误解为寻找“极大线性无关组”，导致答题逻辑完全颠倒。
+ \item \textbf{关联知识}：矩阵的初等行变换不改变其列秩，也不改变列向量组内部的线性相关性；含有全零行的方阵行列式必定为 \(0\)。
+\end{itemize}}
+
+\end{mistake}

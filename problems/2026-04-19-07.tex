@@ -1,0 +1,36 @@
+\begin{mistake}{2026-04-19}{07}
+
+\begin{problemcontent}
+设 \(A, B\) 是 3 阶矩阵，\(A\) 是非零矩阵，且满足 \(AB = O\)，\(B = \begin{bmatrix} 1 & -1 & 1 \\ 2a & 1-a & 2a \\ a & -a & a^2-2 \end{bmatrix}\)，则（ \quad ）。
+
+(A) \(a=-1\) 时，必有 \(r(A)=1\) \qquad (B) \(a=2\) 时，必有 \(r(A)=2\)
+
+(C) \(a=-1\) 时，必有 \(r(A)=2\) \qquad (D) \(a=2\) 时，必有 \(r(A)=1\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+已知 \(A\) 为 3 阶非零矩阵，且 \(AB=O\)。
+由矩阵乘积的秩不等式可知 \(r(A)+r(B) \le 3\)；因为 \(A \neq O\)，所以 \(r(A) \ge 1\)。
+
+当 \(a=-1\) 时，
+\[
+B = \begin{bmatrix} 1 & -1 & 1 \\ -2 & 2 & -2 \\ -1 & 1 & -1 \end{bmatrix}
+\]
+由于矩阵各行元素成比例，故 \(r(B)=1\)。代入秩不等式得 \(r(A) \le 2\)，结合下界知 \(1 \le r(A) \le 2\)，此时 \(r(A)\) 值不唯一，故 (A)、(C) 错误。
+
+当 \(a=2\) 时，
+\[
+B = \begin{bmatrix} 1 & -1 & 1 \\ 4 & -1 & 4 \\ 2 & -2 & 2 \end{bmatrix}
+\]
+第一列与第三列完全相同，故 \(r(B) < 3\)。又因左上角存在非零二阶子式 \(\begin{vmatrix} 1 & -1 \\ 4 & -1 \end{vmatrix} = 3 \neq 0\)，故 \(r(B)=2\)。
+代入秩不等式得 \(r(A) \le 1\)，结合下界 \(r(A) \ge 1\)，经双向夹逼可得出 \(r(A)=1\)，故选 (D)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：对于 \(n\) 阶方阵，若 \(AB=O\)，则 \(r(A)+r(B) \le n\)；非零矩阵的秩必定 \(\ge 1\)。
+ \item \textbf{易错点}：极易漏掉“\(A\) 是非零矩阵”这一隐含条件，从而缺失下界约束 \(r(A) \ge 1\)，导致无法得出确切结论。
+ \item \textbf{关联知识}：矩阵的秩等于其最高阶非零子式的阶数；若矩阵的所有行（或列）全部成比例，则秩为 1。
+\end{itemize}}
+
+\end{mistake}

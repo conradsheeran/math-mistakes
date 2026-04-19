@@ -1,0 +1,42 @@
+\begin{mistake}{2026-04-19}{10}
+
+\begin{problemcontent}
+设 \(A\) 是 \(n\) 阶矩阵，满足 \(A^2 = A\)，求 \((A-2E)^3 - 3A\) 的值。
+\end{problemcontent}
+
+\begin{solutioncontent}
+因为矩阵 \(A\) 与单位矩阵 \(E\) 满足交换律（即 \(AE = EA\)），可以直接利用二项式公式展开：
+\[
+\begin{aligned}
+(A-2E)^3 &= A^3 - 3A^2(2E) + 3A(2E)^2 - (2E)^3 \\
+&= A^3 - 6A^2 + 12A - 8E
+\end{aligned}
+\]
+
+由已知条件 \(A^2 = A\)，可递推得到 \(A^3 = A^2 \cdot A = A \cdot A = A^2 = A\)。
+
+将高次项降幂代入展开式中化简：
+\[
+\begin{aligned}
+(A-2E)^3 &= A - 6A + 12A - 8E \\
+&= 7A - 8E
+\end{aligned}
+\]
+
+代入原题求值表达式：
+\[
+\begin{aligned}
+(A-2E)^3 - 3A &= (7A - 8E) - 3A \\
+&= 4A - 8E
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：多项式展开定理（前提：两矩阵可交换 \(AB=BA\)）与幂等矩阵性质（\(A^k=A\)）。
+ \item \textbf{易错点}：展开常数项时极易漏写单位矩阵 \(E\)，将 \((2E)^3\) 错写成纯常数 \(8\)，导致矩阵与标量非法运算。
+ \item \textbf{关联知识}：矩阵乘法一般不满足交换律。常见的可交换特例包括：\(A\) 与 \(E\)、\(A\) 与 \(A^{-1}\)、\(A\) 与 \(A^*\) 以及 \(A\) 的两个多项式。
+\end{itemize}}
+
+\end{mistake}

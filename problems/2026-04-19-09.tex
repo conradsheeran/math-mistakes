@@ -1,0 +1,28 @@
+\begin{mistake}{2026-04-19}{09}
+
+\begin{problemcontent}
+设 \(A\) 是 \(n\) 阶矩阵，满足 \((A-E)^5 = \mathbf{O}\)，则 \(A^{-1} =\) \underline{\hspace{2cm}}
+\end{problemcontent}
+
+\begin{solutioncontent}
+因为矩阵 \(A\) 与 \(-E\) 满足乘法交换律，可直接利用二项式定理展开等式 \((A-E)^5 = \mathbf{O}\)：
+\[ A^5 - 5A^4 + 10A^3 - 10A^2 + 5A - E = \mathbf{O} \]
+将常数项矩阵 \(E\) 移至等式右侧，并在左侧提取公因子 \(A\)：
+\[
+\begin{aligned}
+A^5 - 5A^4 + 10A^3 - 10A^2 + 5A &= E \\
+A(A^4 - 5A^3 + 10A^2 - 10A + 5E) &= E
+\end{aligned}
+\]
+根据逆矩阵的定义（若 \(AB=E\)，则 \(A^{-1}=B\)），可直接得出：
+\[ A^{-1} = A^4 - 5A^3 + 10A^2 - 10A + 5E \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：矩阵二项式定理（仅在 \(AB=BA\) 前提下成立）；逆矩阵构造定义。
+ \item \textbf{易错点}：提取公因子 \(A\) 时，项 \(5A\) 提取后必须写为 \(5E\)，方阵不能与纯标量相加减。
+ \item \textbf{关联知识}：考研常见隐性可交换条件包括方阵与其同阶单位阵 \(E\)、逆矩阵 \(A^{-1}\)、伴随矩阵 \(A^*\) 以及自身多项式 \(f(A)\)。
+\end{itemize}}
+
+\end{mistake}

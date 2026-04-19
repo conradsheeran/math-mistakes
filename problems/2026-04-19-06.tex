@@ -1,0 +1,44 @@
+\begin{mistake}{2026-04-19}{06}
+
+\begin{problemcontent}
+设 \(A = \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}\)，则和矩阵 \(A\) 可交换的矩阵是 \underline{\hspace{3cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+设所求矩阵为二阶方阵 \(X = \begin{bmatrix} x_1 & x_2 \\ x_3 & x_4 \end{bmatrix}\)。
+
+由矩阵可交换的定义 \(AX = XA\)，有：
+\[
+\begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} x_1 & x_2 \\ x_3 & x_4 \end{bmatrix}
+= \begin{bmatrix} x_1 & x_2 \\ x_3 & x_4 \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 0 & 1 \end{bmatrix}
+\]
+
+展开两边的矩阵乘法：
+\[
+\begin{bmatrix} x_1 + x_3 & x_2 + x_4 \\ x_3 & x_4 \end{bmatrix}
+= \begin{bmatrix} x_1 & x_1 + x_2 \\ x_3 & x_3 + x_4 \end{bmatrix}
+\]
+
+根据矩阵相等的条件，对应元素必然相等，得到线性方程组：
+\[
+\begin{cases}
+x_1 + x_3 = x_1 \\
+x_2 + x_4 = x_1 + x_2 \\
+x_3 = x_3 \\
+x_4 = x_3 + x_4
+\end{cases}
+\]
+
+化简解得 \(x_3 = 0\)，且 \(x_4 = x_1\)。
+
+令 \(x_1 = a\)，\(x_2 = b\)（其中 \(a, b\) 为任意常数），故和矩阵 \(A\) 可交换的矩阵为 \(\begin{bmatrix} a & b \\ 0 & a \end{bmatrix}\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：矩阵可交换的定义 \(AX = XA\) 以及矩阵相乘法则。
+ \item \textbf{易错点}：展开 \(AX\) 与 \(XA\) 时前后乘顺序弄反或元素错位；最终结果漏写“\(a, b\) 为任意常数”。
+ \item \textbf{关联知识}：常考结论：矩阵 \(A\) 的任何多项式 \(f(A)\) 均与 \(A\) 可交换。
+\end{itemize}}
+
+\end{mistake}

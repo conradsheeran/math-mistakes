@@ -1,0 +1,53 @@
+\begin{mistake}{2026-04-19}{05}
+
+\begin{problemcontent}
+已知齐次线性方程组
+\[
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + a_{13}x_3 + a_{14}x_4 = 0 \\
+a_{21}x_1 + a_{22}x_2 + a_{23}x_3 + a_{24}x_4 = 0
+\end{cases} \quad (1)
+\]
+有通解 \( k_1(2, -1, 0, 1)^{\mathrm{T}} + k_2(3, 2, 1, 0)^{\mathrm{T}} \)，则方程组
+\[
+\begin{cases}
+a_{11}x_1 + a_{12}x_2 + a_{13}x_3 + a_{14}x_4 = 0 \\
+a_{21}x_1 + a_{22}x_2 + a_{23}x_3 + a_{24}x_4 = 0 \\
+x_1 - 2x_2 + x_4 = 0
+\end{cases} \quad (2)
+\]
+的通解是 \underline{\hspace{3cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+方程组(2)的前两个方程与(1)完全相同，故(2)的解必然包含在(1)的通解中。将(1)的通解写成分量形式：
+\[
+x_1 = 2k_1 + 3k_2, \quad x_2 = -k_1 + 2k_2, \quad x_3 = k_2, \quad x_4 = k_1
+\]
+将其代入方程组(2)新增的第三个约束方程 \( x_1 - 2x_2 + x_4 = 0 \)：
+\[
+(2k_1 + 3k_2) - 2(-k_1 + 2k_2) + k_1 = 0
+\]
+展开并化简得：
+\[
+5k_1 - k_2 = 0 \implies k_2 = 5k_1
+\]
+将 \( k_2 = 5k_1 \) 代回原通解的向量表达式中：
+\[
+\begin{aligned}
+x &= k_1 \begin{pmatrix} 2 \\ -1 \\ 0 \\ 1 \end{pmatrix} + 5k_1 \begin{pmatrix} 3 \\ 2 \\ 1 \\ 0 \end{pmatrix} \\
+ &= k_1 \left[ \begin{pmatrix} 2 \\ -1 \\ 0 \\ 1 \end{pmatrix} + \begin{pmatrix} 15 \\ 10 \\ 5 \\ 0 \end{pmatrix} \right] \\
+ &= k_1 \begin{pmatrix} 17 \\ 9 \\ 5 \\ 1 \end{pmatrix}
+\end{aligned}
+\]
+令 \( k_1 = c \)，即可得方程组(2)的通解为 \( c(17, 9, 5, 1)^{\mathrm{T}} \) （\( c \) 为任意常数）。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心方法}：通解代入法。原方程组增加新方程求交集，等价于将原方程组通解代入新方程，求解参数间的约束关系。
+ \item \textbf{易错点}：代数计算失误。在代入 \( x_1 - 2x_2 + x_4 = 0 \) 时，展开 \( -2(-k_1 + 2k_2) \) 极易漏算负负得正，导致错误关系式。
+ \item \textbf{关联知识}：求两方程组公共解（或同解），若原矩阵不可知，首选将已知通解的线性组合形式直接代入具体的约束方程求解参数。
+\end{itemize}}
+
+\end{mistake}

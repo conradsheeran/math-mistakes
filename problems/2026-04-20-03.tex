@@ -1,0 +1,35 @@
+\begin{mistake}{2026-04-20}{03}
+
+\begin{problemcontent}
+设 \(\mathbf{A}, \mathbf{B}\) 为 \(n\) 阶方阵，\(\mathbf{P}, \mathbf{Q}\) 为 \(n\) 阶可逆矩阵，下列命题不正确的是（\quad）
+
+(A) 若 \(\mathbf{B} = \mathbf{A}\mathbf{Q}\)，则 \(\mathbf{A}\) 的列向量组与 \(\mathbf{B}\) 的列向量组等价.
+
+(B) 若 \(\mathbf{B} = \mathbf{P}\mathbf{A}\)，则 \(\mathbf{A}\) 的行向量组与 \(\mathbf{B}\) 的行向量组等价.
+
+(C) 若 \(\mathbf{B} = \mathbf{P}\mathbf{A}\mathbf{Q}\)，则 \(\mathbf{A}\) 的行(列)向量组与 \(\mathbf{B}\) 的行(列)向量组等价.
+
+(D) 若 \(\mathbf{A}\) 的行(列)向量组与矩阵 \(\mathbf{B}\) 的行(列)向量组等价，则矩阵 \(\mathbf{A}\) 与 \(\mathbf{B}\) 等价.
+\end{problemcontent}
+
+\begin{solutioncontent}
+本题选 (C)。
+
+(A) \(\mathbf{B} = \mathbf{A}\mathbf{Q} \implies \mathbf{B}\) 的每一列均为 \(\mathbf{A}\) 的列向量的线性组合。因为 \(\mathbf{Q}\) 可逆，故 \(\mathbf{A} = \mathbf{B}\mathbf{Q}^{-1}\)，同理 \(\mathbf{A}\) 的每一列也可由 \(\mathbf{B}\) 的列向量线性表示。两者互相线性表示，列向量组等价，命题正确。
+
+(B) 同理，\(\mathbf{B} = \mathbf{P}\mathbf{A}\) 且 \(\mathbf{P}\) 可逆，\(\mathbf{A}\) 与 \(\mathbf{B}\) 的行向量组可互相线性表示，等价，命题正确。
+
+(D) 向量组等价 \(\implies\) 向量组的秩相等 \(\implies\) 矩阵的秩相等。对于同型方阵，秩相等即为矩阵等价的充要条件，命题正确。
+
+(C) \(\mathbf{B} = \mathbf{P}\mathbf{A}\mathbf{Q}\) 仅表示矩阵等价（秩相等），不能保证生成空间相同。
+反例：设 \(\mathbf{A}=\begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}, \mathbf{P}=\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \mathbf{Q}=\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\)，则 \(\mathbf{B}=\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}\)。\(\mathbf{A}\) 的列空间在 \(x\) 轴，\(\mathbf{B}\) 的列空间在 \(y\) 轴，两者不能互相表示，列向量组不等价。命题不正确。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：同型方阵 \(\mathbf{A}\) 与 \(\mathbf{B}\) 等价 \(\iff r(\mathbf{A}) = r(\mathbf{B})\)。向量组等价必然导致二者秩相等。
+ \item \textbf{易错点}：混淆“矩阵等价”与“向量组等价”。矩阵等价是弱条件（仅要求秩等），向量组等价是强条件（要求底层张成的线性空间完全重合）。
+ \item \textbf{关联知识}：“左乘行，右乘列”。对矩阵左乘可逆阵，行空间不变（行向量组等价）；右乘可逆阵，列空间不变（列向量组等价）。
+\end{itemize}}
+
+\end{mistake}

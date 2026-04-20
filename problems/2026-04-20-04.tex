@@ -1,0 +1,37 @@
+\begin{mistake}{2026-04-20}{04}
+
+\begin{problemcontent}
+已知两个 \(n\) 维向量组 (I) \(\alpha_1, \alpha_2, \cdots, \alpha_s\) 与 (II) \(\alpha_1, \alpha_2, \cdots, \alpha_s, \alpha_{s+1}, \cdots, \alpha_{s+t}\)。若向量组的秩 \(r(\mathrm{I}) = p, r(\mathrm{II}) = q\)，则下列条件中不能判定 (I) 是 (II) 的极大线性无关组的是
+
+(A) \(p=q\)，(II) 可由 (I) 线性表出。
+
+(B) \(s=q\)，(I) 与 (II) 是等价向量组。
+
+(C) \(p=q\)，(I) 线性无关。
+
+(D) \(p=q=s\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：(A)。
+
+向量组 (I) 是 (II) 的极大线性无关组必须同时满足两个条件：
+1. \textbf{自身线性无关}：即 (I) 的秩等于其向量个数，\(r(\mathrm{I}) = p = s\)；
+2. \textbf{极大性}：(II) 可由 (I) 线性表出，等价于两向量组秩相等，\(r(\mathrm{I}) = r(\mathrm{II})\)，即 \(p = q\)。
+
+对于选项 (A)：已知 \(p=q\) 且能表出，仅满足了“极大性”。但并没有条件保证 (I) 本身线性无关。若 \(p = q < s\)，则 (I) 线性相关，无资格成为极大线性无关组。
+
+对于其他选项：
+(B) 向量组等价推导出同秩即 \(p=q\)，结合已知 \(s=q\)，可得 \(p=q=s\)，满足条件。
+(C) (I) 线性无关推导出 \(p=s\)，结合已知 \(p=q\)，可得 \(p=q=s\)，满足条件。
+(D) 直接给出 \(p=q=s\)，完全满足定义。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：(I) 是 (II) 的极大线性无关组 \(\iff\) (1) (I) 线性无关；(2) \(r(\mathrm{I}) = r(\mathrm{II})\)。
+ \item \textbf{易错点}：混淆“等价”与“极大无关组”的概念，片面追求“能表出/秩相等”，忽略了前提条件必须是“自身线性无关”。
+ \item \textbf{关联知识}：\(s\) 个向量构成的向量组，若秩 \(p=s\)，则线性无关；若秩 \(p < s\)，则线性相关。等价向量组必定同秩。
+\end{itemize}}
+
+\end{mistake}

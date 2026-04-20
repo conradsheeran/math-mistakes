@@ -1,0 +1,37 @@
+\begin{mistake}{2026-04-20}{02}
+
+\begin{problemcontent}
+已知向量组(Ⅰ)\(\alpha_1, \alpha_2, \alpha_3\) 和(Ⅱ)\(\beta_1, \beta_2, \beta_3, \beta_4\) 都是四维非零列向量。若 \(\alpha_1, \alpha_2, \alpha_3\) 线性无关且和每个 \(\beta_j\ (j=1,2,3,4)\) 都正交，则秩 \(r(\mathrm{I}) + r(\mathrm{II}) =\)
+
+(A) 3. \qquad (B) 4. \qquad (C) 5. \qquad (D) 条件不够不能确定.
+\end{problemcontent}
+
+\begin{solutioncontent}
+因为 \(\alpha_1, \alpha_2, \alpha_3\) 线性无关，所以 \(r(\mathrm{I}) = 3\)。
+
+记 \(4 \times 3\) 矩阵 \(A = (\alpha_1, \alpha_2, \alpha_3)\)，则 \(r(A)=3\)。
+由题意，对于每个 \(\beta_j\)，有 \(\alpha_i^T \beta_j = 0\ (i=1,2,3)\)，即 \(A^T \beta_j = 0\)。
+这说明 \(\beta_1, \beta_2, \beta_3, \beta_4\) 均为齐次线性方程组 \(A^T x = 0\) 的解。
+
+方程组 \(A^T x = 0\) 的未知数个数 \(n=4\)，系数矩阵的秩 \(r(A^T) = r(A) = 3\)。
+其解空间的维数为：
+\[
+ s = n - r(A^T) = 4 - 3 = 1
+\]
+这说明基础解系仅含 1 个非零解向量，方程组的所有解必然共线。
+因此，由这些解构成的向量组(Ⅱ)的秩满足 \(r(\mathrm{II}) \le 1\)。
+
+又已知 \(\beta_j\) 均为非零列向量，故 \(r(\mathrm{II}) \ge 1\)。
+综上可得 \(r(\mathrm{II}) = 1\)。
+
+从而 \(r(\mathrm{I}) + r(\mathrm{II}) = 3 + 1 = 4\)，正确选项为 (B)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：齐次线性方程组解空间维数公式 \(s = n - r(A)\)；正交条件可转化为齐次线性方程组 \(A^T x = 0\)。
+ \item \textbf{易错点}：求出解空间维数为 \(1\) 从而得到 \(r(\mathrm{II}) \le 1\) 时，易忽略题干中关键的“非零”条件，不敢断定其秩等于 \(1\) 从而错选 (D)。
+ \item \textbf{关联知识}：一维解空间意味着所有解向量成比例（共线）；矩阵转置后秩不变 \(r(A)=r(A^T)\)。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,36 @@
+\begin{mistake}{2026-04-21}{01}
+
+\begin{problemcontent}
+已知 \(\alpha_1, \alpha_2, \alpha_3\) 是齐次方程组 \(Ax=0\) 的基础解系，则 \(Ax=0\) 的基础解系还可以是（\quad ）\\
+(A) 与 \(\alpha_1, \alpha_2, \alpha_3\) 等价的向量组 \\
+(B) \(\alpha_1-\alpha_2, \alpha_2-\alpha_3, \alpha_3-\alpha_1\) \\
+(C) 与 \(\alpha_1, \alpha_2, \alpha_3\) 等秩的向量组 \\
+(D) \(\alpha_1, \alpha_1+\alpha_2, \alpha_1+\alpha_2+\alpha_3\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：(D)
+
+由于 \(\alpha_1, \alpha_2, \alpha_3\) 是基础解系，说明解空间维数为 3。新的基础解系必须满足：① 都是 \(Ax=0\) 的解（即能由 \(\alpha_i\) 线性表出）；② 恰好有 3 个向量；③ 线性无关。
+
+对于 (A)：等价向量组只保证张成的解空间相同，但不限制向量的个数，若多于 3 个则必线性相关，不能作为基础解系，故错误。
+
+对于 (B)：显然有 \((\alpha_1-\alpha_2) + (\alpha_2-\alpha_3) + (\alpha_3-\alpha_1) = 0\)，该向量组必定线性相关，故错误。
+
+对于 (C)：等秩向量组只能说明其极大线性无关组含有 3 个向量，但这些向量不一定在 \(Ax=0\) 的解空间中，故错误。
+
+对于 (D)：设 \(\beta_1=\alpha_1, \beta_2=\alpha_1+\alpha_2, \beta_3=\alpha_1+\alpha_2+\alpha_3\)，它们均为解且正好 3 个。由旧基到新基的过渡矩阵为：
+\[
+(\beta_1, \beta_2, \beta_3) = (\alpha_1, \alpha_2, \alpha_3) \begin{pmatrix} 1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1 \end{pmatrix}
+\]
+该过渡矩阵的行列式 \(|P| = 1 \neq 0\)。由于 \(\alpha_i\) 线性无关且 \(|P| \neq 0\)，因此 \(\beta_1, \beta_2, \beta_3\) 也线性无关，满足基础解系的全部条件，故正确。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：已知向量组 \((\alpha)\) 线性无关，且 \((\beta) = (\alpha)P\)，则向量组 \((\beta)\) 线性无关 \(\iff |P| \neq 0\)。
+ \item \textbf{易错点}：混淆“等价向量组”与“基础解系（基）”的概念，等价无法限制向量组中是否含有冗余（线性相关）的向量。
+ \item \textbf{关联知识}：“首尾相接环状相减”结构的向量组（如 \(\alpha_1-\alpha_2, \alpha_2-\alpha_3, \alpha_3-\alpha_1\)）直接相加即为零向量，必定线性相关。
+\end{itemize}}
+
+\end{mistake}

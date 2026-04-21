@@ -1,0 +1,38 @@
+\begin{mistake}{2026-04-21}{07}
+
+\begin{problemcontent}
+设 \(A\) 为 \(m \times n\) 矩阵，\(e = [1, 1, \cdots, 1]^T\)。若方程组 \(Ay=e\) 有解，则对于 (I) \(A^T x = 0\) 与 (II) \(\begin{cases} A^T x = 0 \\ e^T x = 0 \end{cases}\) 说法正确的是（\quad）。
+
+(A) (I) 的解都是 (II) 的解，但 (II) 的解未必是 (I) 的解 \\
+(B) (II) 的解都是 (I) 的解，但 (I) 的解未必是 (II) 的解 \\
+(C) (I) 的解不是 (II) 的解，且 (II) 的解也不是 (I) 的解 \\
+(D) (I) 的解都是 (II) 的解，且 (II) 的解也都是 (I) 的解
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：(D)
+
+对方程组 (II) 而言，其解向量必须同时满足 \(A^T x = 0\) 与 \(e^T x = 0\)，故 (II) 的解自然都是 (I) 的解。
+
+另一方面，已知 \(Ay=e\) 有解，设其特解为 \(y_0\)，则 \(Ay_0=e\)。
+两边取转置得：
+\[
+y_0^T A^T = e^T
+\]
+设 \(x\) 为方程组 (I) 的任意解，即满足 \(A^T x = 0\)。考察其是否满足 (II) 的附加条件 \(e^T x = 0\)：
+\[
+e^T x = (y_0^T A^T) x = y_0^T (A^T x) = y_0^T \cdot 0 = 0
+\]
+因此，(I) 的解必定满足 \(e^T x = 0\)，即 (I) 的解也都是 (II) 的解。
+
+综上，(I) 与 (II) 的解集互为子集，两方程组同解。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：矩阵转置性质 \((AB)^T = B^T A^T\)；矩阵乘法结合律 \((AB)C = A(BC)\)。
+ \item \textbf{易错点}：直觉上认为 (II) 增加了约束方程会导致解集严格变小，未能通过代入推导发现 \(e^T x=0\) 实为冗余条件。
+ \item \textbf{关联知识}：从正交补空间几何意义理解，\(Ay=e\) 说明 \(e\) 属于 \(A\) 的列空间；而 \(A^T x=0\) 说明 \(x\) 与 \(A\) 的列空间正交，故 \(x\) 必然与该空间内的向量 \(e\) 正交。
+\end{itemize}}
+
+\end{mistake}

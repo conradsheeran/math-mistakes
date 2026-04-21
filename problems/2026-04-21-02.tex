@@ -1,0 +1,49 @@
+\begin{mistake}{2026-04-21}{02}
+
+\begin{problemcontent}
+设 \(\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3, \boldsymbol{\alpha}_4\) 是五维非零列向量，矩阵 \(A=[\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3, \boldsymbol{\alpha}_4]\)，若 \(\boldsymbol{\eta}_1=(3,2,2,2)^\mathrm{T}, \boldsymbol{\eta}_2=(1,2,2,6)^\mathrm{T}\) 是 \(A\boldsymbol{x}=\boldsymbol{0}\) 的基础解系，则下列结论
+
+（1）\(\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3\) 线性相关。
+
+（2）\(\boldsymbol{\alpha}_3, \boldsymbol{\alpha}_4\) 线性无关。
+
+（3）\(\boldsymbol{\alpha}_1\) 可由 \(\boldsymbol{\alpha}_3, \boldsymbol{\alpha}_4\) 线性表出。
+
+（4）\(\boldsymbol{\alpha}_4\) 可由 \(\boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3\) 线性表出。
+
+中正确的共有
+
+(A) 1个. \quad (B) 2个. \quad (C) 3个. \quad (D) 4个.
+\end{problemcontent}
+
+\begin{solutioncontent}
+矩阵 \(A\) 有 \(n=4\) 列，基础解系含有 \(s=2\) 个解向量。由公式 \(r(A) = n - s\)，得 \(r(A) = 4 - 2 = 2\)。
+因为 \(r(A)=2 < 3\)，\(A\) 中任意三个列向量构成的向量组必线性相关，故（1）正确。
+
+由 \(\boldsymbol{\eta}_1, \boldsymbol{\eta}_2\) 是 \(A\boldsymbol{x}=\boldsymbol{0}\) 的解，代入等价的向量展开式得到：
+\[
+\begin{aligned}
+3\boldsymbol{\alpha}_1 + 2\boldsymbol{\alpha}_2 + 2\boldsymbol{\alpha}_3 + 2\boldsymbol{\alpha}_4 &= \boldsymbol{0} \\
+\boldsymbol{\alpha}_1 + 2\boldsymbol{\alpha}_2 + 2\boldsymbol{\alpha}_3 + 6\boldsymbol{\alpha}_4 &= \boldsymbol{0}
+\end{aligned}
+\]
+两式相减消去 \(\boldsymbol{\alpha}_2, \boldsymbol{\alpha}_3\)，得 \(2\boldsymbol{\alpha}_1 - 4\boldsymbol{\alpha}_4 = \boldsymbol{0} \implies \boldsymbol{\alpha}_1 = 2\boldsymbol{\alpha}_4\)。即 \(\boldsymbol{\alpha}_1 = 0\boldsymbol{\alpha}_3 + 2\boldsymbol{\alpha}_4\)，结论（3）正确。
+
+将 \(\boldsymbol{\alpha}_1 = 2\boldsymbol{\alpha}_4\) 代回式(1)，得 \(8\boldsymbol{\alpha}_4 + 2\boldsymbol{\alpha}_2 + 2\boldsymbol{\alpha}_3 = \boldsymbol{0} \implies \boldsymbol{\alpha}_4 = -\frac{1}{4}\boldsymbol{\alpha}_2 - \frac{1}{4}\boldsymbol{\alpha}_3\)，结论（4）正确。
+
+\(A\boldsymbol{x}=\boldsymbol{0}\) 的通解为 \(\boldsymbol{x} = k_1\boldsymbol{\eta}_1 + k_2\boldsymbol{\eta}_2 = (3k_1+k_2, 2k_1+2k_2, 2k_1+2k_2, 2k_1+6k_2)^\mathrm{T}\)。
+考察方程 \(x_3\boldsymbol{\alpha}_3 + x_4\boldsymbol{\alpha}_4 = \boldsymbol{0}\)，等价于寻找通解中 \(x_1=0\) 且 \(x_2=0\) 的非零解。
+令 \(x_1 = 3k_1+k_2=0\) 且 \(x_2 = 2k_1+2k_2=0\)，解得唯一的 \(k_1=0, k_2=0\)，从而 \(x_3=0, x_4=0\)。
+这说明方程 \(x_3\boldsymbol{\alpha}_3 + x_4\boldsymbol{\alpha}_4 = \boldsymbol{0}\) 仅有零解，即 \(\boldsymbol{\alpha}_3, \boldsymbol{\alpha}_4\) 线性无关，结论（2）正确。
+
+综上，（1）（2）（3）（4）均正确，共4个。选(D)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：基础解系与秩关系 \(r(A) = n - s\)；方程 \(A\boldsymbol{x}=\boldsymbol{0}\) 即 \(\sum x_i\boldsymbol{\alpha}_i = \boldsymbol{0}\)。
+ \item \textbf{易错点}：解向量 \(\boldsymbol{\eta}\) 的各个分量与列向量 \(\boldsymbol{\alpha}_i\) 映射错位；判定局部列向量无关时，未带入通解整体（令其余分量为0）去求解检验。
+ \item \textbf{关联知识}：向量组秩的性质（包含向量数大于秩的向量组必线性相关）。
+\end{itemize}}
+
+\end{mistake}

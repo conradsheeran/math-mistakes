@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-21}{03}
+
+\begin{problemcontent}
+已知 4 阶方阵 \(A = [\alpha_1, \alpha_2, \alpha_3, \alpha_4]\)，\(\alpha_1, \alpha_2, \alpha_3, \alpha_4\) 均为四维列向量，其中 \(\alpha_1, \alpha_2\) 线性无关。若 \(\alpha_1 + 2\alpha_2 - \alpha_3 = \beta\)，\(\alpha_1 + \alpha_2 + \alpha_3 + \alpha_4 = \beta\)，\(2\alpha_1 + 3\alpha_2 + \alpha_3 + 2\alpha_4 = \beta\)，\(k_1, k_2\) 为任意常数，那么 \(Ax = \beta\) 的通解为？
+\end{problemcontent}
+
+\begin{solutioncontent}
+由矩阵乘法的列向量展开视角，可将给定的三个等式转化为非齐次线性方程组 \(Ax = \beta\) 的三个特解：
+\[
+x^{(1)} = \begin{bmatrix} 1 \\ 2 \\ -1 \\ 0 \end{bmatrix},\quad
+x^{(2)} = \begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix},\quad
+x^{(3)} = \begin{bmatrix} 2 \\ 3 \\ 1 \\ 2 \end{bmatrix}
+\]
+利用非齐次方程组解的性质（特解作差等于齐次解），构造对应齐次方程组 \(Ax = 0\) 的解：
+\[
+\begin{aligned}
+\eta_1 &= x^{(3)} - x^{(2)} = \begin{bmatrix} 1 \\ 2 \\ 0 \\ 1 \end{bmatrix} \\
+\eta_2 &= x^{(1)} - x^{(2)} = \begin{bmatrix} 0 \\ 1 \\ -2 \\ -1 \end{bmatrix}
+\end{aligned}
+\]
+显然 \(\eta_1, \eta_2\) 分量不成比例，故它们线性无关。
+又已知 \(\alpha_1, \alpha_2\) 线性无关，故 \(A\) 的列秩 \(r(A) \ge 2\)。
+结合已知两个线性无关的齐次解，基础解系维数为 \(4 - r(A) \ge 2\)，从而推得 \(r(A) \le 2\)。
+综上 \(r(A) = 2\)，故 \(\eta_1, \eta_2\) 即为 \(Ax=0\) 的基础解系。
+
+由通解结构定理 \(x = x^* + k_1\eta_1 + k_2\eta_2\)，任取一特解（如 \(x^{(2)}\)），可得通解：
+\[
+x = \begin{bmatrix} 1 \\ 1 \\ 1 \\ 1 \end{bmatrix} + k_1 \begin{bmatrix} 1 \\ 2 \\ 0 \\ 1 \end{bmatrix} + k_2 \begin{bmatrix} 0 \\ 1 \\ -2 \\ -1 \end{bmatrix}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：非齐次方程组解的结构 \(x = x^* + \sum k_i\eta_i\)；解的性质 \(A(x_1-x_2)=0\)。
+ \item \textbf{易错点}：混淆特解与齐次解的性质，误将特解带上常数 \(k\) 作为齐次解使用；忽略用题干条件校验秩 \(r(A)\) 以确认基础解系是否找全。
+ \item \textbf{关联知识}：矩阵方程的向量组视角 \(Ax = x_1\alpha_1+x_2\alpha_2+\dots+x_n\alpha_n\)；基础解系维数公式 \(s = n - r(A)\)。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,35 @@
+\begin{mistake}{2026-04-21}{04}
+
+\begin{problemcontent}
+齐次方程组 \(\mathbf{Ax} = \mathbf{0}\) 有非零解的充分必要条件是
+
+(A) \(\mathbf{A}\) 的行向量组线性相关.
+
+(B) \(\mathbf{A}\) 的行向量组线性无关.
+
+(C) \(\mathbf{A}\) 的列向量组线性相关.
+
+(D) \(\mathbf{A}\) 的列向量组线性无关.
+\end{problemcontent}
+
+\begin{solutioncontent}
+设 \(m \times n\) 矩阵 \(\mathbf{A}\) 的列向量组为 \(\boldsymbol{\alpha}_1, \boldsymbol{\alpha}_2, \dots, \boldsymbol{\alpha}_n\)，未知量向量为 \(\mathbf{x} = [x_1, x_2, \dots, x_n]^T\)。
+
+将方程组 \(\mathbf{Ax} = \mathbf{0}\) 展开为列向量的线性组合形式：
+\[
+x_1\boldsymbol{\alpha}_1 + x_2\boldsymbol{\alpha}_2 + \dots + x_n\boldsymbol{\alpha}_n = \mathbf{0}
+\]
+
+已知方程组有非零解，即说明存在一组不全为零的系数 \(x_1, x_2, \dots, x_n\) 使得上述等式成立。
+
+由定义可知，这完全等价于 \(\mathbf{A}\) 的列向量组线性相关。故选 (C)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：\(\mathbf{Ax}=\mathbf{0}\) 有非零解 \(\iff r(\mathbf{A}) < n\)（未知数个数） \(\iff \mathbf{A}\) 的列向量组线性相关。
+ \item \textbf{易错点}：未指明为方阵时误选(A)。行向量相关仅代表存在冗余方程，若有效方程数仍等于未知数个数，方程组依然只有唯一零解。
+ \item \textbf{关联知识}：矩阵中“行”代表方程（约束条件），“列”代表未知数（自由度）。若明确 \(\mathbf{A}\) 为 \(n\) 阶方阵，则行列式 \(|\mathbf{A}|=0 \iff\) 行相关 \(\iff\) 列相关。
+\end{itemize}}
+
+\end{mistake}

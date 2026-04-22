@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-22}{02}
+
+\begin{problemcontent}
+设矩阵 \(A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}\)，利用谱分解法求 \(A^n\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+特征方程为 \(|\lambda I - A| = \begin{vmatrix} \lambda - 2 & -1 \\ -1 & \lambda - 2 \end{vmatrix} = (\lambda - 2)^2 - 1 = 0\)。
+解得特征值：\(\lambda_1 = 3, \ \lambda_2 = 1\)。
+
+对应 \(\lambda_1 = 3\)，基础解系为 \(\alpha_1 = (1, 1)^T\)，单位化得 \(q_1 = \frac{1}{\sqrt{2}}(1, 1)^T\)。
+对应 \(\lambda_2 = 1\)，基础解系为 \(\alpha_2 = (1, -1)^T\)，单位化得 \(q_2 = \frac{1}{\sqrt{2}}(1, -1)^T\)。
+
+构造对应的投影矩阵 \(P_i = q_i q_i^T\)：
+\[
+P_1 = \left[ \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right] \left[ \frac{1}{\sqrt{2}} (1, 1) \right] = \frac{1}{2} \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix}
+\]
+\[
+P_2 = \left[ \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \end{pmatrix} \right] \left[ \frac{1}{\sqrt{2}} (1, -1) \right] = \frac{1}{2} \begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix}
+\]
+
+根据谱分解 \(A = 3P_1 + 1P_2\)，可得：
+\[
+\begin{aligned}
+A^n &= 3^n P_1 + 1^n P_2 \\
+&= \frac{3^n}{2} \begin{pmatrix} 1 & 1 \\ 1 & 1 \end{pmatrix} + \frac{1}{2} \begin{pmatrix} 1 & -1 \\ -1 & 1 \end{pmatrix} \\
+&= \begin{pmatrix} \frac{3^n + 1}{2} & \frac{3^n - 1}{2} \\ \frac{3^n - 1}{2} & \frac{3^n + 1}{2} \end{pmatrix}
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：实对称矩阵的谱分解 \(A = \sum \lambda_i P_i\) 与方幂公式 \(A^n = \sum \lambda_i^n P_i\)。
+ \item \textbf{易错点}：构造投影矩阵 \(P_i = q_i q_i^T\) 之前必须将特征向量单位化，否则矩阵不满足幂等性（\(P_i^2 \neq P_i\)）。
+ \item \textbf{关联知识}：对于有二重特征值的实对称矩阵，可利用投影矩阵的完备性（所有投影矩阵之和为单位阵 \(I\)）通过 \(I - P_{\text{单根}}\) 快速求出多重根对应的投影矩阵，从而避开复杂的施密特正交化。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,33 @@
+\begin{mistake}{2026-04-22}{01}
+
+\begin{problemcontent}
+设 3 维列向量组 \(\alpha_1, \alpha_2, \alpha_3\) 与 \(\beta_1, \beta_2, \beta_3\) 等价，记 \(A=[\alpha_1, \alpha_2, \alpha_3]\)，\(B=[\beta_1, \beta_2, \beta_3]\)，则下列结论：
+\begin{enumerate}
+ \item[①] \(Ax=0\) 与 \(Bx=0\) 同解；
+ \item[②] \(A^Tx=0\) 与 \(B^Tx=0\) 同解；
+ \item[③] \(\begin{bmatrix} A \\ B \end{bmatrix} x = 0\) 与 \(Ax=0\) 同解；
+ \item[④] \(\begin{bmatrix} A^T \\ B^T \end{bmatrix} x = 0\) 与 \(A^Tx=0\) 同解。
+\end{enumerate}
+所有正确结论的序号是( \quad ) \\
+(A) ①② \qquad (B) ①③ \qquad (C) ②④ \qquad (D) ①②③④
+\end{problemcontent}
+
+\begin{solutioncontent}
+由列向量组等价可知，矩阵 \(A\) 与 \(B\) 的列空间相同，即 \(R(A) = R(B)\)。
+
+\begin{itemize}
+ \item \textbf{判断②}：两边取正交补得 \(R(A)^\perp = R(B)^\perp\)。由矩阵四大基本子空间关系 \(N(A^T) = R(A)^\perp\)，可得 \(N(A^T) = N(B^T)\)。故 \(A^Tx=0\) 与 \(B^Tx=0\) 的解空间相同，即同解，②正确。
+ \item \textbf{判断④}：分块矩阵方程 \(\begin{bmatrix} A^T \\ B^T \end{bmatrix} x = 0\) 等价于满足 \(\begin{cases} A^Tx=0 \\ B^Tx=0 \end{cases}\)，其解空间为 \(N(A^T) \cap N(B^T)\)。因为 \(N(A^T) = N(B^T)\)，交集仍为 \(N(A^T)\)，故与 \(A^Tx=0\) 同解，④正确。
+ \item \textbf{判断①③}：列空间相同 (\(R(A)=R(B)\)) 并不能保证零空间相同 (\(N(A)=N(B)\))。故一般情况下 \(N(A) \neq N(B)\)，从而 \(Ax=0\) 与 \(Bx=0\) 未必同解，①错误；同理 \(\begin{bmatrix} A \\ B \end{bmatrix} x = 0\) 的解空间 \(N(A) \cap N(B)\) 也不一定等于 \(N(A)\)，③错误。
+\end{itemize}
+综上所述，正确结论为②④，故选(C)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：列向量组等价 \(\iff R(A)=R(B)\)；转置矩阵的零空间 \(N(A^T) = R(A)^\perp\)。
+ \item \textbf{易错点}：混淆“列空间相同”与“零空间相同”，想当然地认为列向量等价能推出 \(Ax=0\) 与 \(Bx=0\) 同解（零空间相等）。
+ \item \textbf{关联知识}：若题目条件改为“行向量组等价”，则意味着行空间相同且 \(N(A)=N(B)\)，此时结论①③正确，②④错误。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-22}{06}
+
+\begin{problemcontent}
+设 \(A\) 为 3 阶实对称矩阵，\(\text{tr}(A)=1\)，齐次线性方程组 \(Ax=0\) 的通解为 \(x=k_1[-2,1,0]^T + k_2[-3,0,1]^T\)，\(k_1, k_2\) 为任意常数，求 \(A^n\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+由 \(Ax=0\) 的通解可知，\(A\) 属于特征值 \(\lambda=0\) 的两个线性无关的特征向量为：
+\(\alpha_1 = [-2, 1, 0]^T, \quad \alpha_2 = [-3, 0, 1]^T\)。
+因为 \(A\) 为 3 阶实对称矩阵且 \(Ax=0\) 基础解系含 2 个向量，可知 \(A\) 必可对角化且 \(r(A)=1\)。
+设第三个特征值为 \(\lambda_3\)，由矩阵的迹等于特征值之和：
+\[
+\text{tr}(A) = 0 + 0 + \lambda_3 = 1 \implies \lambda_3 = 1
+\]
+
+设 \(\lambda_3=1\) 对应的特征向量为 \(\alpha_3 = [x_1, x_2, x_3]^T\)。由于实对称矩阵属于不同特征值的特征向量必正交，有 \(\alpha_3 \perp \alpha_1\) 且 \(\alpha_3 \perp \alpha_2\)：
+\[
+\begin{cases}
+-2x_1 + x_2 = 0 \\
+-3x_1 + x_3 = 0
+\end{cases}
+\]
+取 \(x_1=1\)，得 \(\alpha_3 = [1, 2, 3]^T\)。将其单位化得标准特征向量 \(\eta_3 = \frac{1}{\sqrt{14}}[1, 2, 3]^T\)。
+
+因为 \(A\) 可对角化且特征值仅为 \(0\) 和 \(1\)，故 \(A^n = A\)。
+由实对称矩阵的谱分解式，\(A = 0\cdot\eta_1\eta_1^T + 0\cdot\eta_2\eta_2^T + 1\cdot\eta_3\eta_3^T\)，即：
+\[
+A^n = A = \eta_3 \eta_3^T = \frac{1}{14} \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} [1, 2, 3] = \frac{1}{14} \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 3 & 6 & 9 \end{bmatrix}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：矩阵迹 \(\text{tr}(A) = \sum \lambda_i\)；实对称矩阵不同特征值对应的特征向量正交；实对称矩阵谱分解 \(A = \sum \lambda_i \eta_i \eta_i^T\)（\(\eta_i\) 为单位特征向量）。
+ \item \textbf{易错点}：求出特征向量后，常规方法求 \(P^{-1}\) 计算量大且极易出错。对于秩 1 实对称矩阵，直接利用单位特征向量的外积 \(A=\lambda \eta \eta^T\) 求解最稳妥。
+ \item \textbf{关联知识}：特征值全为 \(0\) 和 \(1\) 的可对角化矩阵是幂等矩阵，满足 \(A^n = A\)。
+\end{itemize}}
+
+\end{mistake}

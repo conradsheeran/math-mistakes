@@ -1,0 +1,65 @@
+\begin{mistake}{2026-04-22}{04}
+
+\begin{problemcontent}
+设 \(A\) 是 \(3\) 阶矩阵，\(\lambda_1, \lambda_2, \lambda_3\) 是 \(A\) 的三个不同的特征值，对应的特征向量分别是 \(\xi_1, \xi_2, \xi_3\)，令 \(\beta = \xi_1 + \xi_2 + \xi_3\)。证明：\\
+(1) \(\beta\) 不是 \(A\) 的特征向量；\\
+(2) 向量组 \(\beta, A\beta, A^2\beta\) 线性无关。
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{(1) 证明：}
+假设 \(\beta\) 是 \(A\) 的特征向量，对应特征值为 \(\lambda\)，则 \(A\beta = \lambda\beta\)。
+
+将 \(\beta = \xi_1 + \xi_2 + \xi_3\) 代入，由 \(A\xi_i = \lambda_i\xi_i\) 展开得：
+\[
+\lambda_1\xi_1 + \lambda_2\xi_2 + \lambda_3\xi_3 = \lambda(\xi_1 + \xi_2 + \xi_3)
+\]
+移项并合并同类项：
+\[
+(\lambda_1 - \lambda)\xi_1 + (\lambda_2 - \lambda)\xi_2 + (\lambda_3 - \lambda)\xi_3 = 0
+\]
+因 \(\lambda_1, \lambda_2, \lambda_3\) 互异，故对应的特征向量 \(\xi_1, \xi_2, \xi_3\) 线性无关。从而各项系数必为 \(0\)：
+\[
+\lambda_1 - \lambda = 0,\ \lambda_2 - \lambda = 0,\ \lambda_3 - \lambda = 0
+\]
+即 \(\lambda = \lambda_1 = \lambda_2 = \lambda_3\)，这与三个特征值互不相同矛盾。
+故假设不成立，\(\beta\) 不是 \(A\) 的特征向量。
+
+\textbf{(2) 证明：}
+设有实数 \(k_1, k_2, k_3\) 使得 \(k_1\beta + k_2A\beta + k_3A^2\beta = 0\)。
+
+由 \(A^k\xi_i = \lambda_i^k\xi_i\)，计算可得：
+\[
+\begin{aligned}
+A\beta &= \lambda_1\xi_1 + \lambda_2\xi_2 + \lambda_3\xi_3 \\
+A^2\beta &= \lambda_1^2\xi_1 + \lambda_2^2\xi_2 + \lambda_3^2\xi_3
+\end{aligned}
+\]
+代入假设等式，并按 \(\xi_i\) 重新合并同类项，得：
+\[
+(k_1 + k_2\lambda_1 + k_3\lambda_1^2)\xi_1 + (k_1 + k_2\lambda_2 + k_3\lambda_2^2)\xi_2 + (k_1 + k_2\lambda_3 + k_3\lambda_3^2)\xi_3 = 0
+\]
+由于 \(\xi_1, \xi_2, \xi_3\) 线性无关，各系数须全为 \(0\)，得到关于 \(k_1, k_2, k_3\) 的齐次线性方程组：
+\[
+\begin{cases}
+k_1 + \lambda_1 k_2 + \lambda_1^2 k_3 = 0 \\
+k_1 + \lambda_2 k_2 + \lambda_2^2 k_3 = 0 \\
+k_1 + \lambda_3 k_2 + \lambda_3^2 k_3 = 0
+\end{cases}
+\]
+该方程组的系数矩阵行列式为范德蒙德行列式：
+\[
+D = \begin{vmatrix} 1 & \lambda_1 & \lambda_1^2 \\ 1 & \lambda_2 & \lambda_2^2 \\ 1 & \lambda_3 & \lambda_3^2 \end{vmatrix} = (\lambda_3 - \lambda_2)(\lambda_3 - \lambda_1)(\lambda_2 - \lambda_1)
+\]
+由于 \(\lambda_i\) 互不相同，\(D \neq 0\)，故方程组只有唯一零解 \(k_1 = k_2 = k_3 = 0\)。
+因此，向量组 \(\beta, A\beta, A^2\beta\) 线性无关。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：属于不同特征值的特征向量必线性无关；\(n\) 阶范德蒙德行列式的构造与非零条件。
+ \item \textbf{易错点}：推导 \(A^2\beta\) 时误用相似对角化增加计算量；反证法中将未知特征值局限于具体的 \(\lambda_i\)。
+ \item \textbf{关联知识}：矩阵多项式与特征向量的作用性质，即若 \(A\xi = \lambda\xi\)，则对于多项式 \(f(A)\) 有 \(f(A)\xi = f(\lambda)\xi\)。
+\end{itemize}}
+
+\end{mistake}

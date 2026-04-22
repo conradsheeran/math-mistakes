@@ -1,0 +1,38 @@
+\begin{mistake}{2026-04-22}{03}
+
+\begin{problemcontent}
+(1) 设 \(A, B\) 是 \(n\) 阶矩阵，\(A\) 有特征值 \(\lambda = 1, 2, \cdots, n\)。证明 \(AB\) 和 \(BA\) 有相同的特征值且 \(AB \sim BA\)。
+
+(2) 对一般的 \(n\) 阶矩阵 \(A, B\)，是否必有 \(AB \sim BA\)？说明理由。
+\end{problemcontent}
+
+\begin{solutioncontent}
+(1) \textbf{证明}：因为 \(A\) 的特征值 \(\lambda = 1, 2, \cdots, n\) 均不为 0，所以 \(|A| = \prod_{i=1}^n \lambda_i = n! \neq 0\)，故矩阵 \(A\) 可逆。
+
+对矩阵 \(AB\)，左乘 \(A^{-1}\)，右乘 \(A\)，有：
+\[
+A^{-1}(AB)A = (A^{-1}A)BA = EBA = BA
+\]
+根据相似矩阵的定义，存在可逆矩阵 \(A^{-1}\)（或以 \(A\) 为过渡矩阵），使得上述等式成立，故 \(AB \sim BA\)。
+又因为相似矩阵必有相同的特征多项式，故 \(AB\) 与 \(BA\) 有相同的特征值。
+
+(2) \textbf{解}：不一定。
+构造反例：设 \(A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}\), \(B = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}\)。
+计算可得：
+\[
+\begin{aligned}
+AB &= \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \\
+BA &= \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix} = \mathbf{0}
+\end{aligned}
+\]
+若 \(AB \sim BA\)，则存在可逆矩阵 \(P\)，使得 \(P^{-1}(AB)P = BA = \mathbf{0}\)，从而必有 \(AB = \mathbf{0}\)，与实际计算结果矛盾。因此 \(AB\) 与 \(BA\) 不相似。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：矩阵行列式等于特征值之积 \(|A| = \prod \lambda_i\)；相似矩阵定义（\(P^{-1}AP=B\)）及性质（相似必同特征多项式）。
+ \item \textbf{易错点}：未敏锐捕捉题干中“特征值无零”推导“\(A\) 可逆”的暗示；对证明矩阵相似的基本代数构造变形不熟练。
+ \item \textbf{关联知识}：对任意 \(n\) 阶方阵 \(A, B\)，\(AB\) 与 \(BA\) 必定具有相同的特征多项式（特征值完全一致），但它们不一定相似（通常因为属于特征值 0 的几何重数不同引起若尔当标准型不同）。
+\end{itemize}}
+
+\end{mistake}

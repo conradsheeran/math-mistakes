@@ -1,0 +1,37 @@
+\begin{mistake}{2026-04-24}{01}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([0, 1]\) 上连续，证明 \(\int_{0}^{\pi} xf(\sin x)\,\mathrm{d}x = \frac{\pi}{2}\int_{0}^{\pi} f(\sin x)\,\mathrm{d}x\)，并计算 \(\int_{0}^{\pi} x\sin^9 x\,\mathrm{d}x\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+（1）证明：令 \(x = \pi - t\)，则 \(\mathrm{d}x = -\mathrm{d}t\)。
+\[
+\begin{aligned}
+\int_{0}^{\pi} xf(\sin x)\,\mathrm{d}x &= \int_{\pi}^{0} (\pi - t)f(\sin(\pi - t))(-\mathrm{d}t) \\
+&= \int_{0}^{\pi} (\pi - t)f(\sin t)\,\mathrm{d}t \\
+&= \pi \int_{0}^{\pi} f(\sin t)\,\mathrm{d}t - \int_{0}^{\pi} tf(\sin t)\,\mathrm{d}t
+\end{aligned}
+\]
+移项合并得：\(2\int_{0}^{\pi} xf(\sin x)\,\mathrm{d}x = \pi \int_{0}^{\pi} f(\sin x)\,\mathrm{d}x\)，故：
+\[ \int_{0}^{\pi} xf(\sin x)\,\mathrm{d}x = \frac{\pi}{2}\int_{0}^{\pi} f(\sin x)\,\mathrm{d}x \]
+
+（2）计算：应用上述结论，令 \(f(u) = u^9\)，由于 \(u=\sin x\) 在 \([0,\pi]\) 上的值域为 \([0,1]\)，符合题设条件。
+\[
+\begin{aligned}
+\int_{0}^{\pi} x\sin^9 x\,\mathrm{d}x &= \frac{\pi}{2}\int_{0}^{\pi} \sin^9 x\,\mathrm{d}x \\
+&= \frac{\pi}{2} \cdot 2\int_{0}^{\frac{\pi}{2}} \sin^9 x\,\mathrm{d}x \quad \text{（利用区间对称性）}\\
+&= \pi \left( \frac{8}{9} \cdot \frac{6}{7} \cdot \frac{4}{5} \cdot \frac{2}{3} \cdot 1 \right) \quad \text{（应用 Wallis 公式）}\\
+&= \frac{128\pi}{315}
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：区间翻转公式 \(\int_{0}^{\pi} xf(\sin x)\,\mathrm{d}x = \frac{\pi}{2}\int_{0}^{\pi} f(\sin x)\,\mathrm{d}x\) 与 Wallis 公式（点火公式）。
+ \item \textbf{易错点}：套用 Wallis 公式前未将积分区间 \([0, \pi]\) 对称折半至 \([0, \frac{\pi}{2}]\)；被积函数奇数次幂时，Wallis公式末尾乘 \(1\) 而非 \(\frac{\pi}{2}\)。
+ \item \textbf{关联知识}：定积分换元必换限；\(\sin x\) 在 \([0, \pi]\) 上关于 \(x = \frac{\pi}{2}\) 对称，即 \(\int_{0}^{\pi} g(\sin x)\,\mathrm{d}x = 2\int_{0}^{\frac{\pi}{2}} g(\sin x)\,\mathrm{d}x\)。
+\end{itemize}}
+
+\end{mistake}

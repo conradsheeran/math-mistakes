@@ -1,0 +1,41 @@
+\begin{mistake}{2026-04-26}{01}
+
+\begin{problemcontent}
+设 3 维列向量 \(\boldsymbol{\alpha}, \boldsymbol{\beta}\) 线性无关，矩阵 \(\boldsymbol{A} = [\boldsymbol{\alpha}, \boldsymbol{\beta}]\)，则矩阵 \(\boldsymbol{A}\boldsymbol{A}^{\mathrm{T}}\) 合同于
+
+(A) \(\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}\) \quad
+(B) \(\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{bmatrix}\) \quad
+(C) \(\begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}\) \quad
+(D) \(\begin{bmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{bmatrix}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+已知 \(\boldsymbol{\alpha}, \boldsymbol{\beta}\) 是线性无关的 3 维列向量，故 \(\boldsymbol{A}\) 为 \(3 \times 2\) 矩阵，且列满秩，即 \(r(\boldsymbol{A}) = 2\)。
+
+根据实矩阵秩的性质有：\(r(\boldsymbol{A}\boldsymbol{A}^{\mathrm{T}}) = r(\boldsymbol{A}) = 2\)。
+由于合同变换不改变矩阵的秩，所求合同规范形的秩也为 2，故排除选项 (A) 与 (C)。
+
+对任意非零 3 维实列向量 \(\boldsymbol{x}\)，构造 \(\boldsymbol{A}\boldsymbol{A}^{\mathrm{T}}\) 的二次型：
+\[
+\begin{aligned}
+f(\boldsymbol{x}) &= \boldsymbol{x}^{\mathrm{T}}(\boldsymbol{A}\boldsymbol{A}^{\mathrm{T}})\boldsymbol{x} \\
+&= (\boldsymbol{A}^{\mathrm{T}}\boldsymbol{x})^{\mathrm{T}}(\boldsymbol{A}^{\mathrm{T}}\boldsymbol{x}) \\
+&= \|\boldsymbol{A}^{\mathrm{T}}\boldsymbol{x}\|^2 \ge 0
+\end{aligned}
+\]
+
+这表明 \(\boldsymbol{A}\boldsymbol{A}^{\mathrm{T}}\) 为半正定矩阵，其所有特征值均大于等于 0。不存在负特征值，即负惯性指数 \(q=0\)。
+结合秩 \(r(\boldsymbol{A}\boldsymbol{A}^{\mathrm{T}}) = 2\)，知其正惯性指数 \(p=2\)。
+
+由 Sylvester 惯性定理，合同规范形对角线上应有 2 个 1，0 个 -1，1 个 0。
+故正确答案选 (B)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：实矩阵秩等式 \(r(\boldsymbol{A}\boldsymbol{A}^{\mathrm{T}}) = r(\boldsymbol{A}^{\mathrm{T}}\boldsymbol{A}) = r(\boldsymbol{A})\)；Sylvester 惯性定理。
+ \item \textbf{易错点}：忽略矩阵相乘前后的维数变化，误以为 \(\boldsymbol{A}\boldsymbol{A}^{\mathrm{T}}\) 满秩错选(A)；未能判别出半正定性错选(D)。
+ \item \textbf{关联知识}：形如 \(\boldsymbol{B}^{\mathrm{T}}\boldsymbol{B}\) 或 \(\boldsymbol{B}\boldsymbol{B}^{\mathrm{T}}\) 的实对称矩阵必然是半正定或正定的，其二次型本质是向量的模长平方 \(\|\boldsymbol{B}^{\mathrm{T}}\boldsymbol{x}\|^2 \ge 0\)。
+\end{itemize}}
+
+\end{mistake}

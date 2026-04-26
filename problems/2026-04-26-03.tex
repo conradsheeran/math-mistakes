@@ -1,0 +1,34 @@
+\begin{mistake}{2026-04-26}{03}
+
+\begin{problemcontent}
+设 \(\boldsymbol{A}, \boldsymbol{B}, \boldsymbol{C}\) 均为三阶矩阵，若 \(\boldsymbol{A}\) 与 \(\boldsymbol{B}\) 为对称矩阵且合同，矩阵 \(\boldsymbol{B}\) 与 \(\boldsymbol{C}\) 相似，则下列结论不正确的为 ( )
+
+(A) \(r(\boldsymbol{A}) = r(\boldsymbol{C})\)
+
+(B) \(|\boldsymbol{B}| = |\boldsymbol{C}|\)
+
+(C) \(|\boldsymbol{A}\boldsymbol{C}| \geqslant 0\)
+
+(D) \(\mathrm{tr}(\boldsymbol{A}) = \mathrm{tr}(\boldsymbol{C})\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案选 (D)。
+
+(A) 合同和相似变换均不改变矩阵的秩。由 \(\boldsymbol{A} \simeq \boldsymbol{B}\) 得 \(r(\boldsymbol{A}) = r(\boldsymbol{B})\)；由 \(\boldsymbol{B} \sim \boldsymbol{C}\) 得 \(r(\boldsymbol{B}) = r(\boldsymbol{C})\)，故 \(r(\boldsymbol{A}) = r(\boldsymbol{C})\)，结论正确。
+
+(B) 相似矩阵的行列式相等，由 \(\boldsymbol{B} \sim \boldsymbol{C}\) 可得 \(|\boldsymbol{B}| = |\boldsymbol{C}|\)，结论正确。
+
+(C) 由方阵乘积的行列式性质，\(|\boldsymbol{A}\boldsymbol{C}| = |\boldsymbol{A}|\cdot|\boldsymbol{C}|\)。因 \(|\boldsymbol{C}| = |\boldsymbol{B}|\)，则 \(|\boldsymbol{A}\boldsymbol{C}| = |\boldsymbol{A}|\cdot|\boldsymbol{B}|\)。又因为 \(\boldsymbol{A} \simeq \boldsymbol{B}\)，存在可逆矩阵 \(\boldsymbol{P}\) 使 \(\boldsymbol{B} = \boldsymbol{P}^T\boldsymbol{A}\boldsymbol{P}\)，故 \(|\boldsymbol{B}| = |\boldsymbol{P}|^2|\boldsymbol{A}|\)。代入得 \(|\boldsymbol{A}\boldsymbol{C}| = |\boldsymbol{P}|^2|\boldsymbol{A}|^2 = (|\boldsymbol{P}|\cdot|\boldsymbol{A}|)^2 \geqslant 0\)，结论正确。
+
+(D) 相似保迹，故 \(\mathrm{tr}(\boldsymbol{B}) = \mathrm{tr}(\boldsymbol{C})\)；但合同变换一般不保迹，\(\mathrm{tr}(\boldsymbol{A}) \neq \mathrm{tr}(\boldsymbol{B})\)，故 \(\mathrm{tr}(\boldsymbol{A}) = \mathrm{tr}(\boldsymbol{C})\) 不成立，结论错误。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心定理}：相似变换保秩、行列式、迹、特征值；合同变换仅保秩、正负惯性指数。
+ \item \textbf{易错点}：混淆合同与相似的不变量，误认为合同变换也能保持矩阵的迹（\(\mathrm{tr}\)）相等。
+ \item \textbf{关联知识}：“对称+合同”推不出“相似”（特征值大小可能改变）；但“对称+相似”必定能推出“合同”。
+\end{itemize}}
+
+\end{mistake}

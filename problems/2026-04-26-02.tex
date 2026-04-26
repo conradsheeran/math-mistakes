@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-26}{02}
+
+\begin{problemcontent}
+设 \(A\) 是 \(n\) 阶实对称矩阵，将 \(A\) 的 \(i\) 列和 \(j\) 列对换得到 \(B\)，再将 \(B\) 的 \(i\) 行和 \(j\) 行对换得到 \(C\)，则 \(A\) 与 \(C\)
+(A) 等价但不相似.
+(B) 合同但不相似.
+(C) 相似但不合同.
+(D) 等价，合同且相似.
+\end{problemcontent}
+
+\begin{solutioncontent}
+选 (D)。
+
+设 \(P_{ij}\) 为对换 \(n\) 阶单位矩阵的第 \(i, j\) 两行（或两列）得到的初等对换矩阵。
+由初等变换“左乘行变换，右乘列变换”的性质可知：
+将 \(A\) 的 \(i, j\) 列对换得到 \(B\)，即 \(B = AP_{ij}\)；
+将 \(B\) 的 \(i, j\) 行对换得到 \(C\)，即 \(C = P_{ij}B\)。
+因此代入可得：\(C = P_{ij}AP_{ij}\)。
+
+初等对换矩阵 \(P_{ij}\) 是可逆阵，且满足转置等于自身、逆等于自身，即 \(P_{ij} = P_{ij}^T = P_{ij}^{-1}\)。
+据此，可将 \(C\) 的表达式写为以下形式：
+\[
+\begin{aligned}
+C &= P_{ij} A P_{ij} \quad (\text{满足等价定义 } C=PAQ) \\
+C &= P_{ij}^T A P_{ij} \quad (\text{满足合同定义 } C=P^TAP) \\
+C &= P_{ij}^{-1} A P_{ij} \quad (\text{满足相似定义 } C=P^{-1}AP)
+\end{aligned}
+\]
+故 \(A\) 与 \(C\) 等价，合同且相似。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：初等对换矩阵的特殊性质 \(P_{ij} = P_{ij}^T = P_{ij}^{-1}\)；初等变换与矩阵乘法的关系（左乘作行变换，右乘作列变换）。
+ \item \textbf{易错点}：对等价、合同、相似的矩阵乘法定义式不够熟练；无法将“行列对换”动作准确转化为初等矩阵的左乘和右乘形式。
+ \item \textbf{关联知识}：等价 (\(C=PAQ\))、合同 (\(C=P^TAP\))、相似 (\(C=P^{-1}AP\)) 的代数定义。注：题设中“实对称矩阵”属干扰条件，对一般矩阵该操作后同样满足上述结论。
+\end{itemize}}
+
+\end{mistake}

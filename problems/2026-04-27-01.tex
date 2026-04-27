@@ -1,0 +1,44 @@
+\begin{mistake}{2026-04-27}{01}
+
+\begin{problemcontent}
+函数 \( f(x) = \frac{(x^2-x)|x+1|e^{-\frac{1}{x}}}{\int_{1}^{x} t^2 \sin t \, \mathrm{d}t} \quad (x \in [-\pi, \pi]) \) 的第一类间断点的个数为 ( )
+
+A. 0 \quad B. 1 \quad C. 2 \quad D. 3
+\end{problemcontent}
+
+\begin{solutioncontent}
+可能的间断点为分母零点 \(x=1, x=-1\)（因被积函数为奇函数，\(\int_{1}^{-1} t^2 \sin t \, \mathrm{d}t = 0\)）以及无定义点 \(x=0\)。
+
+对于 \(x=0\)：
+当 \(x \to 0^+\) 时，\(-\frac{1}{x} \to -\infty\)，\(e^{-\frac{1}{x}} \to 0\)，\(\lim_{x \to 0^+} f(x) = 0\)。
+当 \(x \to 0^-\) 时，\(-\frac{1}{x} \to +\infty\)，分母极限为常数 \(\int_{1}^{0} t^2 \sin t \, \mathrm{d}t \neq 0\)。令 \(u=-\frac{1}{x}\)，考察分子极限：
+\[
+\lim_{x \to 0^-} (x^2-x)e^{-\frac{1}{x}} = \lim_{u \to +\infty} \frac{u+1}{u^2} e^u = +\infty
+\]
+故 \(\lim_{x \to 0^-} f(x) = -\infty\)，左极限不存在，\(x=0\) 为第二类间断点。
+
+对于 \(x=1\)：
+由洛必达法则：
+\[
+\lim_{x \to 1} f(x) = \lim_{x \to 1} \frac{x-1}{\int_{1}^{x} t^2 \sin t \, \mathrm{d}t} \cdot \left( x|x+1|e^{-\frac{1}{x}} \right) = \frac{1}{\sin 1} \cdot 2e^{-1} = \frac{2}{e\sin 1}
+\]
+极限存在且有限，\(x=1\) 为第一类（可去）间断点。
+
+对于 \(x=-1\)：
+\[
+\lim_{x \to -1} f(x) = \lim_{x \to -1} \frac{|x+1|}{\int_{1}^{x} t^2 \sin t \, \mathrm{d}t} \cdot \left( (x^2-x)e^{-\frac{1}{x}} \right)
+\]
+由于 \(|x+1|\) 在 \(x=-1\) 左右两侧异号，而分母应用洛必达法则后导数为 \(-\sin 1 \neq 0\)，故左右极限存在且互为相反数。
+因此 \(x=-1\) 为第一类（跳跃）间断点。
+
+综上所述，第一类间断点共有 \(x=1\) 和 \(x=-1\) 两个，选 C。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：第一类间断点要求左右极限均存在且有限；奇函数在对称区间积分性质 \(\int_{-a}^{a} f(x)\,\mathrm{d}x = 0\)。
+ \item \textbf{易错点}：误认 \(x \to 0\) 时 \(e^{-\frac{1}{x}} \to 0\)。实际上当 \(x \to 0^-\) 时，\(-\frac{1}{x} \to +\infty\)，使得 \(e^{-\frac{1}{x}} \to +\infty\)，产生无穷间断点。
+ \item \textbf{关联知识}：凡遇 \(x \to 0\) 且含 \(e^{\frac{1}{x}}\)、\(\arctan(\frac{1}{x})\) 或 \(\frac{|x|}{x}\) 结构时，必须分别计算左右单侧极限。
+\end{itemize}}
+
+\end{mistake}

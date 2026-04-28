@@ -1,0 +1,39 @@
+\begin{mistake}{2026-04-28}{02}
+
+\begin{problemcontent}
+求极限 \(\displaystyle \lim_{x\to+\infty} \left( \frac{a^{\frac{1}{x}} + b^{\frac{1}{x}} + c^{\frac{1}{x}}}{3} \right)^x\)，其中 \(a,b,c\) 为正数。
+\end{problemcontent}
+
+\begin{solutioncontent}
+原极限为 \(1^\infty\) 型，应用公式 \(\lim u^v = e^{\lim v(u-1)}\)，首先计算指数部分的极限。
+
+令 \(t = \frac{1}{x}\)，当 \(x \to +\infty\) 时，\(t \to 0^+\)：
+\[
+\begin{aligned}
+\lim_{x\to+\infty} x \left( \frac{a^{\frac{1}{x}} + b^{\frac{1}{x}} + c^{\frac{1}{x}}}{3} - 1 \right)
+&= \lim_{t\to 0^+} \frac{1}{t} \left( \frac{a^t + b^t + c^t - 3}{3} \right) \\
+&= \frac{1}{3} \lim_{t\to 0^+} \frac{(a^t - 1) + (b^t - 1) + (c^t - 1)}{t}
+\end{aligned}
+\]
+
+由等价无穷小 \(k^t - 1 \sim t \ln k\ (\text{当 } t \to 0 \text{ 时})\)：
+\[
+\begin{aligned}
+\text{指数部分极限} &= \frac{1}{3} \lim_{t\to 0^+} \frac{t\ln a + t\ln b + t\ln c}{t} \\
+&= \frac{\ln a + \ln b + \ln c}{3} \\
+&= \frac{1}{3}\ln(abc) = \ln\left((abc)^{\frac{1}{3}}\right)
+\end{aligned}
+\]
+
+将此极限代回底数 \(e\)：
+\[ \text{原式} = e^{\ln\left((abc)^{\frac{1}{3}}\right)} = \sqrt[3]{abc} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：\(1^\infty\) 型极限公式 \(\lim u^v = e^{\lim v(u-1)}\)；等价无穷小 \(a^x-1 \sim x\ln a\)；恒等式 \(e^{\ln x}=x\)。
+ \item \textbf{易错点}：在未定式中对部分加法项凭直觉进行违规的"局部求极限"或强行化简；计算末尾指对数转换出错。
+ \item \textbf{关联知识}：极限中遇到 \(x \to \infty\) 且含有 \(\frac{1}{x}\) 的结构时，常作倒代换 \(t=\frac{1}{x}\)，将问题转化为 \(t \to 0\) 以便使用等价无穷小。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,36 @@
+\begin{mistake}{2026-04-28}{01}
+
+\begin{problemcontent}
+设 \(a>0\) 且 \(a \neq 1\)，已知 \(\lim\limits_{x \to +\infty} x^P \left( a^{\frac{1}{x}} - a^{\frac{1}{x+1}} \right)\) 存在，则 \(P\) 的取值范围为 \underline{\quad\quad}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+提取公因式构造标准形式，原极限可化为：
+\[
+\begin{aligned}
+\lim_{x \to +\infty} x^P \left( a^{\frac{1}{x}} - a^{\frac{1}{x+1}} \right)
+&= \lim_{x \to +\infty} x^P a^{\frac{1}{x+1}} \left( a^{\frac{1}{x} - \frac{1}{x+1}} - 1 \right) \\
+&= \lim_{x \to +\infty} x^P a^{\frac{1}{x+1}} \left( a^{\frac{1}{x(x+1)}} - 1 \right)
+\end{aligned}
+\]
+当 \(x \to +\infty\) 时，\(a^{\frac{1}{x+1}} \to 1\)，且 \(\frac{1}{x(x+1)} \to 0\)。
+利用等价无穷小 \(a^u - 1 \sim u \ln a\ (u \to 0)\)，将指数部分替换：
+\[
+\begin{aligned}
+\text{原极限} &= \lim_{x \to +\infty} x^P \cdot 1 \cdot \left( \frac{1}{x(x+1)} \ln a \right) \\
+&= \lim_{x \to +\infty} \frac{x^P \ln a}{x^2+x}
+\end{aligned}
+\]
+因为 \(a>0\) 且 \(a \neq 1\)，所以常数 \(\ln a \neq 0\)。
+要使当 \(x \to +\infty\) 时该有理分式的极限存在（即为有限常数），分子的最高次幂必须小于或等于分母的最高次幂。
+分母的最高次幂为 \(2\)，故要求 \(P \le 2\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心公式/定理}：指数函数等价无穷小 \(a^u - 1 \sim u \ln a \ (u \to 0)\)；有理分式 \(\lim\limits_{x \to \infty}\) 存在条件为分子阶数 \(\le\) 分母阶数。
+ \item \textbf{易错点}：混淆“极限存在”（可为 \(0\)）与“极限非零”（必须同阶），误以为必须同阶而错填 \(P=2\)；直接对加减法使用等价无穷小替换而非先提取公因式。
+ \item \textbf{关联知识}：处理复合函数加减项极限时，牢记“提公因式转乘法因式”的原则，避免因高阶无穷小抵消而导致的精度丢失。
+\end{itemize}}
+
+\end{mistake}

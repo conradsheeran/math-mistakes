@@ -1,0 +1,42 @@
+\begin{mistake}{2026-04-28}{03}
+
+\begin{problemcontent}
+讨论函数 \(f(x) = \lim_{n \to \infty} \frac{x^{n+2} - x^{-n}}{x^n + x^{-n}}\) 的连续性。
+\end{problemcontent}
+
+\begin{solutioncontent}
+由式中包含 \(x^{-n} = \frac{1}{x^n}\) 可知，函数的定义域隐含 \(x \neq 0\)。
+根据 \(|x|\) 与 1 的大小关系计算极限以求出 \(f(x)\) 的解析式：
+
+当 \(|x| > 1\) 时，分子分母同除以 \(x^n\)：
+\[ f(x) = \lim_{n \to \infty} \frac{x^2 - x^{-2n}}{1 + x^{-2n}} = x^2 \]
+
+当 \(0 < |x| < 1\) 时，分子分母同除以 \(x^{-n}\)：
+\[ f(x) = \lim_{n \to \infty} \frac{x^{2n+2} - 1}{x^{2n} + 1} = -1 \]
+
+当 \(x = 1\) 时，代入得 \(f(1) = \frac{1-1}{1+1} = 0\)。
+
+当 \(x = -1\) 时，代入得 \(f(-1) = \lim_{n \to \infty} \frac{(-1)^n - (-1)^n}{(-1)^n + (-1)^n} = 0\)。
+
+故目标函数的分段表达式为：
+\[
+ f(x) = \begin{cases} x^2, & |x| > 1 \\ 0, & x = \pm 1 \\ -1, & 0 < |x| < 1 \end{cases}
+\]
+
+\(f(x)\) 在区间 \(( -\infty, -1), (-1, 0), (0, 1), (1, +\infty)\) 内均为初等函数，处处连续。
+讨论分界点 \(x=\pm 1\) 与无定义点 \(x=0\) 处的连续性：
+\begin{itemize}
+ \item 在 \(x = 1\) 处：\(\lim_{x \to 1^-} f(x) = -1\)，\(\lim_{x \to 1^+} f(x) = 1\)。因左右极限不相等，\(x=1\) 为跳跃间断点。
+ \item 在 \(x = -1\) 处：\(\lim_{x \to -1^-} f(x) = 1\)，\(\lim_{x \to -1^+} f(x) = -1\)。因左右极限不相等，\(x=-1\) 为跳跃间断点。
+ \item 在 \(x = 0\) 处：函数无定义，但 \(\lim_{x \to 0} f(x) = -1\)。极限存在，\(x=0\) 为可去间断点。
+\end{itemize}
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+ \item \textbf{核心考点}：等比数列的极限，计算时需根据底数绝对值 \(|x| > 1, 0 < |x| < 1, x = \pm 1\) 严格分类讨论。
+ \item \textbf{易错点}：忽略 \(x^{-n}\) 产生的隐含定义域 \(x \neq 0\)，从而直接遗漏对 \(x=0\) 处（可去间断点）的讨论。
+ \item \textbf{关联知识}：第一类间断点判定（左右极限均存在；若相等则为可去间断点，若不等则为跳跃间断点）。
+\end{itemize}}
+
+\end{mistake}

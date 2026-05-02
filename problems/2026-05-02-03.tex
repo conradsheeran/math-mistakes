@@ -1,0 +1,34 @@
+\begin{mistake}{2026-05-02}{03}
+
+\begin{problemcontent}
+设 \(\{x_n\}\) 与 \(\{y_n\}\) 为两个数列，则下列说法正确的是（\quad）.
+
+A. 若 \(\{x_n\}\) 与 \(\{y_n\}\) 无界，则 \(\{x_n + y_n\}\) 无界
+
+B. 若 \(\{x_n\}\) 与 \(\{y_n\}\) 无界，则 \(\{x_n y_n\}\) 无界
+
+C. 若 \(\{x_n\}\) 与 \(\{y_n\}\) 中，一个有界，一个无界，则 \(\{x_n y_n\}\) 无界
+
+D. 若 \(\{x_n\}\) 与 \(\{y_n\}\) 均为无穷大，则 \(\{x_n y_n\}\) 一定为无穷大
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：D.
+
+对于 A，取无界数列 \(x_n=n,\ y_n=-n\)，则 \(x_n+y_n=0\) 有界，故 A 错。
+
+对于 B，构造穿插零的无界数列：设奇数项 \(x_n=0,\ y_n=n\)；偶数项 \(x_n=n,\ y_n=0\)。两者均无界，但乘积恒为 \(x_n y_n=0\)，有界，故 B 错。
+
+对于 C，取有界数列 \(x_n=0\)，无界数列 \(y_n=n\)，则 \(x_n y_n=0\) 有界，故 C 错。
+
+对于 D，由无穷大定义，\(\forall M>0\)，存在 \(N_1, N_2>0\)，当 \(n>N_1\) 时 \(|x_n|>\sqrt{M}\)，当 \(n>N_2\) 时 \(|y_n|>\sqrt{M}\)。取 \(N=\max(N_1,N_2)\)，当 \(n>N\) 时，必有 \(|x_n y_n| > \sqrt{M}\cdot\sqrt{M}=M\)，完全符合无穷大数列定义，故 D 正确。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：无界定义为 \(\forall M>0, \exists n, |x_n|>M\)；无穷大定义为 \(\forall M>0, \exists N, \forall n>N, |x_n|>M\)。
+  \item \textbf{易错点}：将"无界"与"无穷大"混淆，凭直觉认为无界数列相乘必定越来越大，忽略了局部为零的情况。
+  \item \textbf{关联知识}：无穷大必定无界，但无界不一定是无穷大。构造反例的高效工具：常数数列 \(0\) 及穿插 \(0\) 的交替数列。
+\end{itemize}}
+
+\end{mistake}

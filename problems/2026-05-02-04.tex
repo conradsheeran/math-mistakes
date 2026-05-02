@@ -1,0 +1,39 @@
+\begin{mistake}{2026-05-02}{04}
+
+\begin{problemcontent}
+设 \(f(n)\) 表示方程 \(x(1+\ln x)=n\) 的正实根，其中 \(x \geqslant 1\)，\(n\) 为正整数，则下列选项正确的是 ( )
+
+A. \(\{f(n)\}\) 收敛 \qquad B. \(\left\{\frac{f(n)}{n}\right\}\) 发散 \qquad C. \(\left\{\frac{f(n)\ln n}{n}\right\}\) 收敛 \qquad D. \(\left\{\frac{f(n)\ln n}{n}\right\}\) 发散
+\end{problemcontent}
+
+\begin{solutioncontent}
+由题意知，\(f(n)\) 是方程的根，代入可得恒等式：\(f(n)(1+\ln f(n)) = n\)。
+当 \(n \to \infty\) 时，由于函数 \(y = x(1+\ln x)\) 在 \(x \geqslant 1\) 时单调递增且趋于无穷，故 \(f(n) \to \infty\)，从而 \(\ln f(n) \to \infty\)。
+
+判断选项 A：因 \(\lim\limits_{n\to\infty} f(n) = \infty\)，故 \(\{f(n)\}\) 发散，A 错误。
+
+判断选项 B（整体代换）：
+\[ \lim_{n \to \infty} \frac{f(n)}{n} = \lim_{n \to \infty} \frac{f(n)}{f(n)(1+\ln f(n))} = \lim_{n \to \infty} \frac{1}{1+\ln f(n)} = 0 \]
+极限存在，故 \(\left\{\frac{f(n)}{n}\right\}\) 收敛于 0，B 错误。
+
+判断选项 C、D：对恒等式两端取自然对数，得 \(\ln n = \ln f(n) + \ln(1+\ln f(n))\)。代入所求极限式中：
+\[
+\begin{aligned}
+\lim_{n \to \infty} \frac{f(n)\ln n}{n} &= \lim_{n \to \infty} \frac{f(n)[\ln f(n) + \ln(1+\ln f(n))]}{f(n)(1+\ln f(n))} \\
+&= \lim_{n \to \infty} \frac{\ln f(n) + \ln(1+\ln f(n))}{1+\ln f(n)} \\
+&= \lim_{n \to \infty} \frac{1 + \frac{\ln(1+\ln f(n))}{\ln f(n)}}{\frac{1}{\ln f(n)} + 1}
+\end{aligned}
+\]
+令 \(t = \ln f(n)\)，当 \(n \to \infty\) 时 \(t \to \infty\)。由洛必达法则知 \(\lim\limits_{t\to\infty} \frac{\ln(1+t)}{t} = 0\)，即 \(\lim\limits_{n \to \infty} \frac{\ln(1+\ln f(n))}{\ln f(n)} = 0\)。
+因此原极限 \(= \frac{1+0}{0+1} = 1\)。
+极限存在，故 \(\left\{\frac{f(n)\ln n}{n}\right\}\) 收敛，C 正确，D 错误。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：隐函数根的代换构造恒等式 \(f(n)(1+\ln f(n))=n\)；对数乘积性质 \(\ln(ab)=\ln a+\ln b\)。
+  \item \textbf{易错点}：面对超越方程试图显式解出 \(f(n)\) 的表达式；处理 \(\ln n\) 时未能想到对恒等式两端取对数降阶。
+  \item \textbf{关联知识}：无穷大的比阶规律：当 \(x \to \infty\) 时，\(\ln x \ll x^a\ (a>0) \ll a^x\ (a>1)\)，对数函数趋于无穷的速度最慢。
+\end{itemize}}
+
+\end{mistake}

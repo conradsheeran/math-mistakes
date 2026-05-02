@@ -1,0 +1,29 @@
+\begin{mistake}{2026-05-02}{07}
+
+\begin{problemcontent}
+当 \(x \to 0\) 时，\(f(x) = 3x - 4\sin x + \sin x \cos x\) 是关于 \(x\) 的 \underline{\hspace{1.5cm}} 阶无穷小。
+\end{problemcontent}
+
+\begin{solutioncontent}
+先利用二倍角公式化简原函数：
+\[ f(x) = 3x - 4\sin x + \frac{1}{2}\sin 2x \]
+利用带有佩亚诺余项的麦克劳林公式，将 \(\sin x\) 和 \(\sin 2x\) 展开至 \(x^5\) 项：
+\[
+\begin{aligned}
+f(x) &= 3x - 4\left[x - \frac{x^3}{3!} + \frac{x^5}{5!} + o(x^5)\right] + \frac{1}{2}\left[2x - \frac{(2x)^3}{3!} + \frac{(2x)^5}{5!} + o(x^5)\right] \\
+&= (3 - 4 + 1)x + \left(\frac{4}{6} - \frac{8}{12}\right)x^3 + \left(-\frac{4}{120} + \frac{32}{240}\right)x^5 + o(x^5) \\
+&= 0 \cdot x + 0 \cdot x^3 + \frac{12}{120}x^5 + o(x^5) \\
+&= \frac{1}{10}x^5 + o(x^5)
+\end{aligned}
+\]
+展开后最低次非零项为 \(\frac{1}{10}x^5\)，故 \(f(x)\) 是关于 \(x\) 的 \(5\) 阶无穷小。应填 5。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：麦克劳林展开式 \(\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} + o(x^5)\) 与二倍角公式 \(\sin 2x = 2\sin x \cos x\)。
+  \item \textbf{易错点}：复合函数代入时漏写整体括号，如错将 \(\frac{(2x)^3}{3!}\) 写为 \(\frac{2x^3}{3!}\)；低阶项系数抵消为零时未继续展开。
+  \item \textbf{关联知识}：超越函数的加减法求极限或判断阶数时，泰勒展开为首选标准解法，可避免洛必达法则多阶求导的繁琐与易错。
+\end{itemize}}
+
+\end{mistake}

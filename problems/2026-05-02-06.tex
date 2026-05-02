@@ -1,0 +1,45 @@
+\begin{mistake}{2026-05-02}{06}
+
+\begin{problemcontent}
+设 \(f(x) = \begin{cases} \frac{(x^3-1)\sin x}{|x|(1+x^2)}, & x \neq 0, \\ 0, & x = 0, \end{cases}\ \ x \in (-\infty, +\infty)\)，则（\quad ）
+
+A. \(f(x)\) 在 \((-\infty, +\infty)\) 内有界
+
+B. 存在 \(X>0\)，当 \(|x|<X\) 时，\(f(x)\) 有界，当 \(|x|>X\) 时，\(f(x)\) 无界
+
+C. 存在 \(X>0\)，当 \(|x|<X\) 时，\(f(x)\) 无界，当 \(|x|>X\) 时，\(f(x)\) 有界
+
+D. 对任意 \(X>0\)，当 \(|x| \le X\) 时，\(f(x)\) 有界，但在 \((-\infty, +\infty)\) 内无界
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：A。
+
+判断函数在 \((-\infty, +\infty)\) 上的有界性，需考查间断点 \(x=0\) 及 \(x \to \infty\) 处的极限情况。
+
+1. 在 \(x=0\) 处，分别求左右极限：
+\[
+\begin{aligned}
+\lim_{x \to 0^+} f(x) &= \lim_{x \to 0^+} \frac{(x^3-1)\sin x}{x(1+x^2)} = \lim_{x \to 0^+} \frac{x^3-1}{1+x^2} \cdot \frac{\sin x}{x} = (-1) \cdot 1 = -1 \\
+\lim_{x \to 0^-} f(x) &= \lim_{x \to 0^-} \frac{(x^3-1)\sin x}{-x(1+x^2)} = \lim_{x \to 0^-} \frac{x^3-1}{1+x^2} \cdot \frac{\sin x}{-x} = (-1) \cdot (-1) = 1
+\end{aligned}
+\]
+左右极限均存在且有限常数，故 \(f(x)\) 在 \(x=0\) 邻域内有界。
+
+2. 当 \(x \to \infty\) 时，由于 \(|\sin x| \le 1\)，有：
+\[ |f(x)| = \left| \frac{x^3-1}{|x|(1+x^2)} \right| \cdot |\sin x| \le \left| \frac{x^3-1}{x^3 \pm x} \right| \]
+考查有理分式部分的极限：
+\[ \lim_{x \to \infty} \left| \frac{x^3-1}{x^3 \pm x} \right| = \lim_{x \to \infty} \left| \frac{1 - 1/x^3}{1 \pm 1/x^2} \right| = 1 \]
+由于趋于无穷远时其幅值被控制在有限常数附近，所以当 \(x \to \infty\) 时，\(f(x)\) 同样有界。
+
+综上所述，结合非零区间内的连续性，\(f(x)\) 在 \((-\infty, +\infty)\) 内全局有界。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心定理}：连续函数在闭区间上有界；若开区间端点（含无穷远和间断点）的单侧极限均存在且有限，则全域有界。
+  \item \textbf{易错点}：考查无穷远极限时，漏看分母外的 \(|x|\)，误以为分母最高次幂仅为2，从而得出 \(\infty\) 的错误结论（错选D）。
+  \item \textbf{关联知识}：多项式之比 \(P(x)/Q(x)\) 当 \(x \to \infty\) 时的极限，完全由分子分母最高次幂决定（同阶则为最高次项系数之比）。
+\end{itemize}}
+
+\end{mistake}

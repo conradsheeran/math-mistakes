@@ -1,0 +1,41 @@
+\begin{mistake}{2026-05-02}{02}
+
+\begin{problemcontent}
+设 \(y=y(x)\) 是方程 \(y''+2y'+y=\mathrm{e}^{3x}\) 的解，且满足 \(y(0)=y'(0)=0\)，则当 \(x \to 0\) 时，与 \(y(x)\) 为等价无穷小的是（\quad）。
+
+A. \(\sin x^2\) \qquad B. \(\sin x\) \qquad C. \(\ln(1+x^2)\) \qquad D. \(\ln \sqrt{1+x^2}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+将 \(x=0\) 直接代入原微分方程，并结合初始条件 \(y(0)=0, y'(0)=0\)，得：
+\[y''(0) + 2y'(0) + y(0) = \mathrm{e}^{3 \cdot 0}\]
+\[y''(0) + 0 + 0 = 1 \implies y''(0) = 1\]
+
+根据带皮亚诺余项的麦克劳林公式展开：
+\[
+\begin{aligned}
+y(x) &= y(0) + y'(0)x + \frac{y''(0)}{2!}x^2 + o(x^2) \\
+&= 0 + 0 \cdot x + \frac{1}{2}x^2 + o(x^2) \\
+&= \frac{1}{2}x^2 + o(x^2)
+\end{aligned}
+\]
+即当 \(x \to 0\) 时，\(y(x) \sim \frac{1}{2}x^2\)。
+
+分析各项的等价无穷小：
+\begin{itemize}
+    \item A 项：\(\sin x^2 \sim x^2\)
+    \item B 项：\(\sin x \sim x\)
+    \item C 项：\(\ln(1+x^2) \sim x^2\)
+    \item D 项：\(\ln \sqrt{1+x^2} = \frac{1}{2}\ln(1+x^2) \sim \frac{1}{2}x^2\)
+\end{itemize}
+经比对，D 选项符合题意，故选 D。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：麦克劳林展开公式 \(y(x) = y(0) + y'(0)x + \frac{y''(0)}{2!}x^2 + o(x^2)\)。
+  \item \textbf{易错点}：遗漏展开式中二阶项分母的 \(2!\)，导致误算出 \(y(x) \sim x^2\) 而错选 C；盲目去求常微分方程通解，导致耗时过长。
+  \item \textbf{关联知识}：遇到已知微分方程及初值求局部极限或等价无穷小的问题，首选"原方程求导+泰勒展开"法；对数运算法则 \(\ln a^b = b \ln a\)。
+\end{itemize}}
+
+\end{mistake}

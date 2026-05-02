@@ -1,0 +1,41 @@
+\begin{mistake}{2026-05-02}{01}
+
+\begin{problemcontent}
+设 \(a > 0\)，\(\displaystyle \lim_{x \to +\infty} x^a \ln \frac{\arctan(x+1)}{\arctan x} = b\)，则（\quad）。
+
+A. \(a = 2,b = \frac{2}{\pi}\) \qquad
+B. \(a = 2,b = \frac{\pi}{2}\) \qquad
+C. \(a = 1,b = \frac{2}{\pi}\) \qquad
+D. \(a = 1,b = \frac{\pi}{2}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+当 \(x \to +\infty\) 时，\(\frac{\arctan(x+1)}{\arctan x} \to 1\)，利用等价无穷小 \(\ln(1+u) \sim u\) 以及 \(\lim\limits_{x \to +\infty} \arctan x = \frac{\pi}{2}\)（非零因子分离），有：
+
+\[
+\begin{aligned}
+\text{原式} &= \lim_{x \to +\infty} x^a \ln \left( 1 + \frac{\arctan(x+1) - \arctan x}{\arctan x} \right) \\
+&= \lim_{x \to +\infty} x^a \cdot \frac{\arctan(x+1) - \arctan x}{\arctan x} \\
+&= \frac{2}{\pi} \lim_{x \to +\infty} x^a [\arctan(x+1) - \arctan x]
+\end{aligned}
+\]
+
+对函数 \(f(t) = \arctan t\) 在区间 \([x, x+1]\) 上应用拉格朗日中值定理，存在 \(\xi \in (x, x+1)\)，使得：
+\[ \arctan(x+1) - \arctan x = f'(\xi)\cdot 1 = \frac{1}{1+\xi^2} \]
+由于 \(x < \xi < x+1\)，可得不等式：
+\[ \frac{1}{1+(x+1)^2} < \frac{1}{1+\xi^2} < \frac{1}{1+x^2} \]
+
+为使原式极限存在且为非零常数 \(b\)，结合夹逼定理：
+\[ \frac{2}{\pi} \lim_{x \to +\infty} \frac{x^a}{1+(x+1)^2} \le b \le \frac{2}{\pi} \lim_{x \to +\infty} \frac{x^a}{1+x^2} \]
+分子与分母多项式的最高次幂必须一致，故得 \(a = 2\)。
+当 \(a=2\) 时，两端极限的计算结果均为 \(\frac{2}{\pi}\)，由夹逼定理得 \(b = \frac{2}{\pi}\)。故选 A。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：等价无穷小 \(\ln(1+u) \sim u\ (u \to 0)\)；拉格朗日中值定理 \(f(b)-f(a)=f'(\xi)(b-a)\)。
+  \item \textbf{易错点}：直接使用洛必达法则导致式子发散且无法化简；忽略了分母 \(\arctan x \to \frac{\pi}{2}\) 这一非零常数因子可提前计算并分离。
+  \item \textbf{关联知识}：处理抽象函数差值 \(f(x+1)-f(x)\) 在无穷远处的极限渐近阶数时，"拉格朗日中值定理 + 夹逼定理"是最标准的代数操作范式。
+\end{itemize}}
+
+\end{mistake}

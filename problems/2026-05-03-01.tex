@@ -1,0 +1,59 @@
+\begin{mistake}{2026-05-03}{01}
+
+\begin{problemcontent}
+设 \(k\ne \dfrac12\)，求
+\[
+\lim_{n\to\infty}\ln\left[\frac{n-2nk+1}{n(1-2k)}\right]^n.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+因为
+\[
+n-2nk+1=n(1-2k)+1,
+\]
+且 \(k\ne \dfrac12\)，所以 \(1-2k\ne 0\)。于是
+\[
+\frac{n-2nk+1}{n(1-2k)}
+=
+\frac{n(1-2k)+1}{n(1-2k)}
+=1+\frac{1}{n(1-2k)}.
+\]
+原极限化为
+\[
+\lim_{n\to\infty}\ln\left(1+\frac{1}{n(1-2k)}\right)^n
+=
+\lim_{n\to\infty}n\ln\left(1+\frac{1}{n(1-2k)}\right).
+\]
+令
+\[
+a=\frac{1}{1-2k},
+\]
+则
+\[
+\lim_{n\to\infty}n\ln\left(1+\frac{1}{n(1-2k)}\right)
+=
+\lim_{n\to\infty}n\ln\left(1+\frac{a}{n}\right).
+\]
+由重要极限
+\[
+\lim_{x\to 0}\frac{\ln(1+x)}{x}=1
+\]
+可得
+\[
+\lim_{n\to\infty}n\ln\left(1+\frac{a}{n}\right)=a.
+\]
+因此
+\[
+\boxed{\lim_{n\to\infty}\ln\left[\frac{n-2nk+1}{n(1-2k)}\right]^n=\frac{1}{1-2k}}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(\ln A^n=n\ln A\)；\(\displaystyle \lim_{n\to\infty}n\ln\left(1+\frac{a}{n}\right)=a\)，其中 \(a\) 为常数。
+  \item \textbf{易错点}：不能只看括号内分式趋于 \(1\) 就判为 \(\ln 1=0\)；本题是 \(1^\infty\) 型，外层的 \(n\) 次方会留下非零极限。
+  \item \textbf{关联知识}：先把含参分式化成 \(1+\frac{a}{n}\) 的形式；题设 \(k\ne \frac12\) 保证 \(1-2k\ne 0\)，从而 \(a=\frac{1}{1-2k}\) 是常数。
+\end{itemize}}
+
+\end{mistake}

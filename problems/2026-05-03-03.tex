@@ -1,0 +1,44 @@
+\begin{mistake}{2026-05-03}{03}
+
+\begin{problemcontent}
+设 \(f''(1)\) 存在，且 \(f'(1)\ne 0\)，求
+\[
+\lim_{x\to 1}\left[\frac{1}{f'(1)(x-1)}-\frac{1}{f(x)-f(1)}\right].
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(h=x-1\)，\(a=f'(1)\)，\(b=f''(1)\)，则 \(h\to 0\)，且 \(a\ne 0\)。
+
+由二阶 Taylor 公式（Peano 余项）得
+\[
+f(1+h)-f(1)=ah+\frac{b}{2}h^2+o(h^2).
+\]
+因此
+\[
+\begin{aligned}
+\frac{1}{ah}-\frac{1}{f(1+h)-f(1)}
+&=\frac{1}{ah}-\frac{1}{ah+\frac{b}{2}h^2+o(h^2)}\\
+&=\frac{ah+\frac{b}{2}h^2+o(h^2)-ah}{ah\left(ah+\frac{b}{2}h^2+o(h^2)\right)}\\
+&=\frac{\frac{b}{2}h^2+o(h^2)}{a^2h^2+o(h^2)}.
+\end{aligned}
+\]
+分子分母同除以 \(h^2\)，得
+\[
+\lim_{h\to 0}\frac{\frac{b}{2}+\frac{o(h^2)}{h^2}}{a^2+\frac{o(h^2)}{h^2}}
+=\frac{\frac{b}{2}}{a^2}.
+\]
+代回 \(a=f'(1)\)，\(b=f''(1)\)，原极限为
+\[
+\boxed{\frac{f''(1)}{2\left[f'(1)\right]^2}}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若 \(f''(1)\) 存在，则 \(f(1+h)-f(1)=f'(1)h+\frac12 f''(1)h^2+o(h^2)\)。
+  \item \textbf{易错点}：不能只用一阶等价 \(f(x)-f(1)\sim f'(1)(x-1)\)，因为两个分式的一阶主部相减后抵消，极限由二阶项决定。
+  \item \textbf{关联知识}：遇到 \(\frac{1}{\text{一阶近似}}-\frac{1}{\text{函数增量}}\) 型差值，通常先通分，再把函数增量展开到抵消后的最低非零阶。
+\end{itemize}}
+
+\end{mistake}

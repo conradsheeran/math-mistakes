@@ -1,0 +1,76 @@
+\begin{mistake}{2026-05-03}{02}
+
+\begin{problemcontent}
+设
+\[
+\lim_{x\to 0}\left(a[x]+\frac{\ln(1+e^{2/x})}{\ln(1+e^{1/x})}\right)=b,
+\]
+其中 \([x]\) 表示不超过 \(x\) 的最大整数，求 \(a\) 与 \(b\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+记
+\[
+R(x)=\frac{\ln(1+e^{2/x})}{\ln(1+e^{1/x})}.
+\]
+
+当 \(x\to0^+\) 时，令 \(t=1/x\)，则 \(t\to+\infty\)，且 \([x]=0\)。于是
+\[
+R(x)=\frac{\ln(1+e^{2t})}{\ln(1+e^t)}.
+\]
+因为
+\[
+\ln(1+e^{2t})=\ln\left(e^{2t}(1+e^{-2t})\right)=2t+\ln(1+e^{-2t}),
+\]
+\[
+\ln(1+e^t)=\ln\left(e^t(1+e^{-t})\right)=t+\ln(1+e^{-t}),
+\]
+所以
+\[
+\lim_{x\to0^+}R(x)
+=\lim_{t\to+\infty}\frac{2t+\ln(1+e^{-2t})}{t+\ln(1+e^{-t})}=2.
+\]
+因此右极限为
+\[
+\lim_{x\to0^+}\left(a[x]+R(x)\right)=a\cdot0+2=2.
+\]
+
+当 \(x\to0^-\) 时，仍令 \(t=1/x\)，则 \(t\to-\infty\)，且 \([x]=-1\)。此时 \(e^t\to0\)，\(e^{2t}\to0\)，由 \(\ln(1+u)\sim u\ (u\to0)\)，得
+\[
+\ln(1+e^{2t})\sim e^{2t},\qquad \ln(1+e^t)\sim e^t.
+\]
+所以
+\[
+R(x)\sim\frac{e^{2t}}{e^t}=e^t\to0.
+\]
+因此左极限为
+\[
+\lim_{x\to0^-}\left(a[x]+R(x)\right)=a\cdot(-1)+0=-a.
+\]
+
+题设双侧极限存在并等于 \(b\)，故左右极限相等：
+\[
+-a=2.
+\]
+解得
+\[
+a=-2,
+\]
+并且共同极限值为
+\[
+b=2.
+\]
+因此
+\[
+\boxed{a=-2,\quad b=2}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：双侧极限存在需左右极限相等；\(\ln(1+u)\sim u\ (u\to0)\)；当 \(t\to+\infty\) 时，\(\ln(1+e^{kt})=kt+\ln(1+e^{-kt})\sim kt\)。
+  \item \textbf{易错点}：\(x\to0^-\) 且 \(-1<x<0\) 时，\([x]=-1\)，不是 \(0\)。取整函数 \([x]\) 是“不超过 \(x\) 的最大整数”，不是截去小数部分。
+  \item \textbf{关联知识}：含有 \([x]\)、\(\operatorname{sgn}x\)、\(|x|/x\) 等在零点左右取值不同的函数时，必须分别计算左、右极限。
+\end{itemize}}
+
+\end{mistake}

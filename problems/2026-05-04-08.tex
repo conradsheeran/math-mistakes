@@ -1,0 +1,38 @@
+\begin{mistake}{2026-05-04}{08}
+
+\begin{problemcontent}
+在 \(x=0\) 的邻域内，用 \(ax+bx^2+cx^3\) 近似表示函数 \(\arctan x\)，使其误差是比 \(x^3\) 高阶的无穷小（\(x\to 0\)），求 \(a,b,c\) 的值。
+\end{problemcontent}
+
+\begin{solutioncontent}
+题目要求
+\[
+\arctan x-(ax+bx^2+cx^3)=o(x^3),\quad x\to 0.
+\]
+利用麦克劳林展开：
+\[
+\arctan x=x-\frac{x^3}{3}+o(x^3).
+\]
+因此
+\[
+\arctan x-(ax+bx^2+cx^3)
+=(1-a)x-bx^2+\left(-\frac13-c\right)x^3+o(x^3).
+\]
+要使该误差为 \(o(x^3)\)，\(x\)、\(x^2\)、\(x^3\) 项系数都必须为 \(0\)，故
+\[
+1-a=0,\qquad -b=0,\qquad -\frac13-c=0.
+\]
+解得
+\[
+\boxed{a=1,\quad b=0,\quad c=-\frac13}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若 \(R(x)=o(x^3)\)，则 \(\lim_{x\to0}R(x)/x^3=0\)。本题需用 \(\arctan x=x-\frac{x^3}{3}+o(x^3)\)。
+  \item \textbf{易错点}：误差为 \(o(x^3)\) 不是“保留到二次项”，而是要求近似式与原函数的 \(x\)、\(x^2\)、\(x^3\) 项系数全部一致。
+  \item \textbf{关联知识}：\(\arctan x\) 的展开可由 \((\arctan x)'=1/(1+x^2)\) 与 \(1/(1+x^2)=1-x^2+x^4-\cdots\) 积分得到。
+\end{itemize}}
+
+\end{mistake}

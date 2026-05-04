@@ -1,0 +1,57 @@
+\begin{mistake}{2026-05-04}{01}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([0,1]\) 上连续，且 \(f(0)=f(1)\)。证明：至少存在一点 \(\xi\in(0,1)\)，使得
+\[
+f(\xi)=f\left(\xi+\frac12\right).
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+构造辅助函数
+\[
+g(x)=f\left(x+\frac12\right)-f(x),\qquad x\in\left[0,\frac12\right].
+\]
+由于 \(f\) 在 \([0,1]\) 上连续，故 \(g\) 在 \(\left[0,\frac12\right]\) 上连续。
+
+计算端点值：
+\[
+g(0)=f\left(\frac12\right)-f(0),
+\]
+\[
+g\left(\frac12\right)=f(1)-f\left(\frac12\right)=f(0)-f\left(\frac12\right)=-g(0).
+\]
+
+若 \(g(0)=0\)，则
+\[
+f\left(\frac12\right)=f(0)=f(1),
+\]
+取 \(\xi=\frac12\)，有 \(\xi\in(0,1)\)，且
+\[
+f(\xi)=f\left(\xi+\frac12\right).
+\]
+
+若 \(g(0)\ne 0\)，则 \(g(0)\) 与 \(g\left(\frac12\right)\) 异号。由零点存在定理，存在
+\[
+\xi\in\left(0,\frac12\right)
+\]
+使得 \(g(\xi)=0\)。于是
+\[
+f\left(\xi+\frac12\right)-f(\xi)=0,
+\]
+即
+\[
+f(\xi)=f\left(\xi+\frac12\right).
+\]
+又 \(\left(0,\frac12\right)\subset(0,1)\)，故结论成立。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：零点存在定理：连续函数在闭区间两端异号，则在开区间内至少有一个零点。
+  \item \textbf{易错点}：题目只给连续性，不能使用罗尔定理或拉格朗日中值定理；二者都需要开区间内可导。
+  \item \textbf{关联知识}：证明形如 \(f(\xi)=f(\xi+a)\) 的结论，常构造差函数 \(g(x)=f(x+a)-f(x)\)，把等值问题转化为零点问题。
+  \item \textbf{定义域检查}：因 \(f\) 只在 \([0,1]\) 上给定，\(f(\xi+\frac12)\) 有意义要求 \(\xi\le \frac12\)；本题结论为 \(\xi\in(0,1)\)，所以 \(\xi=\frac12\) 也可作为合法取值。
+\end{itemize}}
+
+\end{mistake}

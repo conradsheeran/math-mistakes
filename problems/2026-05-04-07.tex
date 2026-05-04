@@ -1,0 +1,74 @@
+\begin{mistake}{2026-05-04}{07}
+
+\begin{problemcontent}
+计算极限
+\[
+\lim_{n\to\infty}\frac{n\left(\sqrt[n]{n+1}-\sqrt[n+1]{n}\right)}{\left(\sqrt[n]{e}-1\right)\ln n}.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+令
+\[
+a_n=\frac{\ln(n+1)}{n},\qquad b_n=\frac{\ln n}{n+1}.
+\]
+则
+\[
+\sqrt[n]{n+1}=e^{a_n},\qquad \sqrt[n+1]{n}=e^{b_n},\qquad \sqrt[n]{e}=e^{1/n},
+\]
+且 \(a_n\to0,\ b_n\to0\)。由拉格朗日中值定理，存在介于 \(a_n,b_n\) 之间的 \(\xi_n\)，使得
+\[
+e^{a_n}-e^{b_n}=e^{\xi_n}(a_n-b_n),\qquad \xi_n\to0.
+\]
+计算指数差：
+\[
+\begin{aligned}
+a_n-b_n
+&=\frac{\ln(n+1)}{n}-\frac{\ln n}{n+1} \\
+&=\frac{(n+1)\ln(n+1)-n\ln n}{n(n+1)} \\
+&=\frac{\ln n+(n+1)\ln\left(1+\frac1n\right)}{n(n+1)}.
+\end{aligned}
+\]
+于是原极限为
+\[
+\begin{aligned}
+L
+&=\lim_{n\to\infty}\frac{n\left(e^{a_n}-e^{b_n}\right)}{\left(e^{1/n}-1\right)\ln n} \\
+&=\lim_{n\to\infty}e^{\xi_n}\frac{\ln n+(n+1)\ln\left(1+\frac1n\right)}{(n+1)\left(e^{1/n}-1\right)\ln n} \\
+&=\lim_{n\to\infty}e^{\xi_n}\frac{1+\dfrac{(n+1)\ln\left(1+\frac1n\right)}{\ln n}}{(n+1)\left(e^{1/n}-1\right)}.
+\end{aligned}
+\]
+其中
+\[
+e^{\xi_n}\to1,
+\]
+\[
+(n+1)\ln\left(1+\frac1n\right)	o1,
+\]
+故
+\[
+\frac{(n+1)\ln\left(1+\frac1n\right)}{\ln n}\to0.
+\]
+又
+\[
+(n+1)\left(e^{1/n}-1\right)
+=\frac{n+1}{n}\cdot\frac{e^{1/n}-1}{1/n}\to1\cdot1=1.
+\]
+因此
+\[
+L=1.
+\]
+所以原极限为
+\[
+\boxed{1}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：根式指数化：\(\sqrt[n]{a}=a^{1/n}=e^{\frac{\ln a}{n}}\)；指数函数中值定理：\(e^u-e^v=e^\xi(u-v)\)，其中 \(\xi\) 介于 \(u,v\) 之间。
+  \item \textbf{易错点}：不能把 \(\sqrt[n]{n+1}\) 与 \(\sqrt[n+1]{n}\) 都粗略替换为 \(1\) 后相减；加减结构中主部可能抵消，必须比较指数部分 \(\frac{\ln(n+1)}{n}\) 与 \(\frac{\ln n}{n+1}\) 的差。
+  \item \textbf{关联知识}：\(e^x-1\sim x\ (x\to0)\)，\(\ln(1+x)\sim x\ (x\to0)\)；等价无穷小主要适用于乘除结构，加减结构需先确认是否发生主部抵消。
+\end{itemize}}
+
+\end{mistake}

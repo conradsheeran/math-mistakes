@@ -1,0 +1,106 @@
+\begin{mistake}{2026-05-04}{06}
+
+\begin{problemcontent}
+计算极限
+\[
+\lim_{x\to\infty}x^2\left[e^{\left(1+\frac1x\right)^x}-\left(1+\frac1x\right)^{ex}\right],
+\]
+其中 \(ex=e\cdot x\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+设
+\[
+A_x=\left(1+\frac1x\right)^x,\qquad B_x=ex\ln\left(1+\frac1x\right).
+\]
+因为
+\[
+\left(1+\frac1x\right)^{ex}=e^{ex\ln\left(1+\frac1x\right)}=e^{B_x},
+\]
+所以原式为
+\[
+L=\lim_{x\to\infty}x^2\left(e^{A_x}-e^{B_x}\right).
+\]
+又有
+\[
+A_x\to e,\qquad B_x\to e.
+\]
+对函数 \(f(u)=e^u\) 在 \(A_x,B_x\) 之间使用拉格朗日中值定理，存在 \(\xi_x\) 介于 \(A_x\) 与 \(B_x\) 之间，使得
+\[
+e^{A_x}-e^{B_x}=e^{\xi_x}(A_x-B_x).
+\]
+由于 \(A_x\to e\)、\(B_x\to e\)，故 \(\xi_x\to e\)，从而
+\[
+e^{\xi_x}\to e^e.
+\]
+因此
+\[
+L=e^e\lim_{x\to\infty}x^2(A_x-B_x).
+\]
+令
+\[
+t_x=x\ln\left(1+\frac1x\right),
+\]
+则
+\[
+A_x=e^{t_x},\qquad B_x=et_x,
+\]
+所以
+\[
+A_x-B_x=e^{t_x}-et_x.
+\]
+设
+\[
+g(t)=e^t-et.
+\]
+则
+\[
+g(1)=0,\qquad g'(t)=e^t-e,\qquad g'(1)=0,\qquad g''(1)=e.
+\]
+因此当 \(t\to 1\) 时，
+\[
+g(t)\sim \frac e2(t-1)^2.
+\]
+于是
+\[
+A_x-B_x=e^{t_x}-et_x\sim \frac e2(t_x-1)^2.
+\]
+又由
+\[
+\ln(1+u)=u-\frac{u^2}{2}+o(u^2)\qquad (u\to 0),
+\]
+取 \(u=\frac1x\)，得
+\[
+\ln\left(1+\frac1x\right)=\frac1x-\frac1{2x^2}+o\left(\frac1{x^2}\right).
+\]
+所以
+\[
+t_x=x\ln\left(1+\frac1x\right)=1-\frac1{2x}+o\left(\frac1x\right),
+\]
+即
+\[
+x(t_x-1)\to -\frac12.
+\]
+因此
+\[
+x^2(t_x-1)^2\to \frac14.
+\]
+于是
+\[
+\lim_{x\to\infty}x^2(A_x-B_x)=\frac e2\cdot\frac14=\frac e8.
+\]
+最终
+\[
+L=e^e\cdot\frac e8=\frac{e^{e+1}}8.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：拉格朗日中值定理：对 \(f(u)=e^u\)，有 \(e^a-e^b=e^\xi(a-b)\)，其中 \(\xi\) 介于 \(a,b\) 之间。
+  \item \textbf{易错点}：\(\left(1+\frac1x\right)^{ex}\) 中 \(ex=e\cdot x\)，应化为 \(e^{ex\ln(1+1/x)}\)，不要误看成指数 \(e^x\)。
+  \item \textbf{易错点}：\(e^t-et\) 在 \(t=1\) 处满足函数值和一阶导数均为 \(0\)，主导项是二阶项 \(\frac e2(t-1)^2\)。
+  \item \textbf{关联知识}：\(x\ln(1+\frac1x)=1-\frac1{2x}+o(\frac1x)\)，故 \(x\left[x\ln(1+\frac1x)-1\right]\to -\frac12\)。
+\end{itemize}}
+
+\end{mistake}

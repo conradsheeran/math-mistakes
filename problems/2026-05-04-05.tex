@@ -1,0 +1,71 @@
+\begin{mistake}{2026-05-04}{05}
+
+\begin{problemcontent}
+计算极限
+\[
+\lim_{x\to 1^-}\frac{\pi\displaystyle\int_0^x\left[\ln(1-t)+\tan\left(\frac{\pi}{2}t\right)\right]dt}{\ln|\sin \pi x|}.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+记
+\[
+L=\lim_{x\to 1^-}\frac{\pi\displaystyle\int_0^x\left[\ln(1-t)+\tan\left(\frac{\pi}{2}t\right)\right]dt}{\ln|\sin \pi x|}.
+\]
+当 \(x\to 1^-\) 时，分子因 \(\tan(\pi x/2)\) 的积分发散而趋于 \(+\infty\)，分母 \(\ln|\sin\pi x|\to -\infty\)，故可用洛必达法则。
+
+对分子、分母分别求导：
+\[
+\frac{d}{dx}\left\{\pi\int_0^x\left[\ln(1-t)+\tan\left(\frac{\pi}{2}t\right)\right]dt\right\}
+=\pi\left[\ln(1-x)+\tan\left(\frac{\pi x}{2}\right)\right],
+\]
+\[
+\frac{d}{dx}\ln|\sin\pi x|=\frac{\pi\cos\pi x}{\sin\pi x}=\pi\cot\pi x.
+\]
+因此
+\[
+L=\lim_{x\to1^-}\frac{\ln(1-x)+\tan\left(\frac{\pi x}{2}\right)}{\cot\pi x}.
+\]
+令 \(h=1-x\)，则 \(h\to0^+\)。由
+\[
+\tan\left(\frac{\pi x}{2}\right)=\tan\left(\frac{\pi}{2}-\frac{\pi h}{2}\right)=\cot\left(\frac{\pi h}{2}\right),
+\]
+\[
+\cot(\pi x)=\cot(\pi-\pi h)=-\cot(\pi h),
+\]
+得
+\[
+L=\lim_{h\to0^+}\frac{\ln h+\cot\left(\frac{\pi h}{2}\right)}{-\cot(\pi h)}.
+\]
+拆为两项：
+\[
+L=-\lim_{h\to0^+}\left[\frac{\ln h}{\cot(\pi h)}+\frac{\cot\left(\frac{\pi h}{2}\right)}{\cot(\pi h)}\right].
+\]
+当 \(h\to0^+\) 时，\(\cot(\pi h)\sim 1/(\pi h)\)，故
+\[
+\frac{\ln h}{\cot(\pi h)}\sim \pi h\ln h\to0.
+\]
+又
+\[
+\frac{\cot\left(\frac{\pi h}{2}\right)}{\cot(\pi h)}
+\sim
+\frac{2/(\pi h)}{1/(\pi h)}=2.
+\]
+所以
+\[
+L=-(0+2)=-2.
+\]
+故原极限为
+\[
+\boxed{-2}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：洛必达法则；变上限积分求导 \(\frac{d}{dx}\int_0^x f(t)dt=f(x)\)；\(\frac{d}{dx}\ln|\sin\pi x|=\pi\cot\pi x\)。
+  \item \textbf{易错点}：洛必达后 \(\ln(1-x)\) 虽也趋于 \(-\infty\)，但与 \(\tan(\pi x/2)\sim 2/[\pi(1-x)]\) 相比是低阶量，不能把它当主导项。
+  \item \textbf{关联知识}：令 \(h=1-x\to0^+\)，有 \(\tan(\pi/2-\pi h/2)=\cot(\pi h/2)\)，\(\cot(\pi-\pi h)=-\cot(\pi h)\)，且 \(\cot u\sim 1/u\)。
+\end{itemize}}
+
+\end{mistake}

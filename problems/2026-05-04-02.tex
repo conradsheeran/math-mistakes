@@ -1,0 +1,87 @@
+\begin{mistake}{2026-05-04}{02}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([a,b]\) 上连续，且 \(f(a)=f(b)\)。证明：至少存在一点 \(\xi\in(a,b)\)，使得
+\[
+f(\xi)=f\left(\xi+\frac{b-a}{n}\right).
+\]
+其中通常需取整数 \(n\ge 2\)，以保证存在 \(\xi\in(a,b)\) 且 \(\xi+\frac{b-a}{n}\in[a,b]\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+令
+\[
+h=\frac{b-a}{n}.
+\]
+由于要比较 \(f(x+h)\) 与 \(f(x)\)，应令
+\[
+x\in[a,b-h].
+\]
+构造辅助函数
+\[
+g(x)=f(x+h)-f(x),\qquad x\in[a,b-h].
+\]
+因为 \(f\) 在 \([a,b]\) 上连续，所以 \(g\) 在 \([a,b-h]\) 上连续。
+
+把 \([a,b]\) 等分为 \(n\) 段：
+\[
+a,\ a+h,\ a+2h,\ \ldots,\ a+nh=b.
+\]
+对分点处的 \(g\) 值求和：
+\[
+\begin{aligned}
+\sum_{k=0}^{n-1}g(a+kh)
+&=\sum_{k=0}^{n-1}\bigl[f(a+(k+1)h)-f(a+kh)\bigr]\\
+&=f(a+nh)-f(a)\\
+&=f(b)-f(a)\\
+&=0.
+\end{aligned}
+\]
+这里用到了望远镜求和，即中间项依次相消。
+
+下面证明 \(g\) 在 \((a,b-h]\) 内有零点。反设
+\[
+g(x)\ne0,\qquad x\in(a,b-h].
+\]
+由于 \(g\) 连续且在区间 \((a,b-h]\) 内不为零，\(g\) 在该区间内只能恒正或恒负。
+
+若 \(g(a)=0\)，则
+\[
+\sum_{k=1}^{n-1}g(a+kh)=0.
+\]
+但 \(a+h,a+2h,\ldots,a+(n-1)h\) 均属于 \((a,b-h]\)，这些 \(g\) 值在反设下同号且非零，它们的和不可能为 \(0\)，矛盾。
+
+若 \(g(a)\ne0\)，由连续性可知 \(g(a)\) 与右侧 \((a,b-h]\) 上的 \(g\) 值同号，否则由介值定理会在 \((a,b-h]\) 内产生零点。因此
+\[
+g(a),g(a+h),\ldots,g(a+(n-1)h)
+\]
+全同号且非零，它们的和不可能为 \(0\)，与
+\[
+\sum_{k=0}^{n-1}g(a+kh)=0
+\]
+矛盾。
+
+所以存在 \(\xi\in(a,b-h]\subset(a,b)\)，使得
+\[
+g(\xi)=0.
+\]
+由 \(g\) 的定义，
+\[
+f(\xi+h)-f(\xi)=0,
+\]
+即
+\[
+f(\xi)=f(\xi+h)=f\left(\xi+\frac{b-a}{n}\right).
+\]
+证毕。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：构造 \(g(x)=f(x+h)-f(x)\)，目标 \(f(\xi)=f(\xi+h)\) 等价于证明 \(g(\xi)=0\)；连续函数若在区间内无零点，则不能变号。
+  \item \textbf{望远镜求和}：\(\sum_{k=0}^{n-1}[A_{k+1}-A_k]=A_n-A_0\)。本题取 \(A_k=f(a+kh)\)，得到 \(\sum_{k=0}^{n-1}g(a+kh)=f(b)-f(a)=0\)。
+  \item \textbf{易错点}：定义 \(g(x)=f(x+h)-f(x)\) 时，不能令 \(x\in[a,b]\)，必须令 \(x\in[a,b-h]\)，否则 \(x+h\) 可能超过 \([a,b]\) 的定义域。
+  \item \textbf{关联知识}：本题只给连续性，不能直接使用罗尔定理；关键是“连续性 + 介值定理 + 分点求和”。
+\end{itemize}}
+
+\end{mistake}

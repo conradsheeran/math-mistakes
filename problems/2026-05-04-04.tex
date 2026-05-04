@@ -1,0 +1,70 @@
+\begin{mistake}{2026-05-04}{04}
+
+\begin{problemcontent}
+计算极限
+\[
+\lim_{x\to+\infty}
+\frac{\frac{1}{x^3}\int_1^x\left[\left(1+t^2\right)\sin\frac{1}{t}-\cos t\right]dt}{1-e^{1/x}}.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+设
+\[
+F(x)=\int_1^x\left[\left(1+t^2\right)\sin\frac{1}{t}-\cos t\right]dt.
+\]
+则原极限为
+\[
+L=\lim_{x\to+\infty}\frac{\frac{1}{x^3}F(x)}{1-e^{1/x}}
+=\lim_{x\to+\infty}\frac{F(x)}{x^2}\cdot\frac{1}{x\left(1-e^{1/x}\right)}.
+\]
+先求指数因子。令 \(u=1/x\)，则 \(u\to0^+\)，并且
+\[
+x\left(1-e^{1/x}\right)=\frac{1-e^u}{u}=-\frac{e^u-1}{u}\to -1.
+\]
+因此
+\[
+\frac{1}{x\left(1-e^{1/x}\right)}\to -1.
+\]
+
+再求积分因子。由变上限积分求导公式，
+\[
+F'(x)=\left(1+x^2\right)\sin\frac{1}{x}-\cos x.
+\]
+使用洛必达法则，
+\[
+\lim_{x\to+\infty}\frac{F(x)}{x^2}
+=\lim_{x\to+\infty}\frac{F'(x)}{2x}
+=\lim_{x\to+\infty}\frac{\left(1+x^2\right)\sin\frac{1}{x}-\cos x}{2x}.
+\]
+化简被求极限式：
+\[
+\frac{\left(1+x^2\right)\sin\frac{1}{x}-\cos x}{2x}
+=\frac12 x\sin\frac{1}{x}+\frac12\cdot\frac{1}{x}\sin\frac{1}{x}-\frac{\cos x}{2x}.
+\]
+其中
+\[
+x\sin\frac{1}{x}\to1,\qquad \frac{1}{x}\sin\frac{1}{x}\to0,\qquad \frac{\cos x}{2x}\to0.
+\]
+故
+\[
+\lim_{x\to+\infty}\frac{F(x)}{x^2}=\frac12.
+\]
+所以
+\[
+L=\frac12\cdot(-1)=-\frac12.
+\]
+最终答案为
+\[
+\boxed{-\frac12}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：变上限积分 \(F(x)=\int_a^x f(t)dt\) 满足 \(F'(x)=f(x)\)；\(u\to0\) 时 \(e^u-1\sim u\)，\(\sin u\sim u\)。
+  \item \textbf{易错点}：\(1-e^{1/x}\sim -1/x\)，符号不能丢；\(\cos x\) 本身无极限，但 \(\cos x/x\to0\) 是因为 \(\cos x\) 有界。
+  \item \textbf{关联知识}：含变上限积分的无穷远极限常先设 \(F(x)\)，再通过洛必达把 \(F(x)/x^2\) 转化为 \(F'(x)/(2x)\) 判断主导阶。
+\end{itemize}}
+
+\end{mistake}

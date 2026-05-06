@@ -1,0 +1,76 @@
+\begin{mistake}{2026-05-06}{01}
+
+\begin{problemcontent}
+设 \(x_0\in\left(-\frac{\pi}{2},\frac{\pi}{2}\right)\)，数列 \(\{x_n\}\) 满足
+\[
+x_{n+1}=\frac12\left(x_n+\arctan x_n\right),\quad n=0,1,2,\cdots.
+\]
+证明：\(\lim_{n\to\infty}x_n\) 存在，并求其值。
+\end{problemcontent}
+
+\begin{solutioncontent}
+由基本不等式：
+\[
+x>0\Rightarrow 0<\arctan x<x,\qquad x<0\Rightarrow x<\arctan x<0.
+\]
+其中 \(x>0\) 时可由 \(f(x)=x-\arctan x\)，\(f'(x)=\frac{x^2}{1+x^2}\ge0\)，\(f(0)=0\) 得到；负数情形由 \(\arctan x\) 为奇函数得到。
+
+\[
+\text{若 }x_0=0,\quad x_1=\frac12(0+\arctan0)=0,
+\]
+递推得 \(x_n=0\)，故 \(\lim_{n\to\infty}x_n=0\)。
+
+若 \(x_0>0\)，假设 \(x_n>0\)，则
+\[
+0<\arctan x_n<x_n.
+\]
+于是
+\[
+0<x_{n+1}=\frac12(x_n+\arctan x_n)<\frac12(x_n+x_n)=x_n.
+\]
+故 \(\{x_n\}\) 始终为正且单调递减，并以下界 \(0\) 有界，所以极限存在。设
+\[
+\lim_{n\to\infty}x_n=L.
+\]
+由 \(x_n>0\) 得 \(L\ge0\)。对递推式取极限，利用 \(\arctan x\) 连续，有
+\[
+L=\frac12(L+\arctan L).
+\]
+整理得
+\[
+L=\arctan L.
+\]
+若 \(L>0\)，则 \(\arctan L<L\)，矛盾；故 \(L=0\)。
+
+若 \(x_0<0\)，假设 \(x_n<0\)，则
+\[
+x_n<\arctan x_n<0.
+\]
+于是
+\[
+x_n< x_{n+1}=\frac12(x_n+\arctan x_n)<0.
+\]
+故 \(\{x_n\}\) 始终为负且单调递增，并以上界 \(0\) 有界，所以极限存在。设
+\[
+\lim_{n\to\infty}x_n=L.
+\]
+由 \(x_n<0\) 得 \(L\le0\)。同理取极限得
+\[
+L=\frac12(L+\arctan L),\qquad L=\arctan L.
+\]
+若 \(L<0\)，则 \(L<\arctan L\)，矛盾；故 \(L=0\)。
+
+综上，
+\[
+\lim_{n\to\infty}x_n=0.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：递推数列求极限应先用单调有界定理证明极限存在，再设极限为 \(L\) 代入递推式。若 \(x_n\to L\)，则 \(x_{n+1}\to L\)，且连续函数满足 \(\arctan x_n\to \arctan L\)。
+  \item \textbf{易错点}：不能笼统判断 \(\{x_n\}\) 单调递减；当 \(x_0>0\) 时 \(0<x_{n+1}<x_n\)，当 \(x_0<0\) 时 \(x_n<x_{n+1}<0\)，符号不同单调性不同。
+  \item \textbf{关联知识}：\(\arctan x\) 与 \(x\) 的大小关系为 \(x>0\Rightarrow 0<\arctan x<x\)，\(x<0\Rightarrow x<\arctan x<0\)；可用 \(x-\arctan x\) 的单调性证明。
+\end{itemize}}
+
+\end{mistake}

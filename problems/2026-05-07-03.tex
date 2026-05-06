@@ -1,0 +1,84 @@
+\begin{mistake}{2026-05-07}{03}
+
+\begin{problemcontent}
+设
+\[
+a_n=\int_0^1 \sin(x^n)\,\mathrm{d}x,\qquad b_n=\int_0^1 \sin^n x\,\mathrm{d}x\quad (n=1,2,\ldots),
+\]
+证明：
+\begin{enumerate}
+  \item[(I)] \(0\le b_n\le a_n\)；
+  \item[(II)] \(\displaystyle \lim_{n\to\infty}a_n=\lim_{n\to\infty}b_n=0\)。
+\end{enumerate}
+\end{problemcontent}
+
+\begin{solutioncontent}
+先证 \(0\le b_n\le a_n\)。显然当 \(x\in[0,1]\) 时，\(\sin x\ge 0\)，故
+\[
+b_n=\int_0^1\sin^n x\,\mathrm{d}x\ge 0.
+\]
+
+下面证明 \(\sin^n x\le \sin(x^n)\)。设
+\[
+f(t)=\frac{\sin t}{t}\quad (t\in(0,1]).
+\]
+则
+\[
+f'(t)=\frac{t\cos t-\sin t}{t^2}
+      =\frac{\cos t\,(t-\tan t)}{t^2}<0,
+\]
+因为 \(t\in(0,1]\subset(0,\frac{\pi}{2})\) 时 \(\cos t>0\)，且 \(\tan t>t\)。所以 \(f(t)=\frac{\sin t}{t}\) 在 \((0,1]\) 上单调递减。
+
+当 \(x\in(0,1)\) 时，有 \(0<x^n\le x\le 1\)，由 \(f\) 单调递减得
+\[
+\frac{\sin(x^n)}{x^n}\ge \frac{\sin x}{x}.
+\]
+两边同乘 \(x^n>0\)，得
+\[
+\sin(x^n)\ge x^{n-1}\sin x.
+\]
+又由 \(0\le \sin x\le x\) 得
+\[
+\sin^{n-1}x\le x^{n-1},
+\]
+于是
+\[
+x^{n-1}\sin x\ge \sin^{n-1}x\cdot \sin x=\sin^n x.
+\]
+故
+\[
+\sin(x^n)\ge \sin^n x\qquad (0<x<1).
+\]
+在端点 \(x=0,1\) 处不影响积分比较，因此由定积分比较定理得
+\[
+\int_0^1\sin^n x\,\mathrm{d}x\le \int_0^1\sin(x^n)\,\mathrm{d}x,
+\]
+即 \(b_n\le a_n\)。综上，\(0\le b_n\le a_n\)。
+
+再证极限。由 \(u\ge 0\) 时 \(0\le \sin u\le u\)，令 \(u=x^n\)，得
+\[
+0\le \sin(x^n)\le x^n\qquad (0\le x\le 1).
+\]
+积分得
+\[
+0\le a_n=\int_0^1\sin(x^n)\,\mathrm{d}x\le \int_0^1x^n\,\mathrm{d}x=\frac{1}{n+1}.
+\]
+由于 \(\displaystyle \lim_{n\to\infty}\frac{1}{n+1}=0\)，由夹逼定理得
+\[
+\lim_{n\to\infty}a_n=0.
+\]
+又由第一部分 \(0\le b_n\le a_n\)，再次由夹逼定理得
+\[
+\lim_{n\to\infty}b_n=0.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：定积分比较定理：若 \(f(x)\ge g(x)\) 于区间上成立，则 \(\int f\ge \int g\)。夹逼定理常用于证明含参积分极限为 \(0\)。
+  \item \textbf{易错点}：不要用泰勒展开硬证全区间积分不等式；本题关键是先证被积函数不等式 \(\sin^n x\le \sin(x^n)\)。
+  \item \textbf{关联知识}：函数 \(\frac{\sin t}{t}\) 在 \((0,1]\) 上单调递减，可由 \(\left(\frac{\sin t}{t}\right)'=\frac{\cos t(t-\tan t)}{t^2}<0\) 证明。
+  \item \textbf{常用放缩}：当 \(u\ge 0\) 时，\(0\le \sin u\le u\)；因此 \(0\le a_n\le \int_0^1x^n\,\mathrm{d}x=\frac{1}{n+1}\).
+\end{itemize}}
+
+\end{mistake}

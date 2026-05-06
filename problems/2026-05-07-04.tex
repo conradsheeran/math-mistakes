@@ -1,0 +1,60 @@
+\begin{mistake}{2026-05-07}{04}
+
+\begin{problemcontent}
+设 \(x_1=\frac12\)，\(x_{n+1}=x_n^2+x_n\)（\(n=1,2,\cdots\)），求极限
+\[
+\lim_{n\to\infty}\left(\frac{1}{x_1+1}+\frac{1}{x_2+1}+\cdots+\frac{1}{x_n+1}\right).
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+由递推式
+\[
+x_{k+1}=x_k^2+x_k=x_k(x_k+1),
+\]
+两边取倒数，得
+\[
+\frac{1}{x_{k+1}}=\frac{1}{x_k(x_k+1)}.
+\]
+利用部分分式分解
+\[
+\frac{1}{x_k(x_k+1)}=\frac{1}{x_k}-\frac{1}{x_k+1},
+\]
+所以
+\[
+\frac{1}{x_k+1}=\frac{1}{x_k}-\frac{1}{x_{k+1}}.
+\]
+于是前 \(n\) 项和为
+\[
+\begin{aligned}
+S_n&=\sum_{k=1}^n\frac{1}{x_k+1}\\
+&=\sum_{k=1}^n\left(\frac{1}{x_k}-\frac{1}{x_{k+1}}\right)\\
+&=\frac{1}{x_1}-\frac{1}{x_{n+1}}.
+\end{aligned}
+\]
+又因为 \(x_1=\frac12>0\)，且
+\[
+x_{n+1}-x_n=x_n^2>0,
+\]
+故 \(\{x_n\}\) 严格递增且 \(x_n\ge \frac12\)。若 \(\{x_n\}\) 有界，则单调有界必收敛，设极限为 \(A\)，由递推式取极限得
+\[
+A=A^2+A,
+\]
+从而 \(A=0\)，这与 \(x_n\ge \frac12\) 矛盾。因此 \(x_n\to +\infty\)，所以
+\[
+\frac{1}{x_{n+1}}\to 0.
+\]
+因此
+\[
+\lim_{n\to\infty}S_n=\frac{1}{x_1}-0=\frac{1}{1/2}=2.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：由 \(x_{k+1}=x_k(x_k+1)\) 得 \(\frac{1}{x_k+1}=\frac{1}{x_k}-\frac{1}{x_{k+1}}\)，从而裂项相消。
+  \item \textbf{易错点}：不要直接估计 \(\frac{1}{x_k+1}\)；应先把目标项和递推式联系起来，对 \(x_{k+1}=x_k(x_k+1)\) 取倒数并部分分式分解。
+  \item \textbf{关联知识}：证明 \(\frac{1}{x_{n+1}}\to0\) 时，可用 \(x_{n+1}-x_n=x_n^2>0\) 得单调递增，再用反证法排除有界情形，推出 \(x_n\to+\infty\)。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,68 @@
+\begin{mistake}{2026-05-06}{02}
+
+\begin{problemcontent}
+证明：对正整数 \(n\)，有
+\[
+\ln(1+n)\le 1+\frac12+\cdots+\frac1n\le 1+\ln n.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+记
+\[
+H_n=1+\frac12+\cdots+\frac1n=\sum_{k=1}^n\frac1k.
+\]
+
+先证左边不等式。函数 \(f(x)=\frac1x\) 在 \((0,+\infty)\) 上单调递减，故当 \(x\in[k,k+1]\) 时，
+\[
+\frac1x\le \frac1k.
+\]
+因此
+\[
+\int_k^{k+1}\frac1x\,dx\le \int_k^{k+1}\frac1k\,dx=\frac1k.
+\]
+对 \(k=1,2,\ldots,n\) 求和，得
+\[
+\int_1^{n+1}\frac1x\,dx
+=\sum_{k=1}^n\int_k^{k+1}\frac1x\,dx
+\le \sum_{k=1}^n\frac1k=H_n.
+\]
+于是
+\[
+\ln(n+1)\le H_n.
+\]
+
+再证右边不等式。当 \(n=1\) 时，\(H_1=1=1+\ln1\)，成立。下面设 \(n\ge2\)。由于 \(f(x)=\frac1x\) 在 \((0,+\infty)\) 上单调递减，当 \(x\in[k-1,k]\) 时，
+\[
+\frac1x\ge \frac1k.
+\]
+故
+\[
+\frac1k\le \int_{k-1}^{k}\frac1x\,dx.
+\]
+对 \(k=2,3,\ldots,n\) 求和，得
+\[
+\sum_{k=2}^n\frac1k
+\le \sum_{k=2}^n\int_{k-1}^{k}\frac1x\,dx
+=\int_1^n\frac1x\,dx
+=\ln n.
+\]
+两边加 \(1\)，得
+\[
+H_n=1+\sum_{k=2}^n\frac1k\le 1+\ln n.
+\]
+
+综上，
+\[
+\ln(n+1)\le 1+\frac12+\cdots+\frac1n\le 1+\ln n.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(f(x)=1/x\) 在 \((0,+\infty)\) 上单调递减，且 \(\int_a^b \frac1x\,dx=\ln b-\ln a\)。调和和常用积分估计：\(\ln(n+1)\le H_n\le 1+\ln n\)。
+  \item \textbf{易错点}：比较方向取决于区间。\([k,k+1]\) 上有 \(1/x\le1/k\)，所以 \(\int_k^{k+1}1/x\,dx\le1/k\)；\([k-1,k]\) 上有 \(1/x\ge1/k\)，所以 \(1/k\le\int_{k-1}^{k}1/x\,dx\)。
+  \item \textbf{关联知识}：单调递减函数的左端点矩形高估积分，右端点矩形低估积分；处理 \(H_n\) 与 \(\ln n\) 的比较时，要先确定积分区间再判断不等号方向。
+\end{itemize}}
+
+\end{mistake}

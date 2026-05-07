@@ -1,0 +1,116 @@
+\begin{mistake}{2026-05-07}{06}
+
+\begin{problemcontent}
+设函数 \(f(x)\) 在闭区间 \([a,b]\) 上连续，在开区间 \((a,b)\) 内可导，且 \(f'(x)>0\)。若极限
+\[
+\lim_{x\to a^+}\frac{f(2x-a)}{x-a}
+\]
+存在。已知第(I)问可证：在 \((a,b)\) 内 \(f(x)>0\)。证明第(II)问：在 \((a,b)\) 内存在点 \(\xi\)，使
+\[
+\frac{b^2-a^2}{\int_a^b f(x)\,dx}=\frac{2\xi}{f(\xi)}.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+由第(I)问结论，
+\[
+f(x)>0,\qquad x\in(a,b).
+\]
+因此
+\[
+\int_a^b f(x)\,dx>0,
+\]
+且对任意 \(\xi\in(a,b)\)，有 \(f(\xi)>0\)，后续分式有意义。
+
+本题使用柯西中值定理。柯西中值定理的形式为：若 \(F,G\) 在 \([a,b]\) 上连续，在 \((a,b)\) 内可导，且 \(G'(x)\neq 0\)，则存在 \(\xi\in(a,b)\)，使
+\[
+\frac{F(b)-F(a)}{G(b)-G(a)}=\frac{F'(\xi)}{G'(\xi)}.
+\]
+
+观察目标式
+\[
+\frac{b^2-a^2}{\int_a^b f(x)\,dx}=\frac{2\xi}{f(\xi)},
+\]
+其中 \(b^2-a^2\) 应看成函数 \(x^2\) 的端点差，\(2\xi\) 应看成 \(x^2\) 在 \(\xi\) 处的导数；\(\int_a^b f(x)\,dx\) 应看成变上限积分函数的端点差，\(f(\xi)\) 应看成该变上限积分函数在 \(\xi\) 处的导数。
+
+令
+\[
+F(x)=x^2,
+\qquad
+G(x)=\int_a^x f(t)\,dt.
+\]
+
+因为 \(F(x)=x^2\) 在 \([a,b]\) 上连续，在 \((a,b)\) 内可导，且
+\[
+F'(x)=2x.
+\]
+
+又因为 \(f\) 在 \([a,b]\) 上连续，所以
+\[
+G(x)=\int_a^x f(t)\,dt
+\]
+在 \([a,b]\) 上连续，在 \((a,b)\) 内可导，并且由变上限积分求导公式，
+\[
+G'(x)=f(x).
+\]
+
+由第(I)问，\(f(x)>0\)，故
+\[
+G'(x)=f(x)>0,
+\qquad x\in(a,b),
+\]
+所以
+\[
+G'(x)\neq 0.
+\]
+
+因此 \(F,G\) 满足柯西中值定理条件，存在 \(\xi\in(a,b)\)，使
+\[
+\frac{F(b)-F(a)}{G(b)-G(a)}=\frac{F'(\xi)}{G'(\xi)}.
+\]
+
+分别计算各部分：
+\[
+F(b)-F(a)=b^2-a^2,
+\]
+\[
+F'(\xi)=2\xi,
+\]
+\[
+G(b)-G(a)
+=
+\int_a^b f(t)\,dt-\int_a^a f(t)\,dt
+=
+\int_a^b f(t)\,dt,
+\]
+\[
+G'(\xi)=f(\xi).
+\]
+
+代入柯西中值定理所得等式，得
+\[
+\frac{b^2-a^2}{\int_a^b f(t)\,dt}
+=
+\frac{2\xi}{f(\xi)}.
+\]
+积分变量名称不影响定积分值，故也可写为
+\[
+\boxed{\frac{b^2-a^2}{\int_a^b f(x)\,dx}=\frac{2\xi}{f(\xi)}}.
+\]
+
+补充说明：若改用积分中值定理，只能得到存在 \(\eta\in(a,b)\)，使
+\[
+\int_a^b f(x)\,dx=(b-a)f(\eta).
+\]
+这里的 \(\eta\) 与第(II)问中的 \(\xi\) 没有理由相同，因此不能把 \(\eta\) 直接写成 \(\xi\)，也不能由此推出 \(\xi=(a+b)/2\)。柯西中值定理的优势是一次性给出同一个点 \(\xi\)，使 \(2\xi\) 和 \(f(\xi)\) 同时出现。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：柯西中值定理：端点差之比 \(\frac{F(b)-F(a)}{G(b)-G(a)}\) 可转化为同一点处的导数之比 \(\frac{F'(\xi)}{G'(\xi)}\)。本题取 \(F(x)=x^2\)，\(G(x)=\int_a^x f(t)\,dt\)。
+  \item \textbf{易错点}：积分中值定理给出的点 \(\eta\) 与第(II)问要证的点 \(\xi\) 不一定相同，不能把 \(\int_a^b f(x)\,dx=(b-a)f(\eta)\) 中的 \(\eta\) 偷换成 \(\xi\)。
+  \item \textbf{关联知识}：看到 \(b^2-a^2\) 与 \(2\xi\)，联想 \(F(x)=x^2\)；看到 \(\int_a^b f(x)\,dx\) 与 \(f(\xi)\)，联想 \(G(x)=\int_a^x f(t)\,dt\)。
+  \item \textbf{审题条件}：第(I)问的 \(f(x)>0\) 用于保证 \(G'(x)=f(x)\neq 0\)，从而满足柯西中值定理条件，并保证分母 \(f(\xi)\) 与 \(\int_a^b f(x)\,dx\) 不为零。
+\end{itemize}}
+
+\end{mistake}

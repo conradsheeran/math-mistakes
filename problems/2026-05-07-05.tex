@@ -1,0 +1,87 @@
+\begin{mistake}{2026-05-07}{05}
+
+\begin{problemcontent}
+有一平底容器，其内侧壁是由曲线 \(x=\varphi(y)\,(y\ge 0)\) 绕 \(y\) 轴旋转而成的旋转曲面，容器的底面圆的半径为 \(2\,\mathrm m\)。根据设计要求，当以 \(3\,\mathrm{m^3/min}\) 的速率向容器内注入液体时，液面的面积将以 \(\pi\,\mathrm{m^2/min}\) 的速率均匀扩大，假设注入液体前容器内无液体。
+
+\begin{enumerate}
+  \item 根据 \(t\) 时刻液面的面积，写出 \(t\) 与 \(\varphi(y)\) 之间的关系式；
+  \item 求曲线 \(x=\varphi(y)\) 的方程。
+\end{enumerate}
+\end{problemcontent}
+
+\begin{solutioncontent}
+设 \(t\) 时刻液面高度为 \(y\)，液面半径为 \(\varphi(y)\)。由底面半径为 \(2\)，得
+\[
+\varphi(0)=2.
+\]
+液面在高度 \(y\) 处的面积为
+\[
+S(y)=\pi[\varphi(y)]^2.
+\]
+由于液面的面积以 \(\pi\,\mathrm{m^2/min}\) 的速率均匀扩大，且初始截面面积为
+\[
+S(0)=\pi[\varphi(0)]^2=4\pi,
+\]
+所以
+\[
+S(t)=4\pi+\pi t.
+\]
+又 \(S(t)=\pi[\varphi(y)]^2\)，故
+\[
+\pi[\varphi(y)]^2=4\pi+\pi t,
+\]
+从而
+\[
+t=[\varphi(y)]^2-4.
+\]
+
+另一方面，注液速率为 \(3\,\mathrm{m^3/min}\)，初始无液体，因此
+\[
+V(t)=3t.
+\]
+当液面高度为 \(y\) 时，液体体积为
+\[
+V(y)=\int_0^y \pi[\varphi(u)]^2\,du.
+\]
+于是
+\[
+\int_0^y \pi[\varphi(u)]^2\,du=3t.
+\]
+代入 \(t=[\varphi(y)]^2-4\)，得
+\[
+\int_0^y \pi[\varphi(u)]^2\,du=3\left([\varphi(y)]^2-4\right).
+\]
+对 \(y\) 求导，得
+\[
+\pi[\varphi(y)]^2=6\varphi(y)\varphi'(y).
+\]
+由于 \(\varphi(y)>0\)，两边同除以 \(\varphi(y)\)，得
+\[
+\varphi'(y)=\frac{\pi}{6}\varphi(y).
+\]
+分离变量并积分：
+\[
+\frac{d\varphi}{\varphi}=\frac{\pi}{6}\,dy,
+\]
+所以
+\[
+\ln \varphi(y)=\frac{\pi}{6}y+C.
+\]
+由 \(\varphi(0)=2\)，得 \(C=\ln 2\)。因此
+\[
+\varphi(y)=2e^{\frac{\pi}{6}y}.
+\]
+故所求曲线方程为
+\[
+\boxed{x=2e^{\frac{\pi}{6}y},\quad y\ge 0.}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：旋转容器在高度 \(y\) 处的水平截面积为 \(S(y)=\pi[\varphi(y)]^2\)，液体体积为 \(V(y)=\int_0^y S(u)\,du\)。
+  \item \textbf{易错点}：初始“无液体”不表示初始液面面积为 \(0\)；平底容器底面半径为 \(2\)，故 \(S(0)=4\pi\)。
+  \item \textbf{关联知识}：面积匀速扩大给出 \(S(t)=S(0)+\pi t\)，注液匀速给出 \(V(t)=3t\)；联立后对 \(y\) 求导可化为微分方程。
+\end{itemize}}
+
+\end{mistake}

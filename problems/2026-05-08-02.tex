@@ -1,0 +1,97 @@
+\begin{mistake}{2026-05-08}{02}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([-1,1]\) 上二阶可导，且 \(f''(x)>0\)，\(\displaystyle \int_{-1}^{1} f(x)\,dx=2\)，则 \(f(0)\) 的取值范围为（ ）
+
+A. \((-יִinfty,0]\) \quad B. \((0,+\infty)\) \quad C. \((-יִinfty,1)\) \quad D. \((1,+\infty)\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{方法一：Jensen/图像法。}
+
+由 \(f''(x)>0\) 知 \(f\) 为严格下凸函数（按 Jensen 术语称严格凸函数；部分教材也称凹弧）。因此函数图像在任一点切线之上，特别地在 \(x=0\) 处有
+\[
+f(x)>f(0)+f'(0)x \qquad (x\neq 0).
+\]
+两边在 \([-1,1]\) 上积分：
+\[
+\int_{-1}^{1}f(x)\,dx>
+\int_{-1}^{1}\bigl[f(0)+f'(0)x\bigr]dx.
+\]
+右边为
+\[
+\int_{-1}^{1}f(0)\,dx+f'(0)\int_{-1}^{1}x\,dx
+=2f(0)+0=2f(0),
+\]
+其中 \(\displaystyle \int_{-1}^{1}x\,dx=0\)。由题设 \(\displaystyle \int_{-1}^{1}f(x)\,dx=2\)，得
+\[
+2>2f(0),
+\]
+故
+\[
+f(0)<1.
+\]
+等价地，也可用积分形式 Jensen 不等式：
+\[
+f\left(\frac{1}{2}\int_{-1}^{1}x\,dx\right)
+<\frac{1}{2}\int_{-1}^{1}f(x)\,dx,
+\]
+即
+\[
+f(0)<\frac{1}{2}\cdot 2=1.
+\]
+
+\textbf{方法二：Taylor 公式法。}
+
+对任意 \(x\neq 0\)，在 \(0\) 点作 Taylor 展开：
+\[
+f(x)=f(0)+f'(0)x+\frac12 f''(\xi_x)x^2,
+\]
+其中 \(\xi_x\) 介于 \(0\) 与 \(x\) 之间。由 \(f''(\xi_x)>0\) 且 \(x^2>0\)，得
+\[
+f(x)>f(0)+f'(0)x \qquad (x\neq 0).
+\]
+于是同样积分可得
+\[
+2=\int_{-1}^{1}f(x)\,dx>2f(0),
+\]
+所以
+\[
+f(0)<1.
+\]
+
+还需验证 \(f(0)\) 没有下界。任取 \(c<1\)，令
+\[
+f(x)=3(1-c)x^2+c.
+\]
+则
+\[
+f(0)=c,
+\]
+且
+\[
+f''(x)=6(1-c)>0.
+\]
+同时
+\[
+\int_{-1}^{1}f(x)\,dx
+=3(1-c)\int_{-1}^{1}x^2\,dx+c\int_{-1}^{1}1\,dx
+=3(1-c)\cdot \frac23+2c
+=2.
+\]
+因此任意 \(c<1\) 都可以取到，故
+\[
+f(0)\in(-\infty,1).
+\]
+答案：C。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(f''(x)>0\) 表示严格下凸/严格凸（中文教材可能称凹弧），图像在切线之上：\(f(x)>f(0)+f'(0)x\)（\(x\neq0\)）。
+  \item \textbf{易错点}：\(\int_{-1}^{1}f(x)\,dx=2\) 只说明平均值为 \(1\)，不能推出 \(f(0)>0\)；本题只能先推出 \(f(0)<1\)，再构造验证无下界。
+  \item \textbf{关联知识}：积分 Jensen：严格凸时 \(f\left(\frac{1}{b-a}\int_a^b x\,dx\right)<\frac{1}{b-a}\int_a^b f(x)\,dx\)。本题中 \(\frac12\int_{-1}^{1}x\,dx=0\)。
+  \item \textbf{Yhe 备注}：别管这些复杂的证明，用凹函数的图像法直接秒杀；实质就是 \(f''>0\) 时中点函数值小于区间平均函数值。
+\end{itemize}}
+
+\end{mistake}

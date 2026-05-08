@@ -1,0 +1,76 @@
+\begin{mistake}{2026-05-08}{01}
+
+\begin{problemcontent}
+下列函数中，在 \(x=0\) 处不可导的是（ ）
+
+A. \(f(x)=|x|\sin |x|\)
+
+B. \(f(x)=|x|\sin \sqrt{|x|}\)
+
+C. \(f(x)=\cos |x|\)
+
+D. \(f(x)=\cos \sqrt{|x|}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+用导数定义
+\[
+f'(0)=\lim_{x\to 0}\frac{f(x)-f(0)}{x}
+\]
+逐项判断。
+
+A. \(f(0)=0\)，且
+\[
+\frac{|x|\sin |x|}{x}=\
+\begin{cases}
+\sin x, & x>0,\\
+\sin x, & x<0,
+\end{cases}
+\]
+故左右极限均为 \(0\)，A 在 \(x=0\) 处可导。
+
+B. \(f(0)=0\)，且
+\[
+\frac{|x|\sin \sqrt{|x|}}{x}=\
+\begin{cases}
+\sin\sqrt{x}, & x>0,\\
+-\sin\sqrt{-x}, & x<0,
+\end{cases}
+\]
+故左右极限均为 \(0\)，B 在 \(x=0\) 处可导。
+
+C. 因为 \(\cos\) 是偶函数，所以
+\[
+\cos |x|=\cos x,
+\]
+故 C 在 \(x=0\) 处可导，且导数值为 \(0\).
+
+D. \(f(0)=1\)，考察差商
+\[
+\frac{\cos\sqrt{|x|}-1}{x}.
+\]
+当 \(x>0\) 时，令 \(t=\sqrt{x}\)，则 \(x=t^2\)，有
+\[
+\lim_{x\to 0^+}\frac{\cos\sqrt{x}-1}{x}
+=\lim_{t\to 0^+}\frac{\cos t-1}{t^2}
+=-\frac12.
+\]
+当 \(x<0\) 时，令 \(t=\sqrt{-x}\)，则 \(x=-t^2\)，有
+\[
+\lim_{x\to 0^-}\frac{\cos\sqrt{-x}-1}{x}
+=\lim_{t\to 0^+}\frac{\cos t-1}{-t^2}
+=\frac12.
+\]
+左右导数不相等，因此 D 在 \(x=0\) 处不可导。
+
+答案：\(\boxed{D}\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：判断某点可导用定义 \(f'(0)=\lim_{x\to 0}\frac{f(x)-f(0)}{x}\)，必须左右差商极限存在且相等。
+  \item \textbf{易错点}：含 \(|x|\) 或 \(\sqrt{|x|}\) 时不能直接套复合函数求导，应分 \(x>0\)、\(x<0\) 比较左右导数。
+  \item \textbf{关联知识}：\(\cos t-1\sim -\frac{t^2}{2}\)。对 D，\(t=\sqrt{|x|}\)，故 \(\cos\sqrt{|x|}-1\sim -\frac{|x|}{2}\)，差商左右极限异号。
+\end{itemize}}
+
+\end{mistake}

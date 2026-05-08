@@ -1,0 +1,84 @@
+\begin{mistake}{2026-05-08}{03}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \(x=a\) 处连续，则 \(f(x)\) 在 \(x=a\) 处可导的一个充分条件是（ ）。
+
+\begin{enumerate}
+  \item[A.] \(\displaystyle \lim_{x\to\infty}|x|\left[f\left(a+\frac{1}{|x|}\right)-f(a)\right]\) 存在；
+  \item[B.] \(\displaystyle \lim_{x\to0}\frac{f(a+x^3)-f(a)}{x^2}\) 存在；
+  \item[C.] \(\displaystyle \lim_{\Delta x\to0}\frac{f(a+\Delta x)-f(a-\Delta x)}{2\Delta x}\) 存在；
+  \item[D.] \(\displaystyle \lim_{x\to0}\frac{f(a+x)-f(a)}{\tan x^3}\) 存在。
+\end{enumerate}
+\end{problemcontent}
+
+\begin{solutioncontent}
+答案：\(\boxed{D}\)。
+
+可导的定义为
+\[
+f'(a)=\lim_{h\to0}\frac{f(a+h)-f(a)}{h}.
+\]
+
+对 D，设
+\[
+\lim_{x\to0}\frac{f(a+x)-f(a)}{\tan x^3}=L.
+\]
+则
+\[
+\frac{f(a+x)-f(a)}{x}
+=￿rac{f(a+x)-f(a)}{\tan x^3}\cdot \frac{\tan x^3}{x}.
+\]
+又
+\[
+\frac{\tan x^3}{x}=x^2\cdot \frac{\tan x^3}{x^3}\to 0\cdot 1=0,
+\]
+所以
+\[
+\lim_{x\to0}\frac{f(a+x)-f(a)}{x}=L\cdot0=0.
+\]
+因此 \(f'(a)=0\)，D 是充分条件。
+
+下面用反例排除 A、B、C。取
+\[
+f(x)=|x-a|.
+\]
+则 \(f(x)\) 在 \(x=a\) 处连续，但在 \(x=a\) 处不可导，因为
+\[
+\lim_{h\to0^+}\frac{|h|}{h}=1,
+\qquad
+\lim_{h\to0^-}\frac{|h|}{h}=-1.
+\]
+
+对 C，
+\[
+\frac{f(a+\Delta x)-f(a-\Delta x)}{2\Delta x}
+=\frac{|\Delta x|-|-\Delta x|}{2\Delta x}=0,
+\]
+故 C 的极限存在，但 \(f\) 在 \(a\) 处不可导，所以 C 不是充分条件。
+
+对 A，
+\[
+|x|\left[f\left(a+\frac1{|x|}\right)-f(a)\right]
+=|x|\cdot \left|\frac1{|x|}\right|=1,
+\]
+故 A 的极限存在，但仍不可导，所以 A 不是充分条件。
+
+对 B，
+\[
+\frac{f(a+x^3)-f(a)}{x^2}
+=\frac{|x^3|}{x^2}=|x|\to0,
+\]
+故 B 的极限存在，但仍不可导，所以 B 不是充分条件。
+
+因此正确选项为 \(\boxed{D}\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(f\) 在 \(a\) 处可导的定义是 \(\lim_{h\to0}\frac{f(a+h)-f(a)}{h}\) 存在，即左右导数存在且相等。
+  \item \textbf{重点易错点}：\(\frac{f(a+h)-f(a-h)}{2h}\) 是对称差商，不是普通导数差商 \(\frac{f(a+h)-f(a)}{h}\)。对称差商存在不能推出可导。
+  \item \textbf{错因提醒}：对称差商可写成右侧差商和左侧差商的平均；它可能把左右两边的不一致抵消掉。典型反例：\(f(x)=|x-a|\)，对称差商恒为 \(0\)，但左右导数分别为 \(1\) 和 \(-1\)。
+  \item \textbf{关联知识}：判断“充分条件”时，若要排除选项，找一个“选项条件成立但结论不成立”的反例即可；本题 A、B、C 均可用 \(f(x)=|x-a|\) 排除。
+\end{itemize}}
+
+\end{mistake}

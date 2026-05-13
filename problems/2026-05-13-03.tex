@@ -1,0 +1,35 @@
+\begin{mistake}{2026-05-13}{03}
+
+\begin{problemcontent}
+当\(x \to 0\)时，\(x - \sin x\cos x\)与\(ax^b\)为等价无穷小，则\(a =\)\_\_\_\_\_\_，\(b =\)\_\_\_\_\_\_。
+\end{problemcontent}
+
+\begin{solutioncontent}
+利用二倍角公式化简后做泰勒展开。
+
+\(\sin x\cos x = \dfrac{1}{2}\sin 2x\)，故
+\[
+x - \sin x\cos x = x - \frac{1}{2}\sin 2x
+\]
+
+对\(\sin 2x\)做泰勒展开：
+\[
+\sin 2x = 2x - \frac{(2x)^3}{3!} + O(x^5) = 2x - \frac{4x^3}{3} + O(x^5)
+\]
+
+代入：
+\[
+x - \frac{1}{2}\left(2x - \frac{4x^3}{3}\right) = x - x + \frac{2x^3}{3} = \frac{2}{3}x^3
+\]
+
+因此\(x - \sin x\cos x \sim \dfrac{2}{3}x^3\)，即\(a = \dfrac{2}{3}\)，\(b = 3\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(\sin x\cos x = \frac{1}{2}\sin 2x\)；\(\sin u = u - \frac{u^3}{6} + O(u^5)\)
+  \item \textbf{易错点}：展开\((2x)^3\)时漏算系数8；忘记外层\(\frac{1}{2}\)的系数
+  \item \textbf{关联知识}：等价无穷小的定义——主项系数即为\(a\)，主项幂次即为\(b\)
+\end{itemize}}
+
+\end{mistake}

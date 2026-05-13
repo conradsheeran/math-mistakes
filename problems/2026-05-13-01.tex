@@ -1,0 +1,28 @@
+\begin{mistake}{2026-05-13}{01}
+
+\begin{problemcontent}
+设 \(f(x) = \cos|x| + x^2|x|\)，在 \(x = 0\) 处存在的最高阶导数的阶数为\underline{\hspace{2em}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+分别判定各项在 \(x=0\) 处的可导阶数，取"短板"。
+
+\textbf{第一项：}\(\cos|x| = \cos x\)（余弦为偶函数），无穷阶可导，不构成瓶颈。
+
+\textbf{第二项：}\(x^2|x|\)，利用结论：\(x^n|x|\) 在 \(x=0\) 处恰好 \(n\) 阶可导，\(n+1\) 阶不存在。
+
+理由：\(x^n|x|\) 分段为 \(\pm x^{n+1}\)，求 \(n\) 阶导后得 \(\pm(n+1)!\,x\)（左右斜率相同，\(n\) 阶导存在）；求 \(n+1\) 阶导后得常数 \(\pm(n+1)!\)（左右不等，不存在）。
+
+故 \(x^2|x|\) 在 \(x=0\) 处恰好 2 阶可导，3 阶不存在。
+
+两项取短板，最高阶导数的阶数为 \(\boxed{2}\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(x^n|x|\) 在 \(x=0\) 处恰好 \(n\) 阶可导，\(n+1\) 阶导数不存在
+  \item \textbf{易错点}：忘记 \(\cos|x|=\cos x\)（偶函数性质）；多项相加时最高可导阶数取各项的最小值（短板原则）
+  \item \textbf{关联知识}：\(x^n\) 在 \(x=0\) 处无穷阶可导；含绝对值函数可导性需分段后逐阶验证左右导数
+\end{itemize}}
+
+\end{mistake}

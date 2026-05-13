@@ -1,0 +1,42 @@
+\begin{mistake}{2026-05-13}{02}
+
+\begin{problemcontent}
+设 \(f(x) = \ln\!\bigl(\sqrt{1+x^{2}}-x\bigr)\)，则 \(f^{(5)}(0) = \)\_\_\_\_\_\_。
+\end{problemcontent}
+
+\begin{solutioncontent}
+利用泰勒展开间接求高阶导数。
+
+先化简：由 \((\sqrt{1+x^{2}}-x)(\sqrt{1+x^{2}}+x)=1\)，得
+\[
+f(x)=\ln(\sqrt{1+x^{2}}-x)=-\ln(\sqrt{1+x^{2}}+x)
+\]
+
+求导：
+\[
+f'(x)=-(1+x^{2})^{-1/2}
+\]
+
+将 \((1+x^{2})^{-1/2}\) 按广义二项式展开（令 \(u=x^{2}\)，\(\alpha=-\tfrac{1}{2}\)）：
+\[
+f'(x)=-1+\frac{1}{2}x^{2}-\frac{3}{8}x^{4}+\cdots
+\]
+
+逐项积分（注意 \(f(0)=0\)）：
+\[
+f(x)=-x+\frac{1}{6}x^{3}-\frac{3}{40}x^{5}+\cdots
+\]
+
+提取 \(x^{5}\) 系数 \(a_{5}=-\dfrac{3}{40}\)，由 \(f^{(n)}(0)=n!\,a_{n}\)：
+\[
+f^{(5)}(0)=5!\times\Bigl(-\frac{3}{40}\Bigr)=120\times\Bigl(-\frac{3}{40}\Bigr)=-9
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：泰勒系数与高阶导数关系 \(f^{(n)}(0)=n!\,a_{n}\)；广义二项展开 \((1+u)^{\alpha}=\sum\binom{\alpha}{n}u^{n}\)。
+  \item \textbf{易错点}：逐项积分时须除以新幂次（如 \(-\tfrac{3}{8}x^{4}\) 积分后为 \(-\tfrac{3}{40}x^{5}\)，分母是 \(8\times5=40\)）。
+  \item \textbf{关联知识}：\(\ln(\sqrt{1+x^{2}}+x)\) 即 \(\operatorname{arcsinh}(x)\)，其导数为 \(\dfrac{1}{\sqrt{1+x^{2}}}\)，属高频结构。
+\end{itemize}}
+\end{mistake}

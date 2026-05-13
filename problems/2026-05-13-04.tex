@@ -1,0 +1,55 @@
+\begin{mistake}{2026-05-13}{04}
+
+\begin{problemcontent}
+曲线 \( y = \dfrac{1}{|x|-1} + \ln(1+e^{-x}) \) 的渐近线的条数为（\quad）
+
+A. 1\qquad B. 2\qquad C. 3\qquad D. 4
+\end{problemcontent}
+
+\begin{solutioncontent}
+渐近线需分三类逐一检查：铅直、水平、斜。
+
+\textbf{1. 铅直渐近线}
+
+\( |x|-1=0 \Rightarrow x=\pm1 \)，在这两点处 \( y\to\infty \).
+
+铅直渐近线：\( x=1 \)，\( x=-1 \)（2条）。
+
+\textbf{2. \( x\to+\infty \)（水平渐近线）}
+\[
+\frac{1}{x-1}\to 0,\quad \ln(1+e^{-x})\to 0 \implies y\to 0
+\]
+水平渐近线：\( y=0 \)（1条）。
+
+\textbf{3. \( x\to-\infty \)（斜渐近线）}
+
+此时 \( \ln(1+e^{-x})\approx -x\to+\infty \)，非水平，需检查斜渐近线。
+
+斜率：
+\[
+k = \lim_{x\to-\infty}\frac{y}{x} = \lim_{x\to-\infty}\frac{\ln(1+e^{-x})}{x} \approx \frac{-x}{x} = -1
+\]
+
+截距：
+\[
+b = \lim_{x\to-\infty}\bigl[y-(-x)\bigr] = \lim_{x\to-\infty}\left[\frac{1}{-x-1}+\ln(1+e^{-x})+x\right]
+\]
+令 \( t=-x\to+\infty \)：
+\[
+= \lim_{t\to+\infty}\left[\frac{1}{t-1}+\ln(1+e^{t})-t\right] = 0 + 0 = 0
+\]
+其中 \( \ln(1+e^t)-t = \ln(1+e^{-t})\to 0 \)。
+
+斜渐近线：\( y=-x \)（1条）。
+
+共 \( 2+1+1=4 \) 条，选 D。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：渐近线三类判定——铅直：\( \lim_{x\to a}y=\infty \)；水平：\( \lim_{x\to\infty}y=c \)；斜：\( k=\lim_{x\to\infty}\frac{y}{x}\neq0 \)，\( b=\lim_{x\to\infty}(y-kx) \) 存在。
+  \item \textbf{易错点}：\( x\to-\infty \) 时 \( \ln(1+e^{-x})\approx -x \) 趋于无穷，不是水平渐近线，必须继续检查斜渐近线；\( |x| \) 导致铅直渐近线有对称两条。
+  \item \textbf{关联知识}：同一方向上水平与斜渐近线互斥；左右两侧需分别讨论，可得不同类型渐近线。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,33 @@
+\begin{mistake}{2026-05-20}{01}
+
+\begin{problemcontent}
+设 \(y = y(x)\) 由方程 \(\sqrt{x^2+y^2} = e^{\arctan \frac{y}{x}}\) 确定，求 \(\frac{\mathrm{d}^2 y}{\mathrm{d}x^2}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+方程两边同时取自然对数 \(\ln\)：
+\[ \frac{1}{2} \ln(x^2+y^2) = \arctan \frac{y}{x} \]
+方程两边同对 \(x\) 求导：
+\[ \frac{x+yy'}{x^2+y^2} = \frac{xy' - y}{x^2+y^2} \]
+由于 \(x^2+y^2 \neq 0\)，约去分母并移项：
+\[ x + yy' = xy' - y \implies y'(x - y) = x + y \implies y' = \frac{x+y}{x-y} \]
+对 \(y'\) 再次求导（使用商的求导法则）：
+\[ y'' = \frac{(1+y')(x-y) - (x+y)(1-y')}{(x-y)^2} \]
+展开并化简分子：
+\[ (x - y + xy' - yy') - (x - xy' + y - yy') = 2(xy' - y) \]
+所以：
+\[ y'' = \frac{2(xy' - y)}{(x-y)^2} \]
+将 \(y' = \frac{x+y}{x-y}\) 代入上式的分子中：
+\[ xy' - y = x\left(\frac{x+y}{x-y}\right) - y = \frac{x^2+y^2}{x-y} \]
+代回 \(y''\)：
+\[ y'' = \frac{2(x^2+y^2)}{(x-y)^3} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：隐函数求导、复合函数对数与反正切求导法则。
+  \item \textbf{易错点}：直接求导计算量极大易错；二阶求导后忘记将 \(y'\) 回代化简。
+  \item \textbf{关联知识}：遇到幂指函数、多项乘除开方，尤其是底数/指数包含极坐标特征 \(\frac{y}{x}\) 时，优先两边取对数。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,37 @@
+\begin{mistake}{2026-05-20}{02}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \((0, +\infty)\) 内满足 \(f(xy) = f(x) + f(y)\)，且 \(f'(1) = 1\)，证明：\(f(x)\) 在 \((0, +\infty)\) 内可导，并求 \(f(x)\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{第一步：求 \(f(1)\)}\\
+令 \(x = 1, y = 1\)，代入得 \(f(1) = f(1) + f(1)\)，解得 \(f(1) = 0\)。
+
+\textbf{第二步：利用导数定义证明可导并求导数}\\
+根据导数定义：
+\[ f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x} \]
+提取 \(x\) 转换为乘积形式：
+\[ x + \Delta x = x\left(1 + \frac{\Delta x}{x}\right) \]
+利用 \(f(xy)=f(x)+f(y)\) 展开：
+\[ f'(x) = \lim_{\Delta x \to 0} \frac{f(x) + f\left(1 + \frac{\Delta x}{x}\right) - f(x)}{\Delta x} = \lim_{\Delta x \to 0} \frac{f\left(1 + \frac{\Delta x}{x}\right)}{\Delta x} \]
+令 \(\Delta t = \frac{\Delta x}{x}\)，则 \(\Delta x = x \cdot \Delta t\)：
+\[ f'(x) = \frac{1}{x} \lim_{\Delta t \to 0} \frac{f(1 + \Delta t)}{\Delta t} \]
+由于 \(f(1) = 0\)，上式即为：
+\[ f'(x) = \frac{1}{x} \lim_{\Delta t \to 0} \frac{f(1 + \Delta t) - f(1)}{\Delta t} = \frac{1}{x} f'(1) \]
+已知 \(f'(1) = 1\)，故 \(f'(x) = \frac{1}{x}\)，极限存在，因此原函数在 \((0, +\infty)\) 内可导。
+
+\textbf{第三步：求 \(f(x)\)}\\
+两边积分得：
+\[ f(x) = \int \frac{1}{x} \mathrm{d}x = \ln x + C \]
+代入初始条件 \(f(1) = 0\) 得到 \(C = 0\)，故求得：
+\[ f(x) = \ln x \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\textbf{核心公式}：导数定义 \(f'(x) = \lim_{\Delta x \to 0} \frac{f(x+\Delta x) - f(x)}{\Delta x}\)
+
+\textbf{易错点}：遇到抽象函数 \(f(xy) = f(x) + f(y)\) 且含有加法增量 \(x+\Delta x\) 时，需强行提取 \(x\)，将其构造为乘法形式 \(x(1+\frac{\Delta x}{x})\) 以便利用原方程拆解。
+}
+
+\end{mistake}

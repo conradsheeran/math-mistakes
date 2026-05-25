@@ -1,0 +1,40 @@
+\begin{mistake}{2026-05-25}{02}
+
+\begin{problemcontent}
+计算数列极限 \(I = \lim_{n \to \infty} n \tan(\pi \sqrt{n^2 + 1})\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+当 \(n \to \infty\) 时，\(\sqrt{n^2+1} \approx n\)，由此构造整数周期 \(n\pi\)，利用正切函数的周期性 \(\tan(x + n\pi) = \tan x\) 将自变量由无穷大转化为无穷小：
+\[
+\begin{aligned}
+I &= \lim_{n \to \infty} n \tan(\pi \sqrt{n^2 + 1}) \\
+&= \lim_{n \to \infty} n \tan(\pi \sqrt{n^2 + 1} - n\pi) \\
+&= \lim_{n \to \infty} n \tan\Big( \pi(\sqrt{n^2 + 1} - n) \Big) 
+\end{aligned}
+\]
+对括号内进行分子有理化（根式差变形）：
+\[
+\begin{aligned}
+I &= \lim_{n \to \infty} n \tan\left( \pi \cdot \frac{(n^2 + 1) - n^2}{\sqrt{n^2 + 1} + n} \right) \\
+&= \lim_{n \to \infty} n \tan\left( \frac{\pi}{\sqrt{n^2 + 1} + n} \right)
+\end{aligned}
+\]
+当 \(n \to \infty\) 时，\(\frac{\pi}{\sqrt{n^2 + 1} + n} \to 0\)，使用等价无穷小 \(\tan x \sim x\)：
+\[
+\begin{aligned}
+I &= \lim_{n \to \infty} n \cdot \frac{\pi}{\sqrt{n^2 + 1} + n} \\
+&= \lim_{n \to \infty} \frac{\pi}{\sqrt{1 + \frac{1}{n^2}} + 1} \\
+&= \frac{\pi}{2}
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(\tan(x \pm n\pi) = \tan x\)。对于三角函数内趋于 \(\infty\) 的自变量，常通过剥离周期构造趋于 \(0\) 的无穷小。
+  \item \textbf{易错点}：切忌直接将 \(\sqrt{n^2+1}\) 近似为 \(n\) 从而得出 \(0\) 的错解，函数内部不可直接粗暴舍弃低阶项。
+  \item \textbf{关联知识}：若原题换成 \(\sin(\pi \sqrt{n^2 + 1})\)，则减去 \(n\pi\) 会变为 \(\sin(\pi \sqrt{n^2+1} - n\pi + n\pi) = (-1)^n \sin(\pi(\sqrt{n^2+1}-n))\)，需注意交错符号。
+\end{itemize}}
+
+\end{mistake}

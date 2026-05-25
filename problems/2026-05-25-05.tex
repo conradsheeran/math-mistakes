@@ -1,0 +1,55 @@
+\begin{mistake}{2026-05-25}{05}
+
+\begin{problemcontent}
+已知 \(f(x) = \frac{1}{1+\sin^2 x}\)，求 \(f(x)\) 在区间 \([0, \pi]\) 上的全体原函数。
+\end{problemcontent}
+
+\begin{solutioncontent}
+首先求出不包含无定义点 \(x = \frac{\pi}{2}\) 的开区间上的不定积分。分子分母同除以 \(\cos^2 x\)：
+\[
+\int \frac{1}{1+\sin^2 x} dx = \int \frac{\frac{1}{\cos^2 x}}{\frac{1}{\cos^2 x} + \frac{\sin^2 x}{\cos^2 x}} dx
+\]
+由于 \(\frac{1}{\cos^2 x} = \sec^2 x = 1+\tan^2 x\) 且 \(d(\tan x) = \sec^2 x dx\)，上式可化为：
+\[
+\int \frac{d(\tan x)}{1+\tan^2 x + \tan^2 x} = \int \frac{d(\tan x)}{1+2\tan^2 x} = \frac{1}{\sqrt{2}}\arctan(\sqrt{2}\tan x) + C
+\]
+因为 \(\tan x\) 在 \(x = \frac{\pi}{2}\) 处无定义，在 \([0, \pi]\) 上需分段写出原函数 \(F(x)\)：
+\[
+F(x) = \begin{cases}
+\frac{1}{\sqrt{2}}\arctan(\sqrt{2}\tan x) + C_1, & x \in \left[0, \frac{\pi}{2}\right) \\
+\frac{1}{\sqrt{2}}\arctan(\sqrt{2}\tan x) + C_2, & x \in \left(\frac{\pi}{2}, \pi\right]
+\end{cases}
+\]
+由原函数的连续性，\(F(x)\) 在 \(x = \frac{\pi}{2}\) 处的左右极限必须相等。
+求左极限：
+\[
+\lim_{x \to \frac{\pi}{2}^-} F(x) = \frac{1}{\sqrt{2}} \cdot \frac{\pi}{2} + C_1 = \frac{\pi}{2\sqrt{2}} + C_1
+\]
+求右极限：
+\[
+\lim_{x \to \frac{\pi}{2}^+} F(x) = \frac{1}{\sqrt{2}} \cdot \left(-\frac{\pi}{2}\right) + C_2 = -\frac{\pi}{2\sqrt{2}} + C_2
+\]
+令左右极限相等，得到：
+\[
+\frac{\pi}{2\sqrt{2}} + C_1 = -\frac{\pi}{2\sqrt{2}} + C_2 \implies C_2 = C_1 + \frac{\pi}{\sqrt{2}}
+\]
+令 \(C_1 = C\)，则 \(C_2 = C + \frac{\pi}{\sqrt{2}}\)，断点处函数值即为该极限值 \(\frac{\pi}{2\sqrt{2}} + C\)。
+综上，\(f(x)\) 在 \([0, \pi]\) 上的全体原函数为：
+\[
+F(x) = \begin{cases} 
+\frac{1}{\sqrt{2}}\arctan(\sqrt{2}\tan x) + C, & 0 \le x < \frac{\pi}{2} \\ 
+\frac{\pi}{2\sqrt{2}} + C, & x = \frac{\pi}{2} \\ 
+\frac{1}{\sqrt{2}}\arctan(\sqrt{2}\tan x) + \frac{\pi}{\sqrt{2}} + C, & \frac{\pi}{2} < x \le \pi 
+\end{cases}
+\]
+（其中 \(C\) 为任意常数）
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：偶次三角有理式的积分常通过分子分母同除以 \(\cos^2 x\) 凑微分 \(d(\tan x)\)。
+  \item \textbf{易错点}：利用 \(\tan x\) 换元时，若积分区间内包含无定义点 \(x=\frac{\pi}{2}\)，不能直接写出一个解析式，必须分段求积分，并利用原函数的连续性（左右极限相等）拼接常数，否则会丢失部分解。
+  \item \textbf{关联知识}：闭区间连续函数的全体原函数在该闭区间上必然处处连续且可导。
+\end{itemize}}
+
+\end{mistake}

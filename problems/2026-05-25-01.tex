@@ -1,0 +1,35 @@
+\begin{mistake}{2026-05-25}{01}
+
+\begin{problemcontent}
+设 \(f''(a)\) 存在，\(f'(a) \neq 0\)。计算极限：
+\[ \lim_{x \to a} \left[ \frac{1}{f'(a)(x-a)} - \frac{1}{f(x) - f(a)} \right] \]
+\end{problemcontent}
+
+\begin{solutioncontent}
+这是一个 \(\infty - \infty\) 型极限，首先进行通分：
+\[ L = \lim_{x \to a} \frac{f(x) - f(a) - f'(a)(x-a)}{f'(a)(x-a)[f(x) - f(a)]} \]
+\textbf{方法一：泰勒展开法}
+根据带佩亚诺余项的泰勒公式，当 \(x \to a\) 时：
+\[ f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2}(x-a)^2 + o((x-a)^2) \]
+代入分子得：
+\[ f(x) - f(a) - f'(a)(x-a) = \frac{f''(a)}{2}(x-a)^2 + o((x-a)^2) \]
+分母利用等价无穷小 \(f(x) - f(a) \sim f'(a)(x-a)\) 得：
+\[ f'(a)(x-a)[f(x) - f(a)] \sim [f'(a)]^2 (x-a)^2 \]
+故极限为：
+\[ L = \lim_{x \to a} \frac{\frac{f''(a)}{2}(x-a)^2}{[f'(a)]^2 (x-a)^2} = \frac{f''(a)}{2[f'(a)]^2} \]
+
+\textbf{方法二：洛必达法则结合导数定义}
+使用一次洛必达法则：
+\[ L = \lim_{x \to a} \frac{f'(x) - f'(a)}{f'(a)[(f(x) - f(a)) + (x-a)f'(x)]} \]
+由于只已知 \(f''(a)\) 存在，不能继续使用洛必达，需上下同时除以 \((x-a)\) 构造导数定义：
+\[ L = \lim_{x \to a} \frac{\frac{f'(x) - f'(a)}{x-a}}{f'(a) \left[ \frac{f(x) - f(a)}{x-a} + f'(x) \right]} = \frac{f''(a)}{f'(a)[f'(a) + f'(a)]} = \frac{f''(a)}{2[f'(a)]^2} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：泰勒展开 \(f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2}(x-a)^2 + o((x-a)^2)\)。
+  \item \textbf{易错点}：当题目仅给出某点 \(n\) 阶导数存在时，洛必达法则最多只能使用 \(n-1\) 次，最后一步必须通过导数定义或泰勒公式解决。
+  \item \textbf{关联知识}：\(\infty - \infty\) 型极限通分后，分母的阶数通常决定了分子泰勒展开所需的阶数。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,33 @@
+\begin{mistake}{2026-05-25}{06}
+
+\begin{problemcontent}
+计算不定积分：\(I = \int \frac{\mathrm{d}x}{\sqrt{(x-a)(b-x)}} \quad (a < x < b)\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+对根号内的二次多项式展开并配方：
+\[
+\begin{aligned}
+(x-a)(b-x) &= -x^2 + (a+b)x - ab \\
+&= -\left[ x^2 - (a+b)x + \left(\frac{a+b}{2}\right)^2 \right] + \left(\frac{a+b}{2}\right)^2 - ab \\
+&= \left(\frac{b-a}{2}\right)^2 - \left(x - \frac{a+b}{2}\right)^2
+\end{aligned}
+\]
+代回原积分，使用基本积分公式 \(\int \frac{1}{\sqrt{A^2-u^2}} \mathrm{d}u = \arcsin\frac{u}{A} + C\)：
+\[
+\begin{aligned}
+I &= \int \frac{\mathrm{d}x}{\sqrt{\left(\frac{b-a}{2}\right)^2 - \left(x - \frac{a+b}{2}\right)^2}} \\
+&= \arcsin \left( \frac{x - \frac{a+b}{2}}{\frac{b-a}{2}} \right) + C \\
+&= \arcsin\frac{2x - a - b}{b-a} + C
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：\(\int \frac{1}{\sqrt{A^2 - u^2}} \mathrm{d}u = \arcsin\frac{u}{A} + C \quad (A > 0)\)。
+  \item \textbf{解题方法}：遇到 \(\frac{1}{\sqrt{ax^2+bx+c}}\) 型积分，首选对根号下二次式配方，凑成 \(A^2 - u^2\) 等标准形式。
+  \item \textbf{易错点}：二次项系数为负时，提取负号后极易把末尾常数项的加减号弄反；不定积分易遗漏常数 \(C\)。
+\end{itemize}}
+
+\end{mistake}

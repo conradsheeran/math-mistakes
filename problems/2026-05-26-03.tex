@@ -1,0 +1,35 @@
+\begin{mistake}{2026-05-26}{03}
+
+\begin{problemcontent}
+设当 \(x > -2\) 时 \(f(x)\) 连续，且满足
+\[ 2f(x) \left[ \int_0^x f(t) dt + \frac{1}{\sqrt{2}} \right] = \frac{(x+1)e^x}{(x+2)^2}, \]
+则当 \(x > -2\) 时， \(f(x) = \underline{\quad\quad\quad\quad}\) .
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(F(x) = \int_0^x f(t) dt\)，则 \(F(0) = 0\)，且 \(F'(x) = f(x)\)。
+代入原方程得：
+\[ 2 F'(x) \left[ F(x) + \frac{1}{\sqrt{2}} \right] = \frac{(x+1)e^x}{(x+2)^2} \]
+逆用链式法则凑微分：
+\[ \frac{d}{dx} \left[ F(x) + \frac{1}{\sqrt{2}} \right]^2 = \frac{(x+1)e^x}{(x+2)^2} \]
+两边同时关于 \(x\) 积分：
+\[ \left[ F(x) + \frac{1}{\sqrt{2}} \right]^2 = \int \frac{x+1}{(x+2)^2} e^x dx + C \]
+右侧积分拆项配凑 \(g(x) + g'(x)\) 模型：
+\[ \int \left[ \frac{1}{x+2} - \frac{1}{(x+2)^2} \right] e^x dx = \frac{e^x}{x+2} + C \]
+代入 \(x=0\) 时 \(F(0)=0\)，得：
+\[ \left( 0 + \frac{1}{\sqrt{2}} \right)^2 = \frac{1}{2} + C \implies C = 0 \]
+因此，\(\left[ F(x) + \frac{1}{\sqrt{2}} \right]^2 = \frac{e^x}{x+2}\)。
+因为 \(F(0) + \frac{1}{\sqrt{2}} > 0\)，开平方取正号：
+\[ F(x) + \frac{1}{\sqrt{2}} = \frac{e^{\frac{x}{2}}}{\sqrt{x+2}} \]
+两边求导得 \(f(x)\)：
+\[ \begin{aligned} f(x) = F'(x) &= \frac{d}{dx} \left( \frac{e^{\frac{x}{2}}}{\sqrt{x+2}} \right) \\ &= \frac{\frac{1}{2}e^{\frac{x}{2}}\sqrt{x+2} - e^{\frac{x}{2}}\frac{1}{2\sqrt{x+2}}}{x+2} \\ &= \frac{e^{\frac{x}{2}}}{2(x+2)} \left( \sqrt{x+2} - \frac{1}{\sqrt{x+2}} \right) \\ &= \frac{(x+1)e^{\frac{x}{2}}}{2(x+2)^{\frac{3}{2}}} \end{aligned} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：含有变限积分与函数本身的方程，首选化为微分方程，令 \(F(x) = \int_a^x f(t) dt\)，结合 \(2F'(x)F(x) = (F^2(x))'\) 凑微分。
+  \item \textbf{积分技巧}：遇到分式乘以 \(e^x\)，考虑公式 \(\int [g(x) + g'(x)] e^x dx = g(x)e^x + C\)。
+  \item \textbf{易错点}：微分方程积分后易漏常数 \(C\)，需用变限积分隐含条件 \(F(a)=0\) 定 \(C\)；开平方需代入初值判断正负。
+\end{itemize}}
+
+\end{mistake}

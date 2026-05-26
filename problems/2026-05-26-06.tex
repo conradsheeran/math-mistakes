@@ -1,0 +1,43 @@
+\begin{mistake}{2026-05-26}{06}
+
+\begin{problemcontent}
+在水平放置的椭圆底柱形容器内储存某种液体，容器的纵向长度为 \(4\text{ m}\)，其中椭圆方程为 \(\frac{x^2}{4} + y^2 = 1\)（单位：\(\text{m}\)）。
+1. 当液面过点 \((0, y)\)（\(-1 \leqslant y \leqslant 1\)）处水平线时，容器内液体的体积是 \underline{\quad\quad}。
+2. 当容器内储满了液体后，以 \(0.16\text{ m}^3/\text{min}\) 的速度将液体从容器顶端抽出，则当液面降至 \(y=0\) 时，液面下降的速度为 \underline{\quad\quad}。
+3. 如果液体的密度为 \(1000\text{ kg/m}^3\)，抽出全部液体所作的功为 \underline{\quad\quad}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+1. 设高度为 \(t\) 处的液面，由 \(\frac{x^2}{4} + t^2 = 1\) 得 \(x = 2\sqrt{1-t^2}\)，液面宽度为 \(2x = 4\sqrt{1-t^2}\)。
+由于容器纵向长度 \(L = 4\)，截面面积 \(S(t) = L \cdot 2x = 16\sqrt{1-t^2}\)。
+体积积分：
+\[
+\begin{aligned}
+V(y) &= \int_{-1}^{y} 16\sqrt{1-t^2} dt \\
+&= 16 \left[ \frac{t}{2}\sqrt{1-t^2} + \frac{1}{2}\arcsin t \right]_{-1}^{y} \\
+&= 8y\sqrt{1-y^2} + 8\arcsin y + 4\pi \ (\text{m}^3)
+\end{aligned}
+\]
+
+2. 由链式法则联系体积与液面高度变化率：\(\frac{dV}{d\tau} = \frac{dV}{dy} \cdot \frac{dy}{d\tau} = S(y) \frac{dy}{d\tau}\)。
+已知 \(\frac{dV}{d\tau} = -0.16\)，\(y=0\) 时面积 \(S(0) = 16\)。
+代入得 \(16 \frac{dy}{d\tau} = -0.16\)，解得 \(\frac{dy}{d\tau} = -0.01\text{ m/min}\)。液面下降速度为 \(0.01\text{ m/min}\)。
+
+3. 做功微元（提升高度为 \(1-y\)）：\(dW = \rho g (1-y) S(y) dy = 16\rho g (1-y)\sqrt{1-y^2} dy\)。
+全区间做功积分：
+\[
+W = \int_{-1}^{1} 16\rho g (1-y)\sqrt{1-y^2} dy = 16\rho g \left( \int_{-1}^{1} \sqrt{1-y^2} dy - \int_{-1}^{1} y\sqrt{1-y^2} dy \right)
+\]
+第一项为半圆面积 \(\frac{\pi}{2}\)，第二项被积函数为奇函数，积分为 \(0\)。
+因此 \(W = 16\rho g \cdot \frac{\pi}{2} = 8\pi \rho g = 8\pi \times 1000 \times 9.8 = 78400\pi \ (\text{J})\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{定积分求体积}：\(V(y) = \int_{a}^{y} S(t) dt\)。
+  \item \textbf{相关变化率}：\(\frac{dV}{d\tau} = S(y) \frac{dy}{d\tau}\)，体积变化率与液面高度变化率的联系。
+  \item \textbf{抽水做功积分微元}：\(dW = \rho g (H-y) S(y) dy\)，\(H\) 为目标提升高度（即抽出口的坐标减去当前微元的坐标）。
+  \item \textbf{奇偶性简化积分}：对称区间 \(\int_{-a}^{a}\) 务必先考察奇偶性，例如 \(\int_{-1}^1 y\sqrt{1-y^2} dy = 0\)。
+\end{itemize}}
+
+\end{mistake}

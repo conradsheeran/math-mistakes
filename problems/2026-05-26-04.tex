@@ -1,0 +1,24 @@
+\begin{mistake}{2026-05-26}{04}
+
+\begin{problemcontent}
+设 \(\alpha > 1\)，反常积分 \(\int_1^{+\infty} \frac{\mathrm{d}x}{x^\alpha \ln^\beta x}\) 收敛，则 \(\beta\) 的取值范围是 \underline{\hspace{2cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+判定该反常积分的收敛性，必须同时考查积分下限的瑕点（\(x \to 1^+\)）与积分上限的无穷限（\(x \to +\infty\)）。
+
+1. 将积分拆分为两部分：\(\int_1^2 \frac{\mathrm{d}x}{x^\alpha \ln^\beta x} + \int_2^{+\infty} \frac{\mathrm{d}x}{x^\alpha \ln^\beta x} = I_1 + I_2\)。
+2. 分析 \(I_2\)（无穷积分）：已知 \(\alpha > 1\)，因指数大于1已保证衰减速度，故无论 \(\beta\) 取何值，\(\int_2^{+\infty} \frac{\mathrm{d}x}{x^\alpha \ln^\beta x}\) 均收敛。
+3. 分析 \(I_1\)（瑕积分）：瑕点为 \(x = 1\)。当 \(x \to 1^+\) 时，\(x^\alpha \to 1\)，\(\ln x = \ln(1+(x-1)) \sim x-1\)。故被积函数在 \(x \to 1^+\) 时渐近于 \(\frac{1}{(x-1)^\beta}\)。根据瑕积分收敛条件，要求 \(\beta < 1\)。
+
+综合以上两部分，\(\beta\) 的取值范围是 \((-\infty, 1)\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：无穷积分收敛 \(\iff p>1\)；瑕积分收敛 \(\iff p<1\)。
+  \item \textbf{易错点}：遇到无穷积分时，未检查区间内部或端点是否存在瑕点（如本题中 \(x=1\) 导致 \(\ln 1 = 0\)）。
+  \item \textbf{关联知识}：等价无穷小 \(\ln x \sim x-1 \ (x \to 1)\)。
+\end{itemize}}
+
+\end{mistake}

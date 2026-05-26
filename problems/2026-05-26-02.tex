@@ -1,0 +1,36 @@
+\begin{mistake}{2026-05-26}{02}
+
+\begin{problemcontent}
+设当 $0 \leqslant x < \pi$ 时 $f(x) = x$，且对一切 $x$，$f(x) = f(x - \pi) + \sin x$，则 $\int_\pi^{3\pi} f(x) \mathrm{d}x =$ 
+\end{problemcontent}
+
+\begin{solutioncontent}
+将积分区间拆分为 $[\pi, 2\pi]$ 与 $[2\pi, 3\pi]$ 两段：
+\[ \int_\pi^{3\pi} f(x) \mathrm{d}x = \int_\pi^{2\pi} f(x) \mathrm{d}x + \int_{2\pi}^{3\pi} f(x) \mathrm{d}x \]
+
+对于第一段，令 $t = x - \pi$，则：
+\[ \int_\pi^{2\pi} f(x) \mathrm{d}x = \int_0^\pi f(t+\pi) \mathrm{d}t \]
+由 $f(x) = f(x-\pi) + \sin x$ 及诱导公式：
+\[ f(t+\pi) = f(t) + \sin(t+\pi) = t - \sin t \]
+故积分得：
+\[ \int_0^\pi (t - \sin t) \mathrm{d}t = \left[ \frac{1}{2}t^2 + \cos t \right]_0^\pi = \frac{\pi^2}{2} - 2 \]
+
+对于第二段，令 $t = x - 2\pi$，则：
+\[ \int_{2\pi}^{3\pi} f(x) \mathrm{d}x = \int_0^\pi f(t+2\pi) \mathrm{d}t \]
+继续降阶：
+\[ f(t+2\pi) = f(t+\pi) + \sin(t+2\pi) = (t - \sin t) + \sin t = t \]
+故积分得：
+\[ \int_0^\pi t \mathrm{d}t = \left[ \frac{1}{2}t^2 \right]_0^\pi = \frac{\pi^2}{2} \]
+
+两者相加得到：
+\[ \int_\pi^{3\pi} f(x) \mathrm{d}x = \pi^2 - 2 \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：利用平移代换（如 $t=x-\pi$），将积分化归到已知解析式所在的 $[0, \pi)$ 区间。
+  \item \textbf{易错点}：递推式 $f(x) = f(x-\pi) + \sin x$ 带有尾项，不可直接按周期函数处理积分，需逐层降阶。
+  \item \textbf{关联知识}：诱导公式 $\sin(t+\pi) = -\sin t$，计算时极易漏掉负号。
+\end{itemize}}
+
+\end{mistake}

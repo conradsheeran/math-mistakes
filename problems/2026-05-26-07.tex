@@ -1,0 +1,29 @@
+\begin{mistake}{2026-05-26}{07}
+
+\begin{problemcontent}
+已知 \(y_1 = \cos 2x - \frac{1}{4}x\cos 2x, y_2 = \sin 2x - \frac{1}{4}x\cos 2x\) 是某二阶线性常系数非齐次微分方程的两个解，\(y_3 = \cos 2x\) 是它所对应的齐次方程的一个解，则该微分方程是 \underline{\hspace{2cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+由非齐次方程解的结构可知，\(y_2 - y_1\) 是对应齐次方程的解：
+\[ y_2 - y_1 = \sin 2x - \cos 2x \]
+又已知 \(y_3 = \cos 2x\) 也是齐次解，线性组合后可得齐次方程的两个线性无关的基础解为 \(\cos 2x\) 和 \(\sin 2x\)。
+由此推得特征根为 \(r = \pm 2i\)，特征方程为 \(r^2 + 4 = 0\)。
+因此原方程左端为 \(y'' + 4y\)。
+
+取 \(y_1\) 剔除齐次解后的部分作为非齐次特解 \(y^* = -\frac{1}{4}x\cos 2x\)，代入求右端 \(f(x)\)：
+\[ (y^*)' = -\frac{1}{4}\cos 2x + \frac{1}{2}x\sin 2x \]
+\[ (y^*)'' = \frac{1}{2}\sin 2x + \frac{1}{2}\sin 2x + x\cos 2x = \sin 2x + x\cos 2x \]
+代入方程左端：
+\[ f(x) = (y^*)'' + 4y^* = (\sin 2x + x\cos 2x) + 4\left(-\frac{1}{4}x\cos 2x\right) = \sin 2x \]
+故该微分方程为 \(y'' + 4y = \sin 2x\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心定理}：非齐次方程的任意两解之差，必为对应齐次方程的解。
+  \item \textbf{易错点}：代入求右端 \(f(x)\) 时，若不剔除解中的齐次成分直接求导，不仅计算量大且易发生符号与复合函数求导漏乘的错误。
+  \item \textbf{关联知识}：齐次方程具基础解 \(\cos \beta x, \sin \beta x \iff\) 特征根 \(\pm \beta i \iff\) 左端为 \(y'' + \beta^2 y = 0\)。
+\end{itemize}}
+
+\end{mistake}

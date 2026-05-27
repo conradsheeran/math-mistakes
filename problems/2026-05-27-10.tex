@@ -1,0 +1,48 @@
+\begin{mistake}{2026-05-27}{10}
+
+\begin{problemcontent}
+设 \(y_1(x)\) 与 \(y_2(x)\) 是二阶线性微分方程 \(y'' + py' + qy = f(x)\) 的两个解，\(y_3(x)\) 与 \(y_4(x)\) 是二阶线性微分方程 \(y'' + py' + qy = g(x)\) 的两个解，则下列函数中，一定是二阶线性微分方程 \(y'' + py' + qy = f(x) - g(x)\) 的解的是 ()
+
+(A) \(y_1(x) - 2y_2(x) + 2y_3(x) - y_4(x)\)
+
+(B) \(2y_1(x) - y_2(x) + y_3(x) - 2y_4(x)\)
+
+(C) \(2y_1(x) - y_2(x) + 2y_3(x) - y_4(x)\)
+
+(D) \(y_1(x) - 2y_2(x) + y_3(x) - 2y_4(x)\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+记线性算子 \(L[y] = y'' + py' + qy\)。根据已知条件，有：
+\[ L[y_1] = f(x), \quad L[y_2] = f(x) \]
+\[ L[y_3] = g(x), \quad L[y_4] = g(x) \]
+设目标解为 \(Y = c_1 y_1 + c_2 y_2 + c_3 y_3 + c_4 y_4\)，利用线性算子的性质，有：
+\[
+\begin{aligned}
+L[Y] &= c_1 L[y_1] + c_2 L[y_2] + c_3 L[y_3] + c_4 L[y_4] \\
+&= (c_1 + c_2) f(x) + (c_3 + c_4) g(x)
+\end{aligned}
+\]
+要求 \(L[Y] = f(x) - g(x)\)，比较系数可得约束条件：
+\[
+\begin{cases}
+c_1 + c_2 = 1 \\
+c_3 + c_4 = -1
+\end{cases}
+\]
+逐一验证选项：
+(A) \(c_1+c_2 = 1-2 = -1 \neq 1\)，排除。
+(B) \(c_1+c_2 = 2-1 = 1\)，\(c_3+c_4 = 1-2 = -1\)，满足。
+(C) \(c_3+c_4 = 2-1 = 1 \neq -1\)，排除。
+(D) \(c_1+c_2 = 1-2 = -1 \neq 1\)，排除。
+故正确答案为 (B)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：利用线性算子的性质（解的叠加原理）。设通用组合直接比对系数，比构造齐次解/特解更直接。
+  \item \textbf{易错点}：目标方程右侧为 \(f(x) - g(x)\)，\(g(x)\) 对应的系数和 \(c_3 + c_4\) 必须是 \(-1\)，易漏负号。
+  \item \textbf{关联知识}：微分方程解的线性叠加原理，与线性代数 \(Ax=b\) 求解中的解的组合本质一致。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,35 @@
+\begin{mistake}{2026-05-27}{09}
+
+\begin{problemcontent}
+设 \( b>0 \) 为常数，\( \varphi(x) = \frac{2}{\sqrt{\pi b}} \int_{0}^{x} e^{-\frac{t^2}{b}} \mathrm{d}t \)，并知 \( \int_{0}^{+\infty} e^{-t^2} \mathrm{d}t = \frac{\sqrt{\pi}}{2} \)，则 
+\[ \int_{0}^{+\infty} [1 - \varphi(x)] \mathrm{d}x = \]
+(A) \( \frac{1}{2 \sqrt{\pi b}} \) \quad (B) \( \frac{1}{\sqrt{\pi b}} \) \quad (C) \( \sqrt{\frac{b}{\pi}} \) \quad (D) \( \sqrt{\frac{b}{2\pi}} \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：(C)。
+
+先计算 \( \varphi(+\infty) \)。令 \( u = \frac{t}{\sqrt{b}} \)，
+\[ \int_{0}^{+\infty} e^{-\frac{t^2}{b}} \mathrm{d}t = \sqrt{b} \int_{0}^{+\infty} e^{-u^2} \mathrm{d}u = \frac{\sqrt{\pi b}}{2} \]
+故 \( \varphi(+\infty) = \frac{2}{\sqrt{\pi b}} \times \frac{\sqrt{\pi b}}{2} = 1 \)。
+
+因为 \( \varphi(+\infty) = 1 \)，所以 \( 1 - \varphi(x) = \varphi(+\infty) - \varphi(x) = \frac{2}{\sqrt{\pi b}} \int_{x}^{+\infty} e^{-\frac{t^2}{b}} \mathrm{d}t \)。
+
+代入原积分，转化为反常二重积分：
+\[ I = \int_{0}^{+\infty} \left( \frac{2}{\sqrt{\pi b}} \int_{x}^{+\infty} e^{-\frac{t^2}{b}} \mathrm{d}t \right) \mathrm{d}x = \frac{2}{\sqrt{\pi b}} \int_{0}^{+\infty} \mathrm{d}x \int_{x}^{+\infty} e^{-\frac{t^2}{b}} \mathrm{d}t \]
+
+交换积分次序。积分区域为 \( 0 \le x < +\infty, x \le t < +\infty \)，等价于 \( 0 \le t < +\infty, 0 \le x \le t \)。
+\[ I = \frac{2}{\sqrt{\pi b}} \int_{0}^{+\infty} \mathrm{d}t \int_{0}^{t} e^{-\frac{t^2}{b}} \mathrm{d}x = \frac{2}{\sqrt{\pi b}} \int_{0}^{+\infty} t e^{-\frac{t^2}{b}} \mathrm{d}t \]
+
+凑微分计算积分：
+\[ I = \frac{2}{\sqrt{\pi b}} \left( -\frac{b}{2} \right) \int_{0}^{+\infty} e^{-\frac{t^2}{b}} \mathrm{d}\left(-\frac{t^2}{b}\right) = -\sqrt{\frac{b}{\pi}} \left[ e^{-\frac{t^2}{b}} \right]_0^{+\infty} = \sqrt{\frac{b}{\pi}} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：Fubini定理（交换反常二重积分次序）、高斯积分 \( \int_{0}^{+\infty} e^{-x^2} \mathrm{d}x = \frac{\sqrt{\pi}}{2} \)。
+  \item \textbf{易错点}：使用分部积分法时直接主观臆断边界项为 0（应使用洛必达法则证明）；二重积分交换积分次序时积分界限写错。
+  \item \textbf{关联知识}：处理含有积分上限函数的反常积分，常利用分部积分降维或化为二重积分换序处理。
+\end{itemize}}
+
+\end{mistake}

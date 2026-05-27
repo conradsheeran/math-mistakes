@@ -1,0 +1,46 @@
+\begin{mistake}{2026-05-27}{01}
+
+\begin{problemcontent}
+把 \(x^2\) 看成 \(y\) 的函数，求解微分方程 \((y^4-3x^2)\,dy+xy\,dx=0\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+设 \(u=x^2\)，则 \(du=2x\,dx\)，即 \(x\,dx=\frac{1}{2}du\)。
+
+代入原方程得：
+\[
+(y^4-3u)\,dy+\frac{y}{2}du=0
+\]
+整理为关于 \(u(y)\) 的一阶线性微分方程标准形式：
+\[
+\frac{du}{dy}-\frac{6}{y}u=-2y^3
+\]
+此时 \(P(y)=-\frac{6}{y}\)，积分因子为：
+\[
+\mu(y)=e^{\int -\frac{6}{y}\,dy}=y^{-6}
+\]
+方程两边同乘 \(y^{-6}\)，得：
+\[
+\frac{d}{dy}(uy^{-6})=-2y^{-3}
+\]
+两边积分：
+\[
+uy^{-6}=y^{-2}+C
+\]
+解得 \(u=y^4+Cy^6\)。
+
+代回 \(u=x^2\)，得到通解为：
+\[
+x^2=y^4+Cy^6
+\]
+（另外 \(y=0\) 也是方程的一个特解）
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：一阶线性微分方程标准形式 \(\frac{du}{dy} + P(y)u = Q(y)\)，积分因子为 \(e^{\int P(y)dy}\)。
+  \item \textbf{易错点}：微分代换时 \(x\,dx = \frac{1}{2}d(x^2)\)，容易漏掉系数 \(\frac{1}{2}\)；化为标准形式时注意 \(P(y)=-\frac{6}{y}\) 的符号。
+  \item \textbf{关联知识}：常微分方程的变量代换法。
+\end{itemize}}
+
+\end{mistake}

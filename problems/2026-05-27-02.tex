@@ -1,0 +1,31 @@
+\begin{mistake}{2026-05-27}{02}
+
+\begin{problemcontent}
+已知函数 \(z = f(x,y)\) 连续且满足 \(\lim_{(x,y) \to (1,0)} \frac{f(x,y) - x + 2y + 2}{\sqrt{(x-1)^2 + y^2}} = 0\)，则
+\[ \lim_{t \to 0} \frac{f(1+t,0) - f(1,2t)}{t} = \underline{\hspace{2cm}} \]
+\end{problemcontent}
+
+\begin{solutioncontent}
+由已知极限凑配全微分定义的形式：
+分子 \(f(x,y) - x + 2y + 2 = f(x,y) + 1 - (x-1) + 2y = f(x,y) - (-1) - 1 \cdot (x-1) - (-2) \cdot y\)。
+原已知极限等价于：
+\[ \lim_{(x,y) \to (1,0)} \frac{f(x,y) - (-1) - 1 \cdot (x-1) - (-2) \cdot y}{\sqrt{(x-1)^2 + y^2}} = 0 \]
+由全微分定义可知 \(f(x,y)\) 在 \((1,0)\) 处可微，且：
+\[ f(1,0) = -1, \quad f_x'(1,0) = 1, \quad f_y'(1,0) = -2 \]
+根据全微分展开式：
+\[ f(x,y) = -1 + (x-1) - 2y + o(\rho) \]
+将 \((x,y) = (1+t,0)\) 与 \((1,2t)\) 分别代入：
+\[ f(1+t, 0) = -1 + t + o(t) \]
+\[ f(1, 2t) = -1 - 4t + o(t) \]
+代入待求极限中：
+\[ \lim_{t \to 0} \frac{f(1+t,0) - f(1,2t)}{t} = \lim_{t \to 0} \frac{[-1 + t + o(t)] - [-1 - 4t + o(t)]}{t} = \lim_{t \to 0} \frac{5t + o(t)}{t} = 5 \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：全微分定义 \(\lim_{\rho \to 0} \frac{f(x,y) - f(x_0,y_0) - A(x-x_0) - B(y-y_0)}{\rho} = 0\)。
+  \item \textbf{易错点}：拆分线性项时符号极易错，必须严格化为 \(-(A(x-x_0) + B(y-y_0))\) 的形式再读偏导数值。
+  \item \textbf{关联知识}：此题若用算子法求导，虽能得正确结果 \(1 - (-2)\times 2=5\)，但因题目未给定偏导数连续，存在理论瑕疵，用局部泰勒展开最为严谨。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,45 @@
+\begin{mistake}{2026-05-27}{07}
+
+\begin{problemcontent}
+设数列极限函数 \(f(x) = \lim_{n \to \infty} \arctan\left(1 + \frac{x^{2n}}{1+x^n}\right)\)，则 \(f(x)\) 的定义域 \(I\) 和 \(f(x)\) 的连续区间 \(J\) 分别是
+(A) \(I = (-\infty, +\infty), J = (-\infty, +\infty)\).
+(B) \(I = (-1, +\infty), J = (-1, 1) \cup (1, +\infty)\).
+(C) \(I = (-1, +\infty), J = (-1, +\infty)\).
+(D) \(I = (-1, 1), J = (-1, 1)\).
+\end{problemcontent}
+
+\begin{solutioncontent}
+本题正确选项为 (B)。
+
+根据数列极限 \(\lim_{n \to \infty} x^n\) 的敛散性，对参数 \(x\) 分段讨论：
+
+\begin{enumerate}
+    \item 当 \(x \le -1\) 时：若 \(x = -1\)，当 \(n\) 为奇数时分母为 \(0\)，无意义；若 \(x < -1\)，令 \(x = -y \ (y > 1)\)，\(\frac{x^{2n}}{1+x^n} = \frac{y^n}{1/y^n + (-1)^n}\)，当 \(n \to \infty\) 时极限在正负无穷间震荡，不存在。故 \(x \le -1\) 不在定义域内。
+    \item 当 \(-1 < x < 1\) 时：\(\lim_{n \to \infty} x^n = 0\)，此时 \(f(x) = \arctan\left(1 + \frac{0}{1+0}\right) = \frac{\pi}{4}\)。
+    \item 当 \(x = 1\) 时：\(x^n = 1\)，此时 \(f(1) = \arctan\left(1 + \frac{1}{2}\right) = \arctan\frac{3}{2}\)。
+    \item 当 \(x > 1\) 时：\(\lim_{n \to \infty} x^n = +\infty\)，此时 \(\lim_{n \to \infty} \frac{x^{2n}}{1+x^n} = \lim_{n \to \infty} \frac{x^n}{\frac{1}{x^n} + 1} = +\infty\)，\(f(x) = \lim_{u \to +\infty} \arctan(1 + u) = \frac{\pi}{2}\)。
+\end{enumerate}
+
+综上，\(f(x)\) 的定义域为 \(I = (-1, +\infty)\)，且分段表达式为：
+\[
+f(x) = \begin{cases}
+\frac{\pi}{4}, & -1 < x < 1 \\
+\arctan\left(\frac{3}{2}\right), & x = 1 \\
+\frac{\pi}{2}, & x > 1
+\end{cases}
+\]
+
+求连续区间，考察分界点 \(x = 1\)：
+左极限 \(\lim_{x \to 1^-} f(x) = \frac{\pi}{4}\)，右极限 \(\lim_{x \to 1^+} f(x) = \frac{\pi}{2}\)。
+由于左右极限不相等，\(x=1\) 为跳跃间断点。
+故连续区间为 \(J = (-1, 1) \cup (1, +\infty)\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：含 \(x^n\) 的数列极限型函数，需按 \(|x| < 1, |x| > 1, x = 1, x = -1\) 严格分段讨论。
+  \item \textbf{易错点}：误将 \(x < -1\) 纳入定义域，忽略了当 \(x < -1\) 时 \(\frac{x^{2n}}{1+x^n}\) 会因子项 \((-1)^n\) 导致极限震荡不存在。
+  \item \textbf{关联知识}：反正切函数的渐近线性质 \(\lim_{u \to +\infty} \arctan u = \frac{\pi}{2}\)。
+\end{itemize}}
+
+\end{mistake}

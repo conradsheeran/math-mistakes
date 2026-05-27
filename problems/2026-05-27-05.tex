@@ -1,0 +1,35 @@
+\begin{mistake}{2026-05-27}{05}
+
+\begin{problemcontent}
+交换积分次序 \(\int_{-\frac{\pi}{4}}^{\frac{\pi}{2}} \mathrm{d}\theta \int_{0}^{2\cos\theta} f(r\cos\theta, r\sin\theta) r \mathrm{d}r = \underline{\hspace{2cm}}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+极坐标系下交换积分次序，即从“先 \(r\) 后 \(\theta\)”改为“先 \(\theta\) 后 \(r\)”。由原积分可得，积分区域 \(D\) 满足：
+\[
+\begin{cases}
+-\frac{\pi}{4} \le \theta \le \frac{\pi}{2} \\
+0 \le r \le 2\cos\theta
+\end{cases}
+\]
+上边界 \(r = 2\cos\theta\) 为圆 \((x-1)^2 + y^2 = 1\)。区域 \(D\) 为该圆在极角 \([-\frac{\pi}{4}, \frac{\pi}{2}]\) 内的部分。射线 \(\theta = -\frac{\pi}{4}\) 与圆弧的交点极径为 \(r = 2\cos\left(-\frac{\pi}{4}\right) = \sqrt{2}\)。整个区域内 \(r\) 的取值范围为 \([0, 2]\)。
+
+将 \(r\) 视作固定值，由 \(r = 2\cos\theta\) 解得 \(\cos\theta = \frac{r}{2}\)，即 \(\theta = \pm \arccos\frac{r}{2}\)。
+以 \(r = \sqrt{2}\) 为界分段：
+1. 当 \(0 \le r \le \sqrt{2}\) 时，\(\theta\) 从射线 \(\theta = -\frac{\pi}{4}\) 穿入，从上半圆弧 \(\theta = \arccos\frac{r}{2}\) 穿出。
+2. 当 \(\sqrt{2} \le r \le 2\) 时，\(\theta\) 从下半圆弧 \(\theta = -\arccos\frac{r}{2}\) 穿入，从上半圆弧 \(\theta = \arccos\frac{r}{2}\) 穿出。
+
+综上，交换积分次序后的结果为：
+\[
+\int_{0}^{\sqrt{2}} \mathrm{d}r \int_{-\frac{\pi}{4}}^{\arccos\frac{r}{2}} f(r\cos\theta, r\sin\theta) r \mathrm{d}\theta + \int_{\sqrt{2}}^{2} \mathrm{d}r \int_{-\arccos\frac{r}{2}}^{\arccos\frac{r}{2}} f(r\cos\theta, r\sin\theta) r \mathrm{d}\theta
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：极坐标系换序，根据 \(r\) 取值，用同心圆弧扫描求 \(\theta\) 的穿入穿出边界。
+  \item \textbf{易错点}：第四象限解 \(\cos\theta = \frac{r}{2}\) 时极角为负，应写为 \(-\arccos\frac{r}{2}\)，切忌丢掉负号。
+  \item \textbf{关联知识}：反三角函数 \(\arccos x\) 的值域为 \([0,\pi]\)。
+\end{itemize}}
+
+\end{mistake}

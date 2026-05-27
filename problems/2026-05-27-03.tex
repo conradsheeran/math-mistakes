@@ -1,0 +1,30 @@
+\begin{mistake}{2026-05-27}{03}
+
+\begin{problemcontent}
+设 \((ax^2y^2 - 2xy^2)dx + (2x^3y + bx^2y + 1)dy\) 是一个函数 \(f(x,y)\) 的全微分，则 \(a = \underline{\hspace{1cm}}\)，\(b = \underline{\hspace{1cm}}\)，\(f(x,y) = \underline{\hspace{2cm}}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+记 \(P(x,y) = ax^2y^2 - 2xy^2\)，\(Q(x,y) = 2x^3y + bx^2y + 1\)。
+由全微分的充要条件 \(\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}\)，有：
+\[ 2ax^2y - 4xy = 6x^2y + 2bxy \]
+比较同类项系数得：
+\(2a = 6 \implies a=3\)
+\(-4 = 2b \implies b=-2\)
+
+将 \(a,b\) 代回原式，采用凑微分法：
+原式 \(= (3x^2y^2 dx + 2x^3y dy) - (2xy^2 dx + 2x^2y dy) + 1 dy\)
+\(= d(x^3y^2) - d(x^2y^2) + d(y)\)
+\(= d(x^3y^2 - x^2y^2 + y)\)
+
+因此原函数为 \(f(x,y) = x^3y^2 - x^2y^2 + y + C\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：全微分的充要条件为 \(\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}\)（交叉求偏导）。
+  \item \textbf{易错点}：求原函数时容易漏写最后的任意常数 \(C\)；求偏导时变量容易混淆。
+  \item \textbf{关联知识}：求解原函数可使用偏积分法（\(\int Pdx + g(y)\) 再对 \(y\) 求导与 \(Q\) 比较）或凑微分法。
+\end{itemize}}
+
+\end{mistake}

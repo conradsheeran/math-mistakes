@@ -1,0 +1,32 @@
+\begin{mistake}{2026-05-27}{06}
+
+\begin{problemcontent}
+设 \(a>0\)，\(f(x)=g(x)=\begin{cases} a, & 0 \leqslant x \leqslant 1, \\ 0, & \text{其他.} \end{cases}\) \(D\) 表示全平面，则 \(\iint_D f(x)g(y-x) \mathrm{d}x\mathrm{d}y = \underline{\quad\quad}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{解法一：确定有效积分区域}
+
+被积函数不为 0 的条件为：
+\(\begin{cases} 0 \leqslant x \leqslant 1 \\ 0 \leqslant y-x \leqslant 1 \end{cases} \Rightarrow \begin{cases} 0 \leqslant x \leqslant 1 \\ x \leqslant y \leqslant x+1 \end{cases}\)
+
+在此区域 \(\Omega\) 内，被积函数为 \(a \cdot a = a^2\)，转化为累次积分：
+\[\iint_D f(x)g(y-x) \mathrm{d}x\mathrm{d}y = \int_0^1 \mathrm{d}x \int_x^{x+1} a^2 \mathrm{d}y = \int_0^1 a^2 \mathrm{d}x = a^2\]
+
+\textbf{解法二：平移换元与变量分离}
+
+化为累次积分：
+\[\iint_D f(x)g(y-x) \mathrm{d}x\mathrm{d}y = \int_{-\infty}^{+\infty} f(x) \left( \int_{-\infty}^{+\infty} g(y-x) \mathrm{d}y \right) \mathrm{d}x\]
+内层积分令 \(u = y-x\)，则 \(\mathrm{d}u = \mathrm{d}y\)：
+\[\int_{-\infty}^{+\infty} g(y-x) \mathrm{d}y = \int_{-\infty}^{+\infty} g(u) \mathrm{d}u = \int_0^1 a \mathrm{d}u = a\]
+原式 \(= \left(\int_0^1 a \mathrm{d}x\right) \cdot a = a \cdot a = a^2\)
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：二重积分化为累次积分（Fubini定理）；一元积分平移换元。
+  \item \textbf{易错点}：寻找非零区域时，误将 \(0 \leqslant y-x \leqslant 1\) 直接作为 \(y\) 的独立界限，导致区域形状错误。
+  \item \textbf{关联知识}：概率论中连续型随机变量和 \(Z=X+Y\) 的概率密度计算（卷积公式）。
+\end{itemize}}
+
+\end{mistake}

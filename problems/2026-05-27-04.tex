@@ -1,0 +1,31 @@
+\begin{mistake}{2026-05-27}{04}
+
+\begin{problemcontent}
+设 \(D\) 为圆域 \(x^2 + y^2 \leqslant 2x + 2y\)，则 \(\iint_D xy \,\mathrm{d}x\mathrm{d}y = \underline{\hspace{2cm}}\).
+\end{problemcontent}
+
+\begin{solutioncontent}
+首先对积分区域进行配方：
+\[(x-1)^2 + (y-1)^2 \leqslant 2\]
+区域 \(D\) 为圆心在 \((1,1)\)，半径为 \(\sqrt{2}\) 的圆。
+
+作平移变换，令 \(u = x-1\), \(v = y-1\)，则 \(x = u+1\), \(y = v+1\)。
+积分区域化为以原点为中心的圆域 \(D' : u^2 + v^2 \leqslant 2\)。
+
+代入原积分并展开被积函数：
+\[\iint_D xy \,\mathrm{d}x\mathrm{d}y = \iint_{D'} (u+1)(v+1) \,\mathrm{d}u\mathrm{d}v = \iint_{D'} (uv + u + v + 1) \,\mathrm{d}u\mathrm{d}v\]
+
+由于 \(D'\) 关于 \(u\) 轴和 \(v\) 轴均对称，且被积函数中的 \(uv\)、\(u\)、\(v\) 在对称区域上对应的积分为 \(0\)。
+原积分仅剩常数项 \(1\) 的积分：
+\[\iint_{D'} 1 \,\mathrm{d}u\mathrm{d}v = S_{D'} = \pi (\sqrt{2})^2 = 2\pi\]
+故答案为 \(2\pi\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：二重积分平移变换定理、积分域对称性与奇偶函数性质。
+  \item \textbf{易错点}：未利用平移变换而直接采用极坐标计算导致运算量极大；平移后展开 \((u+1)(v+1)\) 时遗漏交叉项。
+  \item \textbf{关联知识}：被积函数为 \(1\) 的二重积分在数值上等于积分区域的面积。
+\end{itemize}}
+
+\end{mistake}

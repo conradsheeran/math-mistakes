@@ -1,0 +1,77 @@
+\begin{mistake}{2026-05-28}{06}
+
+\begin{problemcontent}
+设积分区域
+\[
+D=\{(x,y)\mid |x|+|y|\le 1\},
+\]
+求二重积分
+\[
+\iint_D (2-x)(2-y)(1-|x|-|y|)\,d\sigma
+\]
+的值。选项：\((A)\ 1\)，\((B)\ \frac{4}{3}\)，\((C)\ 2\)，\((D)\ \frac{8}{3}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+记
+\[
+I=\iint_D (2-x)(2-y)(1-|x|-|y|)\,d\sigma .
+\]
+先展开
+\[
+(2-x)(2-y)=4-2x-2y+xy.
+\]
+因此
+\[
+\begin{aligned}
+I={}&4\iint_D(1-|x|-|y|)\,d\sigma
+-2\iint_Dx(1-|x|-|y|)\,d\sigma \\
+&-2\iint_Dy(1-|x|-|y|)\,d\sigma
++\iint_Dxy(1-|x|-|y|)\,d\sigma .
+\end{aligned}
+\]
+区域 \(D\) 关于 \(x\) 轴、\(y\) 轴均对称，且 \(1-|x|-|y|\) 关于 \(x,y\) 均为偶函数，所以
+\[
+\iint_Dx(1-|x|-|y|)\,d\sigma=0,
+\quad
+\iint_Dy(1-|x|-|y|)\,d\sigma=0,
+\quad
+\iint_Dxy(1-|x|-|y|)\,d\sigma=0.
+\]
+故
+\[
+I=4\iint_D(1-|x|-|y|)\,d\sigma.
+\]
+设
+\[
+J=\iint_D(1-|x|-|y|)\,d\sigma.
+\]
+由于被积函数关于 \(x,y\) 均为偶函数，可只算第一象限再乘 \(4\)。第一象限内 \(|x|=x, |y|=y\)，区域为
+\[
+0\le x\le 1,\quad 0\le y\le 1-x.
+\]
+于是
+\[
+\begin{aligned}
+J&=4\int_0^1\int_0^{1-x}(1-x-y)\,dy\,dx \\
+&=4\int_0^1\left[(1-x)y-\frac{y^2}{2}\right]_0^{1-x}\,dx \\
+&=4\int_0^1\frac{(1-x)^2}{2}\,dx
+=2\int_0^1(1-x)^2\,dx
+=\frac{2}{3}.
+\end{aligned}
+\]
+因此
+\[
+I=4J=4\cdot\frac{2}{3}=\frac{8}{3}.
+\]
+故答案为 \((D)\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若区域关于某轴对称，被积函数关于对应变量为奇函数，则该项二重积分为 \(0\)；若为偶函数，可取半区或四分之一区域再乘倍数。
+  \item \textbf{易错点}：\(\sqrt{x^2}=|x|\)，不能误写为 \(x\)；本题不是化成 \(4xy\) 的积分，而是奇函数项消失后剩 \(4(1-|x|-|y|)\)。
+  \item \textbf{关联知识}：\(|x|+|y|\le 1\) 是关于两坐标轴对称的菱形区域；第一象限内化为 \(x\ge0,\ y\ge0,\ x+y\le1\)。
+\end{itemize}}
+
+\end{mistake}

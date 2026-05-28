@@ -1,0 +1,38 @@
+\begin{mistake}{2026-05-28}{01}
+
+\begin{problemcontent}
+设 \(y(x)\) 是四阶常系数线性微分方程 \(y^{(4)} + y'' = 0\) 的不恒等于零的解，且 \(\lim_{x\to 0} y(x) = 0\)，则当 \(x\to 0\) 时 \(y(x)\) 关于无穷小量 \(x\) 的最高阶数是
+
+(A) 一阶. \quad (B) 二阶. \quad (C) 三阶. \quad (D) 四阶.
+\end{problemcontent}
+
+\begin{solutioncontent}
+特征方程为 \(\lambda^4 + \lambda^2 = 0\)，解得特征根 \(\lambda_1 = \lambda_2 = 0\)，\(\lambda_{3,4} = \pm i\)。
+方程通解为：
+\[
+y(x) = C_1 + C_2 x + C_3 \cos x + C_4 \sin x
+\]
+由 \(\lim_{x\to 0} y(x) = 0\) 得 \(C_1 + C_3 = 0\)，即 \(C_1 = -C_3\)。
+将通解在 \(x=0\) 处作麦克劳林展开：
+\[
+\begin{aligned}
+y(x) &= -C_3 + C_2 x + C_3\left(1 - \frac{x^2}{2} + \frac{x^4}{24} + o(x^4)\right) + C_4\left(x - \frac{x^3}{6} + o(x^3)\right) \\
+&= (C_2 + C_4)x - \frac{C_3}{2}x^2 - \frac{C_4}{6}x^3 + o(x^3)
+\end{aligned}
+\]
+要求阶数最高，即令低次项系数尽可能为 \(0\)，但需保证 \(y(x)\) 不恒为零。
+令 \(C_2 + C_4 = 0\) 且 \(-\frac{C_3}{2} = 0\)，解得 \(C_3 = 0\)，\(C_2 = -C_4\)。
+此时 \(C_1 = -C_3 = 0\)。展开式变为 \(y(x) = -\frac{C_4}{6}x^3 + o(x^3)\)。
+若再令三阶系数为 \(0\)，则 \(C_4 = 0\)，进而 \(C_2 = 0\)。
+此时 \(C_1=C_2=C_3=C_4=0\)，解恒为零，与题设矛盾。
+故 \(C_4 \neq 0\)，最高阶数为三阶。正确答案为 (C)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：将通解通过麦克劳林公式展开，依次令低次项系数为 \(0\) 求最高阶数。
+  \item \textbf{易错点}：忽略解“不恒等于零”的前提，盲目消去所有项导致错选四阶；或者遗漏 \(\lambda=0\) 是二重根导致少写通解项 \(C_2 x\)。
+  \item \textbf{关联知识}：常系数齐次线性微分方程的特征根与通解形式；\(\sin x\) 与 \(\cos x\) 的麦克劳林展开。
+\end{itemize}}
+
+\end{mistake}

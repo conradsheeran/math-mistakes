@@ -1,0 +1,64 @@
+\begin{mistake}{2026-05-28}{09}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([0,1]\) 上是凹函数，且非负连续，\(f(0)=0\)，则下列选项正确的是（ ）
+
+A. \(4\int_0^{\frac12} f(x)\,dx \le \int_0^1 f(x)\,dx\)
+
+B. \(4\int_0^{\frac12} f(x)\,dx \ge \int_0^1 f(x)\,dx\)
+
+C. \(8\int_0^{\frac12} f(x)\,dx \le \int_0^1 f(x)\,dx\)
+
+D. \(8\int_0^{\frac12} f(x)\,dx \ge \int_0^1 f(x)\,dx\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+按本题采用的凹函数定义：
+\[
+f(\lambda x_1+(1-\lambda)x_2)\le \lambda f(x_1)+(1-\lambda)f(x_2),\quad 0\le \lambda\le 1.
+\]
+对任意 \(x\in[0,\frac12]\)，有 \(2x\in[0,1]\)，且
+\[
+x=\frac12(2x)+\frac12\cdot0.
+\]
+由凹函数性质及 \(f(0)=0\)，得
+\[
+f(x)=f\left(\frac12(2x)+\frac12\cdot0\right)
+\le \frac12 f(2x)+\frac12 f(0)
+=\frac12 f(2x),
+\]
+即
+\[
+f(2x)\ge 2f(x).
+\]
+两边在 \([0,\frac12]\) 上积分：
+\[
+\int_0^{\frac12} f(2x)\,dx
+\ge 2\int_0^{\frac12} f(x)\,dx.
+\]
+令 \(u=2x\)，则 \(dx=\frac12du\)，于是
+\[
+\int_0^{\frac12}f(2x)\,dx
+=\frac12\int_0^1 f(u)\,du.
+\]
+所以
+\[
+\frac12\int_0^1 f(u)\,du
+\ge 2\int_0^{\frac12}f(x)\,dx,
+\]
+即
+\[
+\int_0^1 f(x)\,dx
+\ge 4\int_0^{\frac12}f(x)\,dx.
+\]
+故正确选项为 \(\mathrm{A}\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：凹函数性质：若 \(f(\lambda x_1+(1-\lambda)x_2)\le \lambda f(x_1)+(1-\lambda)f(x_2)\)，结合 \(f(0)=0\) 可得 \(f(x)\le \frac12 f(2x)\)。
+  \item \textbf{易错点}：不要直接凭图像猜积分大小；关键是把 \(x\) 写成 \(x=\frac12(2x)+\frac12\cdot0\)，再用凹函数定义。
+  \item \textbf{关联知识}：区间 \([0,1]\) 与 \([0,\frac12]\) 的积分比较常配合换元 \(u=2x\)：\(\int_0^{\frac12}f(2x)\,dx=\frac12\int_0^1f(u)\,du\)。
+\end{itemize}}
+
+\end{mistake}

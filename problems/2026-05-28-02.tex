@@ -1,0 +1,70 @@
+\begin{mistake}{2026-05-28}{02}
+
+\begin{problemcontent}
+设 \(F(x,y)\) 具有二阶连续偏导数，且
+\[
+F(x_0,y_0)=0,\quad F_x'(x_0,y_0)=0,\quad F_y'(x_0,y_0)>0.
+\]
+若一元函数 \(y=y(x)\) 是由方程 \(F(x,y)=0\) 所确定的在点 \((x_0,y_0)\) 附近的隐函数，则 \(x_0\) 是函数 \(y=y(x)\) 的极小值点的一个充分条件是
+\[
+\text{(A) }F_{xx}''(x_0,y_0)>0,\quad
+\text{(B) }F_{xx}''(x_0,y_0)<0,
+\]
+\[
+\text{(C) }F_{yy}''(x_0,y_0)>0,\quad
+\text{(D) }F_{yy}''(x_0,y_0)<0.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+由隐函数方程 \(F(x,y(x))=0\)，两边对 \(x\) 求导：
+\[
+F_x'(x,y)+F_y'(x,y)y'=0,
+\]
+故
+\[
+y'=-\frac{F_x'}{F_y'}.
+\]
+在 \((x_0,y_0)\) 处，因 \(F_x'(x_0,y_0)=0\)，\(F_y'(x_0,y_0)>0\)，所以
+\[
+y'(x_0)=-\frac{F_x'(x_0,y_0)}{F_y'(x_0,y_0)}=0.
+\]
+继续对
+\[
+F_x'+F_y'y'=0
+\]
+关于 \(x\) 求导，得
+\[
+F_{xx}''+2F_{xy}''y'+F_{yy}''(y')^2+F_y'y''=0.
+\]
+因此
+\[
+y''=-\frac{F_{xx}''+2F_{xy}''y'+F_{yy}''(y')^2}{F_y'}.
+\]
+代入 \(x=x_0\) 且 \(y'(x_0)=0\)，得
+\[
+y''(x_0)=-\frac{F_{xx}''(x_0,y_0)}{F_y'(x_0,y_0)}.
+\]
+要使 \(x_0\) 为 \(y=y(x)\) 的极小值点，一个充分条件是
+\[
+y'(x_0)=0,\quad y''(x_0)>0.
+\]
+由于 \(F_y'(x_0,y_0)>0\)，所以
+\[
+y''(x_0)>0
+\Longleftrightarrow
+-\frac{F_{xx}''(x_0,y_0)}{F_y'(x_0,y_0)}>0
+\Longleftrightarrow
+F_{xx}''(x_0,y_0)<0.
+\]
+故答案为 \(\mathrm{B}\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：隐函数一阶导数 \(y'=-\dfrac{F_x'}{F_y'}\)；在 \(y'(x_0)=0\) 时，\(y''(x_0)=-\dfrac{F_{xx}''(x_0,y_0)}{F_y'(x_0,y_0)}\)。
+  \item \textbf{易错点}：二阶导数前有负号，且本题 \(F_y'(x_0,y_0)>0\)，所以极小值条件 \(y''(x_0)>0\) 对应 \(F_{xx}''(x_0,y_0)<0\)，不是 \(>0\)。
+  \item \textbf{关联知识}：题目判断的是隐函数 \(y=y(x)\) 的一元极值，不是二元函数 \(F(x,y)\) 的极值；\(F_{yy}''\) 项因 \(y'(x_0)=0\) 在该点不参与判别。
+\end{itemize}}
+
+\end{mistake}

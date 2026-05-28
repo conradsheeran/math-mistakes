@@ -1,0 +1,82 @@
+\begin{mistake}{2026-05-28}{04}
+
+\begin{problemcontent}
+已知
+\[
+f(x,y)=
+\begin{cases}
+xy\dfrac{x^2-y^2}{x^2+y^2},&(x,y)\ne(0,0),\\[6pt]
+0,&(x,y)=(0,0),
+\end{cases}
+\]
+则下列结论正确的是（ ）。
+\[
+\begin{array}{ll}
+(A)\ f''_{xy}(0,0)=1, & (B)\ f''_{xy}(0,0)=0,\\[4pt]
+(C)\ f''_{yx}(0,0)=1, & (D)\ f''_{yx}(0,0)=-1.
+\end{array}
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+采用记号 \(f''_{xy}=(f_x)_y\)，\(f''_{yx}=(f_y)_x\)。由于在坐标轴上
+\[
+f(x,0)=0,\qquad f(0,y)=0,
+\]
+需要从偏导数定义出发计算原点处的混合偏导数。
+
+先求 \(f_x(0,y)\)。当 \(y\ne 0\) 时，
+\[
+\begin{aligned}
+f_x(0,y)
+&=\lim_{h\to 0}\frac{f(h,y)-f(0,y)}{h}\\
+&=\lim_{h\to 0}\frac{hy\dfrac{h^2-y^2}{h^2+y^2}}{h}\\
+&=\lim_{h\to 0}y\frac{h^2-y^2}{h^2+y^2}
+=-y.
+\end{aligned}
+\]
+当 \(y=0\) 时，\(f_x(0,0)=0\)，故 \(f_x(0,y)=-y\)。于是
+\[
+\begin{aligned}
+f''_{xy}(0,0)
+&=(f_x)_y(0,0)\\
+&=\lim_{k\to 0}\frac{f_x(0,k)-f_x(0,0)}{k}\\
+&=\lim_{k\to 0}\frac{-k-0}{k}=-1.
+\end{aligned}
+\]
+
+再求 \(f_y(x,0)\)。当 \(x\ne 0\) 时，
+\[
+\begin{aligned}
+f_y(x,0)
+&=\lim_{k\to 0}\frac{f(x,k)-f(x,0)}{k}\\
+&=\lim_{k\to 0}\frac{xk\dfrac{x^2-k^2}{x^2+k^2}}{k}\\
+&=\lim_{k\to 0}x\frac{x^2-k^2}{x^2+k^2}
+=x.
+\end{aligned}
+\]
+当 \(x=0\) 时，\(f_y(0,0)=0\)，故 \(f_y(x,0)=x\)。于是
+\[
+\begin{aligned}
+f''_{yx}(0,0)
+&=(f_y)_x(0,0)\\
+&=\lim_{h\to 0}\frac{f_y(h,0)-f_y(0,0)}{h}\\
+&=\lim_{h\to 0}\frac{h-0}{h}=1.
+\end{aligned}
+\]
+
+因此
+\[
+f''_{xy}(0,0)=-1,\qquad f''_{yx}(0,0)=1,
+\]
+正确选项为 \((C)\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：混合偏导按定义计算，\(f''_{xy}=(f_x)_y\)，\(f''_{yx}=(f_y)_x\)；只有在相应二阶偏导连续等条件下，才能直接使用混合偏导相等定理。
+  \item \textbf{易错点}：原点处函数为分段定义，不能直接对 \(xy\dfrac{x^2-y^2}{x^2+y^2}\) 求偏导后代入 \((0,0)\)，也不能默认 \(f''_{xy}(0,0)=f''_{yx}(0,0)\)。
+  \item \textbf{关联知识}：求原点处混合偏导时，常先用定义求轴线上函数 \(f_x(0,y)\)、\(f_y(x,0)\)，再继续对另一变量求导。
+\end{itemize}}
+
+\end{mistake}

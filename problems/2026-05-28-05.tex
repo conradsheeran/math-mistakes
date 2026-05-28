@@ -1,0 +1,69 @@
+\begin{mistake}{2026-05-28}{05}
+
+\begin{problemcontent}
+设 \(P(x),Q(x)\) 在 \((-
+\infty,+\infty)\) 内连续，且均以 \(T\) 为周期，函数 \(y=y(x)\) 是微分方程
+\[
+\frac{dy}{dx}+P(x)y=Q(x)
+\]
+的解。判断条件 \(y(0)=y(T)\) 是 \(y=y(x)\) 以 \(T\) 为周期的什么条件？
+\[
+\begin{array}{ll}
+\text{(A) 必要非充分条件} & \text{(B) 充分非必要条件}\\
+\text{(C) 充要条件} & \text{(D) 既非充分又非必要条件}
+\end{array}
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+答案为 \(\text{(C)}\)。
+
+必要性：若 \(y(x)\) 以 \(T\) 为周期，则对任意 \(x\) 有 \(y(x+T)=y(x)\)。令 \(x=0\)，得
+\[
+y(T)=y(0),
+\]
+所以 \(y(0)=y(T)\) 是必要条件。
+
+充分性：设 \(y(0)=y(T)\)。构造
+\[
+Y(x)=y(x+T).
+\]
+因为 \(P(x),Q(x)\) 均以 \(T\) 为周期，所以 \(P(x+T)=P(x)\)，\(Q(x+T)=Q(x)\)。又因 \(y(x)\) 是原方程的解，故
+\[
+y'(x+T)+P(x+T)y(x+T)=Q(x+T).
+\]
+于是
+\[
+\begin{aligned}
+Y'(x)+P(x)Y(x)
+&=y'(x+T)+P(x)y(x+T)\\
+&=y'(x+T)+P(x+T)y(x+T)\\
+&=Q(x+T)=Q(x).
+\end{aligned}
+\]
+因此 \(Y(x)\) 也是微分方程 \(y'+P(x)y=Q(x)\) 的解。
+
+在 \(x=0\) 处，
+\[
+Y(0)=y(T)=y(0).
+\]
+由于 \(P(x),Q(x)\) 在 \((-
+\infty,+\infty)\) 内连续，一阶线性微分方程初值问题解唯一，所以
+\[
+Y(x)\equiv y(x),
+\]
+即
+\[
+y(x+T)=y(x).
+\]
+故 \(y(x)\) 以 \(T\) 为周期。因此 \(y(0)=y(T)\) 是充要条件。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：一阶线性微分方程 \(y'+P(x)y=Q(x)\) 中，若 \(P,Q\) 连续，则给定初值 \(y(x_0)=y_0\) 后解唯一。
+  \item \textbf{易错点}：充分性不能只由 \(y(0)=y(T)\) 直接断言周期性，必须构造 \(Y(x)=y(x+T)\)，证明其与 \(y(x)\) 满足同一方程和同一初值。
+  \item \textbf{关联知识}：周期系数问题常用“平移构造解 + 唯一性定理”；若 \(P,Q\) 以 \(T\) 为周期，则 \(P(x+T)=P(x)\)，\(Q(x+T)=Q(x)\)。
+\end{itemize}}
+
+\end{mistake}

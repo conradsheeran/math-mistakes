@@ -1,0 +1,84 @@
+\begin{mistake}{2026-05-28}{07}
+
+\begin{problemcontent}
+设
+\[
+I_1=\int_0^\pi \frac{x\sin^2 x}{1+e^{\cos^2 x}}\,dx,\qquad
+I_2=\int_0^\pi \frac{\sin^2 x}{1+e^{\cos^2 x}}\,dx,
+\]
+\[
+I_3=\int_0^{\frac{\pi}{2}}\frac{\cos^2 x}{1+e^{\sin^2 x}}\,dx,
+\]
+则比较三者大小。选项：
+\[
+\text{A. } I_1>I_2>I_3,\qquad
+\text{B. } I_3>I_2>I_1,
+\]
+\[
+\text{C. } I_2>I_1>I_3,\qquad
+\text{D. } I_3>I_1>I_2.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+令
+\[
+g(x)=\frac{\sin^2 x}{1+e^{\cos^2 x}}.
+\]
+则
+\[
+I_1=\int_0^\pi xg(x)\,dx,\qquad I_2=\int_0^\pi g(x)\,dx.
+\]
+因为
+\[
+\sin^2(\pi-x)=\sin^2x,\qquad \cos^2(\pi-x)=\cos^2x,
+\]
+所以
+\[
+g(\pi-x)=g(x).
+\]
+由区间再现公式，若 \(g(\pi-x)=g(x)\)，则
+\[
+\int_0^\pi xg(x)\,dx=\frac{\pi}{2}\int_0^\pi g(x)\,dx.
+\]
+因此
+\[
+I_1=\frac{\pi}{2}I_2.
+\]
+又因为 \(I_2>0\)，且 \(\frac{\pi}{2}>1\)，故
+\[
+I_1>I_2.
+\]
+
+再比较 \(I_2\) 与 \(I_3\)。由 \(g(\pi-x)=g(x)\)，得
+\[
+I_2=2\int_0^{\frac{\pi}{2}}\frac{\sin^2x}{1+e^{\cos^2x}}\,dx.
+\]
+对 \(I_3\) 作换元 \(t=\frac{\pi}{2}-x\)，则
+\[
+I_3=\int_0^{\frac{\pi}{2}}\frac{\sin^2t}{1+e^{\cos^2t}}\,dt.
+\]
+因此
+\[
+I_2=2I_3.
+\]
+所以
+\[
+I_1=\frac{\pi}{2}I_2,\qquad I_2=2I_3,
+\]
+从而
+\[
+I_1>I_2>I_3.
+\]
+故选 \(\text{A}\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：区间再现公式：\(\int_a^b f(x)\,dx=\int_a^b f(a+b-x)\,dx\)，所以 \(\int_a^b f(x)\,dx=\frac12\int_a^b\bigl[f(x)+f(a+b-x)\bigr]dx\)。当直接积 \(f(x)\) 困难，而 \(f(x)+f(a+b-x)\) 简单时优先使用。
+  \item \textbf{加权对称结论}：若 \(g(a+b-x)=g(x)\)，则 \(\int_a^b xg(x)\,dx=\frac{a+b}{2}\int_a^b g(x)\,dx\)。本题取 \([a,b]=[0,\pi]\)，故 \(I_1=\frac{\pi}{2}I_2\)。
+  \item \textbf{易错点}：不要直接凭被积函数形式比较大小；先看区间是否关于中点对称，再用 \(x\leftrightarrow a+b-x\) 复现积分。
+  \item \textbf{关联知识}：三角换元 \(x\mapsto \frac{\pi}{2}-x\) 常用于互换 \(\sin x\) 与 \(\cos x\)，本题由此得 \(I_3=\int_0^{\frac{\pi}{2}}\frac{\sin^2x}{1+e^{\cos^2x}}\,dx\)，进而 \(I_2=2I_3\)。
+\end{itemize}}
+
+\end{mistake}

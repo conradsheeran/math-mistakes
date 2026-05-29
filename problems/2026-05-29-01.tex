@@ -1,0 +1,30 @@
+\begin{mistake}{2026-05-29}{01}
+
+\begin{problemcontent}
+已知积分 \( I = \int_2^{+\infty} \left( e^{\frac{\ln x}{x^a}} - 1 \right) \mathrm{d}x \) 收敛，则 \( a \) 的取值范围为（ ）。
+A. \( (-\infty, 0) \)
+B. \( (0, 1] \)
+C. \( (1, +\infty) \)
+D. \( [1, +\infty) \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+广义积分收敛的必要条件是被积函数当 \( x \to +\infty \) 时趋于 0。
+当 \( a \le 0 \) 时，\( \lim_{x \to +\infty} \frac{\ln x}{x^a} \neq 0 \)，被积函数极限不为 0，积分发散。
+当 \( a > 0 \) 时，\( \lim_{x \to +\infty} \frac{\ln x}{x^a} = 0 \)，满足等价无穷小替换条件。
+当 \( x \to +\infty \) 时，\( e^{\frac{\ln x}{x^a}} - 1 \sim \frac{\ln x}{x^a} \)，原积分与 \( \int_2^{+\infty} \frac{\ln x}{x^a} \mathrm{d}x \) 同敛散。
+对于 \( \int_2^{+\infty} \frac{\ln x}{x^a} \mathrm{d}x \)：
+若 \( a > 1 \)，取 \( 1 < p < a \)，由于 \( \lim_{x \to +\infty} x^p \frac{\ln x}{x^a} = 0 \)，由比较判别法，积分收敛。
+若 \( a = 1 \)，原积分为 \( \int_2^{+\infty} \frac{\ln x}{x} \mathrm{d}x = \frac{1}{2}(\ln x)^2 \Big|_2^{+\infty} = +\infty \)，积分发散。
+若 \( 0 < a < 1 \)，因 \( x > e \) 时 \( \frac{\ln x}{x^a} > \frac{1}{x^a} \)，而 \( \int_2^{+\infty} \frac{1}{x^a} \mathrm{d}x \) 发散，故积分发散。
+综上，\( a \in (1, +\infty) \)，正确选项为 C。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：带对数的广义积分 \( \int_2^{+\infty} \frac{1}{x^p \ln^q x} \mathrm{d}x \) 仅在 \( p>1 \) 时（对任意 \( q \)）或 \( p=1, q>1 \) 时收敛。
+  \item \textbf{易错点}：误把“函数极限为 0”当成广义积分收敛的充分条件。例如 \( a=1 \) 时 \( f(x) \sim \frac{\ln x}{x} \to 0 \)，但因为趋于 0 的速度不够快，其面积积分依然发散。
+  \item \textbf{关联知识}：等价无穷小 \( e^u - 1 \sim u \) 必须在 \( u \to 0 \) 时方可使用，必须先分类讨论验证指数是否趋于0。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,29 @@
+\begin{mistake}{2026-06-03}{04}
+
+\begin{problemcontent}
+设 \(\lim_{x \to 0} \varphi(x) = 0\)，则下列命题中正确的个数为
+(1) \(\lim_{x \to 0} \frac{\sin \varphi(x)}{\varphi(x)} = 1\).
+(2) \(\lim_{x \to 0} (1 + \varphi(x))^{\frac{1}{\varphi(x)}} = e\).
+(3) 若 \(f'(x_0) = A\)，则 \(\lim_{x \to 0} \frac{f(x_0 + \varphi(x)) - f(x_0)}{\varphi(x)} = A\).
+(4) 若 \(\lim_{u \to 0} f(u) = A\)，则 \(\lim_{x \to 0} f(\varphi(x)) = A\).
+
+(A) 0 个. (B) 2 个. (C) 3 个. (D) 4 个.
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案为 (A) 0 个。
+
+对于 (1)、(2)、(3)：题目未限制 \(\varphi(x) \neq 0\)。若取 \(\varphi(x) \equiv 0\)（满足 \(\lim_{x \to 0} \varphi(x) = 0\)），则三者的表达式分母均为 0，无意义，无法谈论极限。故 (1)、(2)、(3) 均错。
+
+对于 (4)：考察复合函数极限。若取 \(\varphi(x) \equiv 0\)，且令外层函数 \(f(u)\) 满足 \(f(0) = B\) (\(B \neq A\))，且当 \(u \neq 0\) 时 \(f(u) = A\)。则 \(\lim_{u \to 0} f(u) = A\) 满足，但 \(\lim_{x \to 0} f(\varphi(x)) = \lim_{x \to 0} f(0) = B \neq A\)。故 (4) 错。
+
+四个命题全错。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心陷阱}：变量替换时（特别是作分母时），必须保证在极限去心邻域内该变量不为 0。
+  \item \textbf{复合函数极限定理}：\(\lim f(\varphi(x)) = \lim f(u)\) 的成立前提是外层函数 \(f\) 连续，或内层函数 \(\varphi(x) \neq u_0\)。
+\end{itemize}}
+
+\end{mistake}

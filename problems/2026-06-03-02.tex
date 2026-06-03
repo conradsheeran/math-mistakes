@@ -1,0 +1,33 @@
+\begin{mistake}{2026-06-03}{02}
+
+\begin{problemcontent}
+设 \(f(x) = \int_0^{a-x} e^{t(2a-t)} dt \ (a > 0), x \in [0, a]\)，则曲线 \(y = f(x)\) 与两坐标轴所围成图形的面积为\underline{\qquad\qquad}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+由题意，曲线与坐标轴的交点分别为 \(x=0\) 和 \(y=f(a)=0\)，在 \(x \in [0,a)\) 时 \(f(x)>0\)，故所求面积为
+\[
+S = \int_0^a f(x) dx
+\]
+利用分部积分法：
+\[
+S = x f(x) \Big|_0^a - \int_0^a x f'(x) dx = - \int_0^a x f'(x) dx
+\]
+其中，由复合变限积分求导法则可得：
+\[
+f'(x) = e^{(a-x)[2a-(a-x)]} \cdot (a-x)' = -e^{a^2-x^2}
+\]
+代回原式计算：
+\[
+S = \int_0^a x e^{a^2-x^2} dx = -\frac{1}{2} \int_0^a e^{a^2-x^2} d(a^2-x^2) = -\frac{1}{2} e^{a^2-x^2} \Big|_0^a = \frac{1}{2}(e^{a^2}-1)
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(\frac{d}{dx} \int_{a}^{\varphi(x)} f(t) dt = f(\varphi(x)) \cdot \varphi'(x)\)
+  \item \textbf{易错点}：对上限 \(a-x\) 求导时，极易漏乘尾巴 \((a-x)' = -1\)。
+  \item \textbf{关联考法}：求定积分时遇到被积函数含积分号，首选 \(v=x\) 降阶（分部积分法）。本题亦可视为二重积分通过交换积分次序求解。
+\end{itemize}}
+
+\end{mistake}

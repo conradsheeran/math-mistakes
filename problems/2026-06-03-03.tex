@@ -1,0 +1,29 @@
+\begin{mistake}{2026-06-03}{03}
+
+\begin{problemcontent}
+设有数列 \( \{x_n\} \) 与 \( \{y_n\} \)，以下结论正确的是\\
+(A) 若 \( \lim\limits_{n \to \infty} x_n y_n = 0 \)，则必有 \( \lim\limits_{n \to \infty} x_n = 0 \) 或 \( \lim\limits_{n \to \infty} y_n = 0 \).\\
+(B) 若 \( \lim\limits_{n \to \infty} x_n y_n = \infty \)，则必有 \( \lim\limits_{n \to \infty} x_n = \infty \) 或 \( \lim\limits_{n \to \infty} y_n = \infty \).\\
+(C) 若 \( x_n y_n \) 有界，则必有 \( x_n \) 与 \( y_n \) 都有界.\\
+(D) 若 \( x_n y_n \) 无界，则必有 \( x_n \) 无界或 \( y_n \) 无界.
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案是 (D)。
+
+选项 (D) 的逆否命题为：若数列 \( \{x_n\} \) 有界且 \( \{y_n\} \) 有界，则 \( \{x_n y_n\} \) 有界。
+由有界数列性质可知，存在常数 \( M_1, M_2 > 0 \)，使 \( |x_n| \le M_1 \)，\( |y_n| \le M_2 \)，则对于其乘积有 \( |x_n y_n| \le M_1 M_2 \)，即乘积必有界。逆否命题成立，故 (D) 正确。
+
+对于 (A)，反例：\( x_n = 1, 0, 1, 0, \cdots \)，\( y_n = 0, 1, 0, 1, \cdots \)，满足 \( \lim\limits_{n \to \infty} x_n y_n = 0 \)，但两数列极限均不存在。\\
+对于 (B)，反例：\( x_n = n, 1, n, 1, \cdots \)，\( y_n = 1, n, 1, n, \cdots \)，满足 \( \lim\limits_{n \to \infty} x_n y_n = \infty \)，但两数列各自均包含有界子列，极限不为 \( \infty \)。\\
+对于 (C)，反例：\( x_n = n \)，\( y_n = \frac{1}{n} \)，\( x_n y_n = 1 \) 有界，但 \( \{x_n\} \) 无界。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：有界数列的乘积必有界；逆否命题等价性。
+  \item \textbf{易错点}：将实数域的乘积性质直接套用于数列极限上，忽略了数列可以通过交错震荡的方式使乘积趋于特定值或无界。
+  \item \textbf{解题思路}：抽象数列的选择题，结论包含“或”时，优先转化为证明其“且”的逆否命题；对于错误选项，常通过“0与1交错”或“互为倒数”构造反例进行排除。
+\end{itemize}}
+
+\end{mistake}

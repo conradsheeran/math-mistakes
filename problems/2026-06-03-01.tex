@@ -1,0 +1,29 @@
+\begin{mistake}{2026-06-03}{01}
+
+\begin{problemcontent}
+计算极限 \(\lim_{x \to +\infty} \frac{\int_0^x |\sin t| \mathrm{d}t}{x}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+由于被积函数 \(f(t) = |\sin t|\) 是周期为 \(\pi\) 的连续函数，单周期积分为：
+\[ \int_0^\pi |\sin t| \mathrm{d}t = 2 \]
+当 \(x \to +\infty\) 时，设 \(n = \left[ \frac{x}{\pi} \right]\)（向下取整），则 \(n\pi \le x < (n+1)\pi\)，且当 \(x \to +\infty\) 时 \(n \to +\infty\)。
+利用被积函数的非负性，对变限积分进行放缩：
+\[ \int_0^{n\pi} |\sin t| \mathrm{d}t \le \int_0^x |\sin t| \mathrm{d}t \le \int_0^{(n+1)\pi} |\sin t| \mathrm{d}t \]
+结合周期积分性质，即：
+\[ 2n \le \int_0^x |\sin t| \mathrm{d}t \le 2(n+1) \]
+又因为 \(x\) 的范围取倒数得 \(\frac{1}{(n+1)\pi} < \frac{1}{x} \le \frac{1}{n\pi}\)，两式相乘（各项均为正）可得：
+\[ \frac{2n}{(n+1)\pi} < \frac{\int_0^x |\sin t| \mathrm{d}t}{x} \le \frac{2(n+1)}{n\pi} \]
+当 \(n \to +\infty\) 时，左右两端的极限均为 \(\frac{2}{\pi}\)。
+由夹逼定理得：
+\[ \lim_{x \to +\infty} \frac{\int_0^x |\sin t| \mathrm{d}t}{x} = \frac{2}{\pi} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：处理趋于无穷的周期函数积分，核心是利用 \(\int_0^{nT} f(t) \mathrm{d}t = n\int_0^T f(t) \mathrm{d}t\) 结合夹逼定理。
+  \item \textbf{易错点}：盲目使用洛必达法则。由于 \(\lim_{x \to +\infty} |\sin x|\) 振荡不存在，此题洛必达法则失效。
+  \item \textbf{秒杀结论}：若 \(f(x)\) 为周期 \(T\) 的连续函数，则 \(\lim_{x \to +\infty} \frac{1}{x} \int_0^x f(t) \mathrm{d}t = \frac{1}{T} \int_0^T f(t) \mathrm{d}t\)。
+\end{itemize}}
+
+\end{mistake}

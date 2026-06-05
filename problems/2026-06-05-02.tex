@@ -1,0 +1,37 @@
+\begin{mistake}{2026-06-05}{02}
+
+\begin{problemcontent}
+求极限
+\[ \lim_{x \to 0} \left( \frac{\ln(x + \sqrt{1+x^2})}{x} \right)^{\frac{1}{x^2}} \]
+\end{problemcontent}
+
+\begin{solutioncontent}
+此为 \(1^\infty\) 型极限，利用公式 \(\lim u^v = e^{\lim v(u-1)}\) 求解。设指数部分极限为 \(K\)：
+\[
+\begin{aligned}
+K &= \lim_{x \to 0} \frac{1}{x^2} \left( \frac{\ln(x + \sqrt{1+x^2})}{x} - 1 \right) \\
+&= \lim_{x \to 0} \frac{\ln(x + \sqrt{1+x^2}) - x}{x^3}
+\end{aligned}
+\]
+该式为 \(\frac{0}{0}\) 型，使用洛必达法则：
+\[
+\begin{aligned}
+K &= \lim_{x \to 0} \frac{ \frac{1}{\sqrt{1+x^2}} - 1 }{ 3x^2 } \\
+&= \lim_{x \to 0} \frac{1 - \sqrt{1+x^2}}{3x^2 \sqrt{1+x^2}}
+\end{aligned}
+\]
+当 \(x \to 0\) 时，\(\sqrt{1+x^2} \to 1\) 且 \(1 - \sqrt{1+x^2} = 1 - (1+x^2)^{\frac{1}{2}} \sim -\frac{1}{2}x^2\)，代入得：
+\[
+K = \lim_{x \to 0} \frac{-\frac{1}{2}x^2}{3x^2 \cdot 1} = -\frac{1}{6}
+\]
+故原极限为 \(e^K = e^{-\frac{1}{6}}\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(1^\infty\) 型极限计算公式 \(\lim u^v = e^{\lim v(u-1)}\)；复合函数导数 \((\ln(x + \sqrt{1+x^2}))' = \frac{1}{\sqrt{1+x^2}}\)。
+  \item \textbf{易错点}：洛必达一次求导后未及时化简和使用等价无穷小，盲目二次求导导致计算量爆炸；最终结果忘记底数 \(e\)。
+  \item \textbf{关联知识}：等价无穷小 \((1+x)^\alpha - 1 \sim \alpha x\)。
+\end{itemize}}
+
+\end{mistake}

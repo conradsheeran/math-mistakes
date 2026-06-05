@@ -1,0 +1,36 @@
+\begin{mistake}{2026-06-05}{01}
+
+\begin{problemcontent}
+设 \(f(x) = \lim_{n \to \infty} \frac{2e^{(n+1)x} + 1}{e^{nx} + x^n + 1}\)，则 \(f(x)\) 
+(A) 仅有一个可去间断点. 
+(B) 仅有一个跳跃间断点. 
+(C) 有两个可去间断点. 
+(D) 有两个跳跃间断点.
+\end{problemcontent}
+
+\begin{solutioncontent}
+根据带参数的数列极限性质，寻找 \(e^{nx}\) 与 \(x^n\) 的敛散性分界点，将数轴划分为不同区间分别求极限：
+\begin{itemize}
+    \item 当 \(x > 0\) 时，恒有 \(e^x > x > 0\)，分子分母同除以 \(e^{nx}\)得 \(f(x) = \lim_{n \to \infty} \frac{2e^x + e^{-nx}}{1 + (x/e^x)^n + e^{-nx}} = 2e^x\)。
+    \item 当 \(x = 0\) 时，\(f(0) = \frac{2+1}{1+0+1} = \frac{3}{2}\)。
+    \item 当 \(-1 < x < 0\) 时，\(e^{nx} \to 0\) 且 \(x^n \to 0\)，\(f(x) = 1\)。
+    \item 当 \(x = -1\) 时，分母中 \((-1)^n\) 振荡，此时 \(f(x)\) 无定义。
+    \item 当 \(x < -1\) 时，\(e^{nx} \to 0\) 且 \(|x^n| \to \infty\)，分母趋于无穷大，\(f(x) = 0\)。
+\end{itemize}
+
+进而分析可能的分段点 \(x=0\) 与 \(x=-1\)：
+\begin{itemize}
+    \item 对于 \(x=0\)：\(\lim_{x\to 0^-} f(x) = 1\)，\(\lim_{x\to 0^+} f(x) = 2\)，左右极限存在且不相等，为跳跃间断点。
+    \item 对于 \(x=-1\)：\(\lim_{x\to -1^-} f(x) = 0\)，\(\lim_{x\to -1^+} f(x) = 1\)，左右极限存在且不相等，为跳跃间断点。
+\end{itemize}
+综上，共有两个跳跃间断点，故选 (D)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：利用“抓大头”原则和指数数列收敛性分段求极限，划分点为 \(e^x=1 \implies x=0\) 与 \(|x|=1 \implies x=\pm 1\)。
+  \item \textbf{易错点}：忽略 \(x < -1\) 区间。此时虽然 \(x^n\) 的符号振荡，但其绝对值趋向于无穷大，作为分母导致整体极限为 \(0\)。
+  \item \textbf{关联知识}：第一类间断点的判定只依赖左右极限，不要求函数在该点处必须有定义（如此处的 \(x=-1\)）。
+\end{itemize}}
+
+\end{mistake}

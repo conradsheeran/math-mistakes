@@ -1,0 +1,40 @@
+\begin{mistake}{2026-06-05}{04}
+
+\begin{problemcontent}
+当 \(x \to 0\) 时，\(1 - \cos x \cdot \cos 2x \cdot \cos 3x\) 与 \(ax^n\) 为等价无穷小，求 \(n\) 与 \(a\) 的值。
+\end{problemcontent}
+
+\begin{solutioncontent}
+利用余弦函数的麦克劳林展开公式：
+\[\cos x = 1 - \frac{1}{2}x^2 + o(x^2)\]
+
+分别对每一项进行展开：
+\[\cos x = 1 - \frac{1}{2}x^2 + o(x^2)\]
+\[\cos 2x = 1 - \frac{1}{2}(2x)^2 + o(x^2) = 1 - 2x^2 + o(x^2)\]
+\[\cos 3x = 1 - \frac{1}{2}(3x)^2 + o(x^2) = 1 - \frac{9}{2}x^2 + o(x^2)\]
+
+相乘时利用“高阶无穷小吸收法”，仅保留至 \(x^2\) 阶的项，丢弃高于 \(x^2\) 的项：
+\[\begin{aligned}
+\cos x \cos 2x \cos 3x &= \left[1 - \frac{1}{2}x^2 + o(x^2)\right]\left[1 - 2x^2 + o(x^2)\right]\left[1 - \frac{9}{2}x^2 + o(x^2)\right] \\
+&= 1 - \left(\frac{1}{2} + 2 + \frac{9}{2}\right)x^2 + o(x^2) \\
+&= 1 - 7x^2 + o(x^2)
+\end{aligned}\]
+
+代回原式：
+\[1 - \cos x \cos 2x \cos 3x = 1 - [1 - 7x^2 + o(x^2)] = 7x^2 + o(x^2)\]
+
+因为原式与 \(ax^n\) 为等价无穷小，根据定义有：
+\[\lim_{x \to 0} \frac{7x^2 + o(x^2)}{ax^n} = 1\]
+
+要使极限为 \(1\)，必须满足次幂相等且系数相等，由此可得：
+\(n = 2\)，\(a = 7\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：\(\cos x = 1 - \frac{1}{2}x^2 + o(x^2)\)。
+  \item \textbf{速算技巧}：\(1 - \prod_{k=1}^m \cos(a_k x) \sim \left( \sum_{k=1}^m \frac{a_k^2}{2} \right) x^2 \quad (x \to 0)\)。
+  \item \textbf{易错点}：多个泰勒展开式相乘时，务必利用无穷小吸收法，仅保留至需要的最低阶，避免无意义的冗余计算；且注意整体代入时括号外的负号。
+\end{itemize}}
+
+\end{mistake}

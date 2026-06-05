@@ -1,0 +1,44 @@
+\begin{mistake}{2026-06-05}{03}
+
+\begin{problemcontent}
+确定常数 \(a, b\)，使 \(x \to 0\) 时 \(f(x) = e^x - \frac{1+ax}{1+bx}\) 为 \(x\) 的三阶无穷小。
+\end{problemcontent}
+
+\begin{solutioncontent}
+将原式通分：
+\[
+f(x) = e^x - \frac{1+ax}{1+bx} = \frac{e^x(1+bx) - (1+ax)}{1+bx}
+\]
+当 \(x \to 0\) 时，分母 \(\lim_{x \to 0} (1+bx) = 1 \neq 0\)。
+因此 \(f(x)\) 的无穷小阶数与其分子相同，分子 \(g(x) = e^x(1+bx) - (1+ax)\) 必须是 \(x\) 的三阶无穷小。
+
+对 \(e^x\) 使用麦克劳林公式展开至三阶：
+\[
+\begin{aligned}
+g(x) &= \left( 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3 + o(x^3) \right)(1+bx) - (1+ax) \\
+&= \left( 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3 \right) + bx\left( 1 + x + \frac{1}{2}x^2 \right) - 1 - ax + o(x^3) \\
+&= (1 - 1) + (1 + b - a)x + \left( \frac{1}{2} + b \right)x^2 + \left( \frac{1}{6} + \frac{b}{2} \right)x^3 + o(x^3)
+\end{aligned}
+\]
+由于 \(g(x)\) 是 \(x\) 的三阶无穷小，所以其一次项和二次项系数必须为 \(0\)：
+\[
+\begin{cases}
+1 + b - a = 0 \\
+\frac{1}{2} + b = 0 
+\end{cases}
+\]
+解得：
+\[
+b = -\frac{1}{2}, \quad a = \frac{1}{2}
+\]
+此时三次项系数 \(\frac{1}{6} + \frac{b}{2} = -\frac{1}{12} \neq 0\)，符合题意。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：遇到分式加减求阶数，应先通分，若分母极限不为0，则阶数由分子决定。
+  \item \textbf{易错点}：未通分前，不可对分母中的局部式子（如 \(1+bx\)）求极限强行代入，这会丢失高阶项导致方程缺失。
+  \item \textbf{\(n\)阶无穷小条件}：泰勒展开后，\(0\) 到 \(n-1\) 次项系数全为 \(0\)，且 \(n\) 次项系数不为 \(0\)。
+\end{itemize}}
+
+\end{mistake}

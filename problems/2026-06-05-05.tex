@@ -1,0 +1,43 @@
+\begin{mistake}{2026-06-05}{05}
+
+\begin{problemcontent}
+已知 \(\lim_{x \to 0} \frac{(1+\sin 2x^2)^{\frac{1}{x^2}} - e^2}{x^n} = a \ (a \neq 0)\)，求 \(a\) 和 \(n\) 的值。
+\end{problemcontent}
+
+\begin{solutioncontent}
+原式化为以 \(e\) 为底的指数函数，并提取公因式 \(e^2\)：
+\[
+\frac{(1+\sin 2x^2)^{\frac{1}{x^2}} - e^2}{x^n} = \frac{e^{\frac{1}{x^2}\ln(1+\sin 2x^2)} - e^2}{x^n} = \frac{e^2(e^{\frac{1}{x^2}\ln(1+\sin 2x^2) - 2} - 1)}{x^n}
+\]
+对 \(\ln(1+\sin 2x^2)\) 进行泰勒展开。因为常数项 \(2\) 会与后面的指数相减抵消，这里至少需要展开到二次项：
+令 \(u = \sin 2x^2 \sim 2x^2\)，
+\[
+\begin{aligned}
+\ln(1+\sin 2x^2) &= \sin 2x^2 - \frac{1}{2}\sin^2(2x^2) + o(x^4) \\
+&= (2x^2 + o(x^3)) - \frac{1}{2}(2x^2)^2 + o(x^4) \\
+&= 2x^2 - 2x^4 + o(x^4)
+\end{aligned}
+\]
+代回指数部分：
+\[
+\frac{1}{x^2}\ln(1+\sin 2x^2) - 2 = \frac{2x^2 - 2x^4 + o(x^4)}{x^2} - 2 = 2 - 2x^2 + o(x^2) - 2 = -2x^2 + o(x^2)
+\]
+利用 \(e^t - 1 \sim t\ (t \to 0)\)，分子部分等价于：
+\[
+e^2 (e^{-2x^2 + o(x^2)} - 1) \sim e^2 (-2x^2) = -2e^2 x^2
+\]
+原极限化为：
+\[
+\lim_{x \to 0} \frac{-2e^2 x^2}{x^n} = a
+\]
+因为极限存在且 \(a \neq 0\)，分子分母必须是同阶无穷小，所以 \(n = 2\)，此时极限值 \(a = -2e^2\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：幂指函数转换 \(u^v = e^{v\ln u}\)；\(\ln(1+u) = u - \frac{1}{2}u^2 + o(u^2)\)。
+  \item \textbf{易错点}：泰勒展开阶数不够（过早截断）。在带有减法的极限中，必须展开到相减后出现的第一个非零项，否则会丢失主部，导致极限错误。
+  \item \textbf{定阶口诀}：发现加减法算出的主项被完全抵消（即等于 \(0\)）时，说明阶数不够，必须返回给原函数多展开一项；拿不准时“宁多勿少”。
+\end{itemize}}
+
+\end{mistake}

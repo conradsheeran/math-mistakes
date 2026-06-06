@@ -1,0 +1,51 @@
+\begin{mistake}{2026-06-06}{01}
+
+\begin{problemcontent}
+设数列 \(\{x_n\}\) 满足 \(x_1 = 1\)，\(x_{n+1} = \frac{x_n + 2}{x_n + 1} \, (n=1,2,\dots)\)，试证 \(\lim_{n \to \infty} x_n = \sqrt{2}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+第一步，先求候选极限。
+假设 \(\lim_{n \to \infty} x_n = A\)，两边取极限得 \(A = \frac{A+2}{A+1}\)。
+解得 \(A^2 = 2\)。因 \(x_1 = 1 > 0\)，各项均为正数，故候选极限 \(A = \sqrt{2}\)。
+
+第二步，构造函数。
+令 \(f(x) = \frac{x+2}{x+1} = 1 + \frac{1}{x+1}\)，则 \(x_{n+1} = f(x_n)\) 且 \(f(\sqrt{2}) = \sqrt{2}\)。
+求导得 \(f'(x) = -\frac{1}{(x+1)^2}\)。
+由于 \(x_1 = 1 \ge 1\)，且当 \(x_n \ge 1\) 时，\(x_{n+1} = 1 + \frac{1}{x_n+1} \ge \frac{3}{2} > 1\)，故对任意 \(n \ge 1\)，均有 \(x_n \ge 1\)。
+
+第三步，拉格朗日中值定理放缩。
+根据拉格朗日中值定理，有：
+\[
+x_{n+1} - \sqrt{2} = f(x_n) - f(\sqrt{2}) = f'(\xi_n)(x_n - \sqrt{2})
+\]
+其中 \(\xi_n\) 介于 \(x_n\) 与 \(\sqrt{2}\) 之间。因为 \(x_n \ge 1\) 且 \(\sqrt{2} > 1\)，故 \(\xi_n \ge 1\)。
+因此：
+\[
+|f'(\xi_n)| = \frac{1}{(\xi_n+1)^2} \le \frac{1}{(1+1)^2} = \frac{1}{4}
+\]
+从而得到放缩关系：
+\[
+|x_{n+1} - \sqrt{2}| \le \frac{1}{4} |x_n - \sqrt{2}|
+\]
+
+第四步，递推求极限。
+将上述不等式递推展开：
+\[
+|x_{n+1} - \sqrt{2}| \le \frac{1}{4} |x_n - \sqrt{2}| \le \dots \le \left(\frac{1}{4}\right)^n |x_1 - \sqrt{2}|
+\]
+因为 \(\lim_{n \to \infty} \left(\frac{1}{4}\right)^n = 0\)，由夹逼定理可知：
+\[
+\lim_{n \to \infty} |x_{n+1} - \sqrt{2}| = 0
+\]
+即 \(\lim_{n \to \infty} x_n = \sqrt{2}\)，命题得证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：拉格朗日中值定理 \(f(b)-f(a)=f'(\xi)(b-a)\)，常用于递推数列极限的“压缩映射法”放缩。
+  \item \textbf{易错点}：当递推函数 \(f'(x) < 0\) 时，相邻两项差变号反向，数列呈震荡状态靠近极限，切忌生搬硬套单调有界准则。
+  \item \textbf{关联知识}：处理形如 \(x_{n+1}=f(x_n)\) 的震荡数列时，若候选极限为 \(A\)，可利用 \(f(A)=A\) 的性质，将 \(x_{n+1}-A\) 巧妙转化为 \(f(x_n)-f(A)\) 再使用中值定理提取系数。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,47 @@
+\begin{mistake}{2026-06-06}{04}
+
+\begin{problemcontent}
+求极限 $\lim_{n \to \infty} \left[ \frac{n+1}{1^2+n^2} + \frac{n+\frac{1}{2}}{2^2+n^2} + \dots + \frac{n+\frac{1}{n}}{n^2+n^2} \right]$。
+\end{problemcontent}
+
+\begin{solutioncontent}
+将原极限表达式中的和式记为 $S_n$，其第 $i$ 项通项为 $a_i = \frac{n+\frac{1}{i}}{i^2+n^2}$ ($i = 1, 2, \dots, n$)。
+$S_n = \sum_{i=1}^n \frac{n+\frac{1}{i}}{i^2+n^2}$
+
+将通项拆开，分为主体部分和微小余项：
+$S_n = \sum_{i=1}^n \frac{n}{i^2+n^2} + \sum_{i=1}^n \frac{1}{i(i^2+n^2)}$
+
+设 $A_n = \sum_{i=1}^n \frac{n}{i^2+n^2}$， $B_n = \sum_{i=1}^n \frac{1}{i(i^2+n^2)}$。
+
+第一部分（利用定积分定义）：
+提取 $\frac{1}{n}$，凑成定积分定义的结构：
+\[
+A_n = \frac{1}{n} \sum_{i=1}^n \frac{1}{1+\left(\frac{i}{n}\right)^2}
+\]
+两边取极限：
+\[
+\lim_{n \to \infty} A_n = \int_0^1 \frac{1}{1+x^2} dx = \left. \arctan x \right|_0^1 = \frac{\pi}{4}
+\]
+
+第二部分（利用夹逼定理证明余项极限为0）：
+显然 $B_n > 0$。进行放缩，保留分母中最小的 $n^2$：
+\[
+B_n = \sum_{i=1}^n \frac{1}{i(i^2+n^2)} < \sum_{i=1}^n \frac{1}{1 \cdot n^2} = n \cdot \frac{1}{n^2} = \frac{1}{n}
+\]
+得到不等式 $0 < B_n < \frac{1}{n}$。
+由夹逼定理，$\lim_{n \to \infty} B_n = 0$。
+
+综上所述：
+\[
+\lim_{n \to \infty} S_n = \lim_{n \to \infty} A_n + \lim_{n \to \infty} B_n = \frac{\pi}{4} + 0 = \frac{\pi}{4}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：定积分定义 $\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n f\left(\frac{i}{n}\right) = \int_0^1 f(x) dx$；夹逼定理。
+  \item \textbf{易错点}：遇到无法直接转化为 $f(\frac{i}{n})$ 形式的微小扰动项（如本题的 $\frac{1}{i}$），未先做“拆分”就强行套用定积分定义或全式夹逼，导致失败。
+  \item \textbf{解题技巧}：“拆项分治”——主体部分用定积分定义求出准确极限，微小干扰项用夹逼定理证明其趋于0。
+\end{itemize}}
+
+\end{mistake}

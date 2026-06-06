@@ -1,0 +1,36 @@
+\begin{mistake}{2026-06-06}{03}
+
+\begin{problemcontent}
+求函数 \(f(x) = \begin{cases} \frac{x|x+1|}{\ln|x|}, & x \neq 0, \\ 1, & x = 0 \end{cases}\) 的间断点并指出其类型。
+\end{problemcontent}
+
+\begin{solutioncontent}
+间断点可能出现在分段点 \(x=0\) 以及使分母无定义的位置 \(\ln|x| = 0 \implies x = \pm 1\)。
+依次讨论各点的极限：
+
+1. 对于 \(x=0\)：
+\[ \lim_{x \to 0} f(x) = \lim_{x \to 0} \frac{x|x+1|}{\ln|x|} = \frac{0}{-\infty} = 0 \]
+因为极限存在但不等于 \(f(0)=1\)，故 \(x=0\) 为可去间断点。
+
+2. 对于 \(x=-1\)：
+因含有绝对值 \(|x+1|\)，需分左右极限。令 \(t = x+1\)，则 \(x \to -1\) 等价于 \(t \to 0\)。
+右极限：\(x \to -1^+\) 时，\(x+1>0\)，且 \(x\) 在 \(-1\) 附近为负数，\(|x|=-x\)。
+\[ \lim_{x \to -1^+} \frac{x(x+1)}{\ln(-x)} = \lim_{t \to 0^+} \frac{(t-1)t}{\ln(1-t)} = \lim_{t \to 0^+} \frac{(t-1)t}{-t} = 1 \]
+左极限：\(x \to -1^-\) 时，\(x+1<0\)，同样 \(x<0\)。
+\[ \lim_{x \to -1^-} \frac{-x(x+1)}{\ln(-x)} = \lim_{t \to 0^-} \frac{-(t-1)t}{\ln(1-t)} = \lim_{t \to 0^-} \frac{-(t-1)t}{-t} = -1 \]
+左右极限均存在但不相等，故 \(x=-1\) 为跳跃间断点。
+
+3. 对于 \(x=1\)：
+\[ \lim_{x \to 1} f(x) = \lim_{x \to 1} \frac{x|x+1|}{\ln|x|} = \frac{2}{0} = \infty \]
+极限趋于无穷，故 \(x=1\) 为无穷间断点。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{寻找间断点}：除了分段函数的分段点，务必排查分母为0、对数真数为0等无定义点。
+  \item \textbf{易错点1（定式误判）}：遇到 \(x \to 0\) 时 \(\frac{0}{-\infty}\) 属于定式，结果直接为0，切忌盲目使用洛必达法则。
+  \item \textbf{易错点2（绝对值极限）}：趋近点是绝对值内部变号的分界点时，必须严格区分左右极限，否则极易漏判跳跃间断点。
+  \item \textbf{等价无穷小}：当 \(x \to 0\) 时，\(\ln(1-x) \sim -x\)。
+\end{itemize}}
+
+\end{mistake}

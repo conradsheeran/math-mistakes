@@ -1,0 +1,38 @@
+\begin{mistake}{2026-06-06}{02}
+
+\begin{problemcontent}
+设 \(x_1 = \sqrt{2}\)， \(x_{n+1} = \sqrt{3 + 2x_n}\)，\(n=1,2,\cdots\)，证明数列 \(\{x_n\}\) 收敛并求它的极限。
+\end{problemcontent}
+
+\begin{solutioncontent}
+1. \textbf{猜极限（找上界）}：
+假设 \(\lim_{n\to\infty} x_n = A\)，由递推式取极限得 \( A = \sqrt{3 + 2A} \)，解得 \(A = 3\) 或 \(A = -1\)。因 \(x_n > 0\)，故 \(A \ge 0\)，猜测上界为 3。
+
+2. \textbf{证明有界性（数学归纳法）}：
+当 \(n=1\) 时，\(x_1 = \sqrt{2} < 3\) 成立。
+假设 \(n=k\) 时 \(x_k < 3\) 成立，则 \(n=k+1\) 时：
+\[ x_{k+1} = \sqrt{3 + 2x_n} < \sqrt{3 + 2 \times 3} = 3 \]
+故对任意 \(n \ge 1\)，有 \(0 < x_n < 3\)，数列有上界。
+
+3. \textbf{证明单调性（作差法）}：
+\[
+\begin{aligned}
+x_{n+1} - x_n &= \sqrt{3 + 2x_n} - x_n \\
+&= \frac{3 + 2x_n - x_n^2}{\sqrt{3 + 2x_n} + x_n} \\
+&= \frac{-(x_n - 3)(x_n + 1)}{\sqrt{3 + 2x_n} + x_n}
+\end{aligned}
+\]
+由 \(0 < x_n < 3\)，知 \((x_n - 3) < 0\)，且分母大于 0。因此 \(x_{n+1} - x_n > 0\)，数列单调递增。
+
+4. \textbf{求极限}：
+由单调有界定理，数列收敛。设极限为 \(A\)，结合步骤 1 解得 \(A = 3\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心考点}：单调有界定理（单调递增且有上界必收敛）。
+  \item \textbf{易错点}：解答题绝不能不经证明直接“设极限解方程”，必须先证收敛。
+  \item \textbf{证明技巧}：含根号递推式判单调性时，作差后进行\textbf{分子有理化}是标准动作。
+\end{itemize}}
+
+\end{mistake}

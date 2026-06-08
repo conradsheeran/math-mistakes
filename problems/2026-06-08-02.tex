@@ -1,0 +1,41 @@
+\begin{mistake}{2026-06-08}{02}
+
+\begin{problemcontent}
+函数 \(f(x) = \sqrt[3]{(x+3)(x+1)} |x^3 - x|\) 不可导点的个数为 \underline{\hspace{1cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+寻找所有不可导的“嫌疑点”：
+1. 绝对值内部的零点：\(x^3 - x = x(x-1)(x+1) = 0 \implies x = 0, 1, -1\)。
+2. 立方根内部的零点：\((x+3)(x+1) = 0 \implies x = -3, -1\)。
+综合嫌疑点为 \(x = -3, -1, 0, 1\)。
+
+逐一使用导数定义排查（注意在这些点均有 \(f(x)=0\)）：
+\begin{itemize}
+    \item 排查 \(x = 0\)：
+    \[ \lim_{x \to 0} \frac{f(x)}{x} = \lim_{x \to 0} \sqrt[3]{(x+3)(x+1)} |x^2-1| \cdot \frac{|x|}{x} = \sqrt[3]{3} \lim_{x \to 0} \frac{|x|}{x} \]
+    左右极限不等，极限不存在，\textbf{不可导}。
+    
+    \item 排查 \(x = 1\)：
+    \[ \lim_{x \to 1} \frac{f(x)}{x-1} = \lim_{x \to 1} \sqrt[3]{(x+3)(x+1)} |x(x+1)| \cdot \frac{|x-1|}{x-1} = 4 \lim_{x \to 1} \frac{|x-1|}{x-1} \]
+    左右极限不等，极限不存在，\textbf{不可导}。
+    
+    \item 排查 \(x = -1\)：
+    \[ \lim_{x \to -1} \frac{f(x)}{x+1} = \lim_{x \to -1} \sqrt[3]{x+3} |x(x-1)| \cdot \frac{(x+1)^{\frac{1}{3}}|x+1|}{x+1} \]
+    由于 \(\frac{|x+1|}{x+1}\) 有界，且 \((x+1)^{\frac{1}{3}} \to 0\)，由“无穷小 \(\times\) 有界量 = 无穷小”，极限为 \(0\)，\textbf{可导}。
+    
+    \item 排查 \(x = -3\)：
+    \[ \lim_{x \to -3} \frac{f(x)}{x+3} = \lim_{x \to -3} (x+1)^{\frac{1}{3}}|x^3-x| \cdot \frac{1}{(x+3)^{\frac{2}{3}}} = \infty \]
+    极限为无穷大（垂直切线），\textbf{不可导}。
+\end{itemize}
+综上，不可导点有 \(x = -3, 0, 1\)，共 3 个。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：利用导数定义 \(\lim_{x \to x_0} \frac{f(x)-f(x_0)}{x-x_0}\) 判断分段函数、带绝对值或根号函数在特殊点的可导性。
+  \item \textbf{易错点}：寻找“嫌疑点”时，只注意到了绝对值内部的零点，遗漏了带分数次幂（如立方根）项内部的零点。
+  \item \textbf{快速判断技巧}：若 \(f(x) = |x-a|\phi(x)\) 且 \(\phi(x)\) 在 \(x=a\) 连续，当 \(\phi(a) \neq 0\) 时 \(f(x)\) 在 \(a\) 处不可导；当 \(\phi(a) = 0\) 时可导。
+\end{itemize}}
+
+\end{mistake}

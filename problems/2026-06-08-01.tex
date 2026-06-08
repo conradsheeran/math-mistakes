@@ -1,0 +1,30 @@
+\begin{mistake}{2026-06-08}{01}
+
+\begin{problemcontent}
+设 \(f(0)=0\)，则 \(f(x)\) 在点 \(x=0\) 可导的充要条件为
+(A) \(\lim_{h \to 0} \frac{1}{h^2} f(1-\cos h)\) 存在.
+(B) \(\lim_{h \to 0} \frac{1}{h} f(1-e^h)\) 存在.
+(C) \(\lim_{h \to 0} \frac{1}{h^2} f(h-\sin h)\) 存在.
+(D) \(\lim_{h \to 0} \frac{1}{h} [f(2h) - f(h)]\) 存在.
+\end{problemcontent}
+
+\begin{solutioncontent}
+选 (B)。
+判断 \(\lim_{h \to 0} \frac{f(\varphi(h)) - f(0)}{\psi(h)}\) 存在能否作为 \(f'(0)\) 存在的充要条件，需满足：
+1. \(\varphi(h) \to 0\) 且能从正负双侧趋近于 0（保证双侧导数）；
+2. \(\varphi(h)\) 与 \(\psi(h)\) 同阶。
+
+对于 (A)：\(1-\cos h \ge 0\)，当 \(h \to 0\) 时，增量只能从正侧趋近于 0，该极限存在只能推出右导数 \(f_+'(0)\) 存在。
+对于 (B)：\(1-e^h \sim -h\)，当 \(h \to 0\) 时，\(1-e^h\) 既能取正值也能取负值，且与分母 \(h\) 同阶。极限等价于 \(-\lim_{h \to 0} \frac{f(1-e^h)}{1-e^h}\)，等价于双侧导数存在。
+对于 (C)：\(h-\sin h \sim \frac{1}{6}h^3\)，内部增量阶数高于分母 \(h^2\)，无法反推导数存在（如取 \(f(x)=|x|^{2/3}\) 反例）。
+对于 (D)：\(\lim_{h \to 0} \frac{f(2h) - f(h)}{h}\) 存在无法保证在 \(x=0\) 处连续（例如设 \(x \neq 0\) 时 \(f(x)=1, f(0)=0\)，极限为 0 但不连续）。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心判定}：广义极限推导数要求内层增量从正负双侧趋近 0，且内层增量与分母为同阶无穷小。
+  \item \textbf{易错点}：忽视偶数次或 \(1-\cos h\) 恒非负的性质，误将单侧极限等同于双侧导数存在。
+  \item \textbf{易错点2}：差分极限 \(\lim_{h \to 0} \frac{f(2h) - f(h)}{h}\) 存在不能反推原函数在点内连续，更不能反推可导。
+\end{itemize}}
+
+\end{mistake}

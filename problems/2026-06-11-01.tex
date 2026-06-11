@@ -1,0 +1,65 @@
+\begin{mistake}{2026-06-11}{01}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \((-\infty, +\infty)\) 二阶可导， \(f(0) = 0\)，
+\[
+g(x) = \begin{cases} \frac{f(x)}{x}, & x \neq 0, \\ a, & x = 0. \end{cases}
+\]
+(1) 确定 \(a\) 使 \(g(x)\) 在 \((-\infty, +\infty)\) 上连续；
+(2) 证明对以上确定的 \(a\)，\(g(x)\) 在 \((-\infty, +\infty)\) 上有连续一阶导数。
+\end{problemcontent}
+
+\begin{solutioncontent}
+(1) 由连续性得，\(a = g(0) = \lim_{x \to 0} g(x)\)。
+因为 \(f(0) = 0\)，有：
+\[
+\lim_{x \to 0} \frac{f(x)}{x} = \lim_{x \to 0} \frac{f(x) - f(0)}{x - 0} = f'(0)
+\]
+故 \(a = f'(0)\)。
+
+(2) 当 \(x \neq 0\) 时，
+\[
+g'(x) = \frac{xf'(x) - f(x)}{x^2}
+\]
+因 \(f(x)\) 二阶可导，故 \(f'(x)\) 和 \(f(x)\) 连续，显然 \(g'(x)\) 在 \(x \neq 0\) 处连续。
+
+当 \(x = 0\) 时，必须用导数定义求 \(g'(0)\)：
+\[
+g'(0) = \lim_{x \to 0} \frac{g(x) - g(0)}{x - 0} = \lim_{x \to 0} \frac{\frac{f(x)}{x} - f'(0)}{x} = \lim_{x \to 0} \frac{f(x) - xf'(0)}{x^2}
+\]
+使用一次洛必达法则：
+\[
+g'(0) = \lim_{x \to 0} \frac{f'(x) - f'(0)}{2x} = \frac{1}{2} f''(0)
+\]
+
+再求 \(g'(x)\) 在 \(x \to 0\) 的极限。因为题干仅已知 \(f(x)\) 二阶可导，未说明二阶导连续，此处使用泰勒公式最为严谨：
+将 \(f(x)\) 和 \(f'(x)\) 在 \(x=0\) 处展开：
+\[
+f(x) = f(0) + f'(0)x + \frac{1}{2}f''(0)x^2 + o(x^2) = f'(0)x + \frac{1}{2}f''(0)x^2 + o(x^2)
+\]
+\[
+f'(x) = f'(0) + f''(0)x + o(x)
+\]
+代入 \(g'(x)\) 分子：
+\[
+\begin{aligned}
+xf'(x) - f(x) &= x[f'(0) + f''(0)x + o(x)] - [f'(0)x + \frac{1}{2}f''(0)x^2 + o(x^2)] \\
+&= \frac{1}{2}f''(0)x^2 + o(x^2)
+\end{aligned}
+\]
+因此：
+\[
+\lim_{x \to 0} g'(x) = \lim_{x \to 0} \frac{\frac{1}{2}f''(0)x^2 + o(x^2)}{x^2} = \frac{1}{2}f''(0)
+\]
+由于 \(\lim_{x \to 0} g'(x) = \frac{1}{2}f''(0) = g'(0)\)，故 \(g'(x)\) 在 \(x=0\) 处连续。
+结合 \(x \neq 0\) 处的结论，\(g(x)\) 在 \((-\infty, +\infty)\) 上有连续一阶导数。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{易错点}：极限加减法中局部替换（如把 \(\frac{f(x)}{x}\) 提前取极限替换为 \(f'(0)\)）会丢失高阶无穷小，导致结果错误。
+  \item \textbf{核心方法}：证明分段函数分界点的导数连续，必须分别求 \(g'(0)\) (用定义) 和 \(\lim_{x\to0}g'(x)\)，再判断两者是否相等。
+  \item \textbf{关联知识}：仅已知“二阶可导”未说明“二阶导连续”时，求 \(\lim_{x\to0}g'(x)\) 用洛必达法则会产生逻辑漏洞，用带有皮亚诺余项的泰勒展开是最严谨的做法。
+\end{itemize}}
+
+\end{mistake}

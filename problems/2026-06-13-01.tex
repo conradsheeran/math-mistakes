@@ -1,0 +1,39 @@
+\begin{mistake}{2026-06-13}{01}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([a,b]\) 上有二阶连续导数，试证存在 \(\xi \in (a,b)\)，使
+\[ \int_a^b f(x) \mathrm{d}x = (b-a) f\left(\frac{a+b}{2}\right) + \frac{1}{24} (b-a)^3 f''(\xi). \]
+\end{problemcontent}
+
+\begin{solutioncontent}
+令中点 \(x_0 = \frac{a+b}{2}\)。
+由于 \(f(x)\) 在 \([a,b]\) 上有二阶连续导数，在点 \(x_0\) 处利用带有拉格朗日余项的泰勒公式展开：
+\[ f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{1}{2} f''(\eta_x)(x-x_0)^2 \]
+其中 \(\eta_x\) 介于 \(x_0\) 和 \(x\) 之间。
+
+对上式两端在 \([a,b]\) 上求定积分：
+\[ \int_a^b f(x) \mathrm{d}x = \int_a^b f(x_0) \mathrm{d}x + \int_a^b f'(x_0)(x-x_0) \mathrm{d}x + \int_a^b \frac{1}{2} f''(\eta_x)(x-x_0)^2 \mathrm{d}x \]
+
+逐项计算右边的积分：
+1. 第一项：\(\int_a^b f(x_0) \mathrm{d}x = (b-a) f\left(\frac{a+b}{2}\right)\)
+2. 第二项：由于 \((x-x_0)\) 是奇函数，且积分区间关于 \(x_0\) 对称，故 \(\int_a^b f'(x_0)(x-x_0) \mathrm{d}x = 0\)
+3. 第三项：设 \(m, M\) 分别为 \(f''(x)\) 在 \([a,b]\) 上的最小值和最大值。由于 \((x-x_0)^2 \ge 0\)：
+   \[ \frac{1}{2} m (x-x_0)^2 \le \frac{1}{2} f''(\eta_x)(x-x_0)^2 \le \frac{1}{2} M (x-x_0)^2 \]
+   对其在 \([a,b]\) 上积分：
+   \[ \frac{m}{2} \int_a^b (x-x_0)^2 \mathrm{d}x \le \int_a^b \frac{1}{2} f''(\eta_x)(x-x_0)^2 \mathrm{d}x \le \frac{M}{2} \int_a^b (x-x_0)^2 \mathrm{d}x \]
+   而 \(\int_a^b \left(x - \frac{a+b}{2}\right)^2 \mathrm{d}x = \frac{(b-a)^3}{12}\)，代入得：
+   \[ m \le \frac{24}{(b-a)^3} \int_a^b \frac{1}{2} f''(\eta_x)(x-x_0)^2 \mathrm{d}x \le M \]
+   由连续函数的介值定理，存在 \(\xi \in (a,b)\)（端点情况可依严格放缩或常数函数处理），使得：
+   \[ f''(\xi) = \frac{24}{(b-a)^3} \int_a^b \frac{1}{2} f''(\eta_x)(x-x_0)^2 \mathrm{d}x \]
+   即余项积分为 \(\frac{1}{24}(b-a)^3 f''(\xi)\)。
+
+三项相加，即证得原等式。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：利用区间中点进行泰勒展开，结合对称性消去一阶奇函数的积分项。
+  \item \textbf{易错点}：余项 \(f''(\eta_x)\) 中 \(\eta_x\) 是依赖 \(x\) 的未知函数，不能直接对被积函数套用积分中值定理，需先用最值有界性放缩，再用介值定理还原。
+\end{itemize}}
+
+\end{mistake}

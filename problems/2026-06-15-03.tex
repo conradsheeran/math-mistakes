@@ -1,0 +1,48 @@
+\begin{mistake}{2026-06-15}{03}
+
+\begin{problemcontent}
+曲线 \(y = \frac{x^2+1}{\sqrt{x^2-1}}\) 的渐近线条数为 ( )
+(A) 1.
+(B) 2.
+(C) 3.
+(D) 4.
+\end{problemcontent}
+
+\begin{solutioncontent}
+本题选 (D) 4。
+
+1. \textbf{垂直渐近线}：
+由根号内有意义，要求 \(x^2 - 1 > 0\)，得定义域为 \((-\infty, -1) \cup (1, +\infty)\)。
+考察开区间边界 \(x=1\) 和 \(x=-1\)：
+\[
+\lim_{x \to 1^+} \frac{x^2+1}{\sqrt{x^2-1}} = +\infty, \quad \lim_{x \to -1^-} \frac{x^2+1}{\sqrt{x^2-1}} = +\infty
+\]
+得到 2 条垂直渐近线：\(x=1\) 和 \(x=-1\)。
+
+2. \textbf{斜渐近线}：
+当 \(x \to +\infty\) 时：
+\[
+k_1 = \lim_{x \to +\infty} \frac{y}{x} = \lim_{x \to +\infty} \frac{x^2+1}{x\sqrt{x^2-1}} = 1
+\]
+\[
+\begin{aligned}
+b_1 &= \lim_{x \to +\infty} \left( \frac{x^2+1}{\sqrt{x^2-1}} - x \right) = \lim_{x \to +\infty} \frac{x^2+1 - x\sqrt{x^2-1}}{\sqrt{x^2-1}} \\
+&= \lim_{x \to +\infty} \frac{(x^2+1)^2 - x^2(x^2-1)}{\sqrt{x^2-1} \cdot (x^2+1 + x\sqrt{x^2-1})} \\
+&= \lim_{x \to +\infty} \frac{3x^2+1}{\sqrt{x^2-1} \cdot (x^2+1 + x\sqrt{x^2-1})} = 0
+\end{aligned}
+\]
+得到 \(x \to +\infty\) 方向的斜渐近线：\(y = x\)。
+
+又原函数 \(f(x)\) 为偶函数，其图像关于 \(y\) 轴对称，故 \(x \to -\infty\) 方向直接可得斜渐近线：\(y = -x\)。
+
+综上，共有 \(x=1, x=-1, y=x, y=-x\) 这 4 条渐近线。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：斜渐近线 \(y = kx + b\)，其中 \(k = \lim_{x \to \infty} \frac{f(x)}{x}\)，\(b = \lim_{x \to \infty} (f(x) - kx)\)。
+  \item \textbf{易错点}：根号下含平方项（如 \(\sqrt{x^2-1}\)）时，极易漏算 \(x \to -\infty\) 侧的斜渐近线。
+  \item \textbf{快速技巧}：偶函数若有右侧渐近线 \(y=kx+b\)，则左侧必为 \(y=-kx+b\)；奇函数则左侧必为 \(y=kx-b\)。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,36 @@
+\begin{mistake}{2026-06-15}{01}
+
+\begin{problemcontent}
+函数 \(f(x) = \int_{-\pi}^{\pi} (t - x\sin t)^2 dt\) 的极值点为
+(A) \(x = 2\) 为极小值点.
+(B) \(x = 2\) 为极大值点.
+(C) \(x = 1\) 为极小值点.
+(D) \(x = 1\) 为极大值点.
+\end{problemcontent}
+
+\begin{solutioncontent}
+将被积函数展开：
+\[ (t - x\sin t)^2 = t^2 - 2xt\sin t + x^2\sin^2 t \]
+利用定积分的线性性质，把积分时视为常数的 \(x\) 提到积分号外：
+\[ f(x) = \int_{-\pi}^{\pi} t^2 dt - 2x \int_{-\pi}^{\pi} t\sin t dt + x^2 \int_{-\pi}^{\pi} \sin^2 t dt \]
+计算各分项定积分：
+常数项设为 \(C\)。
+一次项系数积分（被积函数为偶函数，利用分部积分）：
+\[ \int_{-\pi}^{\pi} t\sin t dt = 2 \int_{0}^{\pi} t\sin t dt = 2\left( [-t\cos t]_0^\pi + \int_{0}^{\pi} \cos t dt \right) = 2\pi \]
+二次项系数积分（利用半角降幂公式）：
+\[ \int_{-\pi}^{\pi} \sin^2 t dt = \int_{-\pi}^{\pi} \frac{1-\cos 2t}{2} dt = \pi \]
+代回得到 \(f(x)\) 的表达式：
+\[ f(x) = \pi x^2 - 4\pi x + C \]
+求导得 \(f'(x) = 2\pi x - 4\pi\)，令 \(f'(x) = 0\) 得驻点 \(x = 2\)。
+又 \(f''(x) = 2\pi > 0\)，故 \(x = 2\) 为极小值点。
+正确答案为 (A)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：处理积分限为常数的含参定积分时，将不参与积分的参变量提取至积分号外，将原式转化为参变量的多项式。
+  \item \textbf{极值判定条件}：驻点 \(x_0\) 处，\(f''(x_0) > 0\) 为极小值（下凸/开口向上），\(f''(x_0) < 0\) 为极大值（上凸/开口向下）。
+  \item \textbf{易错点}：运用偶函数在对称区间的积分性质 \(\int_{-a}^a f(t)dt = 2\int_0^a f(t)dt\) 时，极易在转化后遗漏系数 \(2\)。
+\end{itemize}}
+
+\end{mistake}

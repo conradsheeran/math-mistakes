@@ -1,0 +1,35 @@
+\begin{mistake}{2026-06-16}{03}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([0,2]\) 上二阶可导，且 \(|f(x)| \le 1, |f''(x)| \le 1\)，证明：
+\[|f'(x)| \le 2 \quad (0 \le x \le 2).\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+证明：
+以区间内任意一点 \(x\) 为展开中心，分别向端点 \(0\) 和 \(2\) 进行带有拉格朗日余项的泰勒展开：
+\[f(0) = f(x) + f'(x)(0-x) + \frac{f''(\xi_1)}{2!}(0-x)^2 \quad (\xi_1 \text{ 介于 } 0 \text{ 与 } x \text{ 之间})\]
+\[f(2) = f(x) + f'(x)(2-x) + \frac{f''(\xi_2)}{2!}(2-x)^2 \quad (\xi_2 \text{ 介于 } x \text{ 与 } 2 \text{ 之间})\]
+将上两式相减，消去 \(f(x)\) 得：
+\[f(2) - f(0) = 2f'(x) + \frac{1}{2}\left[ f''(\xi_2)(2-x)^2 - f''(\xi_1)x^2 \right]\]
+移项并孤立出 \(f'(x)\)：
+\[f'(x) = \frac{f(2) - f(0)}{2} - \frac{1}{4}\left[ f''(\xi_2)(2-x)^2 - f''(\xi_1)x^2 \right]\]
+两边取绝对值，利用三角不等式 \(|a \pm b| \le |a| + |b|\) 进行放缩：
+\[|f'(x)| \le \frac{|f(2)| + |f(0)|}{2} + \frac{1}{4}|f''(\xi_2)|(2-x)^2 + \frac{1}{4}|f''(\xi_1)|x^2\]
+由于已知 \(|f(x)| \le 1\) 及 \(|f''(x)| \le 1\)，代入上式得：
+\[|f'(x)| \le \frac{1 + 1}{2} + \frac{1}{4}\left[ (2-x)^2 + x^2 \right] = 1 + \frac{1}{4}(2x^2 - 4x + 4)\]
+考虑二次函数 \(g(x) = 2x^2 - 4x + 4\) 在区间 \([0,2]\) 上的最大值。
+由于抛物线开口向上，最大值在端点取得：\(g(0) = 4, g(2) = 4\)。
+因此 \((2-x)^2 + x^2 \le 4\)，代入放缩式得：
+\[|f'(x)| \le 1 + \frac{1}{4} \times 4 = 2\]
+得证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：带拉格朗日余项的泰勒公式，运用时可灵活将待求导数值的点 \(x\) 作为展开中心。
+  \item \textbf{易错点}：两次展开的区间不同，因此余项必须分别使用独立的 \(\xi_1\) 和 \(\xi_2\)。
+  \item \textbf{关联知识}：已知函数及其二阶导的界求一阶导的界，是经典的“双向泰勒展开”题型，通过相减消去 \(f(x)\)。
+\end{itemize}}
+
+\end{mistake}

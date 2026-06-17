@@ -1,0 +1,40 @@
+\begin{mistake}{2026-06-17}{07}
+
+\begin{problemcontent}
+设方程 \(x^n + nx = k(n = 1,2,\cdots)\) 在 \(x \in (0, +\infty)\) 内的实根为 \(x_n\)，其中 \(k > 0\)，则 \(\lim_{n\to\infty}(1+x_n)^n = (\quad)\)
+
+A. \(e\)
+
+B. \(e^k\)
+
+C. \(e^{-k}\)
+
+D. \(e^{-1}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+由题意 \(x_n > 0\)。原方程变形为 \(nx_n = k - x_n^n\)。
+因为 \(x_n^n > 0\)，可得 \(nx_n < k\)，即 \(0 < x_n < \frac{k}{n}\)。
+由夹逼定理知，\(\lim_{n\to\infty} x_n = 0\)。
+
+进一步，\(0 < x_n^n < \left(\frac{k}{n}\right)^n\)，由于 \(\lim_{n\to\infty} \frac{k}{n} = 0\)，显然 \(\lim_{n\to\infty} x_n^n = 0\)。
+对 \(nx_n = k - x_n^n\) 两边取极限得：
+\[
+\lim_{n\to\infty} n x_n = \lim_{n\to\infty} (k - x_n^n) = k
+\]
+
+原极限为 \(1^\infty\) 型极限，利用等价无穷小 \(\ln(1+x_n) \sim x_n\)：
+\[
+\lim_{n\to\infty} (1+x_n)^n = \exp\left( \lim_{n\to\infty} n \ln(1+x_n) \right) = \exp\left( \lim_{n\to\infty} n x_n \right) = e^k
+\]
+故选 B。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(1^\infty\) 型极限计算：\(\lim u^v = \exp(\lim v(u-1))\)；放缩法与夹逼定理。
+  \item \textbf{易错点}：处理隐方程的根数列极限时，未通过移项放缩（如 \(nx_n < k\)）严格证明高阶项 \(x_n^n \to 0\)，直接忽略导致严谨性缺失。
+  \item \textbf{关联知识}：对数等价无穷小替换 \(\ln(1+x) \sim x \ (x \to 0)\)。
+\end{itemize}}
+
+\end{mistake}

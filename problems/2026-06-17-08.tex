@@ -1,0 +1,49 @@
+\begin{mistake}{2026-06-17}{08}
+
+\begin{problemcontent}
+设 \( f(x) = \begin{cases} \frac{1}{(x-1)^\alpha} \sin \frac{1}{(x-1)^\beta}, & x > 1 \\ 0, & x \le 1 \end{cases} \)，其中 \(\alpha < 0, \beta > 0\)。若 \(f'(x)\) 在 \(x=1\) 处连续，则 ( )
+A. \(\alpha < -1\) 且 \(\alpha + \beta < -1\)
+B. \(\alpha < -1\) 且 \(\alpha + \beta \le -1\)
+C. \(\alpha \le -1\) 且 \(\alpha + \beta < -1\)
+D. \(\alpha \le -1\) 且 \(\alpha + \beta \le -1\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(t = x - 1\)。当 \(x \to 1^+\) 时，\(t \to 0^+\)，且当 \(x>1\) 时 \(f(x) = t^{-\alpha} \sin(t^{-\beta})\)。
+
+第一步，求 \(x=1\) 处的导数。由于 \(x \le 1\) 时 \(f(x)=0\)，故 \(f(1)=0\)，左导数 \(f'(1^-)=0\)。右导数必须用定义求解：
+\[
+f'(1^+) = \lim_{x \to 1^+} \frac{f(x) - f(1)}{x - 1} = \lim_{t \to 0^+} \frac{t^{-\alpha} \sin(t^{-\beta})}{t} = \lim_{t \to 0^+} t^{-\alpha-1} \sin(t^{-\beta})
+\]
+要使 \(f'(1)\) 存在，必须 \(f'(1^+) = 0\)。因 \(\sin(t^{-\beta})\) 为有界量，要使其与 \(t^{-\alpha-1}\) 的乘积极限为 0，需：
+\[
+-\alpha - 1 > 0 \implies \alpha < -1
+\]
+
+第二步，求 \(x > 1\) 时的导函数：
+\[
+\begin{aligned}
+f'(x) &= -\alpha(x-1)^{-\alpha-1} \sin\frac{1}{(x-1)^\beta} + (x-1)^{-\alpha} \cos\frac{1}{(x-1)^\beta} \cdot (-\beta)(x-1)^{-\beta-1} \\
+&= -\alpha t^{-\alpha-1} \sin(t^{-\beta}) - \beta t^{-\alpha-\beta-1} \cos(t^{-\beta})
+\end{aligned}
+\]
+
+第三步，导函数在 \(x=1\) 处连续，即要求 \(\lim_{x \to 1^+} f'(x) = f'(1) = 0\)：
+\[
+\lim_{t \to 0^+} \left[ -\alpha t^{-\alpha-1} \sin(t^{-\beta}) - \beta t^{-\alpha-\beta-1} \cos(t^{-\beta}) \right] = 0
+\]
+由第一步已知 \(-\alpha - 1 > 0\)，第一项极限为 0。要使整体极限为 0，第二项的指数必须严格大于 0（否则震荡无极限或趋于无穷）：
+\[
+-\alpha - \beta - 1 > 0 \implies \alpha + \beta < -1
+\]
+综上，正确选项为 A。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心考点}：分段点处的导数存在性（用定义）与导函数连续性（求导后求极限）的双重条件判定。
+  \item \textbf{易错点}：求分段点导数时误用求导法则代替导数定义，导致漏掉 \(\alpha < -1\) 条件；或在判断连续性时误加等号。
+  \item \textbf{关联知识}：无穷小与有界变量乘积的极限规则 \(\lim_{t \to 0^+} t^k \sin(t^{-m}) = 0 \iff k > 0\)。
+\end{itemize}}
+
+\end{mistake}

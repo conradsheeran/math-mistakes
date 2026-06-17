@@ -1,0 +1,51 @@
+\begin{mistake}{2026-06-17}{02}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([0, +\infty)\) 上二阶可导，\(f(0) = 0\)，\(f''(x) < 0\)，当 \(0 < a < x < b\) 时，有（  ）。
+A. \(a f(x) > x f(a)\) \\
+B. \(b f(x) > x f(b)\) \\
+C. \(x f(x) > b f(b)\) \\
+D. \(x f(x) > a f(a)\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+本题选 \textbf{B}。
+
+题目中出现错位乘积 \(a f(x)\) 与 \(x f(a)\)，且已知 \(f(0)=0\)，提示构造割线斜率函数 \(g(x) = \frac{f(x)}{x}\) \((x > 0)\)。
+
+对 \(g(x)\) 求导：
+\[
+g'(x) = \frac{x f'(x) - f(x)}{x^2}
+\]
+
+令分子 \(h(x) = x f'(x) - f(x)\) \((x \ge 0)\)，求导：
+\[
+h'(x) = f'(x) + x f''(x) - f'(x) = x f''(x)
+\]
+
+已知当 \(x > 0\) 时 \(f''(x) < 0\)，故 \(h'(x) < 0\)，说明 \(h(x)\) 在 \([0, +\infty)\) 上单调递减。
+又因为 \(h(0) = 0 \cdot f'(0) - f(0) = 0\)，所以当 \(x > 0\) 时，\(h(x) < h(0) = 0\)。
+
+进而 \(g'(x) = \frac{h(x)}{x^2} < 0\)，即 \(g(x) = \frac{f(x)}{x}\) 在 \((0, +\infty)\) 上严格单调递减。
+
+由于 \(0 < a < x < b\)，利用 \(g(x)\) 的单调递减性可得：
+\[
+g(a) > g(x) > g(b)
+\]
+即 \(\frac{f(a)}{a} > \frac{f(x)}{x} > \frac{f(b)}{b}\)。
+
+取出右半部分不等式 \(\frac{f(x)}{x} > \frac{f(b)}{b}\)，两边同乘 \(xb\) (\(x>0, b>0\))，得：
+\[
+b f(x) > x f(b)
+\]
+与选项 B 一致。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：遇错位乘积 \(x_1 f(x_2)\) 与 \(x_2 f(x_1)\) 且 \(f(0)=0\) 时，常构造割线斜率函数 \(g(x) = \frac{f(x)}{x}\)。
+  \item \textbf{核心求导套路}：判断 \(\frac{x f'(x) - f(x)}{x^2}\) 符号时，令分子为 \(h(x)\)，通过 \(h'(x) = x f''(x)\) 结合 \(h(0)\) 判定。
+  \item \textbf{几何直观}：\(f''(x)<0\) 即曲线凸（上凸），过原点的割线斜率 \(\frac{f(x)}{x}\) 随 \(x\) 增大而递减。
+\end{itemize}}
+
+\end{mistake}

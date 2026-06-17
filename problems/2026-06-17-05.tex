@@ -1,0 +1,40 @@
+\begin{mistake}{2026-06-17}{05}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \(x=0\) 的某邻域内有定义，则 \(F(x) = f(x)|\sin x|\) 在 \(x=0\) 处可导的充分必要条件是（  ）
+
+A. \(\lim_{x\to0} f(x)\) 存在
+
+B. \(\lim_{x\to0} f(x) = f(0)\)
+
+C. \(f(x)\) 在 \(x=0\) 处可导
+
+D. \(\lim_{x\to0^-} f(x)\) 与 \(\lim_{x\to0^+} f(x)\) 均存在，且 \(\lim_{x\to0^-} f(x) = -\lim_{x\to0^+} f(x)\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+利用导数定义分别计算左右导数。
+首先因为 \(f(x)\) 在 \(x=0\) 有定义，所以 \(F(0) = f(0)|\sin 0| = 0\)。
+
+右导数（当 \(x \to 0^+\) 时，\(|\sin x| = \sin x\)）：
+\[
+F'_+(0) = \lim_{x \to 0^+} \frac{f(x)|\sin x| - 0}{x} = \lim_{x \to 0^+} \frac{f(x)\sin x}{x} = \lim_{x \to 0^+} f(x)
+\]
+
+左导数（当 \(x \to 0^-\) 时，\(|\sin x| = -\sin x\)）：
+\[
+F'_-(0) = \lim_{x \to 0^-} \frac{f(x)|\sin x| - 0}{x} = \lim_{x \to 0^-} \frac{-f(x)\sin x}{x} = -\lim_{x \to 0^-} f(x)
+\]
+
+\(F(x)\) 在 \(x=0\) 处可导的充要条件为左右导数存在且相等，即 \(\lim_{x \to 0^+} f(x) = -\lim_{x \to 0^-} f(x)\)。
+故选 D。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：分段点（或绝对值符号变化点）可导的充要条件是左右导数存在且相等：\(F'_+(x_0) = F'_-(x_0)\)。
+  \item \textbf{易错点}：误认为需要 \(f(x)\) 在 \(x=0\) 连续。实际上 \(F(0)=0\) 恒成立，导数定义中只依赖 \(f(x)\) 在 \(x \to 0\) 时的极限，与 \(f(0)\) 的取值无关。
+  \item \textbf{关联知识}：处理含绝对值的函数在零点的求导问题时，切忌直接套用求导法则，必须使用导数定义去绝对值后计算极限。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,45 @@
+\begin{mistake}{2026-06-17}{01}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([-2, 2]\) 上二阶可导，且 \(|f(x)| \leqslant 1\)，又 \([f(0)]^2 + [f'(0)]^2 = 4\)。证明在 \((-2, 2)\) 内至少存在一点 \(\xi\)，使 \(f''(\xi) + f(\xi) = 0\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(F(x) = f^2(x) + [f'(x)]^2\)。\(F(x)\) 在 \([-2, 2]\) 上可导，求导得
+\[
+F'(x) = 2f'(x)[f(x) + f''(x)]
+\]
+
+在 \([0, 2]\) 上对 \(f(x)\) 使用拉格朗日中值定理，存在 \(c_1 \in (0, 2)\) 使得：
+\[
+f'(c_1) = \frac{f(2) - f(0)}{2}
+\]
+因为 \(|f(x)| \leqslant 1\)，故 \(|f'(c_1)| \leqslant \frac{1+1}{2} = 1\)，从而 \(F(c_1) = f^2(c_1) + [f'(c_1)]^2 \leqslant 2\)。
+
+同理，在 \([-2, 0]\) 上对 \(f(x)\) 使用拉格朗日中值定理，存在 \(c_2 \in (-2, 0)\) 使得：
+\[
+f'(c_2) = \frac{f(0) - f(-2)}{2}
+\]
+同理有 \(F(c_2) \leqslant 2\)。
+
+已知 \(F(0) = 4\)，所以在区间 \([c_2, c_1]\) 上，\(F(x)\) 必在内部取得最大值。设最大值点为 \(\xi \in (c_2, c_1)\)，根据费马引理，知 \(F'(\xi) = 0\)，即：
+\[
+2f'(\xi)[f(\xi) + f''(\xi)] = 0
+\]
+
+若 \(f'(\xi) = 0\)，则 \(F(\xi) = f^2(\xi) \leqslant 1\)。但 \(\xi\) 为最大值点，应有 \(F(\xi) \geqslant F(0) = 4\)，产生矛盾。因此 \(f'(\xi) \neq 0\)。
+
+故必然有：
+\[
+f''(\xi) + f(\xi) = 0
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{辅助函数构造}：遇到 \(f''(x) + f(x) = 0\) 证明，常构造“能量函数” \(F(x) = f^2(x) + [f'(x)]^2\)。
+  \item \textbf{函数界限转导数界限}：通过拉格朗日中值定理，将函数值的界 \(|f(x)| \leqslant 1\) 转化为导数的界 \(|f'(c)| \leqslant 1\)。
+  \item \textbf{易错点}：得出极值点处 \(F'(\xi) = 0\) 后，必须利用最大值 \(F(\xi) \geqslant 4\) 反证排除 \(f'(\xi) = 0\) 的可能。
+\end{itemize}}
+
+\end{mistake}

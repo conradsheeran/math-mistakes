@@ -1,0 +1,37 @@
+\begin{mistake}{2026-06-17}{03}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \((-\infty, +\infty)\) 内是连续的奇函数，\(F(x) = \int_0^{|x|} f(t)\text{d}t\)，则下列选项正确的是（  ）。
+A. \(F(x)\) 是不可导的奇函数
+B. \(F(x)\) 是可导的偶函数
+C. \(F(x)\) 是不可导的偶函数
+D. \(F(x)\) 是可导的奇函数
+\end{problemcontent}
+
+\begin{solutioncontent}
+首先判断奇偶性，计算 \(F(-x)\)：
+\[ F(-x) = \int_0^{|-x|} f(t)\text{d}t = \int_0^{|x|} f(t)\text{d}t = F(x) \]
+所以 \(F(x)\) 是偶函数，排除选项 A 和 D。
+
+接着讨论可导性。当 \(x \neq 0\) 时，利用链式法则求导：
+\[ F'(x) = f(|x|) \cdot (|x|)' = f(|x|) \cdot \frac{x}{|x|} \]
+由于 \(f(x)\) 是奇函数：
+当 \(x > 0\) 时，\(|x|=x\)，有 \(F'(x) = f(x) \cdot 1 = f(x)\)；
+当 \(x < 0\) 时，\(|x|=-x\)，有 \(F'(x) = f(-x) \cdot (-1) = -f(x) \cdot (-1) = f(x)\)。
+可见，只要 \(x \neq 0\)，始终有 \(F'(x) = f(x)\)。
+
+最后讨论 \(x = 0\) 处。因为 \(f(x)\) 是定义在 \((-\infty, +\infty)\) 上的连续奇函数，必有 \(f(0) = 0\)。
+由于 \(F(x)\) 在 \(x=0\) 处连续，且去心邻域内的导数极限为：
+\[ \lim_{x \to 0} F'(x) = \lim_{x \to 0} f(x) = f(0) = 0 \]
+由导数极限定理，\(F(x)\) 在 \(x=0\) 处可导，且 \(F'(0) = 0\)。
+综上，\(F(x)\) 在 \((-\infty, +\infty)\) 内处处可导。正确答案为 B。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：奇偶性定义；导数极限定理（若函数在某点连续，且去心邻域内导数极限存在，则该点可导）。
+  \item \textbf{易错点}：看到积分上限带 \(|x|\) 误认为必出现不可导的尖点，未考虑连续奇函数必过原点 \(f(0)=0\) 将左右导数抵消的情形。
+  \item \textbf{关联知识}：含有绝对值的复合函数求导公式 \( (|x|)' = \frac{x}{|x|} \quad (x \neq 0) \)。
+\end{itemize}}
+
+\end{mistake}

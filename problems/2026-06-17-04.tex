@@ -1,0 +1,47 @@
+\begin{mistake}{2026-06-17}{04}
+
+\begin{problemcontent}
+下列结论正确的是（ ）
+
+① 若 \(f(x)\) 在 \(x=a\) 处连续，且 \(\lim_{x\to 0} \frac{f(a+x^3)-f(a)}{x^2}\) 存在，则 \(f'(a)\) 存在；
+
+② 若 \(\lim_{n\to\infty} n\left[ f(a+\frac{1}{n}) - f(a) \right]\) （\(n\)为正整数）存在，则 \(f'(a)\) 存在；
+
+③ 若 \(f(x)=(x-a)\varphi(x)\)，其中 \(\varphi(x)\) 在 \(x=a\) 处连续，则 \(f'(a)\) 存在；
+
+④ 存在 \(\delta>0\)，对 \(\forall x \in (a-\delta, a+\delta)\)，有 \(|f(x)| \le L|x-a|^\alpha\)，其中 \(L>0, \alpha>1\)为常数，则 \(f'(a)\) 存在。
+
+A. ①② \quad B. ②③ \quad C. ②④ \quad D. ③④
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：D。
+
+判断导数是否存在，需验证导数定义的极限 \(\lim_{x\to a} \frac{f(x)-f(a)}{x-a}\) 是否存在。
+
+\textbf{分析①}：错误。令反例 \(f(x)=|x-a|\)，其在 \(x=a\) 处连续且不可导。代入极限式：
+\[ \lim_{x\to 0} \frac{|a+x^3-a|-0}{x^2} = \lim_{x\to 0} \frac{|x|^3}{x^2} = \lim_{x\to 0} |x| = 0 \]
+极限存在但导数不存在，故命题不成立。
+
+\textbf{分析②}：错误。同样令 \(f(x)=|x-a|\)，由于正整数 \(n>0\)，代入得：
+\[ \lim_{n\to\infty} n\left( \left|a+\frac{1}{n}-a\right|-0 \right) = \lim_{n\to\infty} n \cdot \frac{1}{n} = 1 \]
+数列的离散、单侧趋近极限存在，无法推导出任意连续双侧极限存在。
+
+\textbf{分析③}：正确。由题意知 \(f(a) = (a-a)\varphi(a) = 0\)。由导数定义：
+\[ f'(a) = \lim_{x\to a} \frac{f(x)-f(a)}{x-a} = \lim_{x\to a} \frac{(x-a)\varphi(x)-0}{x-a} = \lim_{x\to a} \varphi(x) \]
+因 \(\varphi(x)\) 在 \(x=a\) 处连续，该极限等于 \(\varphi(a)\)，故导数存在。
+
+\textbf{分析④}：正确。先令 \(x=a\)，由不等式知 \(|f(a)| \le 0 \implies f(a)=0\)。再考察导数定义的差商绝对值：
+\[ \left| \frac{f(x)-f(a)}{x-a} \right| = \frac{|f(x)|}{|x-a|} \le \frac{L|x-a|^\alpha}{|x-a|} = L|x-a|^{\alpha-1} \]
+因 \(\alpha>1\)，当 \(x\to a\) 时，\(\alpha-1>0 \implies L|x-a|^{\alpha-1} \to 0\)。由夹逼定理得 \(\lim_{x\to a} \frac{f(x)-f(a)}{x-a} = 0\)，即 \(f'(a)=0\)，导数存在。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心概念}：导数 \(f'(a)\) 存在的充要条件是增量 \(\Delta x \to 0\) 时，差商的极限存在。此极限趋近必须是\textbf{任意的、双侧的、连续的}。
+  \item \textbf{反例构造}：遇到“特定变形路径极限存在 \(\implies\) 导数存在”的判断题，首选绝对值函数 \(f(x)=|x-a|\) 测试。
+  \item \textbf{易错点}：混淆数列极限（离散且往往单侧趋近，如 \(1/n\)）与函数连续极限。选项②若改为 \(\lim_{x \to \infty} x[f(a+1/x)-f(a)]\)（双侧且连续）则能推导出导数存在。
+  \item \textbf{关联知识}：命题④为高阶无穷小推导数的经典结论；注意若退化为 \(\alpha=1\)，则只能推出差商有界，推不出可导。
+\end{itemize}}
+
+\end{mistake}

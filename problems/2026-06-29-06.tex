@@ -1,0 +1,43 @@
+\begin{mistake}{2026-06-29}{06}
+
+\begin{problemcontent}
+设 \(a > 0\)，计算定积分：
+\[
+\int_0^{2a} x \sqrt{2ax - x^2} \mathrm{d}x
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+对根号内二次式进行配方：
+\[
+2ax - x^2 = -(x^2 - 2ax + a^2 - a^2) = a^2 - (x-a)^2
+\]
+原积分化为：
+\[
+I = \int_0^{2a} x \sqrt{a^2 - (x-a)^2} \mathrm{d}x
+\]
+作平移换元，令 \(t = x - a\)，则 \(x = t + a\)，\(\mathrm{d}x = \mathrm{d}t\)。
+积分限由 \([0, 2a]\) 变为 \([-a, a]\)：
+\[
+I = \int_{-a}^{a} (t + a) \sqrt{a^2 - t^2} \mathrm{d}t
+\]
+展开分为两项积分：
+\[
+I = \int_{-a}^{a} t \sqrt{a^2 - t^2} \mathrm{d}t + a \int_{-a}^{a} \sqrt{a^2 - t^2} \mathrm{d}t
+\]
+第一项被积函数 \(t \sqrt{a^2 - t^2}\) 为奇函数，在对称区间 \([-a, a]\) 上积分为 \(0\)。
+第二项积分 \(\int_{-a}^{a} \sqrt{a^2 - t^2} \mathrm{d}t\) 的几何意义为半径是 \(a\) 的半圆面积，等于 \(\frac{1}{2}\pi a^2\)。
+故：
+\[
+I = 0 + a \cdot \left( \frac{1}{2} \pi a^2 \right) = \frac{\pi}{2} a^3
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：对称区间奇偶性积分性质；半圆面积公式 \(\int_{-a}^{a} \sqrt{a^2 - t^2} \mathrm{d}t = \frac{1}{2}\pi a^2\)。
+  \item \textbf{易错点}：带参数 \(a\) 配方时常数项易算错；不作平移换元直接算计算量极大且易错。
+  \item \textbf{解题技巧}：遇到 \(\sqrt{2ax - x^2}\) 或区间为 \([0, 2a]\) 时，优先配方后作平移换元 \(t = x - a\)，构造 \([-a, a]\) 利用奇偶性及几何意义化简。
+\end{itemize}}
+
+\end{mistake}

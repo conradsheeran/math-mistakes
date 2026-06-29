@@ -1,0 +1,35 @@
+\begin{mistake}{2026-06-29}{05}
+
+\begin{problemcontent}
+计算定积分：
+\[ \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \left[ \cos^2 x + \int_0^x e^{-t^2} dt \right] \sin^2 x \, dx = \_\_\_\_\_ \]
+\end{problemcontent}
+
+\begin{solutioncontent}
+令原积分 \( I = I_1 + I_2 \)，其中：
+\[ I_1 = \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos^2 x \sin^2 x \, dx \]
+\[ I_2 = \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \left( \int_0^x e^{-t^2} dt \right) \sin^2 x \, dx \]
+
+考察 \( I_2 \)：
+因为 \( e^{-t^2} \) 是偶函数，所以其变上限积分 \( \int_0^x e^{-t^2} dt \) 为奇函数。又 \( \sin^2 x \) 是偶函数，奇函数乘偶函数为奇函数。
+由对称区间上奇函数的积分性质，得 \( I_2 = 0 \)。
+
+考察 \( I_1 \)：
+被积函数 \( \cos^2 x \sin^2 x \) 为偶函数，故：
+\[ I_1 = 2 \int_0^{\frac{\pi}{2}} \cos^2 x \sin^2 x \, dx \]
+利用二倍角公式 \( \sin x \cos x = \frac{1}{2}\sin(2x) \)：
+\[ I_1 = 2 \int_0^{\frac{\pi}{2}} \frac{1}{4} \sin^2(2x) \, dx = \frac{1}{2} \int_0^{\frac{\pi}{2}} \sin^2(2x) \, dx \]
+利用降幂公式 \( \sin^2(2x) = \frac{1 - \cos(4x)}{2} \)：
+\[ I_1 = \frac{1}{2} \int_0^{\frac{\pi}{2}} \frac{1 - \cos(4x)}{2} \, dx = \frac{1}{4} \left[ x - \frac{1}{4}\sin(4x) \right]_0^{\frac{\pi}{2}} = \frac{\pi}{8} \]
+
+综上，\( I = I_1 + I_2 = \frac{\pi}{8} \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心定理}：对称区间积分性质（奇函数积分为0）、变限积分的奇偶性（偶函数的原函数从0积起为奇函数）。
+  \item \textbf{易错点}：遇到对称区间 \( [-a, a] \) 且包含无法积出的函数（如 \( e^{-t^2} \)）时，未优先考虑奇偶性而卡壳。
+  \item \textbf{关联知识}：三角函数二倍角公式 \( \sin(2x)=2\sin x\cos x \) 与降幂公式 \( \sin^2 x = \frac{1-\cos(2x)}{2} \)。
+\end{itemize}}
+
+\end{mistake}

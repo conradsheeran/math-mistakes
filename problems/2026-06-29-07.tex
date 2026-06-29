@@ -1,0 +1,26 @@
+\begin{mistake}{2026-06-29}{07}
+
+\begin{problemcontent}
+求极限：
+\[ \lim_{n \to \infty} \frac{1}{n} \left( \sqrt{1 + \cos \frac{\pi}{n}} + \sqrt{1 + \cos \frac{2\pi}{n}} + \dots + \sqrt{1 + \cos \frac{n\pi}{n}} \right) \]
+\end{problemcontent}
+
+\begin{solutioncontent}
+原极限可改写为：
+\[ \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} \sqrt{1 + \cos \left( \frac{i\pi}{n} \right)} \]
+由定积分的定义，设积分区间为 \([0, 1]\)，取 \(x_i = \frac{i}{n}\)，\(\Delta x = \frac{1}{n}\)，将其转化为定积分：
+\[ I = \int_{0}^{1} \sqrt{1 + \cos(\pi x)} \,dx \]
+利用二倍角公式 \(1 + \cos(\pi x) = 2\cos^2\left(\frac{\pi x}{2}\right)\) 化简被积函数：
+\[ I = \int_{0}^{1} \sqrt{2 \cos^2\left(\frac{\pi x}{2}\right)} \,dx = \sqrt{2} \int_{0}^{1} \left| \cos\left(\frac{\pi x}{2}\right) \right| \,dx \]
+由于 \(x \in [0, 1]\)，\(\frac{\pi x}{2} \in \left[0, \frac{\pi}{2}\right]\)，此时 \(\cos\left(\frac{\pi x}{2}\right) \ge 0\)，可以直接去掉绝对值：
+\[ I = \sqrt{2} \int_{0}^{1} \cos\left(\frac{\pi x}{2}\right) \,dx = \sqrt{2} \left[ \frac{2}{\pi} \sin\left(\frac{\pi x}{2}\right) \right]_{0}^{1} = \frac{2\sqrt{2}}{\pi} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：定积分定义 \(\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} f\left(\frac{i}{n}\right) = \int_{0}^{1} f(x) dx\)；降幂公式 \(1 + \cos \theta = 2 \cos^2 \frac{\theta}{2}\)。
+  \item \textbf{易错点1}：\(\sqrt{x^2} = |x|\)，开根号时务必先加绝对值，再根据积分区间判断符号。
+  \item \textbf{易错点2}：积分计算 \(\int \cos(ax)dx = \frac{1}{a}\sin(ax)+C\)，容易漏掉系数 \(\frac{2}{\pi}\)。
+\end{itemize}}
+
+\end{mistake}

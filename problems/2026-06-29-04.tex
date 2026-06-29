@@ -1,0 +1,38 @@
+\begin{mistake}{2026-06-29}{04}
+
+\begin{problemcontent}
+计算不定积分 \(\int \frac{\arcsin x}{x^2} \mathrm{d}x\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(u = \arcsin x\)，\(\mathrm{d}v = \frac{1}{x^2} \mathrm{d}x\)，则 \(\mathrm{d}u = \frac{1}{\sqrt{1-x^2}} \mathrm{d}x\)，\(v = -\frac{1}{x}\)。
+应用分部积分法：
+\[
+\int \frac{\arcsin x}{x^2} \mathrm{d}x = -\frac{\arcsin x}{x} + \int \frac{1}{x\sqrt{1-x^2}} \mathrm{d}x
+\]
+对于剩余积分，采用分子分母同乘 \(x\) 的技巧：
+\[
+\int \frac{x}{x^2\sqrt{1-x^2}} \mathrm{d}x
+\]
+令 \(t = \sqrt{1-x^2}\)，则 \(t^2 = 1 - x^2\)，\(x \mathrm{d}x = -t \mathrm{d}t\)。
+\[
+\int \frac{1}{x\sqrt{1-x^2}} \mathrm{d}x = \int \frac{-t}{(1-t^2)t} \mathrm{d}t = \int \frac{1}{t^2-1} \mathrm{d}t = \frac{1}{2}\ln\left|\frac{t-1}{t+1}\right| + C
+\]
+代回 \(t = \sqrt{1-x^2}\) 并有理化真数化简得：
+\[
+\frac{1}{2}\ln\left|\frac{\sqrt{1-x^2}-1}{\sqrt{1-x^2}+1}\right| = \ln\left|\frac{1-\sqrt{1-x^2}}{x}\right|
+\]
+故最终结果为：
+\[
+\int \frac{\arcsin x}{x^2} \mathrm{d}x = -\frac{\arcsin x}{x} + \ln\left|\frac{1-\sqrt{1-x^2}}{x}\right| + C
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：分部积分 \(\int u \mathrm{d}v = uv - \int v \mathrm{d}u\)；\(\int \frac{1}{t^2-a^2} \mathrm{d}t = \frac{1}{2a}\ln\left|\frac{t-a}{t+a}\right| + C\)
+  \item \textbf{易错点}：求解含 \(\frac{1}{x\sqrt{a^2-x^2}}\) 的无理积分时，分子分母同乘 \(x\) 凑微分（或使用倒代换 \(x=1/t\)）是最佳策略，比三角换元更简便。
+  \item \textbf{关联知识}：对数结果的标准形式化简，需熟练掌握分子分母同乘共轭根式的有理化技巧。
+\end{itemize}}
+
+\end{mistake}

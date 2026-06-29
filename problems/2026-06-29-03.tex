@@ -1,0 +1,40 @@
+\begin{mistake}{2026-06-29}{03}
+
+\begin{problemcontent}
+计算不定积分：
+\[ \int \frac{x^2 e^x}{(x+2)^2} \mathrm{d}x \]
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{解法一（分部积分法）}：
+将分母与 $\mathrm{d}x$ 结合凑微分：
+\[
+\begin{aligned}
+\int \frac{x^2 e^x}{(x+2)^2} \mathrm{d}x &= \int x^2 e^x \mathrm{d}\left(-\frac{1}{x+2}\right) \\
+&= -\frac{x^2 e^x}{x+2} + \int \frac{1}{x+2} \mathrm{d}(x^2 e^x) \\
+&= -\frac{x^2 e^x}{x+2} + \int \frac{1}{x+2} \cdot x e^x (x+2) \mathrm{d}x \\
+&= -\frac{x^2 e^x}{x+2} + \int x e^x \mathrm{d}x \\
+&= -\frac{x^2 e^x}{x+2} + (x-1)e^x + C \\
+&= \frac{x-2}{x+2}e^x + C
+\end{aligned}
+\]
+
+\textbf{解法二（配凑 $e^x[f(x)+f'(x)]$ 模型）}：
+\[
+\begin{aligned}
+\int e^x \frac{x^2}{(x+2)^2} \mathrm{d}x &= \int e^x \frac{(x+2-2)^2}{(x+2)^2} \mathrm{d}x \\
+&= \int e^x \left( 1 - \frac{4}{x+2} + \frac{4}{(x+2)^2} \right) \mathrm{d}x \\
+&= \int e^x \mathrm{d}x + \int e^x \left[ -\frac{4}{x+2} + \left(-\frac{4}{x+2}\right)' \right] \mathrm{d}x \\
+&= e^x - \frac{4e^x}{x+2} + C = \frac{x-2}{x+2}e^x + C
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：分部积分法 \(\int u \mathrm{d}v = uv - \int v \mathrm{d}u\)；或常见积分模型 \(\int e^x[f(x)+f'(x)]\mathrm{d}x = e^xf(x) + C\)。
+  \item \textbf{易错点}：填空题最后漏写积分常数 \(C\)；分母凑微分时负号容易漏掉。
+  \item \textbf{关联知识}：对 \(x^2 e^x\) 求导得到 \(x e^x(x+2)\)，其中提取出的因式 \((x+2)\) 是解题的破局点，恰好能约掉分母。
+\end{itemize}}
+
+\end{mistake}

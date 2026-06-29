@@ -1,0 +1,44 @@
+\begin{mistake}{2026-06-29}{01}
+
+\begin{problemcontent}
+设 \( I_k = \int_0^{k\pi} e^{x^2} \sin x dx \quad (k = 1, 2, 3) \)，则有（ \quad ）
+(A) \( I_1 < I_2 < I_3 \)
+(B) \( I_3 < I_2 < I_1 \)
+(C) \( I_2 < I_3 < I_1 \)
+(D) \( I_2 < I_1 < I_3 \)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：(D)
+
+\textbf{解法一：数形结合（推荐，秒杀法）}
+被积函数 \( f(x) = e^{x^2} \sin x \)，其中 \( \sin x \) 决定符号交替（每隔 \( \pi \) 变号），而 \( e^{x^2} \) 在 \( x > 0 \) 时急剧单调递增，起到“振幅放大器”的作用。
+记第 \( n \) 个半周期 \( [(n-1)\pi, n\pi] \) 上曲线与 \( x \) 轴围成的面积为 \( S_n > 0 \)，显然有 \( S_1 < S_2 < S_3 \)。
+根据定积分的几何意义（代数和）：
+\begin{itemize}
+    \item \( I_1 = S_1 > 0 \)
+    \item \( I_2 = I_1 - S_2 = S_1 - S_2 < 0 \)，故 \( I_2 < I_1 \)
+    \item \( I_3 = I_2 + S_3 = I_1 + (S_3 - S_2) \)，因为 \( S_3 > S_2 \)，故 \( I_3 > I_1 \)
+\end{itemize}
+综上，\( I_2 < I_1 < I_3 \)。
+
+\textbf{解法二：平移换元（严格代数推导）}
+令 \( A_n = \int_{(n-1)\pi}^{n\pi} e^{x^2} \sin x dx \)，作平移换元 \( x = t + (n-1)\pi \)，得：
+\[ A_n = \int_0^{\pi} e^{(t + (n-1)\pi)^2} (-1)^{n-1} \sin t dt \]
+由此可知积分值符号交替。且在 \( t \in (0, \pi) \) 时，\( \sin t > 0 \)，\( e^{(t + (n-1)\pi)^2} \) 随 \( n \) 严格递增，故 \( |A_1| < |A_2| < |A_3| \)。
+\begin{itemize}
+    \item \( I_1 = |A_1| \)
+    \item \( I_2 = |A_1| - |A_2| < 0 \)
+    \item \( I_3 = |A_1| - |A_2| + |A_3| > |A_1| = I_1 \)
+\end{itemize}
+同样得出 \( I_2 < I_1 < I_3 \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：比较分段积分大小时，优先考虑定积分的几何意义，画出大致图像利用“面积的代数和”快速判断。
+  \item \textbf{易错点}：忽略被积函数符号的变化（如 \( (\pi, 2\pi) \) 区间内 \( \sin x < 0 \) ），盲目比较被积函数大小。
+  \item \textbf{关联知识}：平移换元法（统一积分区间）常用于处理三角函数与单调函数乘积的定积分比较与化简。
+\end{itemize}}
+
+\end{mistake}

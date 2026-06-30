@@ -1,0 +1,75 @@
+\begin{mistake}{2026-06-30}{01}
+
+\begin{problemcontent}
+设函数 \(f(x)\) 在 \([0,3]\) 上连续，在 \((0,3)\) 内存在二阶导数，且
+\[
+2f(0)=\int_0^2 f(x)\,dx=f(2)+f(3).
+\]
+证明：
+\begin{enumerate}
+  \item 存在 \(\eta\in(0,2)\)，使得 \(f(\eta)=f(0)\)；
+  \item 存在 \(\xi\in(0,3)\)，使得 \(f'(\xi)=0\)。
+\end{enumerate}
+\end{problemcontent}
+
+\begin{solutioncontent}
+令
+\[
+g(x)=f(x)-f(0).
+\]
+由 \(f(x)\) 在 \([0,3]\) 上连续，知 \(g(x)\) 在 \([0,3]\) 上连续。由题设
+\[
+2f(0)=\int_0^2 f(x)\,dx,
+\]
+又
+\[
+2f(0)=\int_0^2 f(0)\,dx,
+\]
+所以
+\[
+\int_0^2 \bigl[f(x)-f(0)\bigr]dx=0,
+\]
+即
+\[
+\int_0^2 g(x)\,dx=0.
+\]
+
+若在 \((0,2)\) 内不存在 \(\eta\) 使 \(g(\eta)=0\)，则由连续性，\(g(x)\) 在 \((0,2)\) 内只能恒正或恒负。若 \(g(x)>0\)，则
+\[
+\int_0^2 g(x)\,dx>0,
+\]
+矛盾；若 \(g(x)<0\)，则
+\[
+\int_0^2 g(x)\,dx<0,
+\]
+也矛盾。因此存在 \(\eta\in(0,2)\)，使得
+\[
+g(\eta)=0,
+\]
+即
+\[
+f(\eta)=f(0).
+\]
+
+因为 \(f(x)\) 在 \([0,\eta]\) 上连续，在 \((0,\eta)\) 内可导，且
+\[
+f(0)=f(\eta),
+\]
+由罗尔定理，存在 \(\xi\in(0,\eta)\)，使得
+\[
+f'(\xi)=0.
+\]
+又 \(0<\eta<2<3\)，故 \(\xi\in(0,3)\)。因此
+\[
+\exists\,\eta\in(0,2),\ f(\eta)=f(0),\qquad \exists\,\xi\in(0,3),\ f'(\xi)=0.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若连续函数 \(g\) 在区间内不取零，则不能变号；若 \(\int_a^b g(x)\,dx=0\)，则 \(g\) 不能在区间内恒正或恒负。罗尔定理：连续、可导且端点函数值相等，则存在 \(\xi\) 使 \(f'(\xi)=0\)。
+  \item \textbf{易错点}：不能只用积分中值定理得到闭区间上的点就结束，题目要求 \(\eta\in(0,2)\)，需排除端点并证明开区间内存在零点。
+  \item \textbf{关联知识}：由 \(2f(0)=\int_0^2 f(x)\,dx\) 联想到 \(2f(0)=\int_0^2 f(0)\,dx\)，从而构造 \(\int_0^2 [f(x)-f(0)]\,dx=0\)。
+\end{itemize}}
+
+\end{mistake}

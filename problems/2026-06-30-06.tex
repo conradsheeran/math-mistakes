@@ -1,0 +1,71 @@
+\begin{mistake}{2026-06-30}{06}
+
+\begin{problemcontent}
+设函数 \(f(x)\) 在区间 \([0,1]\) 上可导，且 \(|f'(x)|<M\)，证明：
+\[
+\left|\int_0^1 f(x)\,dx-\frac1n\sum_{k=1}^n f\left(\frac{k}{n}\right)\right|\le \frac{M}{2n}.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+将区间 \([0,1]\) 等分为 \(n\) 段：
+\[
+[0,1]=\bigcup_{k=1}^n \left[\frac{k-1}{n},\frac{k}{n}\right].
+\]
+于是
+\[
+\int_0^1 f(x)\,dx
+=\sum_{k=1}^n \int_{\frac{k-1}{n}}^{\frac{k}{n}} f(x)\,dx.
+\]
+又因为 \(f\left(\frac{k}{n}\right)\) 对积分变量 \(x\) 是常数，且小区间长度为 \(\frac1n\)，所以
+\[
+\frac1n\sum_{k=1}^n f\left(\frac{k}{n}\right)
+=\sum_{k=1}^n \int_{\frac{k-1}{n}}^{\frac{k}{n}} f\left(\frac{k}{n}\right)\,dx.
+\]
+两式相减得
+\[
+\int_0^1 f(x)\,dx-\frac1n\sum_{k=1}^n f\left(\frac{k}{n}\right)
+=\sum_{k=1}^n \int_{\frac{k-1}{n}}^{\frac{k}{n}}\left[f(x)-f\left(\frac{k}{n}\right)\right]dx.
+\]
+因此由积分不等式 \(\left|\int g\right|\le \int |g|\)，有
+\[
+\left|\int_0^1 f(x)\,dx-\frac1n\sum_{k=1}^n f\left(\frac{k}{n}\right)\right|
+\le
+\sum_{k=1}^n \int_{\frac{k-1}{n}}^{\frac{k}{n}}\left|f(x)-f\left(\frac{k}{n}\right)\right|dx.
+\]
+对 \(x\in\left[\frac{k-1}{n},\frac{k}{n}\right]\)，由拉格朗日中值定理，存在 \(\xi\) 介于 \(x\) 与 \(\frac{k}{n}\) 之间，使得
+\[
+f(x)-f\left(\frac{k}{n}\right)=f'(\xi)\left(x-\frac{k}{n}\right).
+\]
+由 \(|f'(x)|<M\)，得
+\[
+\left|f(x)-f\left(\frac{k}{n}\right)\right|
+\le M\left|x-\frac{k}{n}\right|.
+\]
+又在该小区间内 \(x\le \frac{k}{n}\)，故
+\[
+\left|x-\frac{k}{n}\right|=\frac{k}{n}-x.
+\]
+所以
+\[
+\begin{aligned}
+\left|\int_0^1 f(x)\,dx-\frac1n\sum_{k=1}^n f\left(\frac{k}{n}\right)\right|
+&\le M\sum_{k=1}^n \int_{\frac{k-1}{n}}^{\frac{k}{n}}\left(\frac{k}{n}-x\right)dx \\
+&=M\sum_{k=1}^n \frac{1}{2n^2} \\
+&=\frac{M}{2n}.
+\end{aligned}
+\]
+故
+\[
+\left|\int_0^1 f(x)\,dx-\frac1n\sum_{k=1}^n f\left(\frac{k}{n}\right)\right|\le \frac{M}{2n}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：拉格朗日中值定理推出导数有界时 \(|f(x)-f(y)|\le M|x-y|\)，常用于估计函数值差与黎曼和误差。
+  \item \textbf{易错点}：要把 \(\frac1n f\left(\frac{k}{n}\right)\) 写成 \(\int_{\frac{k-1}{n}}^{\frac{k}{n}} f\left(\frac{k}{n}\right)\,dx\)，再逐段比较。
+  \item \textbf{关联知识}：右端点黎曼和误差估计通常先分割区间，再用 \(\left|\int g\right|\le \int |g|\) 和导数上界控制误差。
+\end{itemize}}
+
+\end{mistake}

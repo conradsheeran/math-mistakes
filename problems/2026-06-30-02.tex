@@ -1,0 +1,76 @@
+\begin{mistake}{2026-06-30}{02}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([0,1]\) 上连续，在 \((0,1)\) 内可导，且满足
+\[
+f(1)=k\int_0^{1/k}xe^{1-x}f(x)\,dx,\qquad k>1.
+\]
+证明至少存在一点 \(\xi\in(0,1)\)，使得
+\[
+f'(\xi)=\left(1-\xi^{-1}\right)f(\xi).
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+令
+\[
+F(x)=xe^{-x}f(x).
+\]
+因为 \(f(x)\) 在 \([0,1]\) 上连续，在 \((0,1)\) 内可导，所以 \(F(x)\) 在 \([0,1]\) 上连续，在 \((0,1)\) 内可导。
+
+由题设两边乘以 \(e^{-1}\)，得
+\[
+e^{-1}f(1)=k\int_0^{1/k}xe^{-x}f(x)\,dx.
+\]
+又
+\[
+F(1)=e^{-1}f(1),
+\]
+故
+\[
+F(1)=k\int_0^{1/k}F(x)\,dx.
+\]
+
+由于 \(k>1\)，有 \(0<1/k<1\)。由积分中值定理，存在 \(\eta\in[0,1/k]\)，使得
+\[
+\int_0^{1/k}F(x)\,dx=F(\eta)\cdot \frac1k.
+\]
+于是
+\[
+F(1)=k\int_0^{1/k}F(x)\,dx=F(\eta).
+\]
+其中 \(\eta\le 1/k<1\)，所以 \(F(x)\) 在 \([\eta,1]\) 上连续，在 \((\eta,1)\) 内可导，且 \(F(\eta)=F(1)\)。由罗尔定理，存在 \(\xi\in(\eta,1)\subset(0,1)\)，使得
+\[
+F'(\xi)=0.
+\]
+
+计算导数：
+\[
+F'(x)=\left(xe^{-x}f(x)\right)'=e^{-x}\left[xf'(x)+(1-x)f(x)\right].
+\]
+代入 \(x=\xi\)，由 \(F'(\xi)=0\)，得
+\[
+e^{-\xi}\left[\xi f'(\xi)+(1-\xi)f(\xi)\right]=0.
+\]
+由于 \(e^{-\xi}\ne0\)，所以
+\[
+\xi f'(\xi)+(1-\xi)f(\xi)=0.
+\]
+又 \(\xi\in(0,1)\)，可除以 \(\xi\)，得到
+\[
+f'(\xi)=\frac{\xi-1}{\xi}f(\xi)=\left(1-\xi^{-1}\right)f(\xi).
+\]
+故至少存在 \(\xi\in(0,1)\)，使得
+\[
+f'(\xi)=\left(1-\xi^{-1}\right)f(\xi).
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：积分中值定理可将 \(\int_a^b F(x)\,dx\) 转化为 \(F(\eta)(b-a)\)；罗尔定理用于由 \(F(a)=F(b)\) 推出存在 \(F'(\xi)=0\)。
+  \item \textbf{易错点}：不能直接对题设积分式求导；应由目标式反推辅助函数 \(F(x)=xe^{-x}f(x)\)。
+  \item \textbf{关联知识}：目标式 \(f'(\xi)=(1-\xi^{-1})f(\xi)\) 等价于 \(\xi f'(\xi)+(1-\xi)f(\xi)=0\)，这正是 \((xe^{-x}f(x))'=0\) 的展开形式。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,114 @@
+\begin{mistake}{2026-06-30}{04}
+\begin{problemcontent}
+设函数 \(f(x)\) 在 \([0,2\pi]\) 上具有二阶连续导数，且 \(f''(x)\ge 0\)。证明：
+\[
+\int_0^{2\pi} f(x)\cos x\,dx\ge 0.
+\]
+\end{problemcontent}
+\begin{solutioncontent}
+记
+\[
+I=\int_0^{2\pi} f(x)\cos x\,dx.
+\]
+
+方法一：两次分部积分法。
+
+第一次分部积分，取 \(u=f(x)\)，\(dv=\cos x\,dx\)，则 \(du=f'(x)\,dx\)，\(v=\sin x\)，故
+\[
+\begin{aligned}
+I
+&=f(x)\sin x\big|_0^{2\pi}-\int_0^{2\pi}f'(x)\sin x\,dx \\
+&=-\int_0^{2\pi}f'(x)\sin x\,dx,
+\end{aligned}
+\]
+其中利用了 \(\sin0=\sin2\pi=0\)。
+
+第二次分部积分，对 \(-\int_0^{2\pi}f'(x)\sin x\,dx\)，取 \(u=f'(x)\)，\(dv=\sin x\,dx\)，则 \(du=f''(x)\,dx\)，\(v=-\cos x\)，于是
+\[
+\begin{aligned}
+I
+&=f'(x)\cos x\big|_0^{2\pi}-\int_0^{2\pi}f''(x)\cos x\,dx \\
+&=f'(2\pi)-f'(0)-\int_0^{2\pi}f''(x)\cos x\,dx.
+\end{aligned}
+\]
+由牛顿--莱布尼茨公式，
+\[
+ f'(2\pi)-f'(0)=\int_0^{2\pi}f''(x)\,dx.
+\]
+因此
+\[
+\begin{aligned}
+I
+&=\int_0^{2\pi}f''(x)\,dx-\int_0^{2\pi}f''(x)\cos x\,dx \\
+&=\int_0^{2\pi}f''(x)(1-\cos x)\,dx.
+\end{aligned}
+\]
+因为 \(f''(x)\ge 0\)，且 \(1-\cos x\ge 0\)，所以
+\[
+I=\int_0^{2\pi}f''(x)(1-\cos x)\,dx\ge 0.
+\]
+故
+\[
+\int_0^{2\pi} f(x)\cos x\,dx\ge 0.
+\]
+
+方法二：对称化与单调性法。
+
+将积分拆分并对第二段作换元 \(x=2\pi-t\)，得
+\[
+\begin{aligned}
+I
+&=\int_0^\pi f(x)\cos x\,dx+\int_\pi^{2\pi}f(x)\cos x\,dx \\
+&=\int_0^\pi \bigl[f(t)+f(2\pi-t)\bigr]\cos t\,dt.
+\end{aligned}
+\]
+令
+\[
+ g(t)=f(t)+f(2\pi-t),\qquad 0\le t\le \pi.
+\]
+则
+\[
+ g'(t)=f'(t)-f'(2\pi-t),
+\]
+且
+\[
+ g''(t)=f''(t)+f''(2\pi-t)\ge 0.
+\]
+所以 \(g'(t)\) 在 \([0,\pi]\) 上单调递增。又
+\[
+ g'(\pi)=f'(\pi)-f'(\pi)=0,
+\]
+故对 \(0\le t\le\pi\)，有 \(g'(t)\le 0\)，即 \(g(t)\) 在 \([0,\pi]\) 上单调递减。
+
+由于
+\[
+\int_0^\pi \cos t\,dt=0,
+\]
+所以
+\[
+\begin{aligned}
+I
+&=\int_0^\pi g(t)\cos t\,dt \\
+&=\int_0^\pi \left[g(t)-g\left(\frac\pi2\right)\right]\cos t\,dt.
+\end{aligned}
+\]
+当 \(0\le t\le\frac\pi2\) 时，\(g(t)-g(\frac\pi2)\ge0\)，且 \(\cos t\ge0\)；当 \(\frac\pi2\le t\le\pi\) 时，\(g(t)-g(\frac\pi2)\le0\)，且 \(\cos t\le0\)。因此被积函数
+\[
+\left[g(t)-g\left(\frac\pi2\right)\right]\cos t\ge0,
+\]
+从而
+\[
+I\ge0.
+\]
+即
+\[
+\int_0^{2\pi} f(x)\cos x\,dx\ge 0.
+\]
+\end{solutioncontent}
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：分部积分 \(\int_a^b u\,dv=uv\big|_a^b-\int_a^b v\,du\)；牛顿--莱布尼茨公式 \(\int_a^b F'(x)\,dx=F(b)-F(a)\)。
+  \item \textbf{易错点}：两次分部积分的符号容易错，尤其 \(\int \sin x\,dx=-\cos x\)；边界项要用 \(\sin0=\sin2\pi=0\)、\(\cos0=\cos2\pi=1\)。
+  \item \textbf{关联知识}：已知 \(f''(x)\ge0\) 时，常通过分部积分把含 \(f(x)\) 的积分转化为含 \(f''(x)\) 的积分；也可利用对称化构造单调函数处理三角函数变号积分。
+\end{itemize}}
+\end{mistake}

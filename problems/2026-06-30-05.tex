@@ -1,0 +1,110 @@
+\begin{mistake}{2026-06-30}{05}
+
+\begin{problemcontent}
+设函数 \(f(x)\) 在 \([-l,l]\) 上连续，在 \(x=0\) 处可导，且 \(f'(0)\ne 0\)。
+
+\(1\) 证明：对任意 \(x\in(0,l)\)，至少存在 \(\theta\in(0,1)\)，使得
+\[
+\int_0^x f(t)\,dt+\int_0^{-x}f(t)\,dt
+=x\bigl[f(\theta x)-f(-\theta x)\bigr].
+\]
+
+\(2\) 求极限 \(\displaystyle \lim_{x\to0^+}\theta\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+令
+\[
+F(x)=\int_0^x f(t)\,dt+\int_0^{-x}f(t)\,dt.
+\]
+由于 \(f\) 连续，\(F\) 在相应区间上可导，且
+\[
+F'(x)=f(x)-f(-x),
+\]
+其中第二项使用链式法则：
+\[
+\frac{d}{dx}\int_0^{-x}f(t)\,dt=-f(-x).
+\]
+又 \(F(0)=0\)。对 \(F\) 在 \([0,x]\) 上用拉格朗日中值定理，存在 \(\xi\in(0,x)\)，使
+\[
+F(x)-F(0)=xF'(\xi).
+\]
+令 \(\xi=\theta x\)，则 \(\theta\in(0,1)\)，从而
+\[
+\int_0^x f(t)\,dt+\int_0^{-x}f(t)\,dt
+=x\bigl[f(\theta x)-f(-\theta x)\bigr].
+\]
+
+下面求 \(\lim_{x\to0^+}\theta\)。由上式得
+\[
+\frac{\int_0^x f(t)\,dt+\int_0^{-x}f(t)\,dt}{2x^2}
+=
+\frac{f(\theta x)-f(-\theta x)}{2\theta x}\cdot \theta.
+\]
+记
+\[
+A(x)=\frac{\int_0^x f(t)\,dt+\int_0^{-x}f(t)\,dt}{2x^2},
+\qquad
+B(x)=\frac{f(\theta x)-f(-\theta x)}{2\theta x}.
+\]
+则
+\[
+A(x)=B(x)\theta.
+\]
+
+先求 \(A(x)\)。由洛必达法则，
+\[
+\lim_{x\to0^+}A(x)
+=
+\lim_{x\to0^+}\frac{f(x)-f(-x)}{4x}.
+\]
+又
+\[
+\frac{f(x)-f(-x)}{4x}
+=\frac14\left[\frac{f(x)-f(0)}{x}+\frac{f(0)-f(-x)}{x}\right].
+\]
+因为 \(f\) 在 \(0\) 处可导，所以
+\[
+\lim_{x\to0^+}A(x)=\frac14\bigl[f'(0)+f'(0)\bigr]=\frac12f'(0).
+\]
+
+再求 \(B(x)\)。令 \(y=\theta x\)。由于 \(0<\theta<1\)，当 \(x\to0^+\) 时，\(y\to0^+\)。因此
+\[
+\lim_{x\to0^+}B(x)
+=
+\lim_{y\to0^+}\frac{f(y)-f(-y)}{2y}.
+\]
+并且
+\[
+\frac{f(y)-f(-y)}{2y}
+=\frac12\left[\frac{f(y)-f(0)}{y}+\frac{f(0)-f(-y)}{y}\right]
+\to f'(0).
+\]
+故
+\[
+\lim_{x\to0^+}B(x)=f'(0)\ne0.
+\]
+由 \(A(x)=B(x)\theta\)，可得
+\[
+\theta=\frac{A(x)}{B(x)}.
+\]
+于是
+\[
+\lim_{x\to0^+}\theta
+=\frac{\frac12f'(0)}{f'(0)}
+=\frac12.
+\]
+因此
+\[
+\boxed{\lim_{x\to0^+}\theta=\frac12}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：拉格朗日中值定理：\(F(x)-F(0)=xF'(\xi)\)，其中 \(\xi\in(0,x)\)；变上限积分求导需结合链式法则。
+  \item \textbf{易错点}：不能在尚未证明 \(\lim\theta\) 存在时直接使用乘积极限定理写成 \(\lim(B\theta)=\lim B\cdot\lim\theta\)。严谨做法是先证 \(A(x)\to \frac12f'(0)\)、\(B(x)\to f'(0)\ne0\)，再由 \(\theta=A/B\) 得极限。
+  \item \textbf{关联知识}：若 \(f\) 在 \(0\) 处可导，则 \(\displaystyle \lim_{y\to0^+}\frac{f(y)-f(-y)}{2y}=f'(0)\)。
+\end{itemize}}
+
+\end{mistake}

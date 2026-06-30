@@ -1,0 +1,53 @@
+\begin{mistake}{2026-06-30}{03}
+
+\begin{problemcontent}
+设函数 \(f(x)\) 在 \([0,1]\) 上有连续一阶导数，且 \(f(0)=0\)。试证明：至少存在一点 \(\xi\in[0,1]\)，使得
+\[
+f'(\xi)=2\int_0^1 f(x)\,dx.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+由 \(f(0)=0\) 及牛顿--莱布尼茨公式，有
+\[
+f(x)=f(x)-f(0)=\int_0^x f'(t)\,dt.
+\]
+于是
+\[
+\int_0^1 f(x)\,dx
+=\int_0^1\left(\int_0^x f'(t)\,dt\right)dx.
+\]
+对积分区域 \(0\le t\le x\le 1\) 交换积分次序，得
+\[
+\int_0^1\left(\int_0^x f'(t)\,dt\right)dx
+=\int_0^1\left(\int_t^1 f'(t)\,dx\right)dt
+=\int_0^1(1-t)f'(t)\,dt.
+\]
+因为 \(f'\) 在 \([0,1]\) 上连续，且 \(1-t\ge 0\)，由加权积分中值定理，存在 \(\xi\in[0,1]\)，使
+\[
+\int_0^1(1-t)f'(t)\,dt
+=f'(\xi)\int_0^1(1-t)\,dt.
+\]
+又
+\[
+\int_0^1(1-t)\,dt=\frac12,
+\]
+所以
+\[
+\int_0^1 f(x)\,dx=\frac12 f'(\xi),
+\]
+即
+\[
+f'(\xi)=2\int_0^1 f(x)\,dx.
+\]
+故命题得证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：由 \(f(0)=0\) 得 \(f(x)=\int_0^x f'(t)\,dt\)；加权积分中值定理：若 \(\varphi\) 连续、\(g\ge0\)，则 \(\int_a^b\varphi g=\varphi(\xi)\int_a^b g\)。
+  \item \textbf{易错点}：交换积分次序时，区域 \(0\le t\le x\le1\) 应改写为 \(0\le t\le1,\ t\le x\le1\)，从而得到权函数 \(1-t\)。
+  \item \textbf{关联知识}：本题也可用构造函数结合罗尔定理，或用拉格朗日中值定理与导数最大最小值夹逼证明。
+\end{itemize}}
+
+\end{mistake}

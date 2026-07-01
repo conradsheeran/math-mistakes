@@ -1,0 +1,48 @@
+\begin{mistake}{2026-07-01}{03}
+\subsection*{题目}
+求 $\displaystyle\int \frac{dx}{x^4(1+x^2)}$
+
+\subsection*{错误 / 卡点}
+第一次做时没想到使用\textbf{倒代换 $x=\dfrac{1}{t}$}。只依赖凑项技巧，遇到分母 $x$ 幂次高的情形没有备选方法。
+
+\subsection*{正确解法一：拆项（凑 $1=(1+x^2)-x^2$）}
+\[
+\frac{1}{x^4(1+x^2)}=\frac{(1+x^2)-x^2}{x^4(1+x^2)}=\frac{1}{x^4}-\frac{1}{x^2(1+x^2)}
+\]
+再拆一次：
+\[
+\frac{1}{x^2(1+x^2)}=\frac{1}{x^2}-\frac{1}{1+x^2}
+\]
+合并：
+\[
+\frac{1}{x^4(1+x^2)}=\frac{1}{x^4}-\frac{1}{x^2}+\frac{1}{1+x^2}
+\]
+逐项积分：
+\[
+\int \frac{dx}{x^4(1+x^2)}=-\frac{1}{3x^3}+\frac{1}{x}+\arctan x+C
+\]
+
+\subsection*{正确解法二：倒代换 $x=\dfrac{1}{t}$}
+$dx=-\dfrac{1}{t^2}dt$，$x^4=\dfrac{1}{t^4}$，$1+x^2=\dfrac{t^2+1}{t^2}$，代入化为
+\[
+-\int \frac{t^4}{t^2+1}\,dt
+\]
+用多项式除法 $\dfrac{t^4}{t^2+1}=t^2-1+\dfrac{1}{t^2+1}$，得
+\[
+-\frac{t^3}{3}+t-\arctan t+C
+\]
+回代 $t=\dfrac{1}{x}$：
+\[
+-\frac{1}{3x^3}+\frac{1}{x}-\arctan\frac{1}{x}+C
+\]
+利用 $-\arctan\dfrac1x=\arctan x-\dfrac{\pi}{2}$（常数并入 $C$），与解法一一致。
+
+\subsection*{方法总结：何时用倒代换}
+触发条件——\textbf{分母 $x^n$ 幂次高、分子次数低}（形如 $\int \dfrac{dx}{x^n\cdot(\text{多项式})}$）。
+\begin{itemize}
+\item 判断法：看 $\deg Q-\deg P$，差值很大时倒代换合适（本题 $6-0=6$）。
+\item 倒代换把高幂次翻到分子上，化成假分式，用多项式除法机械处理。
+\item $dx=-\dfrac{1}{t^2}dt$ 自带 $\dfrac{1}{t^2}$，常能与分母约掉。
+\item 使用顺序：先试凑微分/拆项，做不出且分母 $x$ 幂次高时再上倒代换。
+\end{itemize}
+\end{mistake}

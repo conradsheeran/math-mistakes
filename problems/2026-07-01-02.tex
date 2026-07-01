@@ -1,0 +1,40 @@
+\begin{mistake}{2026-07-01}{02}
+\subsection*{题目}
+求不定积分
+\[
+\int \frac{\sin x}{\sin x + \cos x}\,dx
+\]
+
+\subsection*{知识点}
+三角有理式积分；配对（构造对偶积分）法；利用「分母的导数」凑分子。
+
+\subsection*{解法}
+设
+\[
+I = \int \frac{\sin x}{\sin x + \cos x}\,dx,\qquad
+J = \int \frac{\cos x}{\sin x + \cos x}\,dx.
+\]
+
+相加：
+\[
+I + J = \int \frac{\sin x + \cos x}{\sin x + \cos x}\,dx = \int 1\,dx = x.
+\]
+
+相减（$J-I$），注意分子 $\cos x-\sin x$ 恰为分母 $(\sin x+\cos x)$ 的导数：
+\[
+J - I = \int \frac{\cos x - \sin x}{\sin x + \cos x}\,dx = \ln|\sin x + \cos x|.
+\]
+
+联立消去 $J$：
+\[
+2I = (I+J) - (J-I) = x - \ln|\sin x + \cos x|.
+\]
+
+\subsection*{答案}
+\[
+I = \frac{1}{2}\Big(x - \ln|\sin x + \cos x|\Big) + C.
+\]
+
+\subsection*{易错点 / 关键技巧}
+当分母为 $\sin x + \cos x$（或 $a\sin x + b\cos x$）时，用「分母」与「分母的导数」作为基，把分子拆成二者的线性组合；再通过构造对偶积分 $I,J$ 联立求解，避免万能代换的繁琐计算。
+\end{mistake}

@@ -1,0 +1,62 @@
+\begin{mistake}{2026-07-15}{08}
+
+\begin{problemcontent}
+设积分
+\[
+\int_0^{+\infty}\frac{x^{1-p}\arctan x}{2+x^p}\,dx\quad (p>0)
+\]
+收敛，则 \(p\) 的取值范围为：
+
+A. \(1<p<3\)；\quad B. \(2<p<3\)；\quad C. \(1\le p<2\)；\quad D. \(0<p<3\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+记
+\[
+f(x)=\frac{x^{1-p}\arctan x}{2+x^p}.
+\]
+这是区间 \((0,+\infty)\) 上的反常积分，需要分别讨论 \(x\to 0^+\) 与 \(x\to +\infty\) 两端。
+
+当 \(x\to 0^+\) 时，\(\arctan x\sim x\)，且 \(2+x^p\sim 2\)，所以
+\[
+f(x)\sim \frac{x^{1-p}\cdot x}{2}=\frac12 x^{2-p}.
+\]
+由
+\[
+\int_0^a x^\alpha\,dx \text{ 收敛}\iff \alpha>-1,
+\]
+得
+\[
+2-p>-1 \iff p<3.
+\]
+因此下限 \(0\) 附近收敛要求 \(p<3\)。
+
+当 \(x\to +\infty\) 时，\(\arctan x\to \frac\pi2\)，且 \(2+x^p\sim x^p\)，所以
+\[
+f(x)\sim \frac{x^{1-p}\cdot \frac\pi2}{x^p}=\frac\pi2 x^{1-2p}.
+\]
+由
+\[
+\int_A^{+\infty}x^\beta\,dx \text{ 收敛}\iff \beta<-1,
+\]
+得
+\[
+1-2p<-1 \iff p>1.
+\]
+因此无穷远处收敛要求 \(p>1\)。
+
+综合两端条件，得到
+\[
+1<p<3.
+\]
+故正确选项为 A。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(\int_0^a x^\alpha\,dx\) 收敛当且仅当 \(\alpha>-1\)；\(\int_A^{+\infty}x^\beta\,dx\) 收敛当且仅当 \(\beta<-1\)。
+  \item \textbf{易错点}：\((0,+\infty)\) 上的反常积分必须同时检查 \(0^+\) 与 \(+\infty\) 两端，不能只看一端。
+  \item \textbf{关联知识}：\(x\to0^+\) 时 \(\arctan x\sim x\)；\(x\to+\infty\) 时 \(\arctan x\to \frac\pi2\)。
+\end{itemize}}
+
+\end{mistake}

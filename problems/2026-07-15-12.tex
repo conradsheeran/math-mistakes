@@ -1,0 +1,74 @@
+\begin{mistake}{2026-07-15}{12}
+
+\begin{problemcontent}
+计算不定积分
+\[
+I=\int \frac{e^{-\sin x}\sin 2x}{\sin^4\left(\frac{\pi}{4}-\frac{x}{2}\right)}\,dx.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+先化简分母。令
+\[
+A=\frac{\pi}{4}-\frac{x}{2},
+\]
+则
+\[
+2A=\frac{\pi}{2}-x.
+\]
+由半角公式
+\[
+\sin^2 A=\frac{1-\cos 2A}{2},
+\]
+得
+\[
+\sin^2\left(\frac{\pi}{4}-\frac{x}{2}\right)
+=\frac{1-\cos\left(\frac{\pi}{2}-x\right)}{2}
+=\frac{1-\sin x}{2}.
+\]
+因此
+\[
+\sin^4\left(\frac{\pi}{4}-\frac{x}{2}\right)
+=\left(\frac{1-\sin x}{2}\right)^2
+=\frac{(1-\sin x)^2}{4}.
+\]
+原积分化为
+\[
+I=4\int \frac{e^{-\sin x}\sin 2x}{(1-\sin x)^2}\,dx.
+\]
+利用 \(\sin 2x=2\sin x\cos x\)，有
+\[
+I=8\int \frac{e^{-\sin x}\sin x\cos x}{(1-\sin x)^2}\,dx.
+\]
+令
+\[
+u=\sin x,\qquad du=\cos x\,dx,
+\]
+则
+\[
+I=8\int \frac{e^{-u}u}{(1-u)^2}\,du.
+\]
+注意
+\[
+\frac{d}{du}\left(\frac{e^{-u}}{1-u}\right)
+=\frac{(-e^{-u})(1-u)-e^{-u}(-1)}{(1-u)^2}
+=\frac{ue^{-u}}{(1-u)^2}.
+\]
+所以
+\[
+I=8\cdot \frac{e^{-u}}{1-u}+C.
+\]
+代回 \(u=\sin x\)，得到
+\[
+I=\frac{8e^{-\sin x}}{1-\sin x}+C.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：半角公式 \(\sin^2 A=\frac{1-\cos 2A}{2}\)，以及 \(d(\sin x)=\cos x\,dx\)。
+  \item \textbf{易错点}：\(\sin^2\left(\frac{\pi}{4}-\frac{x}{2}\right)=\frac{1-\sin x}{2}\)，符号不能误写成 \(\frac{1+\sin x}{2}\)。
+  \item \textbf{关联知识}：遇到 \(e^{-\sin x}\)、\(1-\sin x\)、\(\sin 2x\) 同时出现时，常用 \(\sin 2x=2\sin x\cos x\) 凑 \(u=\sin x\)。
+\end{itemize}}
+
+\end{mistake}

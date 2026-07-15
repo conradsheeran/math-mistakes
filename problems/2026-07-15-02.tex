@@ -1,0 +1,61 @@
+\begin{mistake}{2026-07-15}{02}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([a,b]\) 上连续且单调增加，证明：
+\[
+\int_a^b x f(x)\,dx \ge \frac{a+b}{2}\int_a^b f(x)\,dx.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(m=\frac{a+b}{2}\)。原不等式等价于证明
+\[
+\int_a^b (x-m)f(x)\,dx\ge 0.
+\]
+由于
+\[
+\int_a^b (x-m)\,dx=0,
+\]
+故
+\[
+\begin{aligned}
+\int_a^b (x-m)f(x)\,dx
+&=\int_a^b (x-m)f(x)\,dx-f(m)\int_a^b (x-m)\,dx\\
+&=\int_a^b (x-m)\bigl[f(x)-f(m)\bigr] \,dx.
+\end{aligned}
+\]
+当 \(x\in[a,m]\) 时，\(x-m\le 0\)，且由单调增加性有 \(f(x)-f(m)\le 0\)，所以
+\[
+(x-m)\bigl[f(x)-f(m)\bigr]\ge 0.
+\]
+当 \(x\in[m,b]\) 时，\(x-m\ge 0\)，且 \(f(x)-f(m)\ge 0\)，所以
+\[
+(x-m)\bigl[f(x)-f(m)\bigr]\ge 0.
+\]
+因此在整个 \([a,b]\) 上，
+\[
+(x-m)\bigl[f(x)-f(m)\bigr]\ge 0.
+\]
+由定积分保序性，
+\[
+\int_a^b (x-m)\bigl[f(x)-f(m)\bigr] \,dx\ge 0,
+\]
+从而
+\[
+\int_a^b (x-m)f(x)\,dx\ge 0.
+\]
+于是
+\[
+\int_a^b x f(x)\,dx\ge m\int_a^b f(x)\,dx=\frac{a+b}{2}\int_a^b f(x)\,dx.
+\]
+原命题得证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若 \(g(x)\ge 0\)，则 \(\int_a^b g(x)\,dx\ge 0\)；且 \(m=\frac{a+b}{2}\) 时，\(\int_a^b (x-m)\,dx=0\)。
+  \item \textbf{易错点}：不能直接判断 \(x-\frac{a+b}{2}\) 恒非负；应减去 \(f(m)\)，化为 \((x-m)[f(x)-f(m)]\) 后利用同号性。
+  \item \textbf{关联知识}：单调增加函数满足 \(x\le m\Rightarrow f(x)\le f(m)\)，\(x\ge m\Rightarrow f(x)\ge f(m)\)。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,67 @@
+\begin{mistake}{2026-07-15}{09}
+
+\begin{problemcontent}
+已知曲线 \(y=y(x)\) 上任一点 \((x,y)\) 处的切线斜率为
+\[
+\frac{1}{x\sqrt{x^2-1}},
+\]
+且曲线通过点 \((-2,0)\)，求该曲线方程。
+\end{problemcontent}
+
+\begin{solutioncontent}
+由题意，切线斜率即导数，故
+\[
+y'=\frac{dy}{dx}=\frac{1}{x\sqrt{x^2-1}}.
+\]
+两边积分：
+\[
+y=\int \frac{1}{x\sqrt{x^2-1}}\,dx.
+\]
+因曲线经过 \((-2,0)\)，应取定义分支 \(x<-1\)。计算
+\[
+\frac{d}{dx}\arcsin\frac1x
+=\frac{\left(\frac1x\right)'}{\sqrt{1-\left(\frac1x\right)^2}}
+=\frac{-\frac1{x^2}}{\sqrt{1-\left(\frac1x\right)^2}}.
+\]
+又
+\[
+\sqrt{1-\frac1{x^2}}
+=\sqrt{\frac{x^2-1}{x^2}}
+=\frac{\sqrt{x^2-1}}{|x|}.
+\]
+当 \(x<-1\) 时，\(|x|=-x\)，所以
+\[
+\frac{d}{dx}\arcsin\frac1x
+=\frac{-\frac1{x^2}}{\frac{\sqrt{x^2-1}}{-x}}
+=\frac{1}{x\sqrt{x^2-1}}.
+\]
+因此
+\[
+y=\arcsin\frac1x+C.
+\]
+代入 \((-2,0)\)：
+\[
+0=\arcsin\left(-\frac12\right)+C=-\frac{\pi}{6}+C,
+\]
+得
+\[
+C=\frac{\pi}{6}.
+\]
+故曲线方程为
+\[
+y=\arcsin\frac1x+\frac{\pi}{6},\quad x<-1.
+\]
+等价地，也可写为
+\[
+y=-\arccos\frac1x+\frac{2\pi}{3},\quad x<-1.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：切线斜率等于导数，即 \(y'=\frac{dy}{dx}\)；反三角函数求导需结合复合函数求导。
+  \item \textbf{易错点}：\(\sqrt{x^2}=|x|\)，因此 \(\sqrt{1-\frac1{x^2}}=\frac{\sqrt{x^2-1}}{|x|}\)，不能直接把 \(|x|\) 写成 \(x\)。
+  \item \textbf{关联知识}：在 \(x<-1\) 上，\(\frac{d}{dx}\arcsin\frac1x=\frac{1}{x\sqrt{x^2-1}}\)，而 \(\frac{d}{dx}\arccos\frac1x=-\frac{1}{x\sqrt{x^2-1}}\)。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,52 @@
+\begin{mistake}{2026-07-15}{14}
+
+\begin{problemcontent}
+计算极限
+\[
+\lim_{x\to 0}\frac{\displaystyle\int_0^{2x}\left|1-\frac{t}{x}\right|\sin t\,dt}{x^2}.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(t=xu\)，则 \(dt=x\,du\)。当 \(t=0\) 时 \(u=0\)，当 \(t=2x\) 时 \(u=2\)。因此
+\[
+\int_0^{2x}\left|1-\frac{t}{x}\right|\sin t\,dt
+=\int_0^2 |1-u|\sin(xu)\,x\,du.
+\]
+于是
+\[
+\frac{\displaystyle\int_0^{2x}\left|1-\frac{t}{x}\right|\sin t\,dt}{x^2}
+=\int_0^2 |1-u|\frac{\sin(xu)}{x}\,du
+=\int_0^2 u|1-u|\frac{\sin(xu)}{xu}\,du.
+\]
+当 \(x\to 0\) 时，对 \(u\in[0,2]\)，有 \(xu\to 0\)，故
+\[
+\frac{\sin(xu)}{xu}\to 1.
+\]
+所以原极限为
+\[
+\int_0^2 u|1-u|\,du
+=\int_0^1 u(1-u)\,du+\int_1^2 u(u-1)\,du.
+\]
+计算得
+\[
+\int_0^1 u(1-u)\,du=\left[\frac{u^2}{2}-\frac{u^3}{3}\right]_0^1=\frac16,
+\]
+\[
+\int_1^2 u(u-1)\,du=\left[\frac{u^3}{3}-\frac{u^2}{2}\right]_1^2=\frac56.
+\]
+因此
+\[
+\lim_{x\to 0}\frac{\displaystyle\int_0^{2x}\left|1-\frac{t}{x}\right|\sin t\,dt}{x^2}
+=\frac16+\frac56=1.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若积分限和被积函数中同时含有 \(x\)，且出现 \(t/x\)，常令 \(t=xu\) 固定积分区间；并用 \(\sin y\sim y\)，即 \(\lim_{y\to0}\frac{\sin y}{y}=1\)。
+  \item \textbf{易错点}：\(t\in[0,2x]\) 时，\(t/x\) 不趋于 \(0\)，而是在 \([0,2]\) 上变化，不能直接把 \(\left|1-t/x\right|\) 当作常数或小量处理。
+  \item \textbf{关联知识}：绝对值函数需按零点分段，\(|1-u|\) 在 \(u=1\) 处分段：\(0\le u\le1\) 时为 \(1-u\)，\(1\le u\le2\) 时为 \(u-1\)。
+\end{itemize}}
+
+\end{mistake}

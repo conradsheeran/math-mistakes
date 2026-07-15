@@ -1,0 +1,67 @@
+\begin{mistake}{2026-07-15}{10}
+
+\begin{problemcontent}
+已知
+\[
+\int_0^{+\infty}\frac{\sin x}{x}\,dx=\frac{\pi}{2},
+\]
+求
+\[
+I=\int_0^{+\infty}\frac{\sin^2 x}{x^2}\,dx.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+对广义积分先在 \([\varepsilon,R]\) 上分部积分：
+\[
+I_{\varepsilon,R}=\int_{\varepsilon}^{R}\frac{\sin^2 x}{x^2}\,dx.
+\]
+取
+\[
+u=\sin^2 x,\qquad dv=\frac{1}{x^2}\,dx,
+\]
+则
+\[
+du=2\sin x\cos x\,dx=\sin 2x\,dx,\qquad v=-\frac{1}{x}.
+\]
+由分部积分公式得
+\[
+\int_{\varepsilon}^{R}\frac{\sin^2 x}{x^2}\,dx
+=
+\left[-\frac{\sin^2 x}{x}\right]_{\varepsilon}^{R}
++
+\int_{\varepsilon}^{R}\frac{\sin 2x}{x}\,dx.
+\]
+边界项满足
+\[
+\frac{\sin^2 R}{R}\to0\quad(R\to+\infty),
+\qquad
+\frac{\sin^2\varepsilon}{\varepsilon}\sim \varepsilon\to0\quad(\varepsilon\to0^+),
+\]
+故
+\[
+I=\int_0^{+\infty}\frac{\sin 2x}{x}\,dx.
+\]
+令 \(t=2x\)，则 \(x=t/2\)，\(dx=dt/2\)，因此
+\[
+\int_0^{+\infty}\frac{\sin 2x}{x}\,dx
+=
+\int_0^{+\infty}\frac{\sin t}{t/2}\cdot\frac{dt}{2}
+=
+\int_0^{+\infty}\frac{\sin t}{t}\,dt
+=\frac{\pi}{2}.
+\]
+所以
+\[
+I=\frac{\pi}{2}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：分部积分 \(\int u\,dv=uv-\int v\,du\)，本题取 \(u=\sin^2x\)，\(dv=x^{-2}dx\)，可将 \(x^{-2}\) 降为 \(x^{-1}\)。
+  \item \textbf{易错点}：广义积分分部积分后边界项不能直接省略，需验证 \(\sin^2R/R\to0\) 与 \(\sin^2\varepsilon/\varepsilon\to0\)。
+  \item \textbf{关联知识}：换元 \(t=2x\) 时 \(\frac{\sin 2x}{x}dx=\frac{\sin t}{t}dt\)，不会多出系数 \(2\)。
+\end{itemize}}
+
+\end{mistake}

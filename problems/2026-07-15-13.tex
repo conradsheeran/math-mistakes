@@ -1,0 +1,62 @@
+\begin{mistake}{2026-07-15}{13}
+
+\begin{problemcontent}
+求极限
+\[
+\lim_{x\to 0}
+\frac{
+\dfrac12\left[\int_0^2 x\sqrt{4-x^2u^2}\,du\right]-2x
+}{
+\sqrt{1+2x^3}-1
+}.
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+分母为
+\[
+\sqrt{1+2x^3}-1
+=\frac{2x^3}{\sqrt{1+2x^3}+1}
+\sim x^3,\qquad x\to 0.
+\]
+因此分子需要展开到 \(x^3\) 阶。
+
+对积分中的根式展开：
+\[
+\sqrt{4-x^2u^2}
+=2\sqrt{1-\frac{x^2u^2}{4}}
+=2\left(1-\frac{x^2u^2}{8}+o(x^2)\right)
+=2-\frac{x^2u^2}{4}+o(x^2).
+\]
+于是
+\[
+\begin{aligned}
+\int_0^2 x\sqrt{4-x^2u^2}\,du
+&=x\int_0^2\left(2-\frac{x^2u^2}{4}+o(x^2)\right)du\\
+&=x\left(\int_0^2 2\,du-\frac{x^2}{4}\int_0^2u^2\,du+o(x^2)\right)\\
+&=x\left(4-\frac{x^2}{4}\cdot\frac83+o(x^2)\right)\\
+&=4x-\frac23x^3+o(x^3).
+\end{aligned}
+\]
+所以分子为
+\[
+\begin{aligned}
+\frac12\left[\int_0^2 x\sqrt{4-x^2u^2}\,du\right]-2x
+&=\frac12\left(4x-\frac23x^3+o(x^3)\right)-2x\\
+&=-\frac13x^3+o(x^3).
+\end{aligned}
+\]
+故原极限为
+\[
+\lim_{x\to0}\frac{-\frac13x^3+o(x^3)}{x^3+o(x^3)}=-\frac13.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(\sqrt{1+t}=1+\frac12t+o(t)\)，以及 \(\sqrt{1+2x^3}-1\sim x^3\)。
+  \item \textbf{易错点}：分子的一次项 \(2x\) 会抵消，不能只取积分主项，必须展开到 \(x^3\) 阶。
+  \item \textbf{关联知识}：含参积分中 \(u\) 是积分变量，\(x\) 是参数；对 \(u\) 积分时把 \(x\) 看成常数。
+\end{itemize}}
+
+\end{mistake}

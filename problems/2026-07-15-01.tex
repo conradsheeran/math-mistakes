@@ -1,0 +1,43 @@
+\begin{mistake}{2026-07-15}{01}
+
+\begin{problemcontent}
+设函数 \(f(x)\) 在 \([0,a]\) 上具有二阶导数，\(a>0\)，且 \(f(x)>0\)、\(f''(x)>0\)。证明：
+\[
+\int_0^a f(x)\,dx>a f\left(\frac a2\right).
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+在 \(x_0=\frac a2\) 处对 \(f(x)\) 使用带拉格朗日余项的一阶泰勒公式：对任意 \(x\in[0,a]\)，存在 \(\xi\) 介于 \(x\) 与 \(\frac a2\) 之间，使得
+\[
+f(x)=f\left(\frac a2\right)+f'\left(\frac a2\right)\left(x-\frac a2\right)+\frac{f''(\xi)}{2}\left(x-\frac a2\right)^2.
+\]
+由于 \(f''(\xi)>0\)，当 \(x\ne \frac a2\) 时有
+\[
+f(x)>f\left(\frac a2\right)+f'\left(\frac a2\right)\left(x-\frac a2\right).
+\]
+两边在 \([0,a]\) 上积分，得
+\[
+\int_0^a f(x)\,dx>
+\int_0^a\left[f\left(\frac a2\right)+f'\left(\frac a2\right)\left(x-\frac a2\right)\right]dx.
+\]
+其中
+\[
+\int_0^a\left(x-\frac a2\right)dx
+=\left[\frac{x^2}{2}-\frac a2x\right]_0^a
+=\frac{a^2}{2}-\frac{a^2}{2}=0.
+\]
+因此
+\[
+\int_0^a f(x)\,dx>a f\left(\frac a2\right).
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：一阶泰勒公式带拉格朗日余项：\(f(x)=f(x_0)+f'(x_0)(x-x_0)+\frac{f''(\xi)}{2}(x-x_0)^2\)。若 \(f''>0\)，函数图像在切线之上。
+  \item \textbf{易错点}：积分后一次项消失：\(\int_0^a\left(x-\frac a2\right)dx=0\)，不能漏掉；严格不等号来自 \(x\ne \frac a2\) 时余项严格为正。
+  \item \textbf{关联知识}：\(f''(x)>0\) 表示严格凸；凸函数在区间中点处有 \(\int_0^a f(x)dx>a f\left(\frac a2\right)\) 这类“积分平均大于中点函数值”的结论。
+\end{itemize}}
+
+\end{mistake}

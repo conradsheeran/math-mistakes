@@ -1,0 +1,61 @@
+\begin{mistake}{2026-07-15}{06}
+
+\begin{problemcontent}
+设积分
+\[
+I=\int_1^{+\infty}\frac{dx}{x^p\ln^q x}\quad (p>0,\ q>0)
+\]
+收敛，则下列选项正确的是：
+\begin{enumerate}
+  \item[A.] \(p>1\) 且 \(q<1\)
+  \item[B.] \(p>1\) 且 \(q>1\)
+  \item[C.] \(p<1\) 且 \(q<1\)
+  \item[D.] \(p<1\) 且 \(q>1\)
+\end{enumerate}
+\end{problemcontent}
+
+\begin{solutioncontent}
+该反常积分有两个需要检查的位置：\(x=1^+\) 与 \(x\to+\infty\)。整体收敛要求两处都收敛。
+
+先看 \(x=1^+\) 附近。因为
+\[
+\ln x\sim x-1,\qquad x^p\to 1,
+\]
+所以
+\[
+\frac{1}{x^p\ln^q x}\sim \frac{1}{(x-1)^q}.
+\]
+而
+\[
+\int_1^{1+\delta}\frac{dx}{(x-1)^q}
+=\int_0^\delta \frac{dt}{t^q}
+\]
+收敛当且仅当 \(q<1\)。因此左端点要求 \(q<1\)。
+
+再看 \(x\to+\infty\)。若 \(p>1\)，则
+\[
+0<\frac{1}{x^p\ln^q x}\leq \frac{1}{x^p},
+\]
+且 \(\int_a^{+\infty}x^{-p}\,dx\) 在 \(p>1\) 时收敛，所以原积分在无穷远处收敛。若 \(p<1\)，取 \(p<r<1\)，由于 \(\ln^q x=o(x^{r-p})\)，充分大时有 \(\ln^q x\leq x^{r-p}\)，从而
+\[
+x^p\ln^q x\leq x^r,
+\qquad
+\frac{1}{x^p\ln^q x}\geq \frac{1}{x^r}.
+\]
+而 \(\int_a^{+\infty}x^{-r}\,dx\) 在 \(r<1\) 时发散，故 \(p<1\) 时原积分在无穷远处发散。
+
+综上，积分收敛必须且只需
+\[
+p>1,\qquad q<1.
+\]
+故正确选项为 A。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(x\to1^+\) 时 \(\ln x\sim x-1\)，且 \(\int_0^\delta t^{-q}\,dt\) 收敛当且仅当 \(q<1\)。
+  \item \textbf{易错点}：不能只套 \(\int_k^{+\infty}\frac{dx}{x^a(\ln x)^b}\) 的无穷远结论；本题下限为 \(1\)，还必须检查 \(\ln 1=0\) 造成的左端点奇性。
+  \item \textbf{关联知识}：反常积分在多个反常点上必须分别收敛；无穷远处 \(\int^\infty x^{-p}\,dx\) 收敛当且仅当 \(p>1\)。
+\end{itemize}}
+
+\end{mistake}

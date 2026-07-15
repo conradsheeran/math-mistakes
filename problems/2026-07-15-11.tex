@@ -1,0 +1,62 @@
+\begin{mistake}{2026-07-15}{11}
+
+\begin{problemcontent}
+计算不定积分
+\[
+I=\int e^{\sin x}\cdot \frac{x\cos^3 x-\sin x}{\cos^2 x}\,dx .
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+先化简被积函数中的分式：
+\[
+\frac{x\cos^3 x-\sin x}{\cos^2 x}=x\cos x-\frac{\sin x}{\cos^2 x}.
+\]
+因此
+\[
+I=\int x e^{\sin x}\cos x\,dx-\int e^{\sin x}\frac{\sin x}{\cos^2 x}\,dx.
+\]
+注意
+\[
+d(e^{\sin x})=e^{\sin x}\cos x\,dx,\qquad d(\sec x)=\frac{\sin x}{\cos^2 x}\,dx.
+\]
+于是
+\[
+I=\int x\,d(e^{\sin x})-\int e^{\sin x}\,d(\sec x).
+\]
+分别分部积分：
+\[
+\int x\,d(e^{\sin x})=xe^{\sin x}-\int e^{\sin x}\,dx,
+\]
+\[
+\begin{aligned}
+\int e^{\sin x}\,d(\sec x)
+&=e^{\sin x}\sec x-\int \sec x\,d(e^{\sin x})\\
+&=e^{\sin x}\sec x-\int \sec x\cdot e^{\sin x}\cos x\,dx\\
+&=e^{\sin x}\sec x-\int e^{\sin x}\,dx.
+\end{aligned}
+\]
+代回得
+\[
+\begin{aligned}
+I
+&=\left(xe^{\sin x}-\int e^{\sin x}\,dx\right)
+-\left(e^{\sin x}\sec x-\int e^{\sin x}\,dx\right)\\
+&=xe^{\sin x}-e^{\sin x}\sec x+C.
+\end{aligned}
+\]
+故
+\[
+I=e^{\sin x}(x-\sec x)+C.
+\]
+该结果在不跨越 \(\cos x=0\) 的区间内成立。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(d(e^{\sin x})=e^{\sin x}\cos x\,dx\)，\((\sec x)'=\sec x\tan x=\dfrac{\sin x}{\cos^2 x}\)。
+  \item \textbf{易错点}：不要把 \(\dfrac{\sin x}{\cos^2 x}\) 误认为与 \((\tan x)'=\sec^2 x\) 直接对应；它是 \(\sec x\) 的导数。
+  \item \textbf{关联知识}：遇到 \(x\) 乘某个函数的微分，优先考虑分部积分；本题中的 \(\int e^{\sin x}\,dx\) 会在两次分部积分后抵消，不需要单独求出。
+\end{itemize}}
+
+\end{mistake}

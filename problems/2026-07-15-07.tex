@@ -1,0 +1,73 @@
+\begin{mistake}{2026-07-15}{07}
+
+\begin{problemcontent}
+计算极限
+\[
+\lim_{n\to\infty}\sum_{k=1}^{n}\left[
+\frac{k}{2n^2+k}
++\ln\left(\frac{n+k}{n}\right)^{\frac1n}
+\right].
+\]
+其中对数项理解为 \(\ln\left[\left(\frac{n+k}{n}\right)^{1/n}\right]\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+记原极限为 \(I\)，分为两部分处理。
+
+第一部分：
+\[
+\frac{k}{2n^2+k}
+=\frac{1}{n}\cdot \frac{\frac{k}{n}}{2+\frac{k}{n^2}}.
+\]
+因此
+\[
+\sum_{k=1}^{n}\frac{k}{2n^2+k}
+=\frac{1}{n}\sum_{k=1}^{n}\frac{\frac{k}{n}}{2+\frac{k}{n^2}}.
+\]
+当 \(n\to\infty\) 时，\(\frac{k}{n^2}=\frac{1}{n}\cdot\frac{k}{n}\to 0\)，所以由定积分定义得
+\[
+\lim_{n\to\infty}\sum_{k=1}^{n}\frac{k}{2n^2+k}
+=\int_0^1 \frac{x}{2}\,dx
+=\frac14.
+\]
+
+第二部分：由 \(\ln a^b=b\ln a\) 得
+\[
+\ln\left(\frac{n+k}{n}\right)^{\frac1n}
+=\frac1n\ln\left(1+\frac{k}{n}\right).
+\]
+因此
+\[
+\sum_{k=1}^{n}\ln\left(\frac{n+k}{n}\right)^{\frac1n}
+=\frac1n\sum_{k=1}^{n}\ln\left(1+\frac{k}{n}\right).
+\]
+由黎曼和极限，
+\[
+\lim_{n\to\infty}\frac1n\sum_{k=1}^{n}\ln\left(1+\frac{k}{n}\right)
+=\int_0^1\ln(1+x)\,dx.
+\]
+计算积分：
+\[
+\int_0^1\ln(1+x)\,dx
+=\int_1^2\ln u\,du
+=\left(u\ln u-u\right)\bigg|_1^2
+=2\ln2-1.
+\]
+所以
+\[
+I=\frac14+2\ln2-1=2\ln2-\frac34.
+\]
+最终答案为
+\[
+\boxed{2\ln2-\frac34}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若 \(f\) 在 \([0,1]\) 上连续，则 \(\lim\limits_{n\to\infty}\frac1n\sum_{k=1}^n f\left(\frac{k}{n}\right)=\int_0^1 f(x)\,dx\)。
+  \item \textbf{易错点}：\(\ln\left(\frac{n+k}{n}\right)^{1/n}\) 应化为 \(\frac1n\ln\left(1+\frac{k}{n}\right)\)，不要误看成 \(\left[\ln\left(\frac{n+k}{n}\right)\right]^{1/n}\)。
+  \item \textbf{关联知识}：处理含 \(\sum_{k=1}^n\) 与 \(\frac{k}{n}\) 的极限时，优先尝试化成 \(\frac1n\sum f\left(\frac{k}{n}\right)\) 的黎曼和形式。
+\end{itemize}}
+
+\end{mistake}

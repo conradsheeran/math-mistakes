@@ -1,0 +1,56 @@
+\begin{mistake}{2026-07-15}{05}
+
+\begin{problemcontent}
+设 \(f(x)\) 有连续导数，\(f(0)=0\)，\(f'(0)=6\)，
+\[
+\alpha(x)=\int_0^{x^3} f(t)\,dt,\qquad
+\beta(x)=\left[\int_0^x f(t)\,dt\right]^3.
+\]
+当 \(x\to 0\) 时，判断 \(\alpha(x)\) 与 \(\beta(x)\) 的关系。
+\end{problemcontent}
+
+\begin{solutioncontent}
+由 \(f(0)=0\)，\(f'(0)=6\)，得
+\[
+\lim_{t\to 0}\frac{f(t)}{t}
+=\lim_{t\to 0}\frac{f(t)-f(0)}{t}=f'(0)=6,
+\]
+所以
+\[
+f(t)\sim 6t\quad (t\to 0).
+\]
+令
+\[
+F(u)=\int_0^u f(t)\,dt.
+\]
+则
+\[
+F(u)\sim \int_0^u 6t\,dt=3u^2\quad (u\to 0).
+\]
+于是
+\[
+\alpha(x)=\int_0^{x^3}f(t)\,dt=F(x^3)\sim 3(x^3)^2=3x^6,
+\]
+而
+\[
+\beta(x)=\left[\int_0^x f(t)\,dt\right]^3=[F(x)]^3\sim (3x^2)^3=27x^6.
+\]
+因此
+\[
+\lim_{x\to 0}\frac{\alpha(x)}{\beta(x)}
+=\frac{3}{27}=\frac19.
+\]
+该极限为非零有限常数，故 \(\alpha(x)\) 与 \(\beta(x)\) 为同阶无穷小；但极限不为 \(1\)，故二者不是等价无穷小。
+\[
+\boxed{\alpha(x)\text{ 与 }\beta(x)\text{ 是同阶但非等价无穷小}}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若 \(f(0)=0\)，则 \(f'(0)=\lim_{t\to 0}\frac{f(t)}{t}\)；本题中 \(f(t)\sim 6t\)。
+  \item \textbf{易错点}：\(\int_0^{x^3} f(t)\,dt\) 应看成 \(F(x^3)\)，其中 \(F(u)=\int_0^u f(t)\,dt\)，不要误当成 \(\left[\int_0^x f(t)\,dt\right]\) 的简单变形。
+  \item \textbf{关联知识}：若 \(\lim \frac{\alpha(x)}{\beta(x)}=C\)，且 \(0<|C|<\infty\)，则同阶；若 \(C=1\)，才是等价无穷小。
+\end{itemize}}
+
+\end{mistake}

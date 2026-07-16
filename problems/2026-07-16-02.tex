@@ -1,0 +1,42 @@
+\begin{mistake}{2026-07-16}{02}
+
+\begin{problemcontent}
+求极限 \(\lim_{n \to \infty} \left( \frac{2^{\frac{1}{n}}}{n+1} + \frac{2^{\frac{2}{n}}}{n+\frac{1}{2}} + \cdots + \frac{2^{\frac{n}{n}}}{n+\frac{1}{n}} \right)\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+设原数列为 \(S_n = \sum_{i=1}^{n} \frac{2^{\frac{i}{n}}}{n+\frac{1}{i}}\)。
+
+当 \(1 \le i \le n\) 时，\(\frac{1}{n} \le \frac{1}{i} \le 1\)，由此对分母进行放缩：
+\[
+n+\frac{1}{n} \le n+\frac{1}{i} \le n+1
+\]
+各向同乘 \(2^{\frac{i}{n}}\) 并取倒数，得：
+\[
+\frac{1}{n+1} \le \frac{1}{n+\frac{1}{i}} \le \frac{1}{n+\frac{1}{n}}
+\]
+两边分别对 \(i\) 从 \(1\) 到 \(n\) 求和，得：
+\[
+\frac{1}{n+1} \sum_{i=1}^{n} 2^{\frac{i}{n}} \le S_n \le \frac{1}{n+\frac{1}{n}} \sum_{i=1}^{n} 2^{\frac{i}{n}}
+\]
+提取 \(\frac{1}{n}\) 凑定积分定义：
+下界 \(L_n = \frac{n}{n+1} \cdot \frac{1}{n} \sum_{i=1}^{n} 2^{\frac{i}{n}}\)
+上界 \(R_n = \frac{n}{n+\frac{1}{n}} \cdot \frac{1}{n} \sum_{i=1}^{n} 2^{\frac{i}{n}}\)。
+
+由于：
+\[
+\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} 2^{\frac{i}{n}} = \int_{0}^{1} 2^x dx = \left. \frac{2^x}{\ln 2} \right|_{0}^{1} = \frac{1}{\ln 2}
+\]
+且 \(\lim_{n \to \infty} \frac{n}{n+1} = 1\)，\(\lim_{n \to \infty} \frac{n}{n+\frac{1}{n}} = 1\)。
+
+由夹逼定理可知，\(\lim_{n \to \infty} S_n = \frac{1}{\ln 2}\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：当 \(n\) 项求和式中分母各不相同（或含微小变化量）时，先使用夹逼定理放缩统一分母，再利用定积分定义求极限。
+  \item \textbf{定积分定义}：\(\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^{n} f\left(\frac{i}{n}\right) = \int_{0}^{1} f(x) dx\)
+  \item \textbf{易错点}：解答题中若直接忽略分母差异强行提取 \(\frac{1}{n}\) 凑定积分，会因缺少放缩步骤而扣分。
+\end{itemize}}
+
+\end{mistake}

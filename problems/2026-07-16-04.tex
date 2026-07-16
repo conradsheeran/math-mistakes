@@ -1,0 +1,52 @@
+\begin{mistake}{2026-07-16}{04}
+
+\begin{problemcontent}
+设 \( a_n = \int_0^\pi x \sin^n x \, dx \quad (n = 1, 2, \cdots) \)。
+(I) 证明：\( a_n = \frac{n-1}{n} a_{n-2} \quad (n = 3, 4, \cdots) \)；
+(II) 求 \( \lim_{n \to \infty} \frac{a_n}{a_{n-1}} \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{(I) 证明递推公式}
+
+\textbf{方法一：区间再现法}
+令 \( x = \pi - t \)，则 \( dx = -dt \)，
+\[
+\begin{aligned}
+a_n &= \int_0^\pi (\pi - t) \sin^n t \, dt = \pi \int_0^\pi \sin^n x \, dx - a_n \\
+a_n &= \frac{\pi}{2} \int_0^\pi \sin^n x \, dx = \pi \int_0^{\frac{\pi}{2}} \sin^n x \, dx
+\end{aligned}
+\]
+记 \( I_n = \int_0^{\frac{\pi}{2}} \sin^n x \, dx \)，由分部积分易证 \( I_n = \frac{n-1}{n}I_{n-2} \)。
+故 \( a_n = \pi I_n = \pi \frac{n-1}{n} I_{n-2} = \frac{n-1}{n} a_{n-2} \)。
+
+\textbf{方法二：直接分部积分法}
+拆分出一个 \( \sin x \) 凑微分：
+\[
+\begin{aligned}
+a_n &= -\int_0^\pi x \sin^{n-1} x \, d(\cos x) \\
+&= \left[ -x \sin^{n-1} x \cos x \right]_0^\pi + \int_0^\pi \cos x \left( \sin^{n-1} x + (n-1)x \sin^{n-2} x \cos x \right) \, dx \\
+&= 0 + \int_0^\pi \cos x \sin^{n-1} x \, dx + (n-1) \int_0^\pi x \sin^{n-2} x \cos^2 x \, dx \\
+&= 0 + (n-1) \int_0^\pi x \sin^{n-2} x (1 - \sin^2 x) \, dx \\
+&= (n-1)(a_{n-2} - a_n)
+\end{aligned}
+\]
+解得 \( n a_n = (n-1)a_{n-2} \)，即 \( a_n = \frac{n-1}{n} a_{n-2} \)。
+
+\textbf{(II) 求极限}
+在 \( (0, \pi) \) 内，\( 0 < \sin x \le 1 \)，故对于任意 \( n \ge 2 \)，有 \( \sin^n x < \sin^{n-1} x \)。
+从而 \( 0 < a_n < a_{n-1} < a_{n-2} \)。
+各项同除以 \( a_{n-2} > 0 \)，得到：
+\[ \frac{a_n}{a_{n-2}} < \frac{a_{n-1}}{a_{n-2}} < 1 \]
+代入(I)的结论 \( \frac{a_n}{a_{n-2}} = \frac{n-1}{n} \)，得 \( \frac{n-1}{n} < \frac{a_{n-1}}{a_{n-2}} < 1 \)。
+由夹逼定理，\( \lim_{n \to \infty} \frac{a_{n-1}}{a_{n-2}} = 1 \)。
+指标平移得 \( \lim_{n \to \infty} \frac{a_n}{a_{n-1}} = 1 \)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：处理区间 \( [0, \pi] \) 含 \( x f(\sin x) \) 积分，首选区间再现化简消 \( x \)；或者直接运用分部积分，将 \( \cos^2 x \) 化为 \( 1-\sin^2 x \) 寻找递推关系。
+  \item \textbf{易错点}：求数列比值极限时，已知隔项递推公式，应利用积分单调性构建 \( a_n < a_{n-1} < a_{n-2} \)，再除以 \( a_{n-2} \) 使用夹逼定理。
+\end{itemize}}
+
+\end{mistake}

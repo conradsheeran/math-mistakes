@@ -1,0 +1,31 @@
+\begin{mistake}{2026-07-16}{01}
+
+\begin{problemcontent}
+证明：\(\lim_{n \to \infty} \int_0^1 \frac{x^n}{1+x} \mathrm{d}x = 0\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{解法一：放缩法 + 夹逼定理}
+在 \(x \in [0, 1]\) 上，有 \(1 \le 1+x \le 2\)，且 \(x^n \ge 0\)。
+因此可得不等式：
+\[ 0 \le \frac{x^n}{1+x} \le x^n \]
+两边在 \([0,1]\) 上积分：
+\[ 0 \le \int_0^1 \frac{x^n}{1+x} \mathrm{d}x \le \int_0^1 x^n \mathrm{d}x = \frac{1}{n+1} \]
+当 \(n \to \infty\) 时，左右两端极限均为 \(0\)，由夹逼定理得原极限为 \(0\)。
+
+\textbf{解法二：积分第一中值定理}
+设 \(f(x) = \frac{1}{1+x}\)，\(g(x) = x^n\)。在 \([0,1]\) 上 \(g(x) \ge 0\) 不变号。
+由积分第一中值定理，存在 \(\xi_n \in [0, 1]\)，使得：
+\[ \int_0^1 \frac{x^n}{1+x} \mathrm{d}x = f(\xi_n) \int_0^1 x^n \mathrm{d}x = \frac{1}{1+\xi_n} \cdot \frac{1}{n+1} \]
+因 \(\xi_n \in [0,1]\)，\(\frac{1}{1+\xi_n}\) 为有界变量；又 \(\lim_{n \to \infty} \frac{1}{n+1} = 0\) 为无穷小量。
+有界变量与无穷小量之积为无穷小量，故原极限为 \(0\)。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心定理}：积分第一中值定理 \(\int_a^b f(x)g(x)\mathrm{d}x = f(\xi)\int_a^b g(x)\mathrm{d}x\) (\(g(x)\)不变号)。
+  \item \textbf{易错点}：考研中含 \(n\) 的积分求极限，严禁未经证明直接交换极限与积分号。
+  \item \textbf{常用技巧}：积分放缩寻找可积的上下界；有界变量乘无穷小量等于无穷小量。
+\end{itemize}}
+
+\end{mistake}

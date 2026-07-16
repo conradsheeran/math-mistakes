@@ -1,0 +1,49 @@
+\begin{mistake}{2026-07-16}{08}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([a, b]\ (a < b)\) 上连续，并且 \(\int_a^b f(x) \mathrm{d}x = \int_a^b x f(x) \mathrm{d}x = 0\)。证明：至少存在不同的 \(\xi_1, \xi_2 \in (a, b)\)，使得 \(f(\xi_1) = f(\xi_2) = 0\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{【证法一：反证法与正交多项式构造】}
+
+若 \(f(x) \equiv 0\)，结论显然成立。若 \(f(x) \not\equiv 0\)：
+
+由 \(\int_a^b f(x)\mathrm{d}x = 0\)，可知 \(f(x)\) 在 \((a, b)\) 内至少有一个变号零点，记为 \(\xi_1\)。
+
+假设 \(f(x)\) 在 \((a,b)\) 内只有这一个变号零点，则 \((x-\xi_1)f(x)\) 在 \([a,b]\) 上连续、不恒为 0，且在穿过 \(\xi_1\) 时同步变号，从而在整个区间上保持定号（始终非负或始终非正）。
+
+根据定积分的保号性，必有：
+\[ \int_a^b (x - \xi_1)f(x) \mathrm{d}x \neq 0 \]
+
+但将积分展开代入已知条件：
+\[ \int_a^b (x - \xi_1)f(x) \mathrm{d}x = \int_a^b x f(x) \mathrm{d}x - \xi_1 \int_a^b f(x) \mathrm{d}x = 0 - 0 = 0 \]
+这与保号性产生矛盾。因此假设不成立，\(f(x)\) 在 \((a,b)\) 内至少有两个变号零点。
+
+---
+
+\textbf{【证法二：分部积分与多次罗尔定理】}
+
+令 \(F(x) = \int_a^x f(t)\mathrm{d}t\)，显然 \(F(a) = 0\)，由 \(\int_a^b f(x)\mathrm{d}x = 0\) 得 \(F(b) = 0\)。
+
+由条件 \(\int_a^b x f(x)\mathrm{d}x = 0\)，使用分部积分法：
+\[ \int_a^b x f(x)\mathrm{d}x = \int_a^b x \mathrm{d}F(x) = \Big[ x F(x) \Big]_a^b - \int_a^b F(x)\mathrm{d}x = bF(b) - aF(a) - \int_a^b F(x)\mathrm{d}x = 0 \]
+由此推得：\(\int_a^b F(x)\mathrm{d}x = 0\)。
+
+再构造第二层原函数 \(G(x) = \int_a^x F(t)\mathrm{d}t\)。
+显然 \(G(a) = 0\)，且 \(G(b) = \int_a^b F(x)\mathrm{d}x = 0\)。
+
+对 \(G(x)\) 在 \([a,b]\) 上用罗尔定理，存在 \(c \in (a, b)\) 使得 \(G'(c) = F(c) = 0\)。
+此时 \(F(x)\) 共有三个零点：\(a, c, b\)。
+
+分别在区间 \([a,c]\) 和 \([c,b]\) 上对 \(F(x)\) 使用罗尔定理，存在 \(\xi_1 \in (a, c)\) 和 \(\xi_2 \in (c, b)\)，使得 \(F'(\xi_1)=f(\xi_1)=0\) 且 \(F'(\xi_2)=f(\xi_2)=0\)。得证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法1}：遇到 \(\int x^k f(x)\mathrm{d}x=0\)，可用“变号零点+反证法”，构造正交多项式 \((x-c_1)...(x-c_n)f(x)\) 引出定积分保号性矛盾。
+  \item \textbf{核心方法2}：遇到 \(\int f = 0\) 与 \(\int xf = 0\) 并存，必用分部积分 \(\int x \mathrm{d}F(x)\) 将条件转化为 \(\int F(x)\mathrm{d}x = 0\)，再多层构造原函数用罗尔定理。
+  \item \textbf{易错点}：直接对 \(\int f(x)\mathrm{d}x=0\) 用积分中值定理只能找出一个零点，若要找多个零点，必须充分利用带有 \(x\) 权重的积分条件。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,58 @@
+\begin{mistake}{2026-07-16}{06}
+
+\begin{problemcontent}
+\textbf{(I)} 求积分 \( I_n = \int \frac{1}{(x^2+a^2)^n} \mathrm{d}x \)（\(n \ge 1, a > 0\)）的递推关系；\\
+\textbf{(II)} 计算 \( I = \int \frac{3x+4}{(x^2+2x+2)^2} \mathrm{d}x \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{(I) 求递推关系}\\
+对 \(I_n\) 使用分部积分法（令 \(u = \frac{1}{(x^2+a^2)^n}, \mathrm{d}v = \mathrm{d}x\)）：
+\[
+\begin{aligned}
+I_n &= \frac{x}{(x^2+a^2)^n} - \int x \cdot \left[ -n(x^2+a^2)^{-n-1} \cdot 2x \right] \mathrm{d}x \\
+&= \frac{x}{(x^2+a^2)^n} + 2n \int \frac{x^2+a^2-a^2}{(x^2+a^2)^{n+1}} \mathrm{d}x \\
+&= \frac{x}{(x^2+a^2)^n} + 2n I_n - 2n a^2 I_{n+1}
+\end{aligned}
+\]
+整理得 \(I_{n+1}\) 关于 \(I_n\) 的关系式：
+\[
+I_{n+1} = \frac{x}{2na^2(x^2+a^2)^n} + \frac{2n-1}{2na^2} I_n
+\]
+令下标平移 \(n+1 \to n\)，得到递推公式：
+\[
+I_n = \frac{x}{2(n-1)a^2(x^2+a^2)^{n-1}} + \frac{2n-3}{2(n-1)a^2} I_{n-1} \quad (n \ge 2)
+\]
+
+\textbf{(II) 计算积分}\\
+对分母配方得 \(x^2+2x+2 = (x+1)^2+1\)。令 \(u = x+1, x = u-1, \mathrm{d}x = \mathrm{d}u\)。
+\[
+\begin{aligned}
+I &= \int \frac{3(u-1)+4}{(u^2+1)^2} \mathrm{d}u = 3 \int \frac{u}{(u^2+1)^2} \mathrm{d}u + \int \frac{1}{(u^2+1)^2} \mathrm{d}u
+\end{aligned}
+\]
+第一部分使用凑微分：
+\[
+3 \int \frac{u}{(u^2+1)^2} \mathrm{d}u = \frac{3}{2} \int \frac{\mathrm{d}(u^2+1)}{(u^2+1)^2} = -\frac{3}{2(u^2+1)}
+\]
+第二部分为 (I) 中 \(n=2, a=1\) 的情形，代入递推公式：
+\[
+I_2 = \frac{u}{2(u^2+1)} + \frac{1}{2} I_1 = \frac{u}{2(u^2+1)} + \frac{1}{2} \arctan u
+\]
+两部分合并，并代回 \(u=x+1\)：
+\[
+\begin{aligned}
+I &= \frac{u-3}{2(u^2+1)} + \frac{1}{2} \arctan u + C \\
+&= \frac{x-2}{2(x^2+2x+2)} + \frac{1}{2} \arctan(x+1) + C
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：遇分母高次幂求递推，常用分部积分 \(\mathrm{d}v=\mathrm{d}x\) 配合“加项减项” (\(x^2 = x^2+a^2-a^2\)) 降阶。
+  \item \textbf{易错点}：凑微分 \(\int u(u^2+1)^{-2}\mathrm{d}u\) 易漏 \(1/2\) 系数；递推式推导结束后的下标平移易错。
+  \item \textbf{关联知识}：二次式分母有理函数积分标准套路：“一配方、二换元、三拆分（凑微分项+纯常数项）”。
+\end{itemize}}
+
+\end{mistake}

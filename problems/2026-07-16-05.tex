@@ -1,0 +1,35 @@
+\begin{mistake}{2026-07-16}{05}
+
+\begin{problemcontent}
+证明：\(f(x) = \int_0^x (t - t^2)\sin^{2n}t \mathrm{d}t \ (x > 0)\) 的最大值为 \(f(1)\)，且 \(f(1) \le \frac{1}{(2n+2)(2n+3)}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+对 \(f(x)\) 在 \(x > 0\) 范围内求导：
+\[
+f'(x) = x(1 - x)\sin^{2n}x
+\]
+因为 \(x > 0\) 且 \(\sin^{2n}x \ge 0\)，所以 \(f'(x)\) 的符号完全由 \((1 - x)\) 决定。
+当 \(0 < x < 1\) 时，\(f'(x) \ge 0\)；当 \(x > 1\) 时，\(f'(x) \le 0\)。
+故 \(x=1\) 是 \(f(x)\) 在 \(x>0\) 上的唯一极大值点，即全局最大值点。最大值为 \(f(1)\)。
+
+在积分区间 \(t \in [0, 1]\) 上，\(t - t^2 = t(1-t) \ge 0\)，且有经典不等式 \(\sin t \le t\)。
+两边同乘非负因子 \(t-t^2\) 得：
+\[
+(t - t^2)\sin^{2n}t \le (t - t^2)t^{2n} = t^{2n+1} - t^{2n+2}
+\]
+两端在 \([0, 1]\) 上取积分：
+\[
+f(1) \le \int_0^1 (t^{2n+1} - t^{2n+2}) \mathrm{d}t = \left[ \frac{1}{2n+2}t^{2n+2} - \frac{1}{2n+3}t^{2n+3} \right]_0^1 = \frac{1}{(2n+2)(2n+3)}
+\]
+命题得证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：变限积分求导 \(\frac{\mathrm{d}}{\mathrm{d}x} \int_a^x g(t) \mathrm{d}t = g(x)\)；放缩不等式 \(\sin t \le t \ (t \ge 0)\)。
+  \item \textbf{易错点}：积分放缩时同乘变式因子，必须在步骤中指明该因子非负（如 \(t-t^2 \ge 0\)），否则会被扣除严谨性步骤分。
+  \item \textbf{关联知识}：区间内唯一的极大值点即为该区间上的全局最大值点。
+\end{itemize}}
+
+\end{mistake}

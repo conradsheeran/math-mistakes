@@ -1,0 +1,42 @@
+\begin{mistake}{2026-07-16}{07}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([a,b]\) 上二阶可导，且 \(f''(x) > 0\)，证明：
+\[ f\left(\frac{a+b}{2}\right) < \frac{1}{b-a}\int_a^b f(x)\mathrm{d}x < \frac{f(a)+f(b)}{2} \]
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{第一部分：证明左边不等式}
+令 \(x_0 = \frac{a+b}{2}\)，将 \(f(x)\) 在 \(x_0\) 处进行一阶泰勒展开：
+\[ f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(\xi)}{2}(x-x_0)^2 \]
+因为 \(f''(x) > 0\)，所以当 \(x \neq x_0\) 时，\(\frac{f''(\xi)}{2}(x-x_0)^2 > 0\)。
+从而得到切线放缩不等式（等号仅在 \(x = x_0\) 处成立）：
+\[ f(x) \ge f(x_0) + f'(x_0)(x-x_0) \]
+对该不等式两边在 \([a,b]\) 上积分，由保号性得：
+\[ \int_a^b f(x)\mathrm{d}x > \int_a^b \left[ f(x_0) + f'(x_0)(x-x_0) \right]\mathrm{d}x \]
+因为 \(x_0\) 为中点，\(\int_a^b (x-x_0)\mathrm{d}x = 0\)，于是：
+\[ \int_a^b f(x)\mathrm{d}x > f(x_0)(b-a) = f\left(\frac{a+b}{2}\right)(b-a) \]
+两边同除以 \((b-a)\) 即证得左半边。
+
+\textbf{第二部分：证明右边不等式}
+构造过端点 \((a, f(a))\) 和 \((b, f(b))\) 的割线方程：
+\[ l(x) = f(a) + \frac{f(b)-f(a)}{b-a}(x-a) \]
+令 \(g(x) = l(x) - f(x)\)，由于 \(l(x)\) 是一次函数，故 \(g''(x) = -f''(x) < 0\)。
+结合 \(g(a) = g(b) = 0\)，由罗尔定理和极值性质可知，在 \((a,b)\) 内 \(g(x) > 0\)，即 \(l(x) > f(x)\)。
+对两边在 \([a,b]\) 上积分：
+\[ \int_a^b f(x)\mathrm{d}x < \int_a^b \left[ f(a) + \frac{f(b)-f(a)}{b-a}(x-a) \right]\mathrm{d}x \]
+右侧积分为梯形面积计算：
+\[ \int_a^b l(x)\mathrm{d}x = f(a)(b-a) + \frac{1}{2}(f(b)-f(a))(b-a) = \frac{f(a)+f(b)}{2}(b-a) \]
+从而有：
+\[ \int_a^b f(x)\mathrm{d}x < \frac{f(a)+f(b)}{2}(b-a) \]
+两边同除以 \((b-a)\) 即证得右半边。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：赫米特-哈达玛不等式的证明。左侧用区间中点处的泰勒展开作切线放缩；右侧用两端点构造割线函数作割线放缩。
+  \item \textbf{易错点}：证左半边时若不在 \(x = \frac{a+b}{2}\) 处展开，积分后一次项无法消去。
+  \item \textbf{关联知识}：\(g''(x) < 0\) 且 \(g(a)=g(b)=0 \implies x \in (a,b)\) 时 \(g(x)>0\)，此性质由导数单调性结合罗尔定理即可严格证明。
+\end{itemize}}
+
+\end{mistake}

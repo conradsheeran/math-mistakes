@@ -1,0 +1,34 @@
+\begin{mistake}{2026-07-17}{03}
+
+\begin{problemcontent}
+设 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且 $f(0)=0, f(1)=1$。证明：
+(I) 存在 $\xi_1$ 与 $\xi_2$ 满足 $0 < \xi_1 < \xi_2 < 1$，使得 $f'(\xi_1) + f'(\xi_2) = 2$.
+(II) 在 $(0,1)$ 内存在 $\xi$ 与 $\eta$，使得 $\eta f'(\xi) = f(\eta) f'(\eta)$.
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{证明 (I)：}
+取区间中点 $c = \frac{1}{2}$，将 $[0,1]$ 分为 $[0, \frac{1}{2}]$ 和 $[\frac{1}{2}, 1]$。
+在 $[0, \frac{1}{2}]$ 上应用拉格朗日中值定理，存在 $\xi_1 \in (0, \frac{1}{2})$，使得
+\[ f'(\xi_1) = \frac{f(\frac{1}{2}) - f(0)}{\frac{1}{2} - 0} = 2f\left(\frac{1}{2}\right) \]
+在 $[\frac{1}{2}, 1]$ 上应用拉格朗日中值定理，存在 $\xi_2 \in (\frac{1}{2}, 1)$，使得
+\[ f'(\xi_2) = \frac{f(1) - f(\frac{1}{2})}{1 - \frac{1}{2}} = 2\left[1 - f\left(\frac{1}{2}\right)\right] \]
+两式相加得 $f'(\xi_1) + f'(\xi_2) = 2$。且显然 $0 < \xi_1 < \frac{1}{2} < \xi_2 < 1$，得证。
+
+\textbf{证明 (II)：}
+原等式可变形为 $f'(\xi) = \frac{f(\eta)f'(\eta)}{\eta}$。考虑分别证明两边等于 $1$。
+对 $f(x)$ 在 $[0,1]$ 上应用拉格朗日中值定理，存在 $\xi \in (0,1)$ 使得
+\[ f'(\xi) = \frac{f(1) - f(0)}{1 - 0} = 1 \]
+令 $F(x) = f^2(x)$，$G(x) = x^2$。在 $[0,1]$ 上应用柯西中值定理，存在 $\eta \in (0,1)$ 使得
+\[ \frac{F'(\eta)}{G'(\eta)} = \frac{F(1) - F(0)}{G(1) - G(0)} \implies \frac{2f(\eta)f'(\eta)}{2\eta} = \frac{1 - 0}{1 - 0} = 1 \]
+即 $f(\eta)f'(\eta) = \eta$。结合两式得 $\eta f'(\xi) = f(\eta)f'(\eta)$，得证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心定理}：拉格朗日中值定理、柯西中值定理。
+  \item \textbf{易错点}：(I)中缺乏“等分区间”思想无法构造双点相加；(II)中遇到双中值未独立分离变量，试图构造单函数。
+  \item \textbf{题型技巧}：遇到 $f'(\xi_1)+f'(\xi_2)=C$ 常取中点拆分区间；双中值且两点无必然联系时，应分离变量独立构造。
+\end{itemize}}
+
+\end{mistake}

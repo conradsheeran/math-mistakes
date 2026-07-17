@@ -1,0 +1,45 @@
+\begin{mistake}{2026-07-17}{04}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \([a,b]\) 上有二阶连续导数，且 \(f(a) = f(b) = 0\)，\(M = \max\limits_{a \le x \le b} |f''(x)|\)。证明：
+(I) \(\max\limits_{a \le x \le b} |f(x)| \le \frac{1}{8}M(b-a)^2\)；
+(II) \(\max\limits_{a \le x \le b} |f'(x)| \le \frac{1}{2}M(b-a)\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{证明 (I)：}
+设 \(x_0 \in (a, b)\) 为 \(|f(x)|\) 的最大值点。由费马引理，\(f'(x_0) = 0\)。
+将 \(f(x)\) 在 \(x_0\) 处展开：
+\[ f(a) = f(x_0) + \frac{f''(\xi_1)}{2}(a - x_0)^2, \quad \xi_1 \in (a, x_0) \]
+\[ f(b) = f(x_0) + \frac{f''(\xi_2)}{2}(b - x_0)^2, \quad \xi_2 \in (x_0, b) \]
+代入 \(f(a)=f(b)=0\) 可得：
+\[ |f(x_0)| \le \frac{M}{2}(x_0 - a)^2, \quad |f(x_0)| \le \frac{M}{2}(b - x_0)^2 \]
+由于 \((x_0 - a) + (b - x_0) = b - a\)，二者中必有一个 \(\le \frac{b-a}{2}\)。
+不妨设 \(x_0 - a \le \frac{b-a}{2}\)，则：
+\[ |f(x_0)| \le \frac{M}{2} \left(\frac{b-a}{2}\right)^2 = \frac{1}{8}M(b-a)^2 \]
+即证。
+
+\textbf{证明 (II)：}
+对任意 \(x \in [a, b]\)，将 \(f(a), f(b)\) 在 \(x\) 处展开：
+\[ f(a) = f(x) + f'(x)(a - x) + \frac{f''(\eta_1)}{2}(a - x)^2 \]
+\[ f(b) = f(x) + f'(x)(b - x) + \frac{f''(\eta_2)}{2}(b - x)^2 \]
+两式相减（下式减上式）并代入 \(f(a)=f(b)=0\)：
+\[ 0 = f'(x)(b - a) + \frac{f''(\eta_2)}{2}(b - x)^2 - \frac{f''(\eta_1)}{2}(a - x)^2 \]
+整理得：
+\[ f'(x)(b - a) = \frac{f''(\eta_1)}{2}(x - a)^2 - \frac{f''(\eta_2)}{2}(b - x)^2 \]
+取绝对值放缩：
+\[ |f'(x)|(b - a) \le \frac{M}{2} \left[ (x - a)^2 + (b - x)^2 \right] \]
+函数 \(g(x) = (x - a)^2 + (b - x)^2\) 在 \([a,b]\) 上的最大值在端点取得，最大值为 \((b-a)^2\)。
+代入得 \(|f'(x)|(b-a) \le \frac{M}{2}(b-a)^2\)，故：
+\[ |f'(x)| \le \frac{1}{2}M(b-a) \]
+即证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：带有拉格朗日余项的泰勒公式。
+  \item \textbf{展开点选取}：第一问利用极值点展开（消一阶导），第二问任意点展开作差（消函数值）。
+  \item \textbf{易错点}：极值点距离端点至少有一个 \(\le \frac{b-a}{2}\)，不能想当然直接取均值。
+\end{itemize}}
+
+\end{mistake}

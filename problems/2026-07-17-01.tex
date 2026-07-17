@@ -1,0 +1,38 @@
+\begin{mistake}{2026-07-17}{01}
+
+\begin{problemcontent}
+设 \(f(x)\) 在区间 \((a,b)\) 内可导，\(f'(x)\) 在 \((a,b)\) 内严格单调增加，对任意的 \(x_1, x_2 \in (a,b)\)，且 \(x_1 \neq x_2\)，\(0 < \lambda < 1\)。证明：
+\[ f[\lambda x_1 + (1-\lambda)x_2] < \lambda f(x_1) + (1-\lambda)f(x_2) \]
+\end{problemcontent}
+
+\begin{solutioncontent}
+不妨设 \(x_1 < x_2\)。令 \(x_0 = \lambda x_1 + (1-\lambda)x_2\)。
+易得 \(x_0 - x_1 = (1-\lambda)(x_2 - x_1) > 0\)，且 \(x_2 - x_0 = \lambda(x_2 - x_1) > 0\)，故 \(x_1 < x_0 < x_2\)。
+
+构造差值函数：
+\[ \Delta = \lambda f(x_1) + (1-\lambda)f(x_2) - f(x_0) \]
+由于 \(\lambda + (1-\lambda) = 1\)，将 \(f(x_0)\) 拆分得：
+\[ \Delta = -\lambda [f(x_0) - f(x_1)] + (1-\lambda) [f(x_2) - f(x_0)] \]
+
+分别在 \([x_1, x_0]\) 和 \([x_0, x_2]\) 上使用拉格朗日中值定理，存在 \(\xi_1 \in (x_1, x_0)\)，\(\xi_2 \in (x_0, x_2)\) 使得：
+\[ \Delta = -\lambda f'(\xi_1)(x_0 - x_1) + (1-\lambda) f'(\xi_2)(x_2 - x_0) \]
+
+代入线段长度 \(x_0 - x_1 = (1-\lambda)(x_2 - x_1)\) 与 \(x_2 - x_0 = \lambda(x_2 - x_1)\) 并提取公因式：
+\[ \Delta = \lambda(1-\lambda)(x_2 - x_1) [f'(\xi_2) - f'(\xi_1)] \]
+
+由 \(x_1 < \xi_1 < x_0 < \xi_2 < x_2\) 知 \(\xi_1 < \xi_2\)。
+因 \(f'(x)\) 严格单调增加，故 \(f'(\xi_2) - f'(\xi_1) > 0\)。
+又 \(0 < \lambda < 1\) 且 \(x_1 < x_2\)，得 \(\lambda(1-\lambda)(x_2 - x_1) > 0\)。
+
+因此 \(\Delta > 0\)，即：
+\[ f[\lambda x_1 + (1-\lambda)x_2] < \lambda f(x_1) + (1-\lambda)f(x_2) \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心定理}：拉格朗日中值定理 \(f(b)-f(a) = f'(\xi)(b-a)\)。
+  \item \textbf{解题技巧}：利用 \(\lambda + (1-\lambda) = 1\) 拆分中间点函数值 \(f(x_0)\)，从而分段构造中值定理。
+  \item \textbf{易错点}：忘记计算并代入 \((x_0-x_1)\) 与 \((x_2-x_0)\) 的具体长度，导致无法提取公因式进行定号。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,39 @@
+\begin{mistake}{2026-07-19}{01}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \((-\infty, +\infty)\) 内有连续导数，证明：\(\lim_{a \to 0^+} \frac{1}{4a^2} \int_{-a}^{a} [f(t+a) - f(t-a)] \text{d}t = f'(0)\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+原极限为 \(L\)，将积分式拆分为两部分并进行平移换元：
+
+对于第一项，令 \(u = t+a\)，得 \(\int_{0}^{2a} f(u) \text{d}u\)。
+
+对于第二项，令 \(u = t-a\)，得 \(\int_{-2a}^{0} f(u) \text{d}u\)。
+
+代回原式：
+\[ L = \lim_{a \to 0^+} \frac{\int_{0}^{2a} f(u) \text{d}u - \int_{-2a}^{0} f(u) \text{d}u}{4a^2} \]
+
+此时极限为 \(\frac{0}{0}\) 型，对 \(a\) 使用洛必达法则：
+\[ \frac{\text{d}}{\text{d}a} \int_{0}^{2a} f(u) \text{d}u = 2f(2a) \]
+\[ \frac{\text{d}}{\text{d}a} \int_{-2a}^{0} f(u) \text{d}u = -f(-2a) \cdot (-2) = 2f(-2a) \]
+
+代入得：
+\[ L = \lim_{a \to 0^+} \frac{2f(2a) - 2f(-2a)}{8a} = \lim_{a \to 0^+} \frac{f(2a) - f(-2a)}{4a} \]
+
+因题目仅告知一阶导数连续，未说明二阶导数存在，不可再次使用洛必达法则。通过“一减一加” \(f(0)\) 凑导数定义：
+\[ L = \lim_{a \to 0^+} \left[ \frac{1}{2} \cdot \frac{f(2a) - f(0)}{2a} + \frac{1}{2} \cdot \frac{f(-2a) - f(0)}{-2a} \right] \]
+
+根据 \(f(x)\) 在 \(x=0\) 处的导数定义：
+\[ L = \frac{1}{2} f'(0) + \frac{1}{2} f'(0) = f'(0) \]
+证明完毕。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：处理被积函数含有参变量的变限积分，优先通过换元法将参数转移至积分上下限。
+  \item \textbf{易错点}：变限积分下限求导符号易错，\(\frac{\text{d}}{\text{d}x} \int_{\alpha(x)}^0 f(t)\text{d}t = -f(\alpha(x))\alpha'(x)\)。
+  \item \textbf{逻辑陷阱}：题目仅给“一阶导数连续”时，\(\frac{0}{0}\) 极限只能用一次洛必达，后续必须用定义，切忌默认二阶导存在而连用洛必达。
+\end{itemize}}
+
+\end{mistake}

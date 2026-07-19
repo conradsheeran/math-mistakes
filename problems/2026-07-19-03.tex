@@ -1,0 +1,32 @@
+\begin{mistake}{2026-07-19}{03}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \((-\infty, +\infty)\) 内连续，且满足 \(f(x+T) = f(x)\) (\(T>0\))，\(f(-x) = f(x)\)。
+证明：\(\int_0^{nT} x f(x) dx = \frac{n^2 T}{2} \int_0^T f(x) dx\) (\(n\) 为正整数)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+设 \(I = \int_0^{nT} x f(x) dx\)。
+令 \(x = nT - t\)，则 \(dx = -dt\)，积分上下限由 \([0, nT]\) 变为 \([nT, 0]\)。
+代入原积分并吸收负号调换上下限：
+\[I = \int_0^{nT} (nT - t) f(nT - t) dt\]
+由 \(f(x)\) 以 \(T\) 为周期及 \(f(-x) = f(x)\) 的偶函数性质，有：
+\[f(nT - t) = f(-t) = f(t)\]
+将其代入积分并展开：
+\[I = \int_0^{nT} (nT - t) f(t) dt = nT \int_0^{nT} f(t) dt - \int_0^{nT} t f(t) dt\]
+注意到等式最右侧第二项即为原积分 \(I\)（积分变量符号不影响积分值），故移项得：
+\[2I = nT \int_0^{nT} f(t) dt \implies I = \frac{nT}{2} \int_0^{nT} f(t) dt\]
+又根据周期函数在整周期上的积分性质，有 \(\int_0^{nT} f(t) dt = n \int_0^T f(t) dt\)。
+代入上式即得：
+\[I = \frac{nT}{2} \left( n \int_0^T f(t) dt \right) = \frac{n^2 T}{2} \int_0^T f(x) dx\]
+证明完毕。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：区间翻转（再现）代换 \(x = a+b-t\)；周期函数积分性质 \(\int_0^{nT} f(x) dx = n \int_0^T f(x) dx\)。
+  \item \textbf{易错点}：化简 \(f(nT-t)\) 时容易受阻，需明确：周期性负责消除 \(nT\)，奇偶性负责消除内部负号。
+  \item \textbf{关联知识}：带有 \(x f(x)\) 结构的定积分，优先尝试区间翻转代换构造方程消去 \(x\)，比分段积分求和更高效。
+\end{itemize}}
+
+\end{mistake}

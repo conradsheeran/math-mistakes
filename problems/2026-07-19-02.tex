@@ -1,0 +1,29 @@
+\begin{mistake}{2026-07-19}{02}
+
+\begin{problemcontent}
+设 \(y = f(x)\) 在 \([0, 1]\) 上是非负连续函数. 证明：存在 \(x_0 \in (0, 1)\)，使得在 \([0, x_0]\) 上以 \(f(x_0)\) 为高的矩形面积，等于在 \([x_0, 1]\) 上以 \(y = f(x)\) 为曲边的曲边梯形面积.
+\end{problemcontent}
+
+\begin{solutioncontent}
+依题意，需证明存在 \(x_0 \in (0, 1)\)，使得：
+\[ x_0 f(x_0) = \int_{x_0}^1 f(x) dx \quad \iff \quad \int_{x_0}^1 f(x) dx - x_0 f(x_0) = 0 \]
+构造辅助函数：
+\[ G(x) = x \int_x^1 f(t) dt \quad (x \in [0, 1]) \]
+因为 \(f(x)\) 连续，所以 \(G(x)\) 在 \([0, 1]\) 上连续，在 \((0, 1)\) 内可导。
+代入端点值：
+\[ G(0) = 0 \cdot \int_0^1 f(t) dt = 0 \]
+\[ G(1) = 1 \cdot \int_1^1 f(t) dt = 0 \]
+显然有 \(G(0) = G(1) = 0\)。
+根据罗尔中值定理，至少存在一点 \(x_0 \in (0, 1)\)，使得 \(G'(x_0) = 0\)。
+又因为 \(G'(x) = \int_x^1 f(t) dt + x \cdot (-f(x)) = \int_x^1 f(t) dt - x f(x)\)，
+所以 \(\int_{x_0}^1 f(t) dt - x_0 f(x_0) = 0\)，即 \(x_0 f(x_0) = \int_{x_0}^1 f(x) dx\)，命题得证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：罗尔中值定理及变限积分求导公式 \(( \int_x^a f(t) dt )' = -f(x)\)。
+  \item \textbf{易错点}：\textbf{直接使用介值定理是错误的（证明开区间存在性失效）}。若构造 \(H(x) = x f(x) - \int_x^1 f(t) dt\)，只能得到 \(H(0) \le 0\) 且 \(H(1) \ge 0\)。当 \(H(0)=0\) 或 \(H(1)=0\)（如 \(f(x) \equiv 0\) 这种极端情况）时，介值定理只能保证闭区间 \([0,1]\) 内有根，无法直接证明开区间 \((0,1)\) 内存在根。
+  \item \textbf{关联知识}：看到含有 \(\int_a^x f(t)dt\) 与 \(x f(x)\) 加减混合的等式，优先尝试构造乘积形式的原函数 \(G(x) = x \int_a^x f(t)dt\) 用罗尔定理处理。
+\end{itemize}}
+
+\end{mistake}

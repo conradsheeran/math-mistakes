@@ -1,0 +1,33 @@
+\begin{mistake}{2026-07-19}{04}
+
+\begin{problemcontent}
+求曲线 \(y = e^{-x} \sqrt{\sin x} \ (x \ge 0)\) 绕 \(x\) 轴旋转所得旋转体的体积。
+\end{problemcontent}
+
+\begin{solutioncontent}
+由题意，偶次根号要求 \(\sin x \ge 0\)，故曲线的实际存在区间为：
+\[x \in [2n\pi, 2n\pi + \pi], \quad n = 0, 1, 2, \dots\]
+对于第 \(n\) 段区间，其绕 \(x\) 轴旋转的体积为：
+\[V_n = \pi \int_{2n\pi}^{2n\pi + \pi} \left( e^{-x} \sqrt{\sin x} \right)^2 dx = \pi \int_{2n\pi}^{2n\pi + \pi} e^{-2x} \sin x \, dx\]
+利用积分公式 \(\int e^{ax} \sin(bx) dx = \frac{e^{ax}}{a^2 + b^2} (a \sin bx - b \cos bx)\)，代入 \(a=-2, b=1\)：
+\[\begin{aligned}
+V_n &= \pi \left[ -\frac{e^{-2x}}{5} (2 \sin x + \cos x) \right]_{2n\pi}^{2n\pi + \pi} \\
+&= -\frac{\pi}{5} \Big[ e^{-2(2n\pi+\pi)}(-1) - e^{-4n\pi}(1) \Big] \\
+&= \frac{\pi}{5} e^{-4n\pi} (1 + e^{-2\pi})
+\end{aligned}\]
+总体积为所有区间体积的无穷等比级数之和，公比为 \(q = e^{-4\pi}\)：
+\[\begin{aligned}
+V &= \sum_{n=0}^{\infty} V_n = \frac{\pi}{5} (1 + e^{-2\pi}) \sum_{n=0}^{\infty} (e^{-4\pi})^n \\
+&= \frac{\frac{\pi}{5} (1 + e^{-2\pi})}{1 - e^{-4\pi}} = \frac{\pi (1 + e^{-2\pi})}{5(1 - e^{-2\pi})(1 + e^{-2\pi})} \\
+&= \frac{\pi}{5(1 - e^{-2\pi})}
+\end{aligned}\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(\int e^{ax} \sin(bx) dx = \frac{e^{ax}}{a^2+b^2}(a\sin bx - b\cos bx)\)
+  \item \textbf{易错点}：忽略偶次根号下 \(\sin x \ge 0\) 的定义域限制，错误地直接计算 \(\int_0^{+\infty}\) 导致结果变为 \(\frac{\pi}{5}\)。
+  \item \textbf{关联知识}：无穷等比数列求和公式 \(S = \frac{a_1}{1-q}\ (|q|<1)\)。
+\end{itemize}}
+
+\end{mistake}

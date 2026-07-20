@@ -1,0 +1,38 @@
+\begin{mistake}{2026-07-20}{03}
+
+\begin{problemcontent}
+设三角形薄板为等腰三角形薄板，已知其底为 \(2b\)、高为 \(h\)，将其垂直放入静水中。
+图(a)是其底与水面相齐，图(b)是其顶点与水面相齐。设图(a)与图(b)薄板一侧所受压力分别为 \(P_1\) 和 \(P_2\)，求 \(\frac{P_2}{P_1}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+建立坐标系，取水面为 \(x=0\)，\(x\) 轴竖直向下。
+
+对于图(a)（底边在水面，顶点在深 \(h\) 处）：
+深度 \(x\) 处截面宽度为 \(w_1(x)\)，由相似三角形可得 \(\frac{w_1(x)}{2b} = \frac{h-x}{h}\)，即 \(w_1(x) = \frac{2b(h-x)}{h}\)。
+压力为：
+\[
+P_1 = \int_{0}^{h} \rho g x \frac{2b(h-x)}{h} \mathrm{d}x = \frac{2\rho g b}{h} \left[ \frac{1}{2}hx^2 - \frac{1}{3}x^3 \right]_0^h = \frac{1}{3}\rho g b h^2
+\]
+
+对于图(b)（顶点在水面，底边在深 \(h\) 处）：
+深度 \(x\) 处截面宽度为 \(w_2(x)\)，由相似三角形可得 \(\frac{w_2(x)}{2b} = \frac{x}{h}\)，即 \(w_2(x) = \frac{2bx}{h}\)。
+压力为：
+\[
+P_2 = \int_{0}^{h} \rho g x \frac{2bx}{h} \mathrm{d}x = \frac{2\rho g b}{h} \left[ \frac{1}{3}x^3 \right]_0^h = \frac{2}{3}\rho g b h^2
+\]
+
+两者之比为：
+\[
+\frac{P_2}{P_1} = 2
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：水压力积分公式 \(P = \int_{a}^{b} \rho g x \cdot w(x) \mathrm{d}x\)。
+  \item \textbf{易错点}：倒置三角形的截面宽度表达易错，相似三角形的高应从顶点算起。图(a)中截面所在小三角形的高为 \(h-x\)，而非 \(x\)。
+  \item \textbf{定性判断}：图(b)中三角形的较宽部分（底边）处于水更深的位置，受到的压强更大，因此总体压力 \(P_2\) 必然大于 \(P_1\)。
+\end{itemize}}
+
+\end{mistake}

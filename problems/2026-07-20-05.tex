@@ -1,0 +1,31 @@
+\begin{mistake}{2026-07-20}{05}
+
+\begin{problemcontent}
+设 \( f(x) = (x^2 - 4x + 3)^n \)，求 \( f^{(n)}(1) \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+\textbf{方法一：莱布尼茨公式}
+将底数因式分解得 \( f(x) = (x-1)^n (x-3)^n \)。
+设 \( u(x) = (x-1)^n \)，\( v(x) = (x-3)^n \)，应用莱布尼茨公式：
+\[ f^{(n)}(x) = \sum_{k=0}^{n} C_n^k \left[ (x-1)^n \right]^{(k)} \left[ (x-3)^n \right]^{(n-k)} \]
+代入 \( x=1 \)，由于 \( \left[ (x-1)^n \right]^{(k)} \big|_{x=1} = 0 \)（当 \( k < n \) 时），故展开式中仅 \( k=n \) 的项非零：
+\[ f^{(n)}(1) = C_n^n \cdot n! \cdot (1-3)^n = (-2)^n n! \]
+
+\textbf{方法二：泰勒展开系数唯一性（秒杀法）}
+由 \( f(x) = (x-1)^n (x-3)^n \)，在 \( x \to 1 \) 时：
+\[ \lim_{x \to 1} \frac{f(x)}{(x-1)^n} = \lim_{x \to 1} (x-3)^n = (-2)^n \]
+即 \( f(x) = (-2)^n (x-1)^n + o\left((x-1)^n\right) \)。
+根据带有皮亚诺余项的泰勒公式，展开式中 \( (x-1)^n \) 项的系数必然等于 \( \frac{f^{(n)}(1)}{n!} \)。
+对比系数可得：
+\[ \frac{f^{(n)}(1)}{n!} = (-2)^n \implies f^{(n)}(1) = (-2)^n n! \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：莱布尼茨公式；泰勒展开式的系数唯一性。
+  \item \textbf{高频秒杀结论}：若 \( f(x) = (x-x_0)^n g(x) \)，且 \( g(x) \) 在 \( x_0 \) 处有直到 \( n \) 阶导数，则 \( f^{(n)}(x_0) = n! \cdot g(x_0) \)。
+  \item \textbf{解题技巧}：求函数在某一点的高阶导数时，若能提取出 \( (x-x_0)^n \) 的因子，优先考虑泰勒公式系数对比法，可避免繁琐求导。
+\end{itemize}}
+
+\end{mistake}

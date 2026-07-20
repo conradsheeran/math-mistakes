@@ -1,0 +1,43 @@
+\begin{mistake}{2026-07-20}{04}
+
+\begin{problemcontent}
+设 \(f(x)\) 为 \((-1, +\infty)\) 内的连续函数，\(f(x) = \int_0^x e^{-f(t)} \mathrm{d}t\)，若 \(g(x) = xf(x+1)\)，求 \(g^{(n)}(0)\) (\(n \ge 2\))。
+\end{problemcontent}
+
+\begin{solutioncontent}
+1. 方程两边求导：\(f'(x) = e^{-f(x)}\)。
+变上限积分隐含初值：\(f(0) = \int_0^0 e^{-f(t)} \mathrm{d}t = 0\)。
+分离变量得 \(e^{f(x)} f'(x) = 1\)，两边积分得 \(e^{f(x)} = x + C\)。
+代入 \(f(0)=0\) 解得 \(C=1\)，故 \(f(x) = \ln(x+1)\)。
+
+2. 将 \(f(x)\) 代入 \(g(x)\)：
+\[
+g(x) = x \ln(x+2)
+\]
+
+3. 利用麦克劳林级数展开求 \(x=0\) 处的高阶导数：
+\[
+\ln(x+2) = \ln\left[2\left(1+\frac{x}{2}\right)\right] = \ln 2 + \sum_{k=1}^\infty \frac{(-1)^{k-1}}{k}\left(\frac{x}{2}\right)^k = \ln 2 + \sum_{k=1}^\infty \frac{(-1)^{k-1}}{k \cdot 2^k} x^k
+\]
+所以 \(g(x)\) 的展开式为：
+\[
+g(x) = x \ln 2 + \sum_{k=1}^\infty \frac{(-1)^{k-1}}{k \cdot 2^k} x^{k+1}
+\]
+对于 \(n \ge 2\)，展开式中 \(x^n\) 项（即令 \(k+1=n\)，则 \(k=n-1\)）的系数 \(a_n\) 为：
+\[
+a_n = \frac{(-1)^{n-2}}{(n-1)2^{n-1}} = \frac{(-1)^n}{(n-1)2^{n-1}}
+\]
+由泰勒展开唯一性 \(a_n = \frac{g^{(n)}(0)}{n!}\)，可得：
+\[
+g^{(n)}(0) = n! \cdot a_n = \frac{(-1)^n \cdot n!}{(n-1)2^{n-1}}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：变上限积分求导 \(F'(x)=f(x)\) 与隐含初值 \(F(a)=0\)；\(g^{(n)}(0) = n! \cdot a_n\)。
+  \item \textbf{易错点}：遗漏积分上下限相等时的隐含初值；对 \(\ln(x+2)\) 展开时未提出常数 2 化为标准形式；用莱布尼茨公式硬算导致下标和符号极易出错。
+  \item \textbf{关联知识}：\(\ln(1+x)\) 的麦克劳林展开式；一阶可分离变量微分方程的求解。
+\end{itemize}}
+
+\end{mistake}

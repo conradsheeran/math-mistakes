@@ -1,0 +1,34 @@
+\begin{mistake}{2026-07-20}{02}
+
+\begin{problemcontent}
+设 \(f(x) = x^n\sqrt{1-x^2}, x \in [0,1]\) 与 \(y=0\) 所围平面区域的面积为 \(S_n\)，\(g(x) = \sin^{\frac{n}{2}} x, x \in \left[0, \frac{\pi}{2}\right]\) 与 \(y=0\) 所围平面区域绕 \(x\) 轴旋转一周所得体积为 \(V_n \ (n=1,2,\cdots)\)，求极限 \(\lim_{n \to \infty} \frac{\pi S_n}{V_n}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+平面区域面积为：
+\[ S_n = \int_0^1 x^n\sqrt{1-x^2} dx \]
+作三角换元令 \(x = \sin t\)，则 \(dx = \cos t dt\)，
+\[ \begin{aligned} 
+S_n &= \int_0^{\frac{\pi}{2}} \sin^n t \sqrt{1-\sin^2 t} \cos t dt \\ 
+&= \int_0^{\frac{\pi}{2}} \sin^n t \cos^2 t dt \\ 
+&= \int_0^{\frac{\pi}{2}} \sin^n t (1-\sin^2 t) dt \\ 
+&= I_n - I_{n+2} 
+\end{aligned} \]
+由华里士公式递推关系 \(I_{n+2} = \frac{n+1}{n+2}I_n\)，可得：
+\[ S_n = I_n - \frac{n+1}{n+2}I_n = \frac{1}{n+2}I_n \]
+
+旋转体体积为：
+\[ V_n = \pi \int_0^{\frac{\pi}{2}} \left(\sin^{\frac{n}{2}} x\right)^2 dx = \pi \int_0^{\frac{\pi}{2}} \sin^n x dx = \pi I_n \]
+
+代入求极限：
+\[ \lim_{n \to \infty} \frac{\pi S_n}{V_n} = \lim_{n \to \infty} \frac{\pi \cdot \frac{1}{n+2}I_n}{\pi I_n} = \lim_{n \to \infty} \frac{1}{n+2} = 0 \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：旋转体体积公式 \(V = \pi \int_a^b y^2 dx\)；华里士（Wallis）公式 \(I_n = \int_0^{\frac{\pi}{2}} \sin^n x dx\)。
+  \item \textbf{易错点}：定积分换元法（如令 \(x=\sin t\)）时容易漏乘微分项 \(dx = \cos t dt\) 中的 \(\cos t\)。
+  \item \textbf{关联知识}：结合华里士公式递推关系，常用结论：\(\int_0^{\frac{\pi}{2}} \sin^n x \cos^2 x dx = \frac{1}{n+2}I_n\)。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,38 @@
+\begin{mistake}{2026-07-23}{07}
+
+\begin{problemcontent}
+设 \(y_1, y_2\) 是一阶线性非齐次微分方程 \(y' + P(x)y = Q(x)\) 的两个解，若常数 \(\lambda, \mu\)，使得 \(\lambda y_1 + \mu y_2\) 是该方程的解，\(\lambda y_1 - \mu y_2\) 是对应的齐次微分方程的解，则（ ）
+
+A. \(\lambda = -\frac{1}{2}, \mu = -\frac{1}{2}\)
+
+B. \(\lambda = \frac{1}{2}, \mu = \frac{1}{2}\)
+
+C. \(\lambda = \frac{1}{3}, \mu = \frac{2}{3}\)
+
+D. \(\lambda = \frac{2}{3}, \mu = \frac{2}{3}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+已知 \(y_1, y_2\) 满足 \(y' + P(x)y = Q(x)\)，将其记为线性算子 \(L[y] = Q(x)\)。
+
+根据题意，\(\lambda y_1 + \mu y_2\) 是非齐次方程的解，代入可得：
+\[ L[\lambda y_1 + \mu y_2] = \lambda L[y_1] + \mu L[y_2] = \lambda Q(x) + \mu Q(x) = (\lambda + \mu)Q(x) = Q(x) \]
+由此可得：\(\lambda + \mu = 1\)。
+
+又已知 \(\lambda y_1 - \mu y_2\) 是对应齐次方程的解，代入可得：
+\[ L[\lambda y_1 - \mu y_2] = \lambda L[y_1] - \mu L[y_2] = \lambda Q(x) - \mu Q(x) = (\lambda - \mu)Q(x) = 0 \]
+由此可得：\(\lambda - \mu = 0\)。
+
+联立上述两式，解得：
+\[ \lambda = \frac{1}{2}, \mu = \frac{1}{2} \]
+
+故正确选项为 B。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：非齐次线性微分方程解的叠加原理。若 \(y_1, y_2\) 是非齐次方程的解，则其线性组合 \(C_1 y_1 + C_2 y_2\) 为非齐次方程解的充要条件是 \(C_1+C_2=1\)；为齐次方程解的充要条件是 \(C_1+C_2=0\)。
+  \item \textbf{易错点}：混淆齐次与非齐次方程解的条件，未能直接利用算子代入比较 \(Q(x)\) 的系数来构造方程组。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,34 @@
+\begin{mistake}{2026-07-23}{06}
+
+\begin{problemcontent}
+设 \(y_1(x)\) 与 \(y_2(x)\) 是非齐次微分方程 \(y' + P(x)y = Q(x)\) 的两个解。若 \(\lambda y_1(x) + \mu y_2(x)\) 仍是该方程的解，则 \(e^{\lambda^3 + \mu^3}\) 的最小值为（ ）\\
+A. \(e^{-1}\) \quad B. \(e^{\frac{1}{2}}\) \quad C. \(e^{\frac{1}{4}}\) \quad D. \(e^{\frac{1}{3}}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+由线性非齐次微分方程解的结构性质可知，若原方程的两个解 \(y_1, y_2\) 的线性组合 \(\lambda y_1 + \mu y_2\) 仍是该非齐次方程的解，必须满足系数之和为 \(1\)，即：
+\[\lambda + \mu = 1\]
+（此结论也可通过代入原方程直接验证：\((\lambda y_1 + \mu y_2)' + P(x)(\lambda y_1 + \mu y_2) = \lambda Q(x) + \mu Q(x) = (\lambda+\mu)Q(x)\)，要使其等于 \(Q(x)\)，则 \(\lambda+\mu=1\)）。
+
+题目要求 \(e^{\lambda^3 + \mu^3}\) 的最小值，即求指数 \(g(\lambda) = \lambda^3 + \mu^3\) 的最小值。
+将 \(\mu = 1 - \lambda\) 代入：
+\[
+\begin{aligned}
+g(\lambda) &= \lambda^3 + (1 - \lambda)^3 \\
+&= \lambda^3 + (1 - 3\lambda + 3\lambda^2 - \lambda^3) \\
+&= 3\lambda^2 - 3\lambda + 1 \\
+&= 3\left(\lambda - \frac{1}{2}\right)^2 + \frac{1}{4}
+\end{aligned}
+\]
+当 \(\lambda = \frac{1}{2}\) 时，\(g(\lambda)\) 取得最小值 \(\frac{1}{4}\)。
+因此，\(e^{\lambda^3 + \mu^3}\) 的最小值为 \(e^{\frac{1}{4}}\)。正确答案为 C。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：非齐次线性微分方程解的结构定理推论：解的线性组合仍是\textbf{非齐次方程}解 \(\iff\) 系数和等于1。
+  \item \textbf{易错点}：立方和公式及完全立方展开符号计算错误；忘记解的组合性质导致无法起步。
+  \item \textbf{关联知识}：若解的线性组合是对应的\textbf{齐次方程}的解 \(\iff\) 系数和等于0。
+\end{itemize}}
+
+\end{mistake}

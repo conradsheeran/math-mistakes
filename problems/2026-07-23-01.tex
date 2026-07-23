@@ -1,0 +1,47 @@
+\begin{mistake}{2026-07-23}{01}
+
+\begin{problemcontent}
+利用变换 \(u = e^x\)，求微分方程 \(y'' - (2e^x + 1)y' + e^{2x}y = e^{3x}\) 的通解。
+\end{problemcontent}
+
+\begin{solutioncontent}
+第一步：利用链式法则计算导数。
+已知 \(u = e^x\)，有 \(\frac{du}{dx} = e^x\)。
+一阶导数：\(y' = \frac{dy}{du} \frac{du}{dx} = e^x \frac{dy}{du}\)。
+二阶导数：
+\[
+y'' = \frac{d}{dx}\left(e^x \frac{dy}{du}\right) = e^x \frac{dy}{du} + e^{2x} \frac{d^2y}{du^2}
+\]
+
+第二步：代入原方程并化简。
+原方程化为：
+\[
+\left(e^x \frac{dy}{du} + e^{2x} \frac{d^2y}{du^2}\right) - (2e^x + 1)e^x \frac{dy}{du} + e^{2x}y = e^{3x}
+\]
+将 \(e^x = u\) 代入并除以 \(u^2\) (\(u>0\))，化简为常系数非齐次方程：
+\[
+\frac{d^2y}{du^2} - 2\frac{dy}{du} + y = u
+\]
+
+第三步：求解化简后的方程。
+齐次方程特征方程为 \(r^2 - 2r + 1 = 0\)，特征根 \(r_1 = r_2 = 1\)。
+齐次通解为：\(Y = (C_1 + C_2 u)e^u\)。
+设特解为 \(y^* = Au + B\)，代入得 \(-2A + Au + B = u\)，解得 \(A = 1, B = 2\)。
+特解 \(y^* = u + 2\)。
+方程关于 \(u\) 的通解为：\(y = (C_1 + C_2 u)e^u + u + 2\)。
+
+第四步：回代 \(u = e^x\)。
+最终通解为：
+\[
+y = (C_1 + C_2 e^x)e^{e^x} + e^x + 2
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：利用变量代换将变系数微分方程转化为常系数非齐次线性微分方程。
+  \item \textbf{易错点}：计算二阶导数时极易漏掉乘积求导项，需牢记 \(\frac{d}{dx} = \frac{d}{du} \frac{du}{dx}\) 算子。
+  \item \textbf{关联知识}：求解中间齐次方程时自变量为 \(u\)，特征根对应的指数形式为 \(e^u\)，不要习惯性写成 \(e^x\)。
+\end{itemize}}
+
+\end{mistake}

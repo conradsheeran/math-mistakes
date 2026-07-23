@@ -1,0 +1,33 @@
+\begin{mistake}{2026-07-23}{04}
+
+\begin{problemcontent}
+微分方程 \(y' = \frac{y^2 - x}{2y(x+1)}\) 的通解为 \underline{\hspace{2cm}}。
+\end{problemcontent}
+
+\begin{solutioncontent}
+将原方程变形，提取导数项：
+\[2y y' = \frac{y^2 - x}{x+1}\]
+令 \(u = y^2\)，则 \(u' = 2y y'\)，代入上式并移项，化为一阶线性微分方程：
+\[u' - \frac{1}{x+1} u = -\frac{x}{x+1}\]
+方程两边同乘积分因子 \(e^{\int -\frac{1}{x+1} dx} = \frac{1}{x+1}\)，凑微分得：
+\[\left( \frac{u}{x+1} \right)' = -\frac{x}{(x+1)^2}\]
+对两边积分，右侧利用分子凑分母技巧：
+\[
+\begin{aligned}
+\frac{u}{x+1} &= -\int \frac{(x+1) - 1}{(x+1)^2} dx \\
+&= -\int \left( \frac{1}{x+1} - \frac{1}{(x+1)^2} \right) dx \\
+&= -\ln|x+1| - \frac{1}{x+1} + C
+\end{aligned}
+\]
+两边同乘 \((x+1)\) 并还原 \(u = y^2\)，得通解：
+\[y^2 = (x+1)(C - \ln|x+1|) - 1\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：非线性微分方程换元法（\(u=y^2 \Rightarrow u'=2yy'\)）、一阶线性微分方程。
+  \item \textbf{易错点}：未观察出 \(y^2\) 与 \(y'\) 的微分关系，未能及时换元降次。
+  \item \textbf{关联知识}：有理分式积分中的凑项技巧（\(x = x+1-1\)）。
+\end{itemize}}
+
+\end{mistake}

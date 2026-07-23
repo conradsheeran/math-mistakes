@@ -1,0 +1,29 @@
+\begin{mistake}{2026-07-23}{05}
+
+\begin{problemcontent}
+微分方程 $y' = \frac{y}{x + (y+1)^2}$（$y$ 不为常函数）的通解为 \_\_\_\_\_\_\_\_。
+\end{problemcontent}
+
+\begin{solutioncontent}
+原方程等价于 $\frac{dy}{dx} = \frac{y}{x + (y+1)^2}$。
+因 $x$ 仅为一次项，可将方程两边取倒数，视 $y$ 为自变量，$x$ 为因变量，得到：
+\[ \frac{dx}{dy} = \frac{x + (y+1)^2}{y} \]
+整理为关于 $x$ 的标准一阶线性微分方程：
+\[ \frac{dx}{dy} - \frac{1}{y}x = \frac{(y+1)^2}{y} \]
+其中 $P(y) = -\frac{1}{y}$， $Q(y) = \frac{(y+1)^2}{y}$。
+先计算积分因子：
+\[ e^{\int -\frac{1}{y} dy} = e^{-\ln|y|} = \frac{1}{|y|} \]
+计算时常取 $\frac{1}{y}$，代入一阶线性微分方程通解公式：
+\[ \begin{aligned} x &= y \left[ \int \left( \frac{(y+1)^2}{y} \cdot \frac{1}{y} \right) dy + C \right] \\ &= y \left[ \int \frac{y^2 + 2y + 1}{y^2} dy + C \right] \\ &= y \left[ \int \left( 1 + \frac{2}{y} + \frac{1}{y^2} \right) dy + C \right] \\ &= y \left( y + 2\ln|y| - \frac{1}{y} + C \right) \end{aligned} \]
+展开化简得：
+\[ x = y^2 + 2y\ln|y| - 1 + Cy \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：反客为主法。当微分方程中 $x$ 的最高次数为1，而 $y$ 的关系复杂时，化为求 $\frac{dx}{dy}$ 的一阶线性微分方程。
+  \item \textbf{一阶线性方程通解公式}：若 $\frac{dx}{dy} + P(y)x = Q(y)$，则 $x = e^{-\int P(y)dy} \left[ \int Q(y) e^{\int P(y)dy} dy + C \right]$。
+  \item \textbf{易错点}：对 $\frac{1}{y^2}$ 积分易错算，正确应为 $\int y^{-2} dy = -\frac{1}{y}$；对 $\frac{1}{y}$ 积分应带绝对值即 ln|y|。
+\end{itemize}}
+
+\end{mistake}

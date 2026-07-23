@@ -1,0 +1,41 @@
+\begin{mistake}{2026-07-23}{03}
+
+\begin{problemcontent}
+设 \(\widehat{OA}\) 是连接 \(O(0,0)\) 和 \(A(1,1)\) 的一段向上凸的曲线弧，\(P(x,y)\) 为 \(\widehat{OA}\) 上任一点，曲线弧 \(\widehat{OP}\) 与有向线段 \(\overline{OP}\) 所围图形的面积为 \(x^2\)，求曲线弧 \(\widehat{OA}\) 的方程。
+\end{problemcontent}
+
+\begin{solutioncontent}
+设曲线弧方程为 \(y=y(x)\)，在曲线弧上取点 \(P(x,y)\)。
+为与积分上限 \(x\) 区分，设积分变量为 \(t\)。线段 \(OP\) 所在的直线方程为 \(Y(t) = \frac{y}{x}t\ (0 \le t \le x)\)。
+
+因曲线向上凸，在区间 \((0, x)\) 内曲线位于直线 \(OP\) 上方，故所围面积可表示为：
+\[ \int_0^x \left[ y(t) - \frac{y}{x} t \right] dt = x^2 \]
+
+计算其中的直线积分部分（即三角形面积），化简得：
+\[ \int_0^x y(t) dt - \frac{1}{2}xy = x^2 \]
+
+等式两边对 \(x\) 求导：
+\[ y(x) - \frac{1}{2} \left( y + x y' \right) = 2x \]
+整理化为一阶线性微分方程标准形式：
+\[ y' - \frac{1}{x} y = -4 \]
+
+两边同乘积分因子 \(\frac{1}{x}\)：
+\[ \left( \frac{y}{x} \right)' = -\frac{4}{x} \]
+积分得：
+\[ \frac{y}{x} = -4 \ln x + C \implies y = -4x \ln x + Cx \]
+
+由于曲线过点 \(A(1,1)\)，代入 \(x=1, y=1\) 得：
+\[ 1 = 0 + C \implies C = 1 \]
+
+故所求的曲线方程为：
+\[ y = x - 4x \ln x \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：变限积分求导定理；一阶线性常微分方程通解求法。
+  \item \textbf{易错点}：列变限积分表达式时，被积函数的自变量必须与积分上限严格区分（如使用 \(t\) 代替 \(x\)），否则求导必然出错。
+  \item \textbf{关联知识}：“向上凸”的几何意义意味着曲线位于其任意割线（如线段 \(OP\)）的上方，决定了面积积分时的被减数与减数关系。
+\end{itemize}}
+
+\end{mistake}

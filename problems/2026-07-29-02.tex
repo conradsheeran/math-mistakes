@@ -1,0 +1,38 @@
+\begin{mistake}{2026-07-29}{02}
+
+\begin{problemcontent}
+设 \(f(x)\) 满足 \(e^{f(x)}[f'(x) - 1] = x - 1\ (x \ge 0)\)， \(f(0) = 0\)，数列 \(\{a_n\}\) 满足 \(a_1 = 1, a_{n+1} = f(a_n)\ (n=1,2,\cdots)\)。
+（I）证明：\(\lim_{n \to \infty} a_n\) 存在，并求其值；
+（II）求 \(\lim_{n \to \infty} \frac{a_{n+1}}{a_n^2}\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+（I）令 \(z(x) = e^{f(x)}\)，则 \(z'(x) = e^{f(x)}f'(x)\)。原方程化为一阶线性微分方程：
+\[ z' - z = x - 1 \]
+积分因子为 \(e^{-x}\)，解得 \(z(x) = C e^x - x\)。
+代入 \(f(0) = 0\) 得 \(1 = C - 0\)，即 \(C = 1\)。
+故 \(e^{f(x)} = e^x - x\)，即 \(f(x) = \ln(e^x - x)\)。
+
+对于 \(x > 0\)，有 \(e^x - x < e^x\)，故 \(f(x) < \ln(e^x) = x\)。
+设 \(g(x) = e^x - x\)，\(g'(x) = e^x - 1 > 0\ (x>0)\)，故 \(g(x) > g(0) = 1\)，从而 \(f(x) = \ln(g(x)) > 0\)。
+由 \(a_1 = 1 > 0\)，归纳可得对任意 \(n \ge 1\) 均有 \(a_n > 0\)。
+结合 \(f(x) < x\)，可得 \(a_{n+1} = f(a_n) < a_n\)。
+数列 \(\{a_n\}\) 单调递减且有下界 \(0\)，由单调有界准则，极限存在。
+设 \(\lim_{n \to \infty} a_n = A\)，则 \(A = \ln(e^A - A)\)，解得 \(A = 0\)。
+
+（II）由 \(a_n \to 0\) 且 \(a_n \neq 0\)，原极限转化为函数极限：
+\[ \lim_{x \to 0^+} \frac{f(x)}{x^2} = \lim_{x \to 0^+} \frac{\ln(e^x - x)}{x^2} \]
+利用泰勒公式，\(e^x = 1 + x + \frac{x^2}{2} + o(x^2)\)，则：
+\[ \ln(e^x - x) = \ln\left(1 + \frac{x^2}{2} + o(x^2)\right) \sim \frac{x^2}{2} \]
+故所求极限为：
+\[ \lim_{x \to 0^+} \frac{x^2/2}{x^2} = \frac{1}{2} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：一阶线性常微分方程求解、单调有界准则、泰勒展开。
+  \item \textbf{易错点}：对复合函数求导结构不敏感，未发现 \(e^{f(x)}f'(x) = (e^{f(x)})'\)；利用泰勒公式求极限时展开阶数不够导致高阶无穷小被误判。
+  \item \textbf{关联知识}：海涅定理（数列极限与函数极限的转化）。
+\end{itemize}}
+
+\end{mistake}

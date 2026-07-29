@@ -1,0 +1,39 @@
+\begin{mistake}{2026-07-29}{03}
+
+\begin{problemcontent}
+设 \(f(x)\) 在 \((-\infty, +\infty)\) 内有连续导数，\(f(x) > 0\)，且满足
+\[ (1+x^2)f'(x) + 2nxf(x) = 0 \quad (n \text{ 为大于 } 1 \text{ 的正整数}), \quad f(0) = 1 \]
+(I) 求 \(f(x)\)； \\
+(II) 记 \(S_n\) 为曲线 \(y = f(x)\) 与 \(x\) 轴之间的无界区域的面积，求 \(\lim_{n \to \infty} \left( \frac{S_n}{S_{n-1}} \right)^n\)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+(I) 由微分方程变形得：
+\[ \frac{f'(x)}{f(x)} = -\frac{2nx}{1+x^2} \]
+两边积分：
+\[ \ln f(x) = -n \ln(1+x^2) + C \]
+由初始条件 \(f(0) = 1\)，得 \(C = 0\)。
+因此，\(f(x) = \frac{1}{(1+x^2)^n}\)。
+
+(II) 曲线 \(y=f(x)\) 与 \(x\) 轴之间的面积为：
+\[ S_n = \int_{-\infty}^{+\infty} \frac{1}{(1+x^2)^n} \, dx = 2 \int_{0}^{+\infty} \frac{1}{(1+x^2)^n} \, dx \]
+令 \(x = \tan t\)，则 \(dx = \sec^2 t \, dt\)，当 \(x \to +\infty\) 时，\(t \to \frac{\pi}{2}\)：
+\[ S_n = 2 \int_{0}^{\frac{\pi}{2}} \frac{1}{(\sec^2 t)^n} \sec^2 t \, dt = 2 \int_{0}^{\frac{\pi}{2}} \cos^{2n-2} t \, dt \]
+记华里士积分 \(I_m = \int_{0}^{\frac{\pi}{2}} \cos^m t \, dt\)，则 \(S_n = 2 I_{2n-2}\)。
+同理，\(S_{n-1} = 2 I_{2n-4}\)。
+根据华里士公式的递推关系 \(I_m = \frac{m-1}{m} I_{m-2}\)，取 \(m = 2n-2\)：
+\[ \frac{S_n}{S_{n-1}} = \frac{I_{2n-2}}{I_{2n-4}} = \frac{2n-3}{2n-2} \]
+代入所求极限：
+\[ \lim_{n \to \infty} \left( \frac{S_n}{S_{n-1}} \right)^n = \lim_{n \to \infty} \left( \frac{2n-3}{2n-2} \right)^n = \lim_{n \to \infty} \left( 1 - \frac{1}{2n-2} \right)^n \]
+配凑 \(1^\infty\) 极限形式：
+\[ \lim_{n \to \infty} \left[ \left( 1 - \frac{1}{2n-2} \notag\right)^{-(2n-2)} \right]^{\frac{n}{-(2n-2)}} = e^{-\frac{1}{2}} \]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：华里士公式递推 \(I_m = \frac{m-1}{m}I_{m-2}\)；三角换元 \(1+\tan^2 t = \sec^2 t\)。
+  \item \textbf{易错点}：换元 \(dx=\sec^2 t dt\) 易漏，导致次幂错算为 \(I_{2n}\)；\(1^\infty\) 型极限指数配凑时易漏掉负号。
+  \item \textbf{关联知识}：反常积分的偶函数对称性化简；标准 \(1^\infty\) 极限 \(\lim_{x \to \infty}(1+\frac{a}{x})^{bx} = e^{ab}\)。
+\end{itemize}}
+
+\end{mistake}

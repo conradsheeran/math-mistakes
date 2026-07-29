@@ -1,0 +1,37 @@
+\begin{mistake}{2026-07-29}{01}
+
+\begin{problemcontent}
+设 \( f(x) \) 有二阶连续导数，且 \( f(x) = \int_0^x f(1-t)\mathrm{d}t + 1 \)，求 \( f(x) \)。
+\end{problemcontent}
+
+\begin{solutioncontent}
+将 \(x=0\) 代入原方程，得初值 \(f(0)=1\)。
+
+两边对 \(x\) 求一阶导数，得：
+\[f'(x)=f(1-x) \quad \text{（式1）}\]
+在（式1）中令 \(x=1\), 得另一个初值 \(f'(1)=f(0)=1\)。
+
+对（式1）两边再对 \(x\) 求导, 注意使用复合函数求导法则, 得：
+\[f''(x) = -f'(1-x) \quad \text{（式2）}\]
+由于（式1）对任意实数恒成立, 将其中 \(x\) 替换为 \(1-x\), 可得 \(f'(1-x)=f(x)\)。
+将其代入（式2）, 得标准二阶常系数齐次线性微分方程：
+\[f''(x)+f(x)=0\]
+特征方程为 \(r^2+1=0\), 解得特征根 \(r=\pm i\)。
+故方程的通解为：
+\[f(x)=C_1\cos x+C_2\sin x\]
+
+代入初值 \(f(0)=1\) 得 \(C_1=1\)。
+对通解求导得 \(f'(x)=-\sin x+C_2\cos x\), 代入初值 \(f'(1)=1\) 得：
+\[-\sin 1+C_2\cos 1=1 \implies C_2=\frac{1+\sin 1}{\cos 1}\]
+故所求函数为：
+\[f(x)=\cos x+\frac{1+\sin 1}{\cos 1}\sin x\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心方法}：遇到含有变上限积分的函数方程，通过两边求导将其转化为常微分方程。
+  \item \textbf{易错点}：对 \(f(1-x)\) 求导时容易漏掉链式法则产生的负号，即 \([f(1-x)]' = -f'(1-x)\)。
+  \item \textbf{关键代换}：利用 \(f'(x)=f(1-x)\) 推导出 \(f'(1-x)=f(x)\) ，从而消去自变量偏移。
+\end{itemize}}
+
+\end{mistake}

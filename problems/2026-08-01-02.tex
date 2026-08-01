@@ -1,0 +1,35 @@
+\begin{mistake}{2026-08-01}{02}
+
+\begin{problemcontent}
+已知函数 $f(x,y)$ 在点 $(0,0)$ 的某个邻域内连续，且 $\lim\limits_{\substack{x \to 0 \\ y \to 0}} \frac{f(x,y) - xy}{(x^2 + y^2)^2} = 1$，则
+(A) 点 $(0,0)$ 不是 $f(x,y)$ 的极值点.
+(B) 点 $(0,0)$ 是 $f(x,y)$ 的极大值点.
+(C) 点 $(0,0)$ 是 $f(x,y)$ 的极小值点.
+(D) 根据所给条件无法判断点 $(0,0)$ 是否为 $f(x,y)$ 的极值点.
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案为 (A)。
+
+由已知条件 $\lim\limits_{\substack{x \to 0 \\ y \to 0}} \frac{f(x,y) - xy}{(x^2 + y^2)^2} = 1$，且分母趋于 $0$，极限存在，故分子极限也必为 $0$，即 $\lim\limits_{\substack{x \to 0 \\ y \to 0}} [f(x,y) - xy] = 0$。
+又因为 $f(x,y)$ 在 $(0,0)$ 处连续，可得 $f(0,0) = \lim\limits_{\substack{x \to 0 \\ y \to 0}} f(x,y) = 0$。
+
+根据极限与无穷小的关系，可以写出 $f(x,y)$ 在 $(0,0)$ 附近的渐近表达式：
+\[ f(x,y) - xy = (x^2 + y^2)^2 + o((x^2 + y^2)^2) \]
+函数在 $(0,0)$ 处的全增量为：
+\[ \Delta z = f(x,y) - f(0,0) = xy + (x^2 + y^2)^2 + o((x^2 + y^2)^2) \]
+
+考察沿不同直线路径趋于 $(0,0)$ 时 $\Delta z$ 的符号：
+沿 $y=x$ 趋于 $(0,0)$：$\Delta z = x^2 + 4x^4 + o(x^4) \approx x^2 > 0$（当 $x$ 充分小时）；
+沿 $y=-x$ 趋于 $(0,0)$：$\Delta z = -x^2 + 4x^4 + o(x^4) \approx -x^2 < 0$（当 $x$ 充分小时）。
+
+由于在 $(0,0)$ 的任意小去心邻域内，$\Delta z$ 符号不唯一（既有正值又有负值），不满足极值的定义，故点 $(0,0)$ 不是极值点。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：若全增量 $\Delta z = f(x,y) - f(x_0, y_0)$ 在去心邻域内恒正（负），则是极小（大）值；若符号不定，则不是极值点。
+  \item \textbf{易错点}：误认为高次项 $(x^2+y^2)^2$ 恒正决定了极小值。实际上在趋于 $(0,0)$ 时，低次项 $xy$ 的值远大于高次项，由低次项主导局部的符号变化。
+\end{itemize}}
+
+\end{mistake}

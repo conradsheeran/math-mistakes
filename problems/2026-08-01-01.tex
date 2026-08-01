@@ -1,0 +1,38 @@
+\begin{mistake}{2026-08-01}{01}
+
+\begin{problemcontent}
+设 \(z = f(xy, x^2 + y^2)\)，求 \(\frac{\partial z}{\partial x}\), \(\frac{\partial^2 z}{\partial x \partial y}\)，其中 \(f(u, v)\) 有二阶连续偏导数。
+\end{problemcontent}
+
+\begin{solutioncontent}
+令 \(u = xy, v = x^2 + y^2\)，则 \(z = f(u, v)\)。
+
+求一阶偏导数：
+\[
+\frac{\partial z}{\partial x} = \frac{\partial f}{\partial u}\frac{\partial u}{\partial x} + \frac{\partial f}{\partial v}\frac{\partial v}{\partial x} = y f_1' + 2x f_2'
+\]
+
+求二阶混合偏导数（对 \(y\) 偏导）：
+\[
+\begin{aligned}
+\frac{\partial^2 z}{\partial x \partial y} &= \frac{\partial}{\partial y}(y f_1' + 2x f_2') \\
+&= f_1' + y \frac{\partial f_1'}{\partial y} + 2x \frac{\partial f_2'}{\partial y} \\
+&= f_1' + y \left( f_{11}'' \frac{\partial u}{\partial y} + f_{12}'' \frac{\partial v}{\partial y} \right) + 2x \left( f_{21}'' \frac{\partial u}{\partial y} + f_{22}'' \frac{\partial v}{\partial y} \right) \\
+&= f_1' + y(x f_{11}'' + 2y f_{12}'') + 2x(x f_{21}'' + 2y f_{22}'')
+\end{aligned}
+\]
+
+因 \(f\) 有二阶连续偏导数，故 \(f_{12}'' = f_{21}''\)。合并同类项得：
+\[
+\frac{\partial^2 z}{\partial x \partial y} = f_1' + xy f_{11}'' + 2(x^2 + y^2) f_{12}'' + 4xy f_{22}''
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：多元复合函数链式求导法则；混合偏导数连续则相等（\(f_{12}'' = f_{21}''\)）。
+  \item \textbf{易错点}：对乘积项（如 \(y f_1'\)）求导时遗漏前置项 \(y\) 本身的导数 \(f_1'\)。
+  \item \textbf{关联知识}：\(f_1'\) 和 \(f_2'\) 依然是 \(u,v\) 的复合函数，再次求偏导时必须进行二次链式展开。
+\end{itemize}}
+
+\end{mistake}

@@ -1,0 +1,31 @@
+\begin{mistake}{2026-08-02}{02}
+
+\begin{problemcontent}
+设 \(a>0\)，\(f(t)\) 在 \([0, +\infty)\) 上连续有界，证明：方程 \(\frac{\text{d}x}{\text{d}t} + ax = f(t)\ (t \ge 0)\) 的所有解在 \([0, +\infty)\) 上有界。
+\end{problemcontent}
+
+\begin{solutioncontent}
+方程为一阶线性非齐次微分方程，由通解公式可得：
+\[x(t) = e^{-at} \left( C + \int_0^t f(s) e^{as} \, \text{d}s \right) = C e^{-at} + e^{-at} \int_0^t f(s) e^{as} \, \text{d}s\]
+因为 \(f(t)\) 在 \([0, +\infty)\) 上连续有界，存在常数 \(M > 0\) 使得 \(|f(t)| \le M\)。
+对解两边取绝对值，利用积分的绝对值不等式进行放缩：
+\[\begin{aligned}
+|x(t)| &\le |C| e^{-at} + e^{-at} \int_0^t |f(s)| e^{as} \, \text{d}s \\
+&\le |C| e^{-at} + e^{-at} \int_0^t M e^{as} \, \text{d}s \\
+&= |C| e^{-at} + \frac{M}{a} e^{-at} (e^{at} - 1) \\
+&= |C| e^{-at} + \frac{M}{a} (1 - e^{-at})
+\end{aligned}\]
+由于 \(a > 0\) 且 \(t \ge 0\)，有 \(0 < e^{-at} \le 1\) 及 \(0 \le 1 - e^{-at} < 1\)。
+因此：
+\[|x(t)| \le |C| + \frac{M}{a}\]
+因为对于每个确定的解，\(C\) 为常数，且 \(M, a\) 为正定常数，故所有解在 \([0, +\infty)\) 上均有界。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式}：一阶线性微分方程通解公式 \(x(t) = e^{-\int P(t)\text{d}t} \left( C + \int Q(t) e^{\int P(t)\text{d}t} \text{d}t \right)\)
+  \item \textbf{易错点}：定积分表达式中的积分变量需使用虚拟变量（如 \(s\)），绝不可与积分上限 \(t\) 混淆；不可遗漏齐次通解项 \(C e^{-at}\)。
+  \item \textbf{关键技巧}：利用定积分绝对值不等式 \(\left| \int_0^t g(s)\text{d}s \right| \le \int_0^t |g(s)|\text{d}s\) 与函数有界性 \(|f(t)| \le M\) 进行放缩。
+\end{itemize}}
+
+\end{mistake}

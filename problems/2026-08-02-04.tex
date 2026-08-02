@@ -1,0 +1,44 @@
+\begin{mistake}{2026-08-02}{04}
+
+\begin{problemcontent}
+设 \(f(x)\) 是 \([0,1]\) 上单调减少的正值连续函数，证明：
+\[
+\frac{\int_0^1 x f^2(x) dx}{\int_0^1 x f(x) dx} \le \frac{\int_0^1 f^2(x) dx}{\int_0^1 f(x) dx}
+\]
+\end{problemcontent}
+
+\begin{solutioncontent}
+因为 \(f(x)\) 为正值连续函数，分母积分均严格大于 \(0\)。去分母，原不等式等价于证明：
+\[
+\int_0^1 x f^2(x) dx \int_0^1 f(x) dx - \int_0^1 f^2(x) dx \int_0^1 x f(x) dx \le 0
+\]
+设左式为 \(I\)。引入新积分变量 \(y\)，将积分乘积转化为区域 \(D = \{(x,y) \mid 0 \le x \le 1, 0 \le y \le 1\}\) 上的二重积分：
+\[
+I = \iint_D x f^2(x) f(y) dx dy - \iint_D y f^2(x) f(y) dx dy = \iint_D (x - y) f^2(x) f(y) dx dy
+\]
+利用积分区域的轮换对称性，交换变量 \(x\) 和 \(y\) 得：
+\[
+I = \iint_D (y - x) f^2(y) f(x) dx dy
+\]
+两式相加提取公因式：
+\[
+\begin{aligned}
+2I &= \iint_D (x - y) f^2(x) f(y) dx dy + \iint_D (y - x) f^2(y) f(x) dx dy \\
+&= \iint_D (x - y) f(x) f(y) \left[ f(x) - f(y) \right] dx dy
+\end{aligned}
+\]
+由于 \(f(x)\) 是正值函数，\(f(x)f(y) > 0\)。
+又因为 \(f(x)\) 在 \([0,1]\) 上单调减少：
+当 \(x > y\) 时，\(f(x) - f(y) \le 0\)，此时 \((x - y)[f(x) - f(y)] \le 0\)；
+当 \(x < y\) 时，\(f(x) - f(y) \ge 0\)，此时 \((x - y)[f(x) - f(y)] \le 0\)。
+即对于任意 \(x, y\)，被积函数恒小于等于 \(0\)，从而 \(2I \le 0\)，原不等式得证。
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：\(\left( \int_a^b g(x)dx \right) \left( \int_a^b h(x)dx \right) = \iint_D g(x)h(y) dx dy\)
+  \item \textbf{易错点}：将两个定积分相乘转化为二重积分时，必须使用两个不同的积分变量（如 \(x\) 和 \(y\), 不能直接合并为同变量的单积分。
+  \item \textbf{关联知识}：二重积分的轮换对称性（切比雪夫积分不等式标准证明思路）。
+\end{itemize}}
+
+\end{mistake}

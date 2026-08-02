@@ -1,0 +1,86 @@
+\begin{mistake}{2026-08-02}{01}
+
+\begin{problemcontent}
+设曲线 \(y=y(x)\)（\(y>0\)）在点 \((0,2)\) 处有水平切线，曲线上任一点 \((x,y)\) 处的曲率为
+\[
+K=\frac{1}{2\sqrt{2}\,\sqrt{y}(1+y'^2)},\qquad y''(x)>0.
+\]
+记曲线 \(y=y(x)\)、\(x=0\)、\(x=2\) 及 \(x\) 轴所围图形为 \(D\)，求 \(y=y(x)\)（\(x\ge 0\)），并求 \(D\) 绕 \(x=2\) 旋转一周所得旋转体的体积。
+\end{problemcontent}
+
+\begin{solutioncontent}
+曲率公式为
+\[
+K=\frac{y''}{(1+y'^2)^{3/2}},
+\]
+其中利用了题设 \(y''>0\)。与已知曲率相等，得
+\[
+\frac{y''}{\sqrt{1+y'^2}}=\frac{1}{2\sqrt{2}\sqrt y}.
+\]
+
+由于方程中没有显含 \(x\)，令
+\[
+p=y',\qquad y''=\frac{dp}{dx}=\frac{dp}{dy}\frac{dy}{dx}=p\frac{dp}{dy}.
+\]
+于是
+\[
+\frac{p}{\sqrt{1+p^2}}\frac{dp}{dy}=\frac{1}{2\sqrt{2}\sqrt y}.
+\]
+对 \(y\) 积分：
+\[
+\int\frac{p}{\sqrt{1+p^2}}\,dp
+=\int\frac{1}{2\sqrt{2}\sqrt y}\,dy,
+\]
+故
+\[
+\sqrt{1+p^2}=\frac{\sqrt y}{\sqrt2}+C.
+\]
+
+由 \((0,2)\) 处为水平切线，\(y(0)=2\)，\(p(0)=y'(0)=0\)，代入得 \(C=0\). 因此
+\[
+1+p^2=\frac y2,
+\qquad p^2=\frac{y-2}{2}.
+\]
+又因 \(y''>0\) 且 \(p(0)=0\)，在 \(x\ge0\) 时取正根：
+\[
+\frac{dy}{dx}=p=\sqrt{\frac{y-2}{2}}.
+\]
+分离变量并利用初值：
+\[
+\int_2^y\frac{du}{\sqrt{u-2}}=\int_0^x\frac{dt}{\sqrt2},
+\]
+即
+\[
+2\sqrt{y-2}=\frac{x}{\sqrt2}.
+\]
+所以
+\[
+y=2+\frac{x^2}{8},\qquad x\ge0.
+\]
+
+求旋转体体积时，绕竖直直线 \(x=2\) 使用柱壳法。柱壳半径为 \(2-x\)，高度为 \(y(x)\)，故
+\[
+\begin{aligned}
+V
+&=2\pi\int_0^2(2-x)\left(2+\frac{x^2}{8}\right)\,dx\\
+&=2\pi\int_0^2\left(4-2x+\frac{x^2}{4}-\frac{x^3}{8}\right)\,dx\\
+&=2\pi\left[4x-x^2+\frac{x^3}{12}-\frac{x^4}{32}\right]_0^2\\
+&=\frac{25\pi}{3}.
+\end{aligned}
+\]
+因此
+\[
+\boxed{y=2+\frac{x^2}{8}\ (x\ge0)},
+\qquad
+\boxed{V=\frac{25\pi}{3}}.
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：曲率 \(K=\dfrac{y''}{(1+y'^2)^{3/2}}\)（本题 \(y''>0\)）；方程不显含 \(x\) 时可令 \(p=y'\)，并用 \(y''=p\dfrac{dp}{dy}\) 降阶。
+  \item \textbf{易错点}：令 \(p=y'\) 后必须进一步将 \(p\) 视为 \(y\) 的函数；由 \(p^2=\dfrac{y-2}{2}\) 结合 \(y''>0\)、\(p(0)=0\) 取正根。绕 \(x=2\) 旋转时柱壳半径为 \(2-x\)。
+  \item \textbf{关联知识}：旋转体柱壳法 \(V=2\pi\int_a^b r(x)h(x)\,dx\)；水平切线条件为 \(y'(0)=0\)。
+\end{itemize}}
+
+\end{mistake}

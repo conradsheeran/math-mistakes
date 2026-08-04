@@ -1,0 +1,44 @@
+\begin{mistake}{2026-08-04}{01}
+
+\begin{problemcontent}
+设函数
+\[
+f(x, y) = \begin{cases} 
+\frac{2x|y|}{\sqrt{x^2+y^2}}, & x^2+y^2 \neq 0, \\ 
+0, & x^2+y^2 = 0. 
+\end{cases}
+\]
+若 \(z = f(\tan t, \ln(1+t))\)，则 \(\left. \frac{dz}{dt} \right|_{t=0} = \) ( )
+
+A. 0 \quad B. 1 \quad C. 2 \quad D. \(\sqrt{2}\)
+\end{problemcontent}
+
+\begin{solutioncontent}
+正确答案：D。
+
+当 \(t=0\) 时，\(x(0) = \tan 0 = 0\)，\(y(0) = \ln(1+0) = 0\)，此时 \(z(0) = f(0, 0) = 0\)。
+由于 \(f(x,y)\) 在 \((0,0)\) 处不可微，不能使用多元复合函数链式法则，必须使用一元函数导数定义求解：
+\[
+\begin{aligned}
+\left. \frac{dz}{dt} \right|_{t=0} &= \lim_{t \to 0} \frac{z(t) - z(0)}{t} \\
+&= \lim_{t \to 0} \frac{1}{t} \frac{2\tan t |\ln(1+t)|}{\sqrt{\tan^2 t + \ln^2(1+t)}} \\
+&= \lim_{t \to 0} \frac{\tan t}{t} \frac{2|\ln(1+t)|}{\sqrt{\tan^2 t + \ln^2(1+t)}}
+\end{aligned}
+\]
+分子分母同除以 \(|t|\)（分母根号内除以 \(t^2\)）：
+\[
+\begin{aligned}
+&= 1 \cdot \lim_{t \to 0} \frac{2 \left| \frac{\ln(1+t)}{t} \right|}{\sqrt{\left(\frac{\tan t}{t}\right)^2 + \left(\frac{\ln(1+t)}{t}\right)^2}} \\
+&= \frac{2 \cdot 1}{\sqrt{1^2 + 1^2}} = \sqrt{2}
+\end{aligned}
+\]
+\end{solutioncontent}
+
+\mistakeknowledge{
+\begin{itemize}
+  \item \textbf{核心公式/定理}：一元函数导数定义 \(z'(t_0) = \lim_{t \to t_0} \frac{z(t) - z(t_0)}{t - t_0}\)。
+  \item \textbf{易错点}：分段函数在分段点求复合函数导数时，外层函数往往不可微，直接套用多元复合函数链式法则（错选A）会导致错误。
+  \item \textbf{关联知识}：二元函数可微性判定；等价无穷小 \(\tan t \sim t\), \(\ln(1+t) \sim t\)。
+\end{itemize}}
+
+\end{mistake}
